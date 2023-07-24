@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		21D178082A6E561400CA8ABC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D178072A6E561400CA8ABC /* AppDelegate.swift */; };
 		21D1780A2A6E561400CA8ABC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D178092A6E561400CA8ABC /* SceneDelegate.swift */; };
-		21D1780C2A6E561400CA8ABC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1780B2A6E561400CA8ABC /* ViewController.swift */; };
+		21D1780C2A6E561400CA8ABC /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1780B2A6E561400CA8ABC /* BoardViewController.swift */; };
 		21D1780F2A6E561400CA8ABC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21D1780D2A6E561400CA8ABC /* Main.storyboard */; };
 		21D178112A6E561600CA8ABC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21D178102A6E561600CA8ABC /* Assets.xcassets */; };
 		21D178142A6E561600CA8ABC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21D178122A6E561600CA8ABC /* LaunchScreen.storyboard */; };
+		21D1781C2A6E5D4200CA8ABC /* NewWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1781B2A6E5D4200CA8ABC /* NewWordViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		21D178042A6E561400CA8ABC /* BoardAndNewWord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoardAndNewWord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D178072A6E561400CA8ABC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21D178092A6E561400CA8ABC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		21D1780B2A6E561400CA8ABC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		21D1780B2A6E561400CA8ABC /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
 		21D1780E2A6E561400CA8ABC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		21D178102A6E561600CA8ABC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21D178132A6E561600CA8ABC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21D178152A6E561600CA8ABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21D1781B2A6E5D4200CA8ABC /* NewWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,8 @@
 			children = (
 				21D178072A6E561400CA8ABC /* AppDelegate.swift */,
 				21D178092A6E561400CA8ABC /* SceneDelegate.swift */,
-				21D1780B2A6E561400CA8ABC /* ViewController.swift */,
+				21D1780B2A6E561400CA8ABC /* BoardViewController.swift */,
+				21D1781B2A6E5D4200CA8ABC /* NewWordViewController.swift */,
 				21D1780D2A6E561400CA8ABC /* Main.storyboard */,
 				21D178102A6E561600CA8ABC /* Assets.xcassets */,
 				21D178122A6E561600CA8ABC /* LaunchScreen.storyboard */,
@@ -138,9 +141,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21D1780C2A6E561400CA8ABC /* ViewController.swift in Sources */,
+				21D1780C2A6E561400CA8ABC /* BoardViewController.swift in Sources */,
 				21D178082A6E561400CA8ABC /* AppDelegate.swift in Sources */,
 				21D1780A2A6E561400CA8ABC /* SceneDelegate.swift in Sources */,
+				21D1781C2A6E5D4200CA8ABC /* NewWordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,9 +305,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.phillyh.BoardAndNewWord;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -328,9 +335,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.phillyh.BoardAndNewWord;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
