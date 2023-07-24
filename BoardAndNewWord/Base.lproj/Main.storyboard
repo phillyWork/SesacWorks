@@ -113,6 +113,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="e0m-HZ-O7t" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wz2-ou-J6e">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                     </tabBar>
@@ -137,6 +138,9 @@
                                 <rect key="frame" x="20" y="79" width="313.66666666666669" height="39.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldEnterKeyTapped:" destination="bFd-oT-gaW" eventType="editingDidEndOnExit" id="30U-Wz-2mY"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2o9-HW-M5c">
                                 <rect key="frame" x="333.66666666666669" y="79" width="39.333333333333314" height="39.333333333333343"/>
@@ -145,88 +149,122 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="magnifyingglass" catalog="system"/>
+                                <connections>
+                                    <action selector="searchButtonTapped:" destination="bFd-oT-gaW" eventType="touchUpInside" id="Yba-Ts-4Nz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D2J-5n-Fbn">
-                                <rect key="frame" x="20" y="123.33333333333333" width="78.666666666666671" height="39.333333333333329"/>
+                                <rect key="frame" x="20" y="123.33333333333333" width="51" height="39.333333333333329"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="D2J-5n-Fbn" secondAttribute="height" multiplier="2:1" id="CLh-Sj-MtE"/>
+                                    <constraint firstAttribute="width" secondItem="D2J-5n-Fbn" secondAttribute="height" multiplier="1.3:1" id="CLh-Sj-MtE"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="wordButtonTapped:" destination="bFd-oT-gaW" eventType="touchUpInside" id="acf-fj-oLJ"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kQs-tH-YOT">
-                                <rect key="frame" x="20" y="493.33333333333331" width="353" height="255.66666666666669"/>
+                                <rect key="frame" x="43" y="503.33333333333331" width="307" height="255.66666666666669"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="kQs-tH-YOT" secondAttribute="height" multiplier="1.2:1" id="j5e-lr-eM9"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0D5-SP-1mb">
-                                <rect key="frame" x="175" y="542" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0D5-SP-1mb">
+                                <rect key="frame" x="43" y="621" width="307" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsz-xo-5Ka">
-                                <rect key="frame" x="108.66666666666666" y="123.33333333333333" width="78.666666666666657" height="39.333333333333329"/>
+                                <rect key="frame" x="81" y="123.33333333333333" width="51.333333333333343" height="39.333333333333329"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="fsz-xo-5Ka" secondAttribute="height" multiplier="2:1" id="bLE-IL-aL7"/>
+                                    <constraint firstAttribute="width" secondItem="fsz-xo-5Ka" secondAttribute="height" multiplier="1.3:1" id="bLE-IL-aL7"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="wordButtonTapped:" destination="bFd-oT-gaW" eventType="touchUpInside" id="t2y-fN-x5G"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHe-Ac-w7c">
-                                <rect key="frame" x="285.66666666666669" y="123.33333333333333" width="78.666666666666686" height="39.333333333333329"/>
+                                <rect key="frame" x="203.33333333333334" y="123.33333333333333" width="51" height="39.333333333333329"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="YHe-Ac-w7c" secondAttribute="height" multiplier="2:1" id="mlE-tN-ehg"/>
+                                    <constraint firstAttribute="width" secondItem="YHe-Ac-w7c" secondAttribute="height" multiplier="1.3:1" id="mlE-tN-ehg"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="wordButtonTapped:" destination="bFd-oT-gaW" eventType="touchUpInside" id="Tl7-vN-maG"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ojc-yp-4El">
-                                <rect key="frame" x="197.33333333333334" y="123.33333333333333" width="78.333333333333343" height="39.333333333333329"/>
+                                <rect key="frame" x="142.33333333333334" y="123.33333333333333" width="51" height="39.333333333333329"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Ojc-yp-4El" secondAttribute="height" multiplier="2:1" id="kA5-8f-e5H"/>
+                                    <constraint firstAttribute="width" secondItem="Ojc-yp-4El" secondAttribute="height" multiplier="1.3:1" id="kA5-8f-e5H"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="wordButtonTapped:" destination="bFd-oT-gaW" eventType="touchUpInside" id="Y94-Ob-SSz"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NAJ-jv-uJu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Ojc-yp-4El" firstAttribute="height" secondItem="fsz-xo-5Ka" secondAttribute="height" id="4Td-aF-W1D"/>
                             <constraint firstItem="D2J-5n-Fbn" firstAttribute="leading" secondItem="hzD-3m-ZnS" secondAttribute="leading" id="5bT-Pq-p7S"/>
                             <constraint firstItem="fsz-xo-5Ka" firstAttribute="height" secondItem="D2J-5n-Fbn" secondAttribute="height" id="6Rd-YP-3d5"/>
-                            <constraint firstItem="kQs-tH-YOT" firstAttribute="leading" secondItem="NAJ-jv-uJu" secondAttribute="leading" constant="20" id="7RT-Bh-E6J"/>
+                            <constraint firstItem="0D5-SP-1mb" firstAttribute="leading" secondItem="kQs-tH-YOT" secondAttribute="leading" id="CVh-YJ-L4O"/>
                             <constraint firstItem="YHe-Ac-w7c" firstAttribute="top" secondItem="D2J-5n-Fbn" secondAttribute="top" id="FlG-C5-kdv"/>
                             <constraint firstItem="fsz-xo-5Ka" firstAttribute="top" secondItem="D2J-5n-Fbn" secondAttribute="top" id="GBN-fG-vcu"/>
-                            <constraint firstItem="0D5-SP-1mb" firstAttribute="centerY" secondItem="kQs-tH-YOT" secondAttribute="centerY" id="Gx0-0k-4we"/>
+                            <constraint firstItem="0D5-SP-1mb" firstAttribute="centerY" secondItem="kQs-tH-YOT" secondAttribute="centerY" id="IB3-tg-zeo"/>
                             <constraint firstItem="2o9-HW-M5c" firstAttribute="width" secondItem="I10-1c-6Ih" secondAttribute="width" multiplier="0.1" id="IHz-gT-ymM"/>
-                            <constraint firstItem="0D5-SP-1mb" firstAttribute="centerX" secondItem="kQs-tH-YOT" secondAttribute="centerX" id="LGW-CA-0L0"/>
+                            <constraint firstItem="kQs-tH-YOT" firstAttribute="height" secondItem="I10-1c-6Ih" secondAttribute="height" multiplier="0.3" id="Nje-c2-KZZ"/>
                             <constraint firstItem="Ojc-yp-4El" firstAttribute="top" secondItem="D2J-5n-Fbn" secondAttribute="top" id="R4c-3q-yVC"/>
                             <constraint firstItem="fsz-xo-5Ka" firstAttribute="leading" secondItem="D2J-5n-Fbn" secondAttribute="trailing" constant="10" id="Rgl-A0-j9s"/>
+                            <constraint firstItem="0D5-SP-1mb" firstAttribute="trailing" secondItem="kQs-tH-YOT" secondAttribute="trailing" id="StV-Dt-FbU"/>
                             <constraint firstItem="Ojc-yp-4El" firstAttribute="leading" secondItem="fsz-xo-5Ka" secondAttribute="trailing" constant="10" id="VG9-m5-JZn"/>
                             <constraint firstItem="YHe-Ac-w7c" firstAttribute="leading" secondItem="Ojc-yp-4El" secondAttribute="trailing" constant="10" id="XOl-xX-EGq"/>
-                            <constraint firstItem="NAJ-jv-uJu" firstAttribute="bottom" secondItem="kQs-tH-YOT" secondAttribute="bottom" constant="20" id="ajF-Fq-K9a"/>
+                            <constraint firstItem="NAJ-jv-uJu" firstAttribute="bottom" secondItem="kQs-tH-YOT" secondAttribute="bottom" constant="10" id="ajF-Fq-K9a"/>
                             <constraint firstItem="D2J-5n-Fbn" firstAttribute="top" secondItem="hzD-3m-ZnS" secondAttribute="bottom" constant="5" id="ar0-yU-i73"/>
                             <constraint firstItem="2o9-HW-M5c" firstAttribute="leading" secondItem="hzD-3m-ZnS" secondAttribute="trailing" id="bYc-l7-W55"/>
+                            <constraint firstItem="0D5-SP-1mb" firstAttribute="centerX" secondItem="kQs-tH-YOT" secondAttribute="centerX" id="c2G-Z2-HpU"/>
                             <constraint firstItem="hzD-3m-ZnS" firstAttribute="top" secondItem="NAJ-jv-uJu" secondAttribute="top" constant="20" id="ce0-CN-hGF"/>
-                            <constraint firstItem="NAJ-jv-uJu" firstAttribute="trailing" secondItem="kQs-tH-YOT" secondAttribute="trailing" constant="20" id="dIq-xQ-QTQ"/>
                             <constraint firstItem="hzD-3m-ZnS" firstAttribute="height" secondItem="2o9-HW-M5c" secondAttribute="height" id="i3e-Xh-USg"/>
                             <constraint firstItem="D2J-5n-Fbn" firstAttribute="height" secondItem="hzD-3m-ZnS" secondAttribute="height" id="m7K-eg-U37"/>
                             <constraint firstItem="hzD-3m-ZnS" firstAttribute="leading" secondItem="NAJ-jv-uJu" secondAttribute="leading" constant="20" id="pXv-Bc-PeR"/>
-                            <constraint firstItem="kQs-tH-YOT" firstAttribute="height" secondItem="I10-1c-6Ih" secondAttribute="height" multiplier="0.3" id="pdZ-UZ-bBG"/>
                             <constraint firstItem="NAJ-jv-uJu" firstAttribute="trailing" secondItem="2o9-HW-M5c" secondAttribute="trailing" constant="20" id="snc-pY-fZN"/>
+                            <constraint firstItem="kQs-tH-YOT" firstAttribute="centerX" secondItem="I10-1c-6Ih" secondAttribute="centerX" id="t2h-2X-mXT"/>
                             <constraint firstItem="2o9-HW-M5c" firstAttribute="top" secondItem="hzD-3m-ZnS" secondAttribute="top" id="y4l-aX-71i"/>
                             <constraint firstItem="YHe-Ac-w7c" firstAttribute="height" secondItem="Ojc-yp-4El" secondAttribute="height" id="yDC-2M-IkV"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Hnb-GM-k2o" appends="YES" id="pKP-zS-coM"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="NewWords" image="text.word.spacing" catalog="system" id="ilW-4A-LQl"/>
                     <connections>
-                        <outlet property="searchButton" destination="2o9-HW-M5c" id="CwW-yB-JUG"/>
-                        <outlet property="userTextField" destination="hzD-3m-ZnS" id="vsD-Qv-N5d"/>
+                        <outlet property="imageView" destination="kQs-tH-YOT" id="HbA-CD-s6g"/>
+                        <outlet property="meaningLabel" destination="0D5-SP-1mb" id="mli-8K-6dW"/>
+                        <outlet property="searchButton" destination="2o9-HW-M5c" id="n40-VZ-qsa"/>
+                        <outlet property="userTextField" destination="hzD-3m-ZnS" id="Ahh-RX-coU"/>
+                        <outletCollection property="wordButtons" destination="YHe-Ac-w7c" collectionClass="NSMutableArray" id="zsg-Yv-I0L"/>
+                        <outletCollection property="wordButtons" destination="Ojc-yp-4El" collectionClass="NSMutableArray" id="PEp-6Z-eG9"/>
+                        <outletCollection property="wordButtons" destination="fsz-xo-5Ka" collectionClass="NSMutableArray" id="UDi-ER-kAh"/>
+                        <outletCollection property="wordButtons" destination="D2J-5n-Fbn" collectionClass="NSMutableArray" id="uIn-XG-N5p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xwn-DW-vsO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Hnb-GM-k2o">
+                    <connections>
+                        <action selector="areaTapped:" destination="bFd-oT-gaW" id="koV-3H-4Lb"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="963" y="520"/>
+            <point key="canvasLocation" x="962.59541984732823" y="519.71830985915494"/>
         </scene>
     </scenes>
     <resources>

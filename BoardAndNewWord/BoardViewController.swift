@@ -72,31 +72,38 @@ class BoardViewController: UIViewController {
     
     //MARK: - API
 
+    func createAlertForConfirmation(title: String, message: String, actionTitle: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let confirm = UIAlertAction(title: actionTitle, style: .cancel)
+        alert.addAction(confirm)
+        present(alert, animated: true)
+    }
+    
     //엔터키 눌러 keyboard 내려갈 때 호출
     @IBAction func textFieldEnterKeyTapped(_ sender: UITextField) {
         //엔터키 누르면 확인 버튼 누른것과 동일한 효과 주기
         confirmButtonTapped(confirmButton)
     }
     
+    
     //실질적으로 textField의 입력값 확인해서 label에 보여주기
     @IBAction func confirmButtonTapped(_ sender: UIButton) {
         //키보드 내리기
         view.endEditing(true)
         
-        //입력값 없다면 입력값 필요함 alert
-        guard inputTextField.hasText else {
-            let alert = UIAlertController(title: "입력 오류", message: "텍스트를 입력해야 입력값이 나타납니다.", preferredStyle: .alert)
-            let confirm = UIAlertAction(title: "확인", style: .cancel)
-            alert.addAction(confirm)
-            DispatchQueue.main.async {
-                self.present(alert, animated: true)
+        if inputTextField.hasText {
+            //입력값 있으므로 결과값 보여주기
+            if let text = inputTextField.text {
+                resultLabel.text = text
+                resultLabel.isHidden = false
             }
+        } else {    //입력값 없다면 입력값 필요함 alert 띄우기
+            resultLabel.isHidden = true
+            createAlertForConfirmation(title: "입력 오류", message: "텍스트를 입력해야 입력값이 나타납니다.", actionTitle: "확인")
             return
         }
         
-        //입력값 있으므로 결과값 보여주기
-        resultLabel.text = inputTextField.text
-        resultLabel.isHidden = false
+        
     }
     
     //randomColorButton과 resultLabel 컬러 변경하기
@@ -118,6 +125,6 @@ class BoardViewController: UIViewController {
         backgroundView.isHidden.toggle()
         
     }
-    
+
 }
 
