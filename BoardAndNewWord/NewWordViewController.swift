@@ -14,25 +14,24 @@ class NewWordViewController: UIViewController {
     @IBOutlet var searchButton: UIButton!
     
     @IBOutlet var wordButtons: [UIButton]!
-    
-    //    @IBOutlet var firstWordButton: UIButton!
-    //    @IBOutlet var secondWordButton: UIButton!
-    //    @IBOutlet var thirdWordButton: UIButton!
-    //    @IBOutlet var fourthWordButton: UIButton!
-    
+
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var meaningLabel: UILabel!
+
+    let words: [String: String] = ["알잘딱깔센": "알아서 잘 딱 깔끔하고 센스있게", "H워월V": "사랑해", "핑프": "핑거 프린세스", "다꾸": "다이어리 꾸미기", "인만추": "인공적인 만남 추구", "스불재": "스스로 불러온 재앙", "킹리적갓심": "매우 합리적 의심", "700": "귀여워", "무물": "무엇이든 물어보세요", "갑통알": "갑자기 통장 보니 알바해야겠다"]
     
-    //    var setWords : Set<Dictionary<String, String>> = [["알잘딱깔센": "알아서 잘 딱 깔끔하고 센스있게"], ["H워월V": "사랑해"], ["핑프": "핑거 프린세스"], ["다꾸": "다이어리 꾸미기"], ["인만추": "인공적인 만남 추구"], ["스불재": "스스로 불러온 재앙"], ["킹리적갓심": "매우 합리적 의심"], ["700": "귀여워"], ["무물": "무엇이든 물어보세요"], ["갑통알": "갑자기 통장 보니 알바해야겠다"]]
+//    var notUsedWords : [String: String] = ["알잘딱깔센": "알아서 잘 딱 깔끔하고 센스있게", "H워월V": "사랑해", "핑프": "핑거 프린세스", "다꾸": "다이어리 꾸미기", "인만추": "인공적인 만남 추구", "스불재": "스스로 불러온 재앙", "킹리적갓심": "매우 합리적 의심", "700": "귀여워", "무물": "무엇이든 물어보세요", "갑통알": "갑자기 통장 보니 알바해야겠다"]
+//    var usedWordsForWordButtons : [String: String] = [:]
     
-    var notUsedWords : [String: String] = ["알잘딱깔센": "알아서 잘 딱 깔끔하고 센스있게", "H워월V": "사랑해", "핑프": "핑거 프린세스", "다꾸": "다이어리 꾸미기", "인만추": "인공적인 만남 추구", "스불재": "스스로 불러온 재앙", "킹리적갓심": "매우 합리적 의심", "700": "귀여워", "무물": "무엇이든 물어보세요", "갑통알": "갑자기 통장 보니 알바해야겠다"]
-    var usedWordsForWordButtons : [String: String] = [:]
-    
+    var setOfNotUsedWordsKeys: Set<String> = []
+    var setOfUsedWordsKeys: Set<String> = []
     
     //MARK: - Setup UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setOfNotUsedWordsKeys = Set(words.keys)
         
         configUI()
     }
@@ -62,11 +61,6 @@ class NewWordViewController: UIViewController {
     
     func configWordButtons() {
         
-        //        configureButton(button: firstWordButton)
-        //        configureButton(button: secondWordButton)
-        //        configureButton(button: thirdWordButton)
-        //        configureButton(button: fourthWordButton)
-        
         for button in wordButtons {
             button.setTitleColor(.black, for: .normal)
             button.titleLabel?.font = .systemFont(ofSize: 10)
@@ -77,31 +71,29 @@ class NewWordViewController: UIViewController {
             button.layer.borderWidth = 2
             
             //button에 추천 단어 랜덤으로 제공
-            //set으로 한번에 관리 시, 버튼 간 중복 여부 판단 어려움
-            if let word = Array(notUsedWords.keys).randomElement(), let meaning = notUsedWords[word] {
-                button.setTitle(word, for: .normal)
-                notUsedWords.removeValue(forKey: word)
-                usedWordsForWordButtons[word] = meaning
+            //Array: randomElement() ~ O(1) for conforming RandomAccessCollection
+            if let word = Array(words.keys).randomElement() {
+                if setOfUsedWordsKeys.contains(word) {
+                    if let newWord = setOfNotUsedWordsKeys.randomElement() {
+                        button.setTitle(newWord, for: .normal)
+                        setOfNotUsedWordsKeys.remove(newWord)
+                        setOfUsedWordsKeys.insert(newWord)
+                    }
+                } else {
+                    button.setTitle(word, for: .normal)
+                    setOfNotUsedWordsKeys.remove(word)
+                    setOfUsedWordsKeys.insert(word)
+                }
             }
+            
+            //set으로 한번에 관리 시, 버튼 간 중복 여부 판단 어려움
+//            if let word = Array(notUsedWords.keys).randomElement(), let meaning = notUsedWords[word] {
+//                button.setTitle(word, for: .normal)
+//                notUsedWords.removeValue(forKey: word)
+//                usedWordsForWordButtons[word] = meaning
+//            }
         }
     }
-    
-    //    func configureButton(button: UIButton) {
-    //        button.setTitleColor(.black, for: .normal)
-    //        button.titleLabel?.font = .systemFont(ofSize: 10)
-    //        button.backgroundColor = .white
-    //        button.layer.cornerRadius = 10
-    //        button.clipsToBounds = true
-    //        button.layer.borderColor = UIColor.black.cgColor
-    //        button.layer.borderWidth = 2
-    //
-    //        //button에 추천 단어 랜덤 제공
-    //        if let dict = setWords.randomElement() {
-    //            for (key, _) in dict {
-    //                button.setTitle(key, for: .normal)
-    //            }
-    //        }
-    //    }
     
     func configImageView() {
 //        imageView.image = UIImage(named: "background")
@@ -129,23 +121,23 @@ class NewWordViewController: UIViewController {
     
     func meaningOfWordIsValidInData(word: String) -> String? {
         //Set: contains ~ O(1)
-        if Set(notUsedWords.keys).contains(word) {
-            return notUsedWords[word]
-        } else if Set(usedWordsForWordButtons.keys).contains(word) {
-            return usedWordsForWordButtons[word]
-        } else {
-            return nil
-        }
+        
+        return setOfNotUsedWordsKeys.contains(word) || setOfUsedWordsKeys.contains(word) ? words[word] : nil
+        
+//        if setOfNotUsedWordsKeys.contains(word) {
+//            return notUsedWords[word]
+//        } else if setOfUsedWordsKeys.contains(word) {
+//            return usedWordsForWordButtons[word]
+//        } else {
+//            return nil
+//        }
     }
     
     //단어 존재 후 검색할 예정
-    //true: 버튼 누른 것
-    //false: 버튼 누른 것 아님
+    //true: 버튼 누른 것, false: 버튼 누른 것 아님
     func checkWordIsInUsed(word: String) -> Bool {
-        return Set(usedWordsForWordButtons.keys).contains(word) ? true : false
+        return setOfUsedWordsKeys.contains(word) ? true : false
     }
-    
-    
     
     @IBAction func textFieldEnterKeyTapped(_ sender: UITextField) {
         searchButtonTapped(searchButton)
@@ -162,22 +154,48 @@ class NewWordViewController: UIViewController {
                 
                 if checkWordIsInUsed(word: text) { //버튼에서 검색
                     //used 비우기 (어차피 찾은 단어와 의미는 지역변수로 가지고 있음)
-                    for (key, value) in usedWordsForWordButtons {
-                        notUsedWords[key] = value
-                        usedWordsForWordButtons.removeValue(forKey: key)
+                    
+                    for key in setOfUsedWordsKeys {
+                        setOfNotUsedWordsKeys.insert(key)
                     }
+                    setOfUsedWordsKeys.removeAll()
+                    
+//                    for (key, value) in usedWordsForWordButtons {
+//                        notUsedWords[key] = value
+//                        usedWordsForWordButtons.removeValue(forKey: key)
+//                    }
+                    
+                    
                     //used 새로 채우기
                     //label로 나타난 단어와 의미 제외 새로운 4개 넣기
                     for button in wordButtons {
-                        if let newWord = Array(notUsedWords.keys).randomElement(), let newMeaning = notUsedWords[newWord] {
-                            if meaning == newMeaning {
-                                continue
+                        if let newWord = Array(words.keys).randomElement() {
+                            if meaning == words[newWord] || setOfUsedWordsKeys.contains(newWord) {
+                                if let secondNewWord = setOfNotUsedWordsKeys.randomElement() {
+                                    button.setTitle(secondNewWord, for: .normal)
+                                    setOfNotUsedWordsKeys.remove(secondNewWord)
+                                    setOfUsedWordsKeys.insert(secondNewWord)
+                                }
+                            } else {
+                                button.setTitle(newWord, for: .normal)
+                                setOfNotUsedWordsKeys.remove(newWord)
+                                setOfUsedWordsKeys.insert(newWord)
                             }
-                            button.setTitle(newWord, for: .normal)
-                            notUsedWords.removeValue(forKey: newWord)
-                            usedWordsForWordButtons[newWord] = newMeaning
                         }
                     }
+                    
+//                    for button in wordButtons {
+//                        if let newWord = Array(notUsedWords.keys).randomElement(), let newMeaning = notUsedWords[newWord] {
+//                            if meaning == newMeaning {
+//                                continue
+//                            }
+//                            button.setTitle(newWord, for: .normal)
+//                            notUsedWords.removeValue(forKey: newWord)
+//                            usedWordsForWordButtons[newWord] = newMeaning
+//                        }
+//                    }
+                    
+                    
                 }       //버튼에서 검색 아니면 그대로 두기
             } else {
                 //입력값 존재하지 않음 alert 띄우기
