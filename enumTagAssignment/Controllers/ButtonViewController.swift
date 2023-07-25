@@ -13,12 +13,42 @@ class ButtonViewController: UIViewController {
 //
 //    var emotions = Emotion.allCases
     
+    
+    @IBOutlet var pullDownButtons: [UIButton]!
+    
     let dataManager = DataManager.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configMenu()
     }
 
+    func configMenu() {
+        
+        //UIAction title button icon 옆에 안보이도록 하기?
+        
+        for button in pullDownButtons {
+            button.tintColor = .black
+            
+            let once = UIAction(title: "1회") { _ in
+                self.dataManager.updateArray(tag: button.tag)
+            }
+            let fiveTimes = UIAction(title: "5회") { _ in
+                self.dataManager.updateArrayWithFive(tag: button.tag)
+            }
+            let tenTimes = UIAction(title: "10회") { _ in
+                self.dataManager.updateArrayWithTen(tag: button.tag)
+            }
+            let reset = UIAction(title: "Reset", attributes: .destructive) { _ in
+                self.dataManager.updateArrayWithResest(tag: button.tag)
+            }
+            
+            let buttonMenu = UIMenu(children: [once, fiveTimes, tenTimes, reset])
+            button.menu = buttonMenu
+        }
+    }
+    
     @IBAction func emojiButtonTapped(_ sender: UIButton) {
         
         dataManager.updateArray(tag: sender.tag)
@@ -68,33 +98,6 @@ class ButtonViewController: UIViewController {
 //        }
         
     }
-    
-    
-    
-    
-    
-    
-    @IBAction func pullDownButtonTapped(_ sender: UIButton) {
-        
-    }
-    
-    
-    
-    
-    
-  
-    
-    
-    
-    
-
-    // Pull Down Button 설정
-    @IBAction func oneTimeTapped(_ sender: UIMenuElement) {
-        
-    }
-    
-    
-    
     
 }
 
