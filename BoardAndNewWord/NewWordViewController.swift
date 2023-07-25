@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class NewWordViewController: UIViewController {
     
     //MARK: - Properties
