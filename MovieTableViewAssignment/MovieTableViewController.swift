@@ -31,7 +31,5 @@ class MovieTableViewController: UITableViewController {
         
         return cell
     }
-    
-  
 
 }

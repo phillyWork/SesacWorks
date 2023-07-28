@@ -20,6 +20,7 @@ enum MovieTitle: String {
     case frozenTwo = "겨울왕국2"
     
     
+    //Constant로 만든 이미지를 case와 연결
     var posterImage: UIImage {
         switch self {
         case .assassination:

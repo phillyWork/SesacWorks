@@ -17,8 +17,7 @@ class DataManager {
     func getData() -> [Movie] {
         return movieData
     }
-    
-    
+
     //연산 프로퍼티 활용, 굳이 함수 안쓰고 활용하기
 //    func getPosterImage(type: MovieTitle) -> UIImage {
 //        switch type {
