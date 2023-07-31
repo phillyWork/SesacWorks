@@ -74,7 +74,7 @@ class MovieCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailVC = storyboard.instantiateViewController(withIdentifier: DetailViewController.identifier)
+        let detailVC = storyboard.instantiateViewController(withIdentifier: DetailViewController.identifier) as! DetailViewController
         
         detailVC.title = dataManager.getTotalMovie()[indexPath.row].title
         //해당 cell의 backgroundColor 넘기기
@@ -88,7 +88,7 @@ class MovieCollectionViewController: UICollectionViewController {
     @IBAction func searchBarButtonTapped(_ sender: UIBarButtonItem) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let searchVC = storyboard.instantiateViewController(withIdentifier: SearchViewController.identifier)
+        let searchVC = storyboard.instantiateViewController(withIdentifier: SearchViewController.identifier) as! SearchViewController
        
         let navVC = UINavigationController(rootViewController: searchVC)
         
