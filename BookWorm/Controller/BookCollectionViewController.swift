@@ -89,13 +89,22 @@ class BookCollectionViewController: UICollectionViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = storyboard.instantiateViewController(withIdentifier: DetailViewController.identifier) as! DetailViewController
         
+        let book = dataManager.getTotalBooks()[indexPath.row]
+        
         //data 넘기기        
-        detailVC.book = dataManager.getTotalBooks()[indexPath.row]
+        detailVC.book = book
         
 //        detailVC.title = dataManager.getTotalBooks()[indexPath.row].title
         
         //해당 cell의 backgroundColor 넘기기
-        detailVC.view.backgroundColor = collectionView.cellForItem(at: indexPath)?.backgroundColor
+//        detailVC.view.backgroundColor = collectionView.cellForItem(at: indexPath)?.backgroundColor
+
+        //color를 struct 데이터로 추가해서 UIColor 생성 후 전달하기
+        detailVC.view.backgroundColor = UIColor(red: book.color[0], green: book.color[1], blue: book.color[2], alpha: 1)
+
+        
+        //recentBooks에 추가하기
+        dataManager.addRecentlySeenBook(newBook: book)
         
         navigationController?.pushViewController(detailVC, animated: true)
     }
@@ -108,7 +117,7 @@ class BookCollectionViewController: UICollectionViewController {
         dataManager.updateBookLike(updatedBook: cellBook)
         collectionView.reloadData()
     }
-    
+     
     
     @IBAction func searchBarButtonTapped(_ sender: UIBarButtonItem) {
         

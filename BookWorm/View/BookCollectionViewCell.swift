@@ -22,10 +22,30 @@ class BookCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "BookCollectionViewCell"
     
+    //초기화 이후 다시 수행 X
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.layer.cornerRadius = 10
+        self.clipsToBounds = true
+        
+        bookTitleLabel.textColor = .white
+        bookTitleLabel.font = .boldSystemFont(ofSize: 20)
+        bookTitleLabel.textAlignment = .center
+        bookTitleLabel.backgroundColor = .clear
+        
+        bookRateLabel.font = .systemFont(ofSize: 12)
+        bookRateLabel.textColor = .white
+        bookRateLabel.textAlignment = .center
+        bookRateLabel.backgroundColor = .clear
+        
+        bookCoverImageView.contentMode = .scaleAspectFill
+        bookCoverImageView.backgroundColor = .clear
+        
+        likeButton.tintColor = .red
     }
-    
+        
+    //cellForRowAt 수행마다 호출
     func configCell() {
         
         guard let book = book else {
@@ -33,36 +53,13 @@ class BookCollectionViewCell: UICollectionViewCell {
             return
         }
         
-        randomBackgroundColor()
-        self.layer.cornerRadius = 10
-        self.clipsToBounds = true
-        
         bookTitleLabel.text = book.title
-        bookTitleLabel.textColor = .white
-        bookTitleLabel.font = .boldSystemFont(ofSize: 20)
-        bookTitleLabel.textAlignment = .center
-        bookTitleLabel.backgroundColor = .clear
-        
         bookRateLabel.text = String(book.rate)
-        bookRateLabel.font = .systemFont(ofSize: 12)
-        bookRateLabel.textColor = .white
-        bookRateLabel.textAlignment = .center
-        bookRateLabel.backgroundColor = .clear
-        
         bookCoverImageView.image = BookCoverTitle(rawValue: book.title)?.coverImage
-        bookCoverImageView.contentMode = .scaleAspectFill
-        bookCoverImageView.backgroundColor = .clear
         
         book.like ? likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal) : likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
-        likeButton.tintColor = .red
-    }
-    
-    func randomBackgroundColor() {
-        let cgRed = CGFloat.random(in: 0...255)/255
-        let cgGreen = CGFloat.random(in: 0...255)/255
-        let cgBlue = CGFloat.random(in: 0...255)/255
         
-        self.backgroundColor = UIColor(cgColor: CGColor(red: cgRed, green: cgGreen, blue: cgBlue, alpha: 1))
+        self.backgroundColor = UIColor(red: book.color[0], green: book.color[1], blue: book.color[2], alpha: 1)
     }
-    
+
 }

@@ -13,9 +13,16 @@ class DataManager {
     private init() {}
     
     private var bookData = BookInfo().books
+    private var recentlySeenBooks = [Book]()    //5개 제한
+    
+    private let recentMax = 5
     
     func getTotalBooks() -> [Book] {
         return bookData
+    }
+    
+    func getRecentlySeenBooks() -> [Book] {
+        return recentlySeenBooks
     }
     
     func updateBookLike(updatedBook: Book) {
@@ -24,6 +31,25 @@ class DataManager {
         if let index = bookData.firstIndex(where: { $0.title == updatedBook.title }) {
             bookData[index].like.toggle()
         }
+    }
+    
+    func addRecentlySeenBook(newBook: Book?) {
+        
+        guard let book = newBook else {
+            print("No Book to update Recent History")
+            return
+        }
+        
+        
+        if !recentlySeenBooks.contains(book) {
+            if recentlySeenBooks.count == recentMax {
+                //가장 안본 것 목록에서 제거
+                recentlySeenBooks.remove(at: recentlySeenBooks.count - 1)
+            }
+            //최근 것을 가장 앞에서 추가
+            recentlySeenBooks.insert(book, at: 0)
+        }
+        
     }
     
 }

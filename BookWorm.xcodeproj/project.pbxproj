@@ -21,6 +21,12 @@
 		219B12F72A78D7E200A8DFBF /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219B12F62A78D7E200A8DFBF /* Enum.swift */; };
 		219B12FB2A78D80100A8DFBF /* BookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219B12F92A78D80100A8DFBF /* BookCollectionViewCell.swift */; };
 		219B12FC2A78D80100A8DFBF /* BookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 219B12FA2A78D80100A8DFBF /* BookCollectionViewCell.xib */; };
+		21A919E62A7A259B0015FBE3 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A919E42A7A259B0015FBE3 /* SearchTableViewCell.swift */; };
+		21A919E72A7A259B0015FBE3 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A919E52A7A259B0015FBE3 /* SearchTableViewCell.xib */; };
+		21A919EA2A7A292D0015FBE3 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A919E82A7A292D0015FBE3 /* SearchCollectionViewCell.swift */; };
+		21A919EB2A7A292D0015FBE3 /* SearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A919E92A7A292D0015FBE3 /* SearchCollectionViewCell.xib */; };
+		21A919F42A7A35BD0015FBE3 /* SearchCollectionInTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A919F22A7A35BD0015FBE3 /* SearchCollectionInTableViewCell.swift */; };
+		21A919F52A7A35BD0015FBE3 /* SearchCollectionInTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21A919F32A7A35BD0015FBE3 /* SearchCollectionInTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +46,12 @@
 		219B12F62A78D7E200A8DFBF /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		219B12F92A78D80100A8DFBF /* BookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewCell.swift; sourceTree = "<group>"; };
 		219B12FA2A78D80100A8DFBF /* BookCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookCollectionViewCell.xib; sourceTree = "<group>"; };
+		21A919E42A7A259B0015FBE3 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		21A919E52A7A259B0015FBE3 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
+		21A919E82A7A292D0015FBE3 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		21A919E92A7A292D0015FBE3 /* SearchCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCollectionViewCell.xib; sourceTree = "<group>"; };
+		21A919F22A7A35BD0015FBE3 /* SearchCollectionInTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionInTableViewCell.swift; sourceTree = "<group>"; };
+		21A919F32A7A35BD0015FBE3 /* SearchCollectionInTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCollectionInTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +123,12 @@
 			children = (
 				219B12F92A78D80100A8DFBF /* BookCollectionViewCell.swift */,
 				219B12FA2A78D80100A8DFBF /* BookCollectionViewCell.xib */,
+				21A919E42A7A259B0015FBE3 /* SearchTableViewCell.swift */,
+				21A919E52A7A259B0015FBE3 /* SearchTableViewCell.xib */,
+				21A919F22A7A35BD0015FBE3 /* SearchCollectionInTableViewCell.swift */,
+				21A919F32A7A35BD0015FBE3 /* SearchCollectionInTableViewCell.xib */,
+				21A919E82A7A292D0015FBE3 /* SearchCollectionViewCell.swift */,
+				21A919E92A7A292D0015FBE3 /* SearchCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -173,10 +191,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21A919EB2A7A292D0015FBE3 /* SearchCollectionViewCell.xib in Resources */,
+				21A919F52A7A35BD0015FBE3 /* SearchCollectionInTableViewCell.xib in Resources */,
 				219B12E42A78D74800A8DFBF /* LaunchScreen.storyboard in Resources */,
 				219B12FC2A78D80100A8DFBF /* BookCollectionViewCell.xib in Resources */,
 				219B12E12A78D74800A8DFBF /* Assets.xcassets in Resources */,
 				219B12DF2A78D74700A8DFBF /* Main.storyboard in Resources */,
+				21A919E72A7A259B0015FBE3 /* SearchTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,10 +210,13 @@
 			files = (
 				219B12EE2A78D79C00A8DFBF /* SearchViewController.swift in Sources */,
 				219B12F52A78D7DC00A8DFBF /* DataManager.swift in Sources */,
+				21A919EA2A7A292D0015FBE3 /* SearchCollectionViewCell.swift in Sources */,
 				219B12DC2A78D74700A8DFBF /* DetailViewController.swift in Sources */,
 				219B12FB2A78D80100A8DFBF /* BookCollectionViewCell.swift in Sources */,
+				21A919E62A7A259B0015FBE3 /* SearchTableViewCell.swift in Sources */,
 				219B12F12A78D7CE00A8DFBF /* Book.swift in Sources */,
 				219B12D82A78D74700A8DFBF /* AppDelegate.swift in Sources */,
+				21A919F42A7A35BD0015FBE3 /* SearchCollectionInTableViewCell.swift in Sources */,
 				219B12F72A78D7E200A8DFBF /* Enum.swift in Sources */,
 				219B12F32A78D7D500A8DFBF /* BookInfo.swift in Sources */,
 				219B12DA2A78D74700A8DFBF /* SceneDelegate.swift in Sources */,

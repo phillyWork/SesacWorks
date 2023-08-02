@@ -38,15 +38,28 @@ class DetailViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         //돌아가기: textView의 내용 저장하기
-        UserDefaults.standard.set(bookMemoTextView.text, forKey: book!.title)
+        
+        guard let book = book else {
+            print("No Book Data to save")
+            return
+        }
+        
+        UserDefaults.standard.set(bookMemoTextView.text, forKey: book.title)
     }
         
+    
     func configUI() {
+        configNavBar()
         configView()
         configLabels()
         configTextView()
     }
-    
+
+    func configNavBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonTapped))
+        navigationItem.rightBarButtonItem?.tintColor = .black
+    }
+
     func configView() {
         backView.layer.cornerRadius = 10
         backView.layer.masksToBounds = true
@@ -70,10 +83,16 @@ class DetailViewController: UIViewController {
     }
     
     func configTextView() {
+        
+        guard let book = book else {
+            print("No Book data from Previous VC")
+            return
+        }
+        
         bookMemoTextView.textColor = .black
         bookMemoTextView.textAlignment = .left
         //메모 불러오기
-        if let savedMemo = UserDefaults.standard.string(forKey: book!.title) {
+        if let savedMemo = UserDefaults.standard.string(forKey: book.title) {
             bookMemoTextView.text = savedMemo
         }
     }
@@ -105,6 +124,12 @@ class DetailViewController: UIViewController {
         
         //author 대신 runtime 넣기
         bookAuthorLabel.text = "\(book.runtime)"
+    }
+    
+    //MARK: - Handler
+    
+    @objc func closeButtonTapped() {
+        self.dismiss(animated: true)
     }
     
 }

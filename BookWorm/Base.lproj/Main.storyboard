@@ -17,26 +17,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색 페이지 예시" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HmL-bn-oqC">
-                                <rect key="frame" x="30" y="89" width="333" height="699"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="f5L-VV-Ryz">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="tLS-ko-kih">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tLS-ko-kih" id="9Zy-df-ZEA">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aWq-uZ-8rl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="HmL-bn-oqC" firstAttribute="top" secondItem="aWq-uZ-8rl" secondAttribute="top" constant="30" id="Epd-Ho-j0y"/>
-                            <constraint firstItem="aWq-uZ-8rl" firstAttribute="bottom" secondItem="HmL-bn-oqC" secondAttribute="bottom" constant="30" id="FjK-D3-dOl"/>
-                            <constraint firstItem="HmL-bn-oqC" firstAttribute="leading" secondItem="aWq-uZ-8rl" secondAttribute="leading" constant="30" id="JUz-Pm-9Gs"/>
-                            <constraint firstItem="aWq-uZ-8rl" firstAttribute="trailing" secondItem="HmL-bn-oqC" secondAttribute="trailing" constant="30" id="XFo-ZO-MVs"/>
+                            <constraint firstItem="f5L-VV-Ryz" firstAttribute="leading" secondItem="aWq-uZ-8rl" secondAttribute="leading" id="CU2-wE-89n"/>
+                            <constraint firstItem="aWq-uZ-8rl" firstAttribute="bottom" secondItem="f5L-VV-Ryz" secondAttribute="bottom" id="hkO-8u-Hgm"/>
+                            <constraint firstItem="f5L-VV-Ryz" firstAttribute="top" secondItem="aWq-uZ-8rl" secondAttribute="top" id="jhM-AG-PGo"/>
+                            <constraint firstItem="aWq-uZ-8rl" firstAttribute="trailing" secondItem="f5L-VV-Ryz" secondAttribute="trailing" id="sxg-Pb-dlU"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="f5L-VV-Ryz" id="SSN-wh-LAu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dKC-ds-wSB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1289" y="738"/>
+            <point key="canvasLocation" x="1287.7862595419847" y="737.32394366197184"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="tne-QT-ifu">
