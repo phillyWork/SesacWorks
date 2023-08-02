@@ -22,7 +22,7 @@ class SearchCollectionInTableViewCell: UITableViewCell {
     
     var recentBooks: [Book]?
     
-    let dataManager = DataManager.shared
+//    let dataManager = DataManager.shared
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -78,8 +78,6 @@ extension SearchCollectionInTableViewCell: UICollectionViewDataSource, UICollect
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        print("CollectionView in TableViewCell: \(indexPath)")
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCollectionViewCell.identifier, for: indexPath) as! SearchCollectionViewCell
         
         if let books = recentBooks {
@@ -91,8 +89,8 @@ extension SearchCollectionInTableViewCell: UICollectionViewDataSource, UICollect
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        //present: UIViewController 상속받아야 가능
-        //protocol로 해당 기능 구현하기
+        //present: UIViewController 상속받아야 가능, cell에서는 불가능
+        //protocol로 해당 기능 대신하도록 구현하기
         if let delegate = delegate {
             delegate.selectedCollectionTableViewCell(indexPath: indexPath)
         }
@@ -111,8 +109,6 @@ extension SearchCollectionInTableViewCell: UICollectionViewDataSource, UICollect
 //        detailVC.book = book
 //        //update recentlySeenBooks
 //        dataManager.addRecentlySeenBook(newBook: book)
-//
-//
 //
 //        detailVC.view.backgroundColor = UIColor(red: book!.color[0], green: book!.color[1], blue: book!.color[2], alpha: 1)
 //

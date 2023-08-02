@@ -34,22 +34,24 @@ class DataManager {
     }
     
     func addRecentlySeenBook(newBook: Book?) {
-        
+    
         guard let book = newBook else {
             print("No Book to update Recent History")
             return
         }
         
-        
-        if !recentlySeenBooks.contains(book) {
+        if recentlySeenBooks.contains(book) {
+            let index = recentlySeenBooks.firstIndex(of: book)!
+            recentlySeenBooks.remove(at: index)
+        } else {
             if recentlySeenBooks.count == recentMax {
                 //가장 안본 것 목록에서 제거
                 recentlySeenBooks.remove(at: recentlySeenBooks.count - 1)
             }
-            //최근 것을 가장 앞에서 추가
-            recentlySeenBooks.insert(book, at: 0)
         }
         
+        //최근 것을 가장 앞에서 추가
+        recentlySeenBooks.insert(book, at: 0)
     }
     
 }
