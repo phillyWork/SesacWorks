@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum FromVC {
+    case bookCell
+    case search
+}
+
 class DetailViewController: UIViewController {
 
     //MARK: - Properties
@@ -25,10 +30,11 @@ class DetailViewController: UIViewController {
     
     var book: Book?
     
+    var fromVCType: FromVC = .bookCell
+    
     var placeholderText = "메모를 입력해주세요"
     
     static let identifier = "DetailViewController"
-    
     
     //MARK: - Setup UI
     
@@ -58,8 +64,14 @@ class DetailViewController: UIViewController {
     }
 
     func configNavBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonTapped))
-        navigationItem.rightBarButtonItem?.tintColor = .black
+        
+        switch fromVCType {
+        case .bookCell:
+            print("")
+        case .search:
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonTapped))
+            navigationItem.rightBarButtonItem?.tintColor = .black
+        }
     }
 
     func configView() {
@@ -85,6 +97,8 @@ class DetailViewController: UIViewController {
     }
     
     func configTextView() {
+        
+        bookMemoTextView.delegate = self
         
         guard let book = book else {
             print("No Book data from Previous VC")
@@ -155,6 +169,24 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController: UITextViewDelegate {
     
+    //커서 깜빡이기 시작할 때
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        
+        //입력 시작: placeholder 없애기
+        if bookMemoTextView.text == placeholderText {
+            bookMemoTextView.text = nil
+            bookMemoTextView.textColor = .black
+        }
+    }
     
+    //커서 없어지는 순간
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+        //입력값 없다면 placeholder 보이도록
+        if bookMemoTextView.text.isEmpty {
+            bookMemoTextView.text = placeholderText
+            bookMemoTextView.textColor = .lightGray
+        }
+    }
     
 }

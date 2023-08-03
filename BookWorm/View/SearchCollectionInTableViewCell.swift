@@ -65,6 +65,7 @@ class SearchCollectionInTableViewCell: UITableViewCell {
     
 }
 
+
 //MARK: - Extension for CollectionView
 
 extension SearchCollectionInTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -90,35 +91,11 @@ extension SearchCollectionInTableViewCell: UICollectionViewDataSource, UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         //present: UIViewController 상속받아야 가능, cell에서는 불가능
-        //protocol로 해당 기능 대신하도록 구현하기
-        if let delegate = delegate {
-            delegate.selectedCollectionTableViewCell(indexPath: indexPath)
-        }
+        //protocol로 해당 기능 대신하도록 설정하기
+        delegate?.selectedCollectionTableViewCell(indexPath: indexPath)
         collectionView.reloadData()
-        
-//        let sb = UIStoryboard(name: "Mai", bundle: nil)
-//        let detailVC = sb.instantiateViewController(withIdentifier: DetailViewController.identifier) as! DetailViewController
-//        let book: Book?
-//        guard let recentBooks = recentBooks else {
-//            print("No data came from TableView")
-//            return
-//        }
-//        book = recentBooks[indexPath.row]
-//        print("IndexPath of collectionViewCell in section 0 of tableView: \(indexPath)")
-//
-//        //data 전달
-//        detailVC.book = book
-//        //update recentlySeenBooks
-//        dataManager.addRecentlySeenBook(newBook: book)
-//
-//        detailVC.view.backgroundColor = UIColor(red: book!.color[0], green: book!.color[1], blue: book!.color[2], alpha: 1)
-//
-//        let navVC = UINavigationController(rootViewController: detailVC)
-//        navVC.modalPresentationStyle = .fullScreen
-        
     }
     
-  
-    
+      
 }
 

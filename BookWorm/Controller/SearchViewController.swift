@@ -78,7 +78,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: SearchCollectionInTableViewCell.identifier) as! SearchCollectionInTableViewCell
             
-            //SearchVC가 delegate 작동 인지해야 함
+            //SearchVC가 CollectionView의 delegate 작동 인지해야 함
             cell.delegate = self
             
             cell.recentBooks = dataManager.getRecentlySeenBooks()
@@ -94,8 +94,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    //tableViewCell 내 collectionView 터치가 먹지 않음
-    //delegate로 collectionView에서 터치 시, present 처리하도록
+   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //section이 1인 영역만 터치 먹음
@@ -112,11 +111,12 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
 //            print("IndexPath of collectionView in section 1: \(indexPath)")
 //        }
         
-        
         book = dataManager.getTotalBooks()[indexPath.row]
         
         //data 전달
         detailVC.book = book
+        detailVC.fromVCType = .search
+        
         //update recentlySeenBooks
         dataManager.addRecentlySeenBook(newBook: book)
         
@@ -128,14 +128,14 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         
         //탭한 row 선택 해제하기
         tableView.reloadRows(at: [indexPath], with: .none)
+
+        //section 1의 tableViewCell을 누르면 section 0의 최근 목록을 나타내는 tableViewCell 내 collectionView가 update가 되어야 함
+        tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
         
-        //section 1을 누르면 section 0 최근 목록이 UI에 update가 되어야 함
+        let cell = tableView.dequeueReusableCell(withIdentifier: SearchCollectionInTableViewCell.identifier) as! SearchCollectionInTableViewCell
+        cell.searchCollectionViewInTableCell.reloadData()
         
-        //작동하다 말다 하는 코드들
-//        if indexPath.section != 0 {
-//            tableView.reloadSections([indexPath[0]], with: .none)
-//            tableView.reloadSections([indexPath.section-1], with: .none)
-//        }
+        //tableView.reloadData(): update 먹지 않음
         
     }
    
@@ -160,16 +160,21 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
 
 //MARK: - Protocol for CollectionViewCell presentation
 
+//tableViewCell 내 collectionView 터치가 먹지 않음
+//delegate로 collectionView에서 터치 시, present 처리하도록
 extension SearchViewController: CollectionTableViewCellDelegate {
     
+    //CollectionView의 해당 cell 눌렀을 경우, protocol 실제 구현
+    //DetailVC present하고 최근 본 순서 배열 update하기
     func selectedCollectionTableViewCell(indexPath: IndexPath) {
         
         let book = dataManager.getRecentlySeenBooks()[indexPath.row]
-
+        
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = sb.instantiateViewController(identifier: DetailViewController.identifier) as! DetailViewController
         
         detailVC.book = book
+        detailVC.fromVCType = .search
         detailVC.view.backgroundColor = UIColor(red: book.color[0], green: book.color[1], blue: book.color[2], alpha: 1)
         
         dataManager.addRecentlySeenBook(newBook: book)
@@ -179,7 +184,7 @@ extension SearchViewController: CollectionTableViewCellDelegate {
         present(navVC, animated: true)
         
         //collectionView 누르면 reload, 바뀐 data 적용, 순서 재배치해서 다시 그림
-        tableView.reloadSections([indexPath.section], with: .automatic)
+        tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
     }
     
     

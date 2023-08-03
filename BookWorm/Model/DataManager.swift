@@ -20,6 +20,7 @@ class DataManager {
     //검색 결과
     private var searchResults = [Book]()
     
+    
     //MARK: - GET
     
     func getTotalBooks() -> [Book] {
@@ -53,11 +54,12 @@ class DataManager {
         
         if recentlySeenBooks.contains(book) {
             let index = recentlySeenBooks.firstIndex(of: book)!
+            print("index: \(index)")
             recentlySeenBooks.remove(at: index)
         } else {
             if recentlySeenBooks.count == recentMax {
                 //가장 안본 것 목록에서 제거
-                recentlySeenBooks.remove(at: recentlySeenBooks.count - 1)
+                recentlySeenBooks.remove(at: recentMax - 1)
             }
         }
         

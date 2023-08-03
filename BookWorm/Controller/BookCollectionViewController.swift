@@ -29,8 +29,6 @@ class BookCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(#function)
-        
         // Register cell classes
         let nib = UINib(nibName: BookCollectionViewCell.identifier, bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: BookCollectionViewCell.identifier)
@@ -38,6 +36,20 @@ class BookCollectionViewController: UICollectionViewController {
         configNavBar()
         configCollectionView()
     }
+    
+    
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        super.touchesBegan(touches, with: event)
+//
+//        print(#function)
+//
+//        if searchbar.canResignFirstResponder {
+//            print("Can resign Responder")
+//            searchbar.resignFirstResponder()
+//        } else {
+//            print("Can't resign Responder")
+//        }
+//    }
     
     
     //MARK: - UICollectionViewDataSource
@@ -86,11 +98,7 @@ class BookCollectionViewController: UICollectionViewController {
         return cell
     }
 
-    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        //키보드 내리기
-        searchbar.endEditing(true)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = storyboard.instantiateViewController(withIdentifier: DetailViewController.identifier) as! DetailViewController
@@ -108,6 +116,8 @@ class BookCollectionViewController: UICollectionViewController {
         //data 넘기기        
         detailVC.book = book
         
+        detailVC.fromVCType = .bookCell
+        
 //        detailVC.title = dataManager.getTotalBooks()[indexPath.row].title
         
         //해당 cell의 backgroundColor 넘기기
@@ -122,6 +132,7 @@ class BookCollectionViewController: UICollectionViewController {
         
         navigationController?.pushViewController(detailVC, animated: true)
     }
+
     
     //MARK: - Handlers
     
@@ -171,7 +182,10 @@ extension BookCollectionViewController: UIViewSetting {
     }
     
     func configCollectionView() {
-
+        
+        //collectionView drag할 경우, keyboard dismiss
+        collectionView.keyboardDismissMode = .onDrag
+        
         let layout = UICollectionViewFlowLayout()
 
         let deviceWidth = UIScreen.main.bounds.width
@@ -224,7 +238,7 @@ extension BookCollectionViewController: UISearchBarDelegate {
     
     //취소 버튼 누를 경우
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
+        //키보드 내리기
         searchBar.endEditing(true)
         
         //search 결과 지우기
@@ -245,5 +259,6 @@ extension BookCollectionViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchBarResult(searchBar: searchBar)
     }
+ 
     
 }
