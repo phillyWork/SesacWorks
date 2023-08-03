@@ -94,6 +94,7 @@ extension SearchCollectionInTableViewCell: UICollectionViewDataSource, UICollect
         if let delegate = delegate {
             delegate.selectedCollectionTableViewCell(indexPath: indexPath)
         }
+        collectionView.reloadData()
         
 //        let sb = UIStoryboard(name: "Mai", bundle: nil)
 //        let detailVC = sb.instantiateViewController(withIdentifier: DetailViewController.identifier) as! DetailViewController

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2105FFA52A7BA1E300D2A0C4 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2105FFA42A7BA1E300D2A0C4 /* Protocol.swift */; };
 		219B12D82A78D74700A8DFBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219B12D72A78D74700A8DFBF /* AppDelegate.swift */; };
 		219B12DA2A78D74700A8DFBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219B12D92A78D74700A8DFBF /* SceneDelegate.swift */; };
 		219B12DC2A78D74700A8DFBF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219B12DB2A78D74700A8DFBF /* DetailViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2105FFA42A7BA1E300D2A0C4 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		219B12D42A78D74700A8DFBF /* BookWorm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookWorm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		219B12D72A78D74700A8DFBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		219B12D92A78D74700A8DFBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				219B12D72A78D74700A8DFBF /* AppDelegate.swift */,
 				219B12D92A78D74700A8DFBF /* SceneDelegate.swift */,
 				219B12F62A78D7E200A8DFBF /* Enum.swift */,
+				2105FFA42A7BA1E300D2A0C4 /* Protocol.swift */,
 				219B12F82A78D7E700A8DFBF /* Model */,
 				219B12FD2A78D80500A8DFBF /* View */,
 				219B12EF2A78D7C300A8DFBF /* Controller */,
@@ -211,6 +214,7 @@
 				219B12EE2A78D79C00A8DFBF /* SearchViewController.swift in Sources */,
 				219B12F52A78D7DC00A8DFBF /* DataManager.swift in Sources */,
 				21A919EA2A7A292D0015FBE3 /* SearchCollectionViewCell.swift in Sources */,
+				2105FFA52A7BA1E300D2A0C4 /* Protocol.swift in Sources */,
 				219B12DC2A78D74700A8DFBF /* DetailViewController.swift in Sources */,
 				219B12FB2A78D80100A8DFBF /* BookCollectionViewCell.swift in Sources */,
 				21A919E62A7A259B0015FBE3 /* SearchTableViewCell.swift in Sources */,

@@ -17,6 +17,11 @@ class DataManager {
     
     private let recentMax = 5
     
+    //검색 결과
+    private var searchResults = [Book]()
+    
+    //MARK: - GET
+    
     func getTotalBooks() -> [Book] {
         return bookData
     }
@@ -24,6 +29,12 @@ class DataManager {
     func getRecentlySeenBooks() -> [Book] {
         return recentlySeenBooks
     }
+    
+    func getSearchResults() -> [Book] {
+        return searchResults
+    }
+    
+    //MARK: - SET
     
     func updateBookLike(updatedBook: Book) {
         //동일 이름 없다는 전제
@@ -52,6 +63,16 @@ class DataManager {
         
         //최근 것을 가장 앞에서 추가
         recentlySeenBooks.insert(book, at: 0)
+    }
+    
+    func updateSearchResults(searchResult: [Book]?) {
+        
+        if let searchResult = searchResult {
+            searchResults = searchResult
+        } else {
+            //검색 결과 없음: 빈 배열
+            searchResults = []
+        }
     }
     
 }

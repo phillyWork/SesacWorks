@@ -25,6 +25,8 @@ class DetailViewController: UIViewController {
     
     var book: Book?
     
+    var placeholderText = "메모를 입력해주세요"
+    
     static let identifier = "DetailViewController"
     
     
@@ -91,9 +93,23 @@ class DetailViewController: UIViewController {
         
         bookMemoTextView.textColor = .black
         bookMemoTextView.textAlignment = .left
+        
         //메모 불러오기
         if let savedMemo = UserDefaults.standard.string(forKey: book.title) {
-            bookMemoTextView.text = savedMemo
+            if savedMemo.isEmpty {
+                //불러와도 빈칸이면 placeholder 설정하기
+                print("Empty! Show placeholder")
+                bookMemoTextView.text = placeholderText
+                bookMemoTextView.textColor = .lightGray
+            } else {
+                print("savedMemo: ", savedMemo)
+                bookMemoTextView.text = savedMemo
+            }
+        } else {
+            //불러올 값이 없다면 placeholder 설정하기
+            print("Show placeholder")
+            bookMemoTextView.text = placeholderText
+            bookMemoTextView.textColor = .lightGray
         }
     }
     
@@ -134,3 +150,11 @@ class DetailViewController: UIViewController {
     
 }
 
+
+//MARK: - Extension for TextViewDelegate
+
+extension DetailViewController: UITextViewDelegate {
+    
+    
+    
+}
