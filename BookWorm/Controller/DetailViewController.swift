@@ -112,16 +112,13 @@ class DetailViewController: UIViewController {
         if let savedMemo = UserDefaults.standard.string(forKey: book.title) {
             if savedMemo.isEmpty {
                 //불러와도 빈칸이면 placeholder 설정하기
-                print("Empty! Show placeholder")
                 bookMemoTextView.text = placeholderText
                 bookMemoTextView.textColor = .lightGray
             } else {
-                print("savedMemo: ", savedMemo)
                 bookMemoTextView.text = savedMemo
             }
         } else {
             //불러올 값이 없다면 placeholder 설정하기
-            print("Show placeholder")
             bookMemoTextView.text = placeholderText
             bookMemoTextView.textColor = .lightGray
         }
@@ -173,7 +170,8 @@ extension DetailViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         
         //입력 시작: placeholder 없애기
-        if bookMemoTextView.text == placeholderText {
+//        if bookMemoTextView.text == placeholderText {     //사용자가 placeholder와 동일하게 입력해서 남겼을 경우, placeholder로 인식, 내용 날려버림
+        if textView.textColor == .lightGray {
             bookMemoTextView.text = nil
             bookMemoTextView.textColor = .black
         }

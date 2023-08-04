@@ -37,12 +37,21 @@ class DataManager {
     
     //MARK: - SET
     
-    func updateBookLike(updatedBook: Book) {
+    func updateBookLike(updatedBook: Book, tag: Int, dataType: DataType) {
         //동일 이름 없다는 전제
         //차후: 책의 ISBN number와 같은 것으로 구분 가능
-        if let index = bookData.firstIndex(where: { $0.title == updatedBook.title }) {
-            bookData[index].like.toggle()
+        
+        for (index, item) in bookData.enumerated() {    //index로 item 찾기
+            if item.title == updatedBook.title {
+                bookData[index].like.toggle()
+            }
         }
+
+        //search 결과인 경우에만 search도 toggle
+        if dataType == .search {
+            searchResults[tag].like.toggle()
+        }
+        
     }
     
     func addRecentlySeenBook(newBook: Book?) {
@@ -52,16 +61,30 @@ class DataManager {
             return
         }
         
-        if recentlySeenBooks.contains(book) {
-            let index = recentlySeenBooks.firstIndex(of: book)!
-            print("index: \(index)")
-            recentlySeenBooks.remove(at: index)
-        } else {
-            if recentlySeenBooks.count == recentMax {
-                //가장 안본 것 목록에서 제거
-                recentlySeenBooks.remove(at: recentMax - 1)
+        //이미 존재하는 경우, 해당 index의 element 제거
+        for (index, data) in recentlySeenBooks.enumerated() {
+            if data.title == newBook?.title {
+                recentlySeenBooks.remove(at: index)
             }
         }
+        
+        //가득 찬 경우: 가장 마지막 index element 제거
+        if recentlySeenBooks.count == recentMax {
+            recentlySeenBooks.remove(at: recentMax-1)
+        }
+        
+        
+        
+//        if recentlySeenBooks.contains(book) {
+//            let index = recentlySeenBooks.firstIndex(of: book)!
+//            print("index: \(index)")
+//            recentlySeenBooks.remove(at: index)
+//        } else {
+//            if recentlySeenBooks.count == recentMax {
+//                //가장 안본 것 목록에서 제거
+//                recentlySeenBooks.remove(at: recentMax - 1)
+//            }
+//        }
         
         //최근 것을 가장 앞에서 추가
         recentlySeenBooks.insert(book, at: 0)

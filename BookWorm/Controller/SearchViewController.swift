@@ -124,19 +124,19 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         
         let navVC = UINavigationController(rootViewController: detailVC)
         navVC.modalPresentationStyle = .fullScreen
+        
+        print("SearchTableViewCell에서 DeatilVC present 직전")
+        
         present(navVC, animated: true)
         
         //탭한 row 선택 해제하기
         tableView.reloadRows(at: [indexPath], with: .none)
 
+        print("section 0 reload 직전")
+        
         //section 1의 tableViewCell을 누르면 section 0의 최근 목록을 나타내는 tableViewCell 내 collectionView가 update가 되어야 함
         tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchCollectionInTableViewCell.identifier) as! SearchCollectionInTableViewCell
-        cell.searchCollectionViewInTableCell.reloadData()
-        
-        //tableView.reloadData(): update 먹지 않음
-        
+    
     }
    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

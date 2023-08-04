@@ -37,21 +37,6 @@ class BookCollectionViewController: UICollectionViewController {
         configCollectionView()
     }
     
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        super.touchesBegan(touches, with: event)
-//
-//        print(#function)
-//
-//        if searchbar.canResignFirstResponder {
-//            print("Can resign Responder")
-//            searchbar.resignFirstResponder()
-//        } else {
-//            print("Can't resign Responder")
-//        }
-//    }
-    
-    
     //MARK: - UICollectionViewDataSource
    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -147,7 +132,7 @@ class BookCollectionViewController: UICollectionViewController {
             cellBook = dataManager.getSearchResults()[sender.tag]
         }
         
-        dataManager.updateBookLike(updatedBook: cellBook)
+        dataManager.updateBookLike(updatedBook: cellBook, tag: sender.tag, dataType: dataType)
         
         collectionView.reloadData()
     }
@@ -241,7 +226,7 @@ extension BookCollectionViewController: UISearchBarDelegate {
         //키보드 내리기
         searchBar.endEditing(true)
         
-        //search 결과 지우기
+        //search 결과 지우기 --> 전체 data 보여주기로 바꾸기
         dataManager.updateSearchResults(searchResult: nil)
         
         //cancel 버튼 지우고 입력값 없애기

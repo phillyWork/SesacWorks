@@ -74,6 +74,11 @@ extension SearchCollectionInTableViewCell: UICollectionViewDataSource, UICollect
             print("Nothing to show on collectionView")
             return 0
         }
+        
+        for item in books {
+            print("collectionViewCell로 들어갈 제목들: ", item.title)
+        }
+        
         return books.count
     }
     
@@ -94,6 +99,8 @@ extension SearchCollectionInTableViewCell: UICollectionViewDataSource, UICollect
         //protocol로 해당 기능 대신하도록 설정하기
         delegate?.selectedCollectionTableViewCell(indexPath: indexPath)
         collectionView.reloadData()
+        
+        
     }
     
       
