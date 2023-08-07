@@ -9,21 +9,26 @@
 /* Begin PBXBuildFile section */
 		21BF250B2A80CCE900480396 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF250A2A80CCE900480396 /* AppDelegate.swift */; };
 		21BF250D2A80CCE900480396 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF250C2A80CCE900480396 /* SceneDelegate.swift */; };
-		21BF250F2A80CCE900480396 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF250E2A80CCE900480396 /* ViewController.swift */; };
+		21BF250F2A80CCE900480396 /* BeerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF250E2A80CCE900480396 /* BeerViewController.swift */; };
 		21BF25122A80CCE900480396 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21BF25102A80CCE900480396 /* Main.storyboard */; };
 		21BF25142A80CCEB00480396 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21BF25132A80CCEB00480396 /* Assets.xcassets */; };
 		21BF25172A80CCEB00480396 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21BF25152A80CCEB00480396 /* LaunchScreen.storyboard */; };
+		21BF251F2A80CD3400480396 /* LotteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF251E2A80CD3400480396 /* LotteryViewController.swift */; };
+		21BF25222A80CD8E00480396 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 21BF25212A80CD8E00480396 /* Alamofire */; };
+		21BF25252A80CDA300480396 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 21BF25242A80CDA300480396 /* SwiftyJSON */; };
+		21BF25282A80CDC700480396 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 21BF25272A80CDC700480396 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		21BF25072A80CCE900480396 /* BeerAndLotteryAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerAndLotteryAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BF250A2A80CCE900480396 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21BF250C2A80CCE900480396 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		21BF250E2A80CCE900480396 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		21BF250E2A80CCE900480396 /* BeerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerViewController.swift; sourceTree = "<group>"; };
 		21BF25112A80CCE900480396 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		21BF25132A80CCEB00480396 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21BF25162A80CCEB00480396 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21BF25182A80CCEB00480396 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21BF251E2A80CD3400480396 /* LotteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +36,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21BF25282A80CDC700480396 /* Kingfisher in Frameworks */,
+				21BF25252A80CDA300480396 /* SwiftyJSON in Frameworks */,
+				21BF25222A80CD8E00480396 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +66,8 @@
 			children = (
 				21BF250A2A80CCE900480396 /* AppDelegate.swift */,
 				21BF250C2A80CCE900480396 /* SceneDelegate.swift */,
-				21BF250E2A80CCE900480396 /* ViewController.swift */,
+				21BF250E2A80CCE900480396 /* BeerViewController.swift */,
+				21BF251E2A80CD3400480396 /* LotteryViewController.swift */,
 				21BF25102A80CCE900480396 /* Main.storyboard */,
 				21BF25132A80CCEB00480396 /* Assets.xcassets */,
 				21BF25152A80CCEB00480396 /* LaunchScreen.storyboard */,
@@ -83,6 +92,11 @@
 			dependencies = (
 			);
 			name = BeerAndLotteryAPI;
+			packageProductDependencies = (
+				21BF25212A80CD8E00480396 /* Alamofire */,
+				21BF25242A80CDA300480396 /* SwiftyJSON */,
+				21BF25272A80CDC700480396 /* Kingfisher */,
+			);
 			productName = BeerAndLotteryAPI;
 			productReference = 21BF25072A80CCE900480396 /* BeerAndLotteryAPI.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +125,11 @@
 				Base,
 			);
 			mainGroup = 21BF24FE2A80CCE900480396;
+			packageReferences = (
+				21BF25202A80CD8E00480396 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				21BF25232A80CDA300480396 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				21BF25262A80CDC700480396 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 21BF25082A80CCE900480396 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,7 +157,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21BF250F2A80CCE900480396 /* ViewController.swift in Sources */,
+				21BF251F2A80CD3400480396 /* LotteryViewController.swift in Sources */,
+				21BF250F2A80CCE900480396 /* BeerViewController.swift in Sources */,
 				21BF250B2A80CCE900480396 /* AppDelegate.swift in Sources */,
 				21BF250D2A80CCE900480396 /* SceneDelegate.swift in Sources */,
 			);
@@ -292,8 +312,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,9 +321,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.phillyh.BeerAndLotteryAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -319,8 +342,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -328,9 +351,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.phillyh.BeerAndLotteryAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -356,6 +382,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		21BF25202A80CD8E00480396 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		21BF25232A80CDA300480396 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		21BF25262A80CDC700480396 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		21BF25212A80CD8E00480396 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21BF25202A80CD8E00480396 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		21BF25242A80CDA300480396 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21BF25232A80CDA300480396 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		21BF25272A80CDC700480396 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21BF25262A80CDC700480396 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 21BF24FF2A80CCE900480396 /* Project object */;
 }
