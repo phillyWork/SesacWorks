@@ -13,6 +13,10 @@
 		21BF24E12A80965600480396 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21BF24DF2A80965600480396 /* Main.storyboard */; };
 		21BF24E32A80965800480396 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21BF24E22A80965800480396 /* Assets.xcassets */; };
 		21BF24E62A80965800480396 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21BF24E42A80965800480396 /* LaunchScreen.storyboard */; };
+		21BF24EF2A8096B500480396 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 21BF24EE2A8096B500480396 /* Alamofire */; };
+		21BF24F22A8096CC00480396 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 21BF24F12A8096CC00480396 /* SwiftyJSON */; };
+		21BF24F52A8096E100480396 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 21BF24F42A8096E100480396 /* Kingfisher */; };
+		21BF24F72A809BA100480396 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 21BF24F62A809BA100480396 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,7 @@
 		21BF24E22A80965800480396 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21BF24E52A80965800480396 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21BF24E72A80965800480396 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21BF24F62A809BA100480396 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +36,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21BF24F52A8096E100480396 /* Kingfisher in Frameworks */,
+				21BF24F22A8096CC00480396 /* SwiftyJSON in Frameworks */,
+				21BF24EF2A8096B500480396 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +70,7 @@
 				21BF24DF2A80965600480396 /* Main.storyboard */,
 				21BF24E22A80965800480396 /* Assets.xcassets */,
 				21BF24E42A80965800480396 /* LaunchScreen.storyboard */,
+				21BF24F62A809BA100480396 /* .gitignore */,
 				21BF24E72A80965800480396 /* Info.plist */,
 			);
 			path = NetworkingProj;
@@ -83,6 +92,11 @@
 			dependencies = (
 			);
 			name = NetworkingProj;
+			packageProductDependencies = (
+				21BF24EE2A8096B500480396 /* Alamofire */,
+				21BF24F12A8096CC00480396 /* SwiftyJSON */,
+				21BF24F42A8096E100480396 /* Kingfisher */,
+			);
 			productName = NetworkingProj;
 			productReference = 21BF24D62A80965600480396 /* NetworkingProj.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +125,11 @@
 				Base,
 			);
 			mainGroup = 21BF24CD2A80965600480396;
+			packageReferences = (
+				21BF24ED2A8096B500480396 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				21BF24F02A8096CC00480396 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				21BF24F32A8096E100480396 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 21BF24D72A80965600480396 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -125,6 +144,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21BF24F72A809BA100480396 /* .gitignore in Resources */,
 				21BF24E62A80965800480396 /* LaunchScreen.storyboard in Resources */,
 				21BF24E32A80965800480396 /* Assets.xcassets in Resources */,
 				21BF24E12A80965600480396 /* Main.storyboard in Resources */,
@@ -301,9 +321,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.phillyh.NetworkingProj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -328,9 +351,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.phillyh.NetworkingProj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -356,6 +382,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		21BF24ED2A8096B500480396 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		21BF24F02A8096CC00480396 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		21BF24F32A8096E100480396 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		21BF24EE2A8096B500480396 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21BF24ED2A8096B500480396 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		21BF24F12A8096CC00480396 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21BF24F02A8096CC00480396 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		21BF24F42A8096E100480396 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21BF24F32A8096E100480396 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 21BF24CE2A80965600480396 /* Project object */;
 }
