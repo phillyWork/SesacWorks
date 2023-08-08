@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lpw-1K-rJZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CnO-lu-fA9">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
@@ -31,7 +31,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lah-2u-WZz">
-                                <rect key="frame" x="68.666666666666671" y="510.33333333333326" width="255.66666666666657" height="21"/>
+                                <rect key="frame" x="68.666666666666671" y="510.33333333333326" width="255.66666666666663" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -70,6 +70,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="48" y="-2"/>
+        </scene>
+        <!--Beer List View Controller-->
+        <scene sceneID="ouj-ss-Q5y">
+            <objects>
+                <viewController id="CnO-lu-fA9" customClass="BeerListViewController" customModule="BeerAndLotteryAPI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RcY-nn-W5o">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="aq6-YP-dcf">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="MN8-QK-Np4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MN8-QK-Np4" firstAttribute="bottom" secondItem="aq6-YP-dcf" secondAttribute="bottom" id="7UU-45-ztJ"/>
+                            <constraint firstItem="aq6-YP-dcf" firstAttribute="leading" secondItem="MN8-QK-Np4" secondAttribute="leading" id="DVc-dY-3r1"/>
+                            <constraint firstItem="aq6-YP-dcf" firstAttribute="top" secondItem="MN8-QK-Np4" secondAttribute="top" id="b7c-ib-NK4"/>
+                            <constraint firstItem="MN8-QK-Np4" firstAttribute="trailing" secondItem="aq6-YP-dcf" secondAttribute="trailing" id="ffc-j7-7b6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="beerTableView" destination="aq6-YP-dcf" id="Diu-Qt-U4w"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yxK-UF-GsC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="833" y="-2"/>
         </scene>
         <!--Lottery View Controller-->
         <scene sceneID="8Ht-Oi-dRI">

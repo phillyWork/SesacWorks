@@ -40,11 +40,11 @@ class BeerViewController: UIViewController {
                 
                 self.nameLabel.text = json["name"].stringValue
                 self.descriptionLabel.text = json["description"].stringValue
-                
+
                 let imageUrlString = json["image_url"].stringValue
                 let imageUrl = URL(string: imageUrlString)
                 self.coverImageView.kf.setImage(with: imageUrl)
-                
+
                 self.nameLabel.isHidden = false
                 self.descriptionLabel.isHidden = false
                 

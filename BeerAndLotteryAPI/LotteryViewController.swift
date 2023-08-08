@@ -25,7 +25,7 @@ class LotteryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        searchUrl(number: 1079)
         configUI()
     }
     
