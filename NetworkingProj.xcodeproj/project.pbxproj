@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		216BA0C92A81C4C1008A54A5 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BA0C82A81C4C1008A54A5 /* WeatherViewController.swift */; };
+		216BA0CB2A81E77C008A54A5 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BA0CA2A81E77C008A54A5 /* VideoViewController.swift */; };
+		216BBD782A84742A0044F963 /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BBD772A84742A0044F963 /* TranslationViewController.swift */; };
+		216BBD7A2A84C54F0044F963 /* PapagoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BBD792A84C54F0044F963 /* PapagoPickerViewController.swift */; };
 		21BF24DA2A80965600480396 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF24D92A80965600480396 /* AppDelegate.swift */; };
 		21BF24DC2A80965600480396 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF24DB2A80965600480396 /* SceneDelegate.swift */; };
-		21BF24DE2A80965600480396 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF24DD2A80965600480396 /* ViewController.swift */; };
+		21BF24DE2A80965600480396 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF24DD2A80965600480396 /* MovieViewController.swift */; };
 		21BF24E12A80965600480396 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21BF24DF2A80965600480396 /* Main.storyboard */; };
 		21BF24E32A80965800480396 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21BF24E22A80965800480396 /* Assets.xcassets */; };
 		21BF24E62A80965800480396 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21BF24E42A80965800480396 /* LaunchScreen.storyboard */; };
@@ -17,18 +21,26 @@
 		21BF24F22A8096CC00480396 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 21BF24F12A8096CC00480396 /* SwiftyJSON */; };
 		21BF24F52A8096E100480396 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 21BF24F42A8096E100480396 /* Kingfisher */; };
 		21BF24F72A809BA100480396 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 21BF24F62A809BA100480396 /* .gitignore */; };
+		21BF24FB2A809C5800480396 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF24FA2A809C5800480396 /* APIKey.swift */; };
+		21E927D32A8322FD0071C7ED /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E927D22A8322FD0071C7ED /* VideoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		216BA0C82A81C4C1008A54A5 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		216BA0CA2A81E77C008A54A5 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		216BBD772A84742A0044F963 /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
+		216BBD792A84C54F0044F963 /* PapagoPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoPickerViewController.swift; sourceTree = "<group>"; };
 		21BF24D62A80965600480396 /* NetworkingProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkingProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BF24D92A80965600480396 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21BF24DB2A80965600480396 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		21BF24DD2A80965600480396 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		21BF24DD2A80965600480396 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		21BF24E02A80965600480396 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		21BF24E22A80965800480396 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21BF24E52A80965800480396 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21BF24E72A80965800480396 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21BF24F62A809BA100480396 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		21BF24FA2A809C5800480396 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		21E927D22A8322FD0071C7ED /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +78,13 @@
 			children = (
 				21BF24D92A80965600480396 /* AppDelegate.swift */,
 				21BF24DB2A80965600480396 /* SceneDelegate.swift */,
-				21BF24DD2A80965600480396 /* ViewController.swift */,
+				21BF24FA2A809C5800480396 /* APIKey.swift */,
+				21BF24DD2A80965600480396 /* MovieViewController.swift */,
+				216BA0C82A81C4C1008A54A5 /* WeatherViewController.swift */,
+				21E927D22A8322FD0071C7ED /* VideoCell.swift */,
+				216BA0CA2A81E77C008A54A5 /* VideoViewController.swift */,
+				216BBD772A84742A0044F963 /* TranslationViewController.swift */,
+				216BBD792A84C54F0044F963 /* PapagoPickerViewController.swift */,
 				21BF24DF2A80965600480396 /* Main.storyboard */,
 				21BF24E22A80965800480396 /* Assets.xcassets */,
 				21BF24E42A80965800480396 /* LaunchScreen.storyboard */,
@@ -158,9 +176,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21BF24DE2A80965600480396 /* ViewController.swift in Sources */,
+				216BBD782A84742A0044F963 /* TranslationViewController.swift in Sources */,
+				216BA0CB2A81E77C008A54A5 /* VideoViewController.swift in Sources */,
+				21E927D32A8322FD0071C7ED /* VideoCell.swift in Sources */,
+				216BA0C92A81C4C1008A54A5 /* WeatherViewController.swift in Sources */,
+				21BF24DE2A80965600480396 /* MovieViewController.swift in Sources */,
+				216BBD7A2A84C54F0044F963 /* PapagoPickerViewController.swift in Sources */,
 				21BF24DA2A80965600480396 /* AppDelegate.swift in Sources */,
 				21BF24DC2A80965600480396 /* SceneDelegate.swift in Sources */,
+				21BF24FB2A809C5800480396 /* APIKey.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
