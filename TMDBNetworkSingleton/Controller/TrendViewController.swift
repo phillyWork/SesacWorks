@@ -20,11 +20,19 @@ class TrendViewController: UIViewController {
     }
 
     func setupInitialMovie() {
-        dataManager.setMovieTrendList(type: .trendMovie, page: 1) {
+        
+        //with decodable
+        dataManager.setMovieTrendListWithDecodableStruct(type: .trendMovie, page: 1) {
             print("Data setup is done")
             self.configNavBar()
             self.configCollectionView()
         }
+        
+//        dataManager.setMovieTrendList(type: .trendMovie, page: 1) {
+//            print("Data setup is done")
+//            self.configNavBar()
+//            self.configCollectionView()
+//        }
     }
     
     func configCollectionView() {
@@ -91,10 +99,16 @@ extension TrendViewController: UICollectionViewDelegate, UICollectionViewDataSou
         for indexPath in indexPaths {
             if dataManager.getContentsList().count - 1 == indexPath.row {
                 dataManager.addPageNum()
-                dataManager.setMovieTrendList(type: .trendMovie, page: dataManager.getPageNum()) {
+                
+                dataManager.setMovieTrendListWithDecodableStruct(type: .trendMovie, page: dataManager.getPageNum()) {
                     //data 새로 가져온 후, collectionView 갱신
                     self.contentCollectionView.reloadData()
                 }
+            
+//                dataManager.setMovieTrendList(type: .trendMovie, page: dataManager.getPageNum()) {
+//                    //data 새로 가져온 후, collectionView 갱신
+//                    self.contentCollectionView.reloadData()
+//                }
             }
         }
     }

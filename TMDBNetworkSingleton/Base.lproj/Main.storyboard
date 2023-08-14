@@ -135,7 +135,7 @@
                         <outlet property="castLabel" destination="kWj-U8-pVD" id="0p0-x1-Dei"/>
                         <outlet property="castingTableView" destination="wV4-8I-FNM" id="fNt-lv-j98"/>
                         <outlet property="overviewLabel" destination="KSH-Z8-a1q" id="2dR-ph-qmR"/>
-                        <outlet property="overviewTextView" destination="CBc-Rd-A2s" id="lC1-sB-j0K"/>
+                        <outlet property="overviewTextView" destination="CBc-Rd-A2s" id="RZO-yR-5yq"/>
                         <outlet property="posterImageView" destination="xIY-GN-xpE" id="vDQ-hr-DOB"/>
                         <outlet property="titleLabel" destination="wXD-6F-3uQ" id="O4Q-L5-KDc"/>
                     </connections>

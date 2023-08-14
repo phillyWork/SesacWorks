@@ -14,7 +14,13 @@ class CastCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var roleLabel: UILabel!
     
-    var cast: Casting? {
+//    var cast: Casting? {
+//        didSet {
+//            updateData()
+//        }
+//    }
+    
+    var cast: Cast? {
         didSet {
             updateData()
         }
@@ -52,8 +58,10 @@ class CastCell: UITableViewCell {
         nameLabel.text = cast.name
         roleLabel.text = cast.character
         
-        let profileUrl = URL(string: ImageURL.profile.requestURL + cast.profilePath)
-        castImageView.kf.setImage(with: profileUrl)
+        if let profilePath = cast.profilePath {
+            let profileUrl = URL(string: ImageURL.profile.requestURL + profilePath)
+            castImageView.kf.setImage(with: profileUrl)
+        }
         
     }
     

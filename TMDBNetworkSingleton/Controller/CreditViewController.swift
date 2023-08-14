@@ -19,7 +19,9 @@ class CreditViewController: UIViewController {
     
     let dataManager = DataManager.shared
     
-    var movie: Movie?
+//    var movie: Movie?
+    
+    var movie: Result?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +31,17 @@ class CreditViewController: UIViewController {
     
     func setupCastData() {
         if let movie = movie {
-            dataManager.setCastingList(type: .movieCasting, movieId: movie.movieId) {
+            
+            //with decodable
+            dataManager.setCastingListWithDecodableStruct(type: .movieCasting, movieId: movie.id) {
+                print("Setting up casting list is done")
                 self.configUI()
                 self.configTableView()
             }
+//            dataManager.setCastingList(type: .movieCasting, movieId: movie.movieId) {
+//                self.configUI()
+//                self.configTableView()
+//            }
         } else {
             print("No data from TrendVC")
             return

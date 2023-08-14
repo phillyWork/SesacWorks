@@ -46,11 +46,41 @@ class NetworkManager {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
+                
+                //genre API 재호출
+//                AF.request(<#T##convertible: URLRequestConvertible##URLRequestConvertible#>)
+                
                 completionHandler(json)
             case .failure(let error):
                 print("Error: ", error.localizedDescription)
             }
         }
     }
+    
+    
+    func callTrendMovieRequestWithDecodableStructure(type: EndPoint, page: Int, completionHandler: @escaping (MovieTrend) -> ()) {
+        
+        let url = type.requestURL + timeWindow + "?page=\(page)"
+        
+        //Decodable with JSON depth data structure
+        //모든 data 포괄하는 가장 최상단 구조체 활용
+        AF.request(url, method: .get, headers: headers).validate()
+            .responseDecodable(of: MovieTrend.self) { response in
+                completionHandler(response.value!)
+            }
+    }
+    
+    func callCasintListRequestWithDecodableStructure(type: EndPoint, movieId: Int, completionHandler: @escaping (CastingList) -> ()) {
+        
+        let url = type.requestURL + "\(movieId)/credits"
+        
+        //Decodable with JSON depth data structure
+        //모든 data 포괄하는 가장 최상단 구조체 활용
+        AF.request(url, method: .get, headers: headers).validate()
+            .responseDecodable(of: CastingList.self) { response in
+                completionHandler(response.value!)
+            }
+    }
+    
         
 }

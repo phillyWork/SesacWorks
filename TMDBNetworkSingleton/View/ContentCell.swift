@@ -22,7 +22,13 @@ class ContentCell: UICollectionViewCell {
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var indicatorImageView: UIImageView!
     
-    var movie: Movie? {
+//    var movie: Movie? {
+//        didSet {
+//            updateData()
+//        }
+//    }
+    
+    var movie: Result? {
         didSet {
             updateData()
         }
@@ -86,31 +92,49 @@ class ContentCell: UICollectionViewCell {
 
     
     func updateData() {
+//        guard let movie = movie else {
+//            print("No data from datamanager")
+//            return
+//        }
+//
+//        dateLabel.text = movie.releaseDate
+//        var genreText = [String]()
+//        for id in movie.genreIds {
+//            if let genreName = GenreIds(rawValue: id)?.genreName {
+//                genreText.append("#\(genreName) ")
+//            } else {
+//                print("Can't find this \(id) from genre")
+//            }
+//        }
+//        tagLabel.text = genreText.joined()
+//        ratePointLabel.text = "\(round(movie.rate*100)/100)"
+//        let backUrl = URL(string: ImageURL.backPath.requestURL + movie.backdropPath)
+//        backPathImageView.kf.setImage(with: backUrl)
+//        titleLabel.text = movie.title
+        
+        
+        //with decodable
         guard let movie = movie else {
             print("No data from datamanager")
             return
         }
         
         dateLabel.text = movie.releaseDate
-        
         var genreText = [String]()
-        
-        for id in movie.genreIds {
+        for id in movie.genreIDS {
             if let genreName = GenreIds(rawValue: id)?.genreName {
                 genreText.append("#\(genreName) ")
             } else {
                 print("Can't find this \(id) from genre")
             }
         }
-        
         tagLabel.text = genreText.joined()
         
-        ratePointLabel.text = "\(round(movie.rate*100)/100)"
-        
+        ratePointLabel.text = "\(round(movie.voteAverage*100)/100)"
         let backUrl = URL(string: ImageURL.backPath.requestURL + movie.backdropPath)
         backPathImageView.kf.setImage(with: backUrl)
-        
-        titleLabel.text = movie.title
+        titleLabel.text = "\(movie.title)(\(movie.originalTitle))"
     }
     
 }
+

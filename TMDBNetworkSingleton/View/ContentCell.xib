@@ -45,7 +45,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="317" height="232"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4AM-pm-Vfu">
-                                        <rect key="frame" x="15.000000000000004" y="247" width="41.333333333333343" height="24"/>
+                                        <rect key="frame" x="15" y="247" width="287" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="6zc-fG-6tT"/>
                                         </constraints>
@@ -101,6 +101,7 @@
                                     <constraint firstItem="q5l-xU-HRS" firstAttribute="leading" secondItem="rZv-TJ-nnB" secondAttribute="trailing" id="YLg-Gx-Dx5"/>
                                     <constraint firstAttribute="trailing" secondItem="feM-j8-iv2" secondAttribute="trailing" constant="15" id="Yel-Wc-jZq"/>
                                     <constraint firstItem="DKp-Ym-fgV" firstAttribute="height" secondItem="lA4-o1-slR" secondAttribute="height" multiplier="1.26667" id="bHR-t5-JX4"/>
+                                    <constraint firstItem="4AM-pm-Vfu" firstAttribute="trailing" secondItem="DKp-Ym-fgV" secondAttribute="trailing" id="gpb-sS-mCy"/>
                                     <constraint firstItem="pz2-dF-qar" firstAttribute="leading" secondItem="Yhf-A3-Nu5" secondAttribute="leading" id="lGP-Bu-zB1"/>
                                     <constraint firstAttribute="trailing" secondItem="pz2-dF-qar" secondAttribute="trailing" id="pD4-CH-RlZ"/>
                                     <constraint firstItem="feM-j8-iv2" firstAttribute="top" secondItem="4AM-pm-Vfu" secondAttribute="bottom" constant="15" id="rHI-Vv-GUi"/>

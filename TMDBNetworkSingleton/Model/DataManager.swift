@@ -16,17 +16,30 @@ class DataManager {
     
     private var movieContents = [Movie]()
     private var castingLists = [Casting]()
+    
+    private var movieTrendDecodableStruct = [Result]()
+    private var castingListDeocdableStruct = [Cast]()
+    
+    
     private var pageNum = 1
     
     //MARK: - GET
 
-    func getContentsList() -> [Movie] {
-        return movieContents
+    func getContentsList() -> [Result] {
+        return movieTrendDecodableStruct
     }
     
-    func getCastingList() -> [Casting] {
-        return castingLists
+//    func getContentsList() -> [Movie] {
+//        return movieContents
+//    }
+    
+    func getCastingList() -> [Cast] {
+        return castingListDeocdableStruct
     }
+    
+//    func getCastingList() -> [Casting] {
+//        return castingLists
+//    }
     
     func getPageNum() -> Int {
         return pageNum
@@ -60,7 +73,6 @@ class DataManager {
     }
     
     func setCastingList(type: EndPoint, movieId: Int, completionHandler: @escaping () -> ()) {
-        
         //이전 영화 casting 목록 삭제
         castingLists.removeAll()
         
@@ -78,9 +90,31 @@ class DataManager {
             completionHandler()
         }
     }
-
+    
     func addPageNum() {
         pageNum += 1
     }
+    
+    //MARK: - With Decodable Update
+    
+    func setMovieTrendListWithDecodableStruct(type: EndPoint, page: Int, completionHandler: @escaping () -> ()) {
+        //응답값을 구조체에 담아버림 (하나하나 반복문으로 data를 담을 필요 없음)
+        networkManager.callTrendMovieRequestWithDecodableStructure(type: type, page: page) { trendList in
+            self.movieTrendDecodableStruct = trendList.results
+            completionHandler()
+        }
+    }
+    
+    func setCastingListWithDecodableStruct(type: EndPoint, movieId: Int, completionHandler: @escaping () -> ()) {
+        //이전 영화 casting 목록 삭제
+        castingListDeocdableStruct.removeAll()
+        
+        networkManager.callCasintListRequestWithDecodableStructure(type: type, movieId: movieId) { castingList in
+            self.castingListDeocdableStruct = castingList.cast
+            completionHandler()
+        }
+    }
+    
+    
 
 }

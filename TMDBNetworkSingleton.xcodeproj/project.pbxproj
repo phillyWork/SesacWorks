@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210F48FB2A8A093100C9ACD6 /* MovieDecodableStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F48FA2A8A093100C9ACD6 /* MovieDecodableStruct.swift */; };
+		210F48FD2A8A09FB00C9ACD6 /* CastingDecodableStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F48FC2A8A09FB00C9ACD6 /* CastingDecodableStructure.swift */; };
 		21126FF42A866860008A4CBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21126FF32A866860008A4CBD /* AppDelegate.swift */; };
 		21126FF62A866860008A4CBD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21126FF52A866860008A4CBD /* SceneDelegate.swift */; };
 		21126FF82A866860008A4CBD /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21126FF72A866860008A4CBD /* TrendViewController.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		210F48FA2A8A093100C9ACD6 /* MovieDecodableStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDecodableStruct.swift; sourceTree = "<group>"; };
+		210F48FC2A8A09FB00C9ACD6 /* CastingDecodableStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastingDecodableStructure.swift; sourceTree = "<group>"; };
 		21126FF02A866860008A4CBD /* TMDBNetworkSingleton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDBNetworkSingleton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21126FF32A866860008A4CBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21126FF52A866860008A4CBD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 		211270132A8669BB008A4CBD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				210F48FA2A8A093100C9ACD6 /* MovieDecodableStruct.swift */,
+				210F48FC2A8A09FB00C9ACD6 /* CastingDecodableStructure.swift */,
 				2112700D2A86696B008A4CBD /* Movie.swift */,
 				2189A05D2A869B9A000B6DE9 /* Casting.swift */,
 				2112700F2A86697A008A4CBD /* NetworkManager.swift */,
@@ -234,6 +240,7 @@
 				2189A0522A866F78000B6DE9 /* ReusableViewProtocol.swift in Sources */,
 				21126FF42A866860008A4CBD /* AppDelegate.swift in Sources */,
 				2189A0542A867072000B6DE9 /* EndPoint.swift in Sources */,
+				210F48FD2A8A09FB00C9ACD6 /* CastingDecodableStructure.swift in Sources */,
 				2189A0562A867112000B6DE9 /* URL+Extension.swift in Sources */,
 				2189A05B2A8699EF000B6DE9 /* CastCell.swift in Sources */,
 				211270192A8669E9008A4CBD /* ContentCell.swift in Sources */,
@@ -244,6 +251,7 @@
 				2189A0582A8689A1000B6DE9 /* ImageURL.swift in Sources */,
 				2189A05E2A869B9A000B6DE9 /* Casting.swift in Sources */,
 				21126FF62A866860008A4CBD /* SceneDelegate.swift in Sources */,
+				210F48FB2A8A093100C9ACD6 /* MovieDecodableStruct.swift in Sources */,
 				2112700E2A86696B008A4CBD /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
