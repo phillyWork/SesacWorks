@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210F48F92A8A022200C9ACD6 /* BoxOfficeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F48F82A8A022200C9ACD6 /* BoxOfficeData.swift */; };
+		2151CB9F2A8CABA000F81BE7 /* VideoDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151CB9E2A8CABA000F81BE7 /* VideoDecodable.swift */; };
 		216BA0C92A81C4C1008A54A5 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BA0C82A81C4C1008A54A5 /* WeatherViewController.swift */; };
 		216BA0CB2A81E77C008A54A5 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BA0CA2A81E77C008A54A5 /* VideoViewController.swift */; };
 		216BBD782A84742A0044F963 /* TranslationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BBD772A84742A0044F963 /* TranslationViewController.swift */; };
 		216BBD7A2A84C54F0044F963 /* PapagoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BBD792A84C54F0044F963 /* PapagoPickerViewController.swift */; };
+		21B3E5532A85E352003E24D9 /* NaverAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B3E5522A85E352003E24D9 /* NaverAPIManager.swift */; };
+		21B3E5552A85F9E7003E24D9 /* AsyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B3E5542A85F9E7003E24D9 /* AsyncViewController.swift */; };
 		21BF24DA2A80965600480396 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF24D92A80965600480396 /* AppDelegate.swift */; };
 		21BF24DC2A80965600480396 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF24DB2A80965600480396 /* SceneDelegate.swift */; };
 		21BF24DE2A80965600480396 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF24DD2A80965600480396 /* MovieViewController.swift */; };
@@ -23,13 +27,22 @@
 		21BF24F72A809BA100480396 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 21BF24F62A809BA100480396 /* .gitignore */; };
 		21BF24FB2A809C5800480396 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF24FA2A809C5800480396 /* APIKey.swift */; };
 		21E927D32A8322FD0071C7ED /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E927D22A8322FD0071C7ED /* VideoCell.swift */; };
+		21F357BB2A85BA80009C14EF /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F357BA2A85BA80009C14EF /* ReusableViewProtocol.swift */; };
+		21F357BD2A85BCF5009C14EF /* UserDefaultHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F357BC2A85BCF5009C14EF /* UserDefaultHelper.swift */; };
+		21F357BF2A85C513009C14EF /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F357BE2A85C513009C14EF /* EndPoint.swift */; };
+		21F357C12A85C5C4009C14EF /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F357C02A85C5C4009C14EF /* URL+Extension.swift */; };
+		21F357C32A85C776009C14EF /* KakaoAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F357C22A85C776009C14EF /* KakaoAPIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		210F48F82A8A022200C9ACD6 /* BoxOfficeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeData.swift; sourceTree = "<group>"; };
+		2151CB9E2A8CABA000F81BE7 /* VideoDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDecodable.swift; sourceTree = "<group>"; };
 		216BA0C82A81C4C1008A54A5 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		216BA0CA2A81E77C008A54A5 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		216BBD772A84742A0044F963 /* TranslationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationViewController.swift; sourceTree = "<group>"; };
 		216BBD792A84C54F0044F963 /* PapagoPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoPickerViewController.swift; sourceTree = "<group>"; };
+		21B3E5522A85E352003E24D9 /* NaverAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverAPIManager.swift; sourceTree = "<group>"; };
+		21B3E5542A85F9E7003E24D9 /* AsyncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncViewController.swift; sourceTree = "<group>"; };
 		21BF24D62A80965600480396 /* NetworkingProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkingProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BF24D92A80965600480396 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21BF24DB2A80965600480396 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +54,11 @@
 		21BF24F62A809BA100480396 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		21BF24FA2A809C5800480396 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		21E927D22A8322FD0071C7ED /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		21F357BA2A85BA80009C14EF /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
+		21F357BC2A85BCF5009C14EF /* UserDefaultHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHelper.swift; sourceTree = "<group>"; };
+		21F357BE2A85C513009C14EF /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		21F357C02A85C5C4009C14EF /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		21F357C22A85C776009C14EF /* KakaoAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoAPIManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,12 +97,21 @@
 				21BF24D92A80965600480396 /* AppDelegate.swift */,
 				21BF24DB2A80965600480396 /* SceneDelegate.swift */,
 				21BF24FA2A809C5800480396 /* APIKey.swift */,
+				21F357BA2A85BA80009C14EF /* ReusableViewProtocol.swift */,
+				21F357C02A85C5C4009C14EF /* URL+Extension.swift */,
+				21F357BE2A85C513009C14EF /* EndPoint.swift */,
+				2151CB9E2A8CABA000F81BE7 /* VideoDecodable.swift */,
+				21F357C22A85C776009C14EF /* KakaoAPIManager.swift */,
+				21B3E5522A85E352003E24D9 /* NaverAPIManager.swift */,
+				21F357BC2A85BCF5009C14EF /* UserDefaultHelper.swift */,
+				210F48F82A8A022200C9ACD6 /* BoxOfficeData.swift */,
 				21BF24DD2A80965600480396 /* MovieViewController.swift */,
 				216BA0C82A81C4C1008A54A5 /* WeatherViewController.swift */,
 				21E927D22A8322FD0071C7ED /* VideoCell.swift */,
 				216BA0CA2A81E77C008A54A5 /* VideoViewController.swift */,
 				216BBD772A84742A0044F963 /* TranslationViewController.swift */,
 				216BBD792A84C54F0044F963 /* PapagoPickerViewController.swift */,
+				21B3E5542A85F9E7003E24D9 /* AsyncViewController.swift */,
 				21BF24DF2A80965600480396 /* Main.storyboard */,
 				21BF24E22A80965800480396 /* Assets.xcassets */,
 				21BF24E42A80965800480396 /* LaunchScreen.storyboard */,
@@ -177,14 +204,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				216BBD782A84742A0044F963 /* TranslationViewController.swift in Sources */,
+				21B3E5552A85F9E7003E24D9 /* AsyncViewController.swift in Sources */,
 				216BA0CB2A81E77C008A54A5 /* VideoViewController.swift in Sources */,
 				21E927D32A8322FD0071C7ED /* VideoCell.swift in Sources */,
+				21B3E5532A85E352003E24D9 /* NaverAPIManager.swift in Sources */,
+				2151CB9F2A8CABA000F81BE7 /* VideoDecodable.swift in Sources */,
 				216BA0C92A81C4C1008A54A5 /* WeatherViewController.swift in Sources */,
+				21F357C32A85C776009C14EF /* KakaoAPIManager.swift in Sources */,
 				21BF24DE2A80965600480396 /* MovieViewController.swift in Sources */,
 				216BBD7A2A84C54F0044F963 /* PapagoPickerViewController.swift in Sources */,
+				210F48F92A8A022200C9ACD6 /* BoxOfficeData.swift in Sources */,
+				21F357BF2A85C513009C14EF /* EndPoint.swift in Sources */,
 				21BF24DA2A80965600480396 /* AppDelegate.swift in Sources */,
+				21F357C12A85C5C4009C14EF /* URL+Extension.swift in Sources */,
 				21BF24DC2A80965600480396 /* SceneDelegate.swift in Sources */,
+				21F357BD2A85BCF5009C14EF /* UserDefaultHelper.swift in Sources */,
 				21BF24FB2A809C5800480396 /* APIKey.swift in Sources */,
+				21F357BB2A85BA80009C14EF /* ReusableViewProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
