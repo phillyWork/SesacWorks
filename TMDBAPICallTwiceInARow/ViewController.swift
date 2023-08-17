@@ -38,7 +38,7 @@ class ViewController: UIViewController {
             for season in self.dataManager.getSeasonList() {
                 self.dispatchGroup.enter()
                 self.count += 1
-                print("Count for incretion: \(self.count)")
+                print("Increment Count: \(self.count)")
                 print("Enter Works")
                 self.dataManager.fetchEpisodeList(type: .episodeDetail, seriesId: self.seriesId, seasonNumber: season.seasonNumber) {
                     
@@ -47,7 +47,7 @@ class ViewController: UIViewController {
 
                     self.dispatchGroup.leave()
                     self.count -= 1
-                    print("Count for decretion: \(self.count)")
+                    print("Decrement Count: \(self.count)")
                     print("Leave Works for sure")
                 }
 //                self.dispatchGroup.wait()

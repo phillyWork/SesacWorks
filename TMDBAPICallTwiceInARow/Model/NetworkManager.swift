@@ -31,15 +31,16 @@ class NetworkManager {
 //        }
 //    }
     
-    func fetchTVDetail(type: EndPoint, seriesId: Int, completionHandler: @escaping ([Season]) -> ()) {
+    func fetchTVDetail(type: EndPoint, seriesId: Int, success: @escaping ([Season]) -> (), failure: @escaping (AFError) -> ()) {
         let url = type.requestUrl + "\(seriesId)"
         
         AF.request(url, method: .get, headers: headers).validate().responseDecodable(of: TVDetail.self) { response in
             switch response.result {
             case .success(let value):
-                completionHandler(value.seasons)
+                success(value.seasons)
             case .failure(let error):
                 print("Error: ", error.localizedDescription)
+                failure(error)
             }
         }
     }

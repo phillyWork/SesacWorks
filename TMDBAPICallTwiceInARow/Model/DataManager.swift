@@ -40,6 +40,9 @@ class DataManager {
             self.seasonList = seasonList
             print("season total: \(self.seasonList.count)")
             completionHandler()
+        } failure: { error in
+            print("No season data from NetworkManager")
+            completionHandler()
         }
     }
     
