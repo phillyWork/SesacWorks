@@ -10,7 +10,7 @@ import Foundation
 // MARK: - TrendTVResult
 struct TrendTVResult: Codable {
     let page: Int
-    let results: [Result]
+    let results: [TVSeriesDetail]
     let totalPages, totalResults: Int
 
     enum CodingKeys: String, CodingKey {
@@ -21,7 +21,7 @@ struct TrendTVResult: Codable {
 }
 
 // MARK: - Result
-struct Result: Codable {
+struct TVSeriesDetail: Codable {
     let adult: Bool
     let backdropPath: String
     let id: Int

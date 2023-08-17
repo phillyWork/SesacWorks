@@ -36,6 +36,13 @@ class EpisodeCollectionViewCell: UICollectionViewCell {
         episodeOverviewLabel.font = .systemFont(ofSize: 14, weight: .medium)
         episodeOverviewLabel.numberOfLines = 0
     }
+    
+    override func prepareForReuse() {
+        stillImageView.image = nil
+        seasonEpisodeNumberLabel.text = nil
+        episodeTitleLabel.text = nil
+        episodeOverviewLabel.text = nil
+    }
 
     func updateUIWithData() {
         guard let episode = episode else { return }
@@ -48,7 +55,7 @@ class EpisodeCollectionViewCell: UICollectionViewCell {
         let url = URL(string: ImagePath.stillPath.requestUrl + stillPath)
         stillImageView.kf.setImage(with: url)
         
-        seasonEpisodeNumberLabel.text = episode.seasonEpisodeNumber
+//        seasonEpisodeNumberLabel.text = episode.seasonEpisodeNumber
         episodeTitleLabel.text = episode.name
         episodeOverviewLabel.text = episode.overview
     }

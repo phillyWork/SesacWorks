@@ -36,6 +36,13 @@ class SeasonCollectionReusableView: UICollectionReusableView {
         rateLabel.font = .systemFont(ofSize: 13, weight: .medium)
     }
     
+    override func prepareForReuse() {
+        posterImageView.image = nil
+        titleLabel.text = nil
+        detailLabel.text = nil
+        rateLabel.text = nil
+    }
+    
     func updateUIViaData() {
         guard let season = season else { return }
         
@@ -43,7 +50,7 @@ class SeasonCollectionReusableView: UICollectionReusableView {
         posterImageView.kf.setImage(with: url)
         
         titleLabel.text = season.name
-        detailLabel.text = season.detail
+//        detailLabel.text = season.detail
         
         let rate = round(season.voteAverage*100)/100
         rateLabel.text = "\(rate)"

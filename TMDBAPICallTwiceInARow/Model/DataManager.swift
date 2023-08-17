@@ -44,10 +44,16 @@ class DataManager {
     }
     
     func fetchEpisodeList(type: EndPoint, seriesId: Int, seasonNumber: Int, completionHandler: @escaping () -> ()) {
+        print("Calling fetchSeasonDetail in neteworkManager")
+        
         networkManager.fetchSeasonDetail(type: type, seriesId: seriesId, seasonNumber: seasonNumber) { episodeList in
-//            self.episodeList = episodeList
+            //self.episodeList = episodeList
             self.seasonEpisodeDictionary[seasonNumber] = episodeList
             print("season \(seasonNumber)'s episode count: \(self.seasonEpisodeDictionary[seasonNumber]?.count)")
+            completionHandler()
+        } failure: { error in
+            self.seasonEpisodeDictionary[seasonNumber] = []
+            print("No data in season \(seasonNumber)")
             completionHandler()
         }
     }

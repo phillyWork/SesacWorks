@@ -1,8 +1,8 @@
 //
-//  TVDetail.swift
+//  TVDetail2.swift
 //  TMDBAPICallTwiceInARow
 //
-//  Created by Heedon on 2023/08/16.
+//  Created by Heedon on 2023/08/17.
 //
 
 import Foundation
@@ -11,8 +11,8 @@ import Foundation
 struct TVDetail: Codable {
     let adult: Bool
     let backdropPath: String
-    let createdBy: [JSONAny]
-    let episodeRunTime: [Int]
+    let createdBy: [CreatedBy]
+    let episodeRunTime: [JSONAny]
     let firstAirDate: String
     let genres: [Genre]
     let homepage: String
@@ -20,9 +20,9 @@ struct TVDetail: Codable {
     let inProduction: Bool
     let languages: [String]
     let lastAirDate: String
-    let lastEpisodeToAir: TEpisodeToAir
+    let lastEpisodeToAir: LastEpisodeToAir
     let name: String
-    let nextEpisodeToAir: TEpisodeToAir
+    let nextEpisodeToAir: JSONNull?
     let networks: [Network]
     let numberOfEpisodes, numberOfSeasons: Int
     let originCountry: [String]
@@ -68,22 +68,38 @@ struct TVDetail: Codable {
     }
 }
 
+// MARK: - CreatedBy
+struct CreatedBy: Codable {
+    let id: Int
+    let creditID, name: String
+    let gender: Int
+    let profilePath: String
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case creditID = "credit_id"
+        case name, gender
+        case profilePath = "profile_path"
+    }
+}
+
 // MARK: - Genre
 struct Genre: Codable {
     let id: Int
     let name: String
 }
 
-// MARK: - TEpisodeToAir
-struct TEpisodeToAir: Codable {
+// MARK: - LastEpisodeToAir
+struct LastEpisodeToAir: Codable {
     let id: Int
     let name, overview: String
-    let voteAverage, voteCount: Int
+    let voteAverage: Double
+    let voteCount: Int
     let airDate: String
     let episodeNumber: Int
     let episodeType, productionCode: String
     let runtime, seasonNumber, showID: Int
-    let stillPath: String?
+    let stillPath: String
 
     enum CodingKeys: String, CodingKey {
         case id, name, overview
@@ -126,7 +142,7 @@ struct ProductionCountry: Codable {
 
 // MARK: - Season
 struct Season: Codable {
-    let airDate: String?
+    let airDate: String
     let episodeCount, id: Int
     let name, overview, posterPath: String
     let seasonNumber: Int
@@ -139,16 +155,6 @@ struct Season: Codable {
         case posterPath = "poster_path"
         case seasonNumber = "season_number"
         case voteAverage = "vote_average"
-    }
-    
-    var detail: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        if let airDate = airDate {
-            dateFormatter.date(from: airDate)
-            return "S\(seasonNumber) | \(airDate) | Episodes: \(episodeCount)"
-        }
-        return "S\(seasonNumber)"
     }
 }
 

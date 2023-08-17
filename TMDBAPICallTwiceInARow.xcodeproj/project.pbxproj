@@ -12,7 +12,6 @@
 		213F13072A8CF6E000C8D0F2 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213F13062A8CF6E000C8D0F2 /* URL+Extension.swift */; };
 		213F13092A8CF92D00C8D0F2 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213F13082A8CF92D00C8D0F2 /* EndPoint.swift */; };
 		213F130B2A8CF9DB00C8D0F2 /* TrendTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213F130A2A8CF9DB00C8D0F2 /* TrendTV.swift */; };
-		213F130D2A8CFBAB00C8D0F2 /* TVDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213F130C2A8CFBAB00C8D0F2 /* TVDetail.swift */; };
 		213F130F2A8CFC4E00C8D0F2 /* SeasonDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213F130E2A8CFC4E00C8D0F2 /* SeasonDetail.swift */; };
 		213F13142A8CFDB200C8D0F2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213F13132A8CFDB200C8D0F2 /* NetworkManager.swift */; };
 		213F13162A8CFDB700C8D0F2 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213F13152A8CFDB700C8D0F2 /* DataManager.swift */; };
@@ -30,6 +29,7 @@
 		2151CBC72A8CB58200F81BE7 /* EpisodeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2151CBC52A8CB58200F81BE7 /* EpisodeCollectionViewCell.xib */; };
 		2151CBCA2A8CB59700F81BE7 /* SeasonCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2151CBC82A8CB59700F81BE7 /* SeasonCollectionReusableView.swift */; };
 		2151CBCB2A8CB59700F81BE7 /* SeasonCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2151CBC92A8CB59700F81BE7 /* SeasonCollectionReusableView.xib */; };
+		21553BF52A8E004E00E40C5F /* TVDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21553BF42A8E004E00E40C5F /* TVDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +38,6 @@
 		213F13062A8CF6E000C8D0F2 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		213F13082A8CF92D00C8D0F2 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		213F130A2A8CF9DB00C8D0F2 /* TrendTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTV.swift; sourceTree = "<group>"; };
-		213F130C2A8CFBAB00C8D0F2 /* TVDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDetail.swift; sourceTree = "<group>"; };
 		213F130E2A8CFC4E00C8D0F2 /* SeasonDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDetail.swift; sourceTree = "<group>"; };
 		213F13132A8CFDB200C8D0F2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		213F13152A8CFDB700C8D0F2 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -56,6 +55,7 @@
 		2151CBC52A8CB58200F81BE7 /* EpisodeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeCollectionViewCell.xib; sourceTree = "<group>"; };
 		2151CBC82A8CB59700F81BE7 /* SeasonCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCollectionReusableView.swift; sourceTree = "<group>"; };
 		2151CBC92A8CB59700F81BE7 /* SeasonCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeasonCollectionReusableView.xib; sourceTree = "<group>"; };
+		21553BF42A8E004E00E40C5F /* TVDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				213F130A2A8CF9DB00C8D0F2 /* TrendTV.swift */,
-				213F130C2A8CFBAB00C8D0F2 /* TVDetail.swift */,
+				21553BF42A8E004E00E40C5F /* TVDetail.swift */,
 				213F130E2A8CFC4E00C8D0F2 /* SeasonDetail.swift */,
 				213F13132A8CFDB200C8D0F2 /* NetworkManager.swift */,
 				213F13152A8CFDB700C8D0F2 /* DataManager.swift */,
@@ -217,12 +217,12 @@
 				213F13182A8CFEEE00C8D0F2 /* ImagePath.swift in Sources */,
 				2151CBCA2A8CB59700F81BE7 /* SeasonCollectionReusableView.swift in Sources */,
 				213F13072A8CF6E000C8D0F2 /* URL+Extension.swift in Sources */,
-				213F130D2A8CFBAB00C8D0F2 /* TVDetail.swift in Sources */,
 				213F13162A8CFDB700C8D0F2 /* DataManager.swift in Sources */,
 				213F13142A8CFDB200C8D0F2 /* NetworkManager.swift in Sources */,
 				213F13052A8CF6C900C8D0F2 /* APIKey.swift in Sources */,
 				213F13092A8CF92D00C8D0F2 /* EndPoint.swift in Sources */,
 				2151CBB12A8CB45A00F81BE7 /* ViewController.swift in Sources */,
+				21553BF52A8E004E00E40C5F /* TVDetail.swift in Sources */,
 				2151CBAD2A8CB45A00F81BE7 /* AppDelegate.swift in Sources */,
 				2151CBC62A8CB58200F81BE7 /* EpisodeCollectionViewCell.swift in Sources */,
 				213F130B2A8CF9DB00C8D0F2 /* TrendTV.swift in Sources */,

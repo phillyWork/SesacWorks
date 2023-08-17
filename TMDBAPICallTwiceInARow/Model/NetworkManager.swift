@@ -35,18 +35,30 @@ class NetworkManager {
         let url = type.requestUrl + "\(seriesId)"
         
         AF.request(url, method: .get, headers: headers).validate().responseDecodable(of: TVDetail.self) { response in
-            guard let value = response.value else { return }
-            completionHandler(value.seasons)
+            switch response.result {
+            case .success(let value):
+                completionHandler(value.seasons)
+            case .failure(let error):
+                print("Error: ", error.localizedDescription)
+            }
         }
     }
     
-    func fetchSeasonDetail(type: EndPoint, seriesId: Int, seasonNumber: Int, completionHandler: @escaping ([Episode]) -> ()) {
+    func fetchSeasonDetail(type: EndPoint, seriesId: Int, seasonNumber: Int, success: @escaping ([Episode]) -> (), failure: @escaping (AFError) -> ()) {
         let url = type.requestUrl + "\(seriesId)/season/\(seasonNumber)"
-        
+        print("About to call request episode")
         AF.request(url, method: .get, headers: headers).validate().responseDecodable(of: SeasonDetail.self) { response in
-            guard let value = response.value else { return }
-            completionHandler(value.episodes)
+//            print("response: \(response)")
+            switch response.result {
+            case .success(let value):
+                print("value: \(value)")
+                success(value.episodes)
+            case .failure(let error):
+                print("Error: ", error.localizedDescription)
+                failure(error)
+            }
         }
     }
+    
     
 }

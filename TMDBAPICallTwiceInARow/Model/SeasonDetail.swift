@@ -8,6 +8,7 @@
 import Foundation
 
 // MARK: - SeasonDetail
+// MARK: - SeasonDetail
 struct SeasonDetail: Codable {
     let id, airDate: String
     let episodes: [Episode]
@@ -32,11 +33,10 @@ struct SeasonDetail: Codable {
 struct Episode: Codable {
     let airDate: String
     let episodeNumber: Int
-    let episodeType: EpisodeType
+    let episodeType: String
     let id: Int
     let name, overview, productionCode: String
-    let runtime: Int?
-    let seasonNumber, showID: Int
+    let runtime, seasonNumber, showID: Int
     let stillPath: String?
     let voteAverage: Double
     let voteCount: Int
@@ -57,15 +57,11 @@ struct Episode: Codable {
         case crew
         case guestStars = "guest_stars"
     }
-    
-    var seasonEpisodeNumber: String {
-        return "S\(seasonNumber) ● E\(episodeNumber)"
-    }
 }
 
 // MARK: - Crew
 struct Crew: Codable {
-    let job: Job?
+    let job: String?
     let department: Department?
     let creditID: String
     let adult: Bool
@@ -93,24 +89,11 @@ struct Crew: Codable {
 enum Department: String, Codable {
     case acting = "Acting"
     case art = "Art"
+    case camera = "Camera"
+    case creator = "Creator"
     case directing = "Directing"
-    case visualEffects = "Visual Effects"
+    case editing = "Editing"
+    case production = "Production"
+    case sound = "Sound"
     case writing = "Writing"
-}
-
-enum Job: String, Codable {
-    case animationDirector = "Animation Director"
-    case artDirection = "Art Direction"
-    case assistantDirector = "Assistant Director"
-    case director = "Director"
-    case keyAnimation = "Key Animation"
-    case openingEndingAnimation = "Opening/Ending Animation"
-    case screenplay = "Screenplay"
-    case storyboardArtist = "Storyboard Artist"
-    case supervisingAnimationDirector = "Supervising Animation Director"
-    case writer = "Writer"
-}
-
-enum EpisodeType: String, Codable {
-    case standard = "standard"
 }
