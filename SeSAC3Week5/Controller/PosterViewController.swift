@@ -20,8 +20,6 @@ class PosterViewController: UIViewController {
 //
 //    var secondList = MovieRecommendation(page: 0, totalPages: 0, results: [], totalResults: 0)
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
