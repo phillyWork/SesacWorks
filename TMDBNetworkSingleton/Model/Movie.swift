@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Movie {
+struct MovieJSON {
     let title: String
     let movieId: Int
     let overview: String

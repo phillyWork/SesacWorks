@@ -14,18 +14,17 @@ class DataManager {
     
     private let networkManager = NetworkManager.shared
     
-    private var movieContents = [Movie]()
-    private var castingLists = [Casting]()
+    private var movieContents = [MovieJSON]()
+    private var castingLists = [CastingJSON]()
     
-    private var movieTrendDecodableStruct = [Result]()
+    private var movieTrendDecodableStruct = [Movie]()
     private var castingListDeocdableStruct = [Cast]()
-    
     
     private var pageNum = 1
     
     //MARK: - GET
 
-    func getContentsList() -> [Result] {
+    func getContentsList() -> [Movie] {
         return movieTrendDecodableStruct
     }
     
@@ -65,7 +64,7 @@ class DataManager {
                 let genreIds = movie["genre_ids"].arrayObject as! [Int]
                 let releaseDate = movie["release_date"].stringValue
                 
-                let movieInstance = Movie(title: title, movieId: movieId, overview: overview, backdropPath: backdropPath, posterPath: posterPath, rate: rate, genreIds: genreIds, releaseDate: releaseDate)
+                let movieInstance = MovieJSON(title: title, movieId: movieId, overview: overview, backdropPath: backdropPath, posterPath: posterPath, rate: rate, genreIds: genreIds, releaseDate: releaseDate)
                 self.movieContents.append(movieInstance)
             }
             completionHandler()
@@ -83,7 +82,7 @@ class DataManager {
                 let character = cast["character"].stringValue
                 let profilePath = cast["profile_path"].stringValue
                 
-                let castInstance = Casting(name: name, character: character, profilePath: profilePath)
+                let castInstance = CastingJSON(name: name, character: character, profilePath: profilePath)
                 
                 self.castingLists.append(castInstance)
             }
@@ -99,9 +98,18 @@ class DataManager {
     
     func setMovieTrendListWithDecodableStruct(type: EndPoint, page: Int, completionHandler: @escaping () -> ()) {
         //응답값을 구조체에 담아버림 (하나하나 반복문으로 data를 담을 필요 없음)
-        networkManager.callTrendMovieRequestWithDecodableStructure(type: type, page: page) { trendList in
-            self.movieTrendDecodableStruct = trendList.results
-            completionHandler()
+        networkManager.callTrendMovieRequestWithDecodableStructure(type: type, page: page) { result in
+            switch result {
+            case .success(let success):
+                self.movieTrendDecodableStruct.append(contentsOf: success)
+                print("saving new movie list succeed")
+                completionHandler()
+            case .failure(let failure):
+                print("Error: ", failure.localizedDescription)
+                completionHandler()
+            }
+            
+            
         }
     }
     
@@ -109,9 +117,16 @@ class DataManager {
         //이전 영화 casting 목록 삭제
         castingListDeocdableStruct.removeAll()
         
-        networkManager.callCasintListRequestWithDecodableStructure(type: type, movieId: movieId) { castingList in
-            self.castingListDeocdableStruct = castingList.cast
-            completionHandler()
+        networkManager.callCasintListRequestWithDecodableStructure(type: type, movieId: movieId) { result in
+            switch result {
+            case .success(let success):
+                self.castingListDeocdableStruct.append(contentsOf: success)
+                print("saving new cast list succeed")
+                completionHandler()
+            case .failure(let failure):
+                print("Error: ", failure.localizedDescription)
+                completionHandler()
+            }
         }
     }
     

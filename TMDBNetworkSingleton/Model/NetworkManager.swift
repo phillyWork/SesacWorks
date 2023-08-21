@@ -58,7 +58,7 @@ class NetworkManager {
     }
     
     
-    func callTrendMovieRequestWithDecodableStructure(type: EndPoint, page: Int, completionHandler: @escaping (MovieTrend) -> ()) {
+    func callTrendMovieRequestWithDecodableStructure(type: EndPoint, page: Int, completionHandler: @escaping (Result<[Movie], AFError>) -> ()) {
         
         let url = type.requestURL + timeWindow + "?page=\(page)"
         
@@ -66,11 +66,20 @@ class NetworkManager {
         //모든 data 포괄하는 가장 최상단 구조체 활용
         AF.request(url, method: .get, headers: headers).validate()
             .responseDecodable(of: MovieTrend.self) { response in
-                completionHandler(response.value!)
+                switch response.result {
+                case .success(let value):
+                    print("Getting MovieList successful")
+                    completionHandler(.success(value.movieList))
+                case .failure(let error):
+                    print("Failed to get movie list")
+                    completionHandler(.failure(error))
+                }
+//                completionHandler(response.result)
+//                completionHandler(response.value!)
             }
     }
     
-    func callCasintListRequestWithDecodableStructure(type: EndPoint, movieId: Int, completionHandler: @escaping (CastingList) -> ()) {
+    func callCasintListRequestWithDecodableStructure(type: EndPoint, movieId: Int, completionHandler: @escaping (Result<[Cast], AFError>) -> ()) {
         
         let url = type.requestURL + "\(movieId)/credits"
         
@@ -78,7 +87,16 @@ class NetworkManager {
         //모든 data 포괄하는 가장 최상단 구조체 활용
         AF.request(url, method: .get, headers: headers).validate()
             .responseDecodable(of: CastingList.self) { response in
-                completionHandler(response.value!)
+                switch response.result {
+                case.success(let value):
+                    print("Getting CastList successful")
+                    completionHandler(.success(value.cast))
+                case .failure(let error):
+                    print("Failed to get cast list")
+                    completionHandler(.failure(error))
+                }
+//                completionHandler(response.result)
+//                completionHandler(response.value!)
             }
     }
     

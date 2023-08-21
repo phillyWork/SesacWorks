@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Casting {
+struct CastingJSON {
     
     let name: String
     let character: String

@@ -21,7 +21,7 @@ class CreditViewController: UIViewController {
     
 //    var movie: Movie?
     
-    var movie: Result?
+    var movie: Movie?
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -10,25 +10,26 @@ import Foundation
 // MARK: - MovieTrend
 struct MovieTrend: Codable {
     let page: Int
-    let results: [Result]
+    let movieList: [Movie]
     let totalPages, totalResults: Int
 
     enum CodingKeys: String, CodingKey {
-        case page, results
+        case page
+        case movieList =  "results"
         case totalPages = "total_pages"
         case totalResults = "total_results"
     }
 }
 
 // MARK: - Result
-struct Result: Codable {
+struct Movie: Codable {
     let adult: Bool
     let backdropPath: String
     let id: Int
     let title: String
-    let originalLanguage: OriginalLanguage
+    let originalLanguage: String
     let originalTitle, overview, posterPath: String
-    let mediaType: MediaType
+    let mediaType: String
     let genreIDS: [Int]
     let popularity: Double
     let releaseDate: String
@@ -54,13 +55,13 @@ struct Result: Codable {
     }
 }
 
-enum MediaType: String, Codable {
-    case movie = "movie"
-}
+//enum MediaType: String, Codable {
+//    case movie = "movie"
+//}
 
-enum OriginalLanguage: String, Codable {
-    case en = "en"
-    case hi = "hi"
-    case yo = "yo"
-    case zh = "zh"
-}
+//enum OriginalLanguage: String, Codable {
+//    case en = "en"
+//    case hi = "hi"
+//    case yo = "yo"
+//    case zh = "zh"
+//}

@@ -18,6 +18,7 @@ class ContentCell: UICollectionViewCell {
     @IBOutlet weak var rateDetailLabel: UILabel!
     @IBOutlet weak var ratePointLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var originalTitleLabel: UILabel!
     @IBOutlet weak var lineView: UIView!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var indicatorImageView: UIImageView!
@@ -28,7 +29,7 @@ class ContentCell: UICollectionViewCell {
 //        }
 //    }
     
-    var movie: Result? {
+    var movie: Movie? {
         didSet {
             updateData()
         }
@@ -63,6 +64,9 @@ class ContentCell: UICollectionViewCell {
         
         titleLabel.textColor = .black
         titleLabel.font = .systemFont(ofSize: 14)
+        
+        originalTitleLabel.textColor = .black
+        originalTitleLabel.font = .systemFont(ofSize: 14)
         
         detailLabel.text = "자세히 보기"
         detailLabel.textColor = .black
@@ -133,7 +137,8 @@ class ContentCell: UICollectionViewCell {
         ratePointLabel.text = "\(round(movie.voteAverage*100)/100)"
         let backUrl = URL(string: ImageURL.backPath.requestURL + movie.backdropPath)
         backPathImageView.kf.setImage(with: backUrl)
-        titleLabel.text = "\(movie.title)(\(movie.originalTitle))"
+        titleLabel.text = movie.title
+        originalTitleLabel.text = movie.originalTitle
     }
     
 }
