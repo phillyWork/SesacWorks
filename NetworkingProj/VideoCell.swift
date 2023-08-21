@@ -9,7 +9,7 @@ import UIKit
 
 class VideoCell: UITableViewCell {
     
-    static let identifier = "VideoCell"
+//    static let identifier = "VideoCell"
 
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -29,7 +29,5 @@ class VideoCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-
-    
     
 }

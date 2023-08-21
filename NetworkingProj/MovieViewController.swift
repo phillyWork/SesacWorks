@@ -28,6 +28,9 @@ class MovieViewController: UIViewController {
     //구조체로 데이터 관리
     var movieList: [Movie] = []
     
+    //Codable 선언 (구조체 전체를 property로 선언)
+    var result: BoxOffice?
+    
     //MARK: - Setup
     
     override func viewDidLoad() {
@@ -70,50 +73,60 @@ class MovieViewController: UIViewController {
                 
         let url = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=\(APIKey.boxOfficeKey)&targetDt=\(date)"
         
-        AF.request(url, method: .get).validate().responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-//                print("JSON: \(json)")
-                
-                //원하는 data를 얻기 위해 순서대로 parsing 해야함
-                //let name = json["movieNm"].stringValue
-                
-                //json []: 배열로 데이터 저장 --> index 몇번째 찾을 것인지 판단 필요
-                //개별로 찾을 경우
-//                let name1 = json["boxOfficeResult"]["dailyBoxOfficeList"][0]["movieNm"].stringValue
-//                let name2 = json["boxOfficeResult"]["dailyBoxOfficeList"][1]["movieNm"].stringValue
-//                let name3 = json["boxOfficeResult"]["dailyBoxOfficeList"][2]["movieNm"].stringValue
-//                self.movieList.append(contentsOf: [name1, name2, name3])
-                
-                
-                //tableViewCell에 보여주기: 반복문으로 전체 data 가져오기
-                //배열을 돌기 위함: arrayValue 설정
-                let dailyList = json["boxOfficeResult"]["dailyBoxOfficeList"].arrayValue
-
-                for item in dailyList {
-                    let movieName = item["movieNm"].stringValue
-                    let releaseDate = item["openDt"].stringValue
-
-//                    self.movieList.append(movieName)
-                                    
-                    //담을 data 상수로 설정
-                    let movie = Movie(movieTitle: movieName, releaseDate: releaseDate)
-                    self.movieList.append(movie)
-                }
-                
-                //통신 완료: 애니메이션 종료 (보이지 않지만 멈추지 않으면 계속 animation 진행)
-                self.indicatorView.stopAnimating()
-                //서버에서 받아온 데이터 저장 후 view 갱신 직전: indicator 숨기기
-                self.indicatorView.isHidden = true
-                
-                //data 가져옴: tableView 갱신 필수
-                self.movieTableView.reloadData()
-                
-            case .failure(let error):
-                print(error)
+        AF.request(url, method: .get).validate()
+        //Decodable with JSON depth data structure
+        //모든 data 포괄하는 가장 최상단 구조체 활용
+            .responseDecodable(of: BoxOffice.self) { response in
+                //응답값을 구조체에 담아버림 (하나하나 반복문으로 data를 담을 필요 없음)
+                self.result = response.value
             }
-        }
+        
+        
+        //SwiftyJSON 사용 안함
+//            .responseJSON { response in
+//            switch response.result {
+//            case .success(let value):
+//                let json = JSON(value)
+////                print("JSON: \(json)")
+//
+//                //원하는 data를 얻기 위해 순서대로 parsing 해야함
+//                //let name = json["movieNm"].stringValue
+//
+//                //json []: 배열로 데이터 저장 --> index 몇번째 찾을 것인지 판단 필요
+//                //개별로 찾을 경우
+////                let name1 = json["boxOfficeResult"]["dailyBoxOfficeList"][0]["movieNm"].stringValue
+////                let name2 = json["boxOfficeResult"]["dailyBoxOfficeList"][1]["movieNm"].stringValue
+////                let name3 = json["boxOfficeResult"]["dailyBoxOfficeList"][2]["movieNm"].stringValue
+////                self.movieList.append(contentsOf: [name1, name2, name3])
+//
+//
+//                //tableViewCell에 보여주기: 반복문으로 전체 data 가져오기
+//                //배열을 돌기 위함: arrayValue 설정
+//                let dailyList = json["boxOfficeResult"]["dailyBoxOfficeList"].arrayValue
+//
+//                for item in dailyList {
+//                    let movieName = item["movieNm"].stringValue
+//                    let releaseDate = item["openDt"].stringValue
+//
+////                    self.movieList.append(movieName)
+//
+//                    //담을 data 상수로 설정
+//                    let movie = Movie(movieTitle: movieName, releaseDate: releaseDate)
+//                    self.movieList.append(movie)
+//                }
+//
+//                //통신 완료: 애니메이션 종료 (보이지 않지만 멈추지 않으면 계속 animation 진행)
+//                self.indicatorView.stopAnimating()
+//                //서버에서 받아온 데이터 저장 후 view 갱신 직전: indicator 숨기기
+//                self.indicatorView.isHidden = true
+//
+//                //data 가져옴: tableView 갱신 필수
+//                self.movieTableView.reloadData()
+//
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
         
     }
     
@@ -128,8 +141,12 @@ extension MovieViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //tableView 기본 코드 작동 확인 목적
 //        return 30
+  
         //실제 데이터 개수만큼 보이기
-        return movieList.count
+//        return movieList.count
+        
+        //Codable 구조체 활용
+        return (result?.boxOfficeResult.dailyBoxOfficeList.count)!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
