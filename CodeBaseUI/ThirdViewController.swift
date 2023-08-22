@@ -93,8 +93,11 @@ class ThirdViewController: UIViewController {
     
     let chatImageView: UIImageView = {
         let iv = UIImageView()
-        iv.contentMode = .scaleAspectFit
-//        iv.contentMode = .scaleAspectFill
+//        iv.contentMode = .scaleAspectFit
+//        iv.contentMode = .scaleToFill
+        iv.contentMode = .scaleAspectFill
+        iv.clipsToBounds = true
+        iv.layer.cornerRadius = 10
 //        iv.image = UIImage(systemName: "cloud.fill")
         iv.image = UIImage(named: "swiftBanner6")
         iv.backgroundColor = .blue
