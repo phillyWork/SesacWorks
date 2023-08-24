@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21592AAA2A973AA400AD09A4 /* NetflixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21592AA92A973AA400AD09A4 /* NetflixViewController.swift */; };
+		21592AAC2A973ADD00AD09A4 /* Generic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21592AAB2A973ADD00AD09A4 /* Generic.swift */; };
+		21592AAE2A973C2500AD09A4 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21592AAD2A973C2500AD09A4 /* Enum.swift */; };
+		21592AB02A973D7900AD09A4 /* WhiteImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21592AAF2A973D7900AD09A4 /* WhiteImageButton.swift */; };
+		21592AB32A973D9100AD09A4 /* WhiteLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21592AB22A973D9100AD09A4 /* WhiteLabel.swift */; };
+		21592AB62A9746CC00AD09A4 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21592AB52A9746CC00AD09A4 /* CircleButton.swift */; };
+		21592AB82A9750C900AD09A4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21592AB72A9750C900AD09A4 /* LoginViewController.swift */; };
+		21592ABA2A978CE100AD09A4 /* GrayTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21592AB92A978CE100AD09A4 /* GrayTextField.swift */; };
 		21AED5252A949EB600697054 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AED5242A949EB600697054 /* AppDelegate.swift */; };
 		21AED5272A949EB600697054 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AED5262A949EB600697054 /* SceneDelegate.swift */; };
 		21AED5292A949EB600697054 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AED5282A949EB600697054 /* FirstViewController.swift */; };
@@ -20,6 +28,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21592AA92A973AA400AD09A4 /* NetflixViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetflixViewController.swift; sourceTree = "<group>"; };
+		21592AAB2A973ADD00AD09A4 /* Generic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generic.swift; sourceTree = "<group>"; };
+		21592AAD2A973C2500AD09A4 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		21592AAF2A973D7900AD09A4 /* WhiteImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteImageButton.swift; sourceTree = "<group>"; };
+		21592AB22A973D9100AD09A4 /* WhiteLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteLabel.swift; sourceTree = "<group>"; };
+		21592AB52A9746CC00AD09A4 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		21592AB72A9750C900AD09A4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		21592AB92A978CE100AD09A4 /* GrayTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayTextField.swift; sourceTree = "<group>"; };
 		21AED5212A949EB600697054 /* CodeBaseUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeBaseUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21AED5242A949EB600697054 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21AED5262A949EB600697054 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +61,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21592AB12A973D8300AD09A4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				21AED5282A949EB600697054 /* FirstViewController.swift */,
+				21AED5382A949ED300697054 /* SecondViewController.swift */,
+				21AED53A2A949EDB00697054 /* ThirdViewController.swift */,
+				21592AA92A973AA400AD09A4 /* NetflixViewController.swift */,
+				21592AB72A9750C900AD09A4 /* LoginViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		21592AB42A973D9500AD09A4 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				21592AAF2A973D7900AD09A4 /* WhiteImageButton.swift */,
+				21592AB22A973D9100AD09A4 /* WhiteLabel.swift */,
+				21AED53F2A94CEA100697054 /* PaddingLabel.swift */,
+				21592AB52A9746CC00AD09A4 /* CircleButton.swift */,
+				21592AB92A978CE100AD09A4 /* GrayTextField.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
 		21AED5182A949EB600697054 = {
 			isa = PBXGroup;
 			children = (
@@ -66,10 +106,10 @@
 			children = (
 				21AED5242A949EB600697054 /* AppDelegate.swift */,
 				21AED5262A949EB600697054 /* SceneDelegate.swift */,
-				21AED5282A949EB600697054 /* FirstViewController.swift */,
-				21AED5382A949ED300697054 /* SecondViewController.swift */,
-				21AED53A2A949EDB00697054 /* ThirdViewController.swift */,
-				21AED53F2A94CEA100697054 /* PaddingLabel.swift */,
+				21592AAD2A973C2500AD09A4 /* Enum.swift */,
+				21592AAB2A973ADD00AD09A4 /* Generic.swift */,
+				21592AB42A973D9500AD09A4 /* CustomView */,
+				21592AB12A973D8300AD09A4 /* Controller */,
 				21AED52A2A949EB600697054 /* Main.storyboard */,
 				21AED52D2A949EB900697054 /* Assets.xcassets */,
 				21AED52F2A949EB900697054 /* LaunchScreen.storyboard */,
@@ -158,9 +198,17 @@
 				21AED5402A94CEA100697054 /* PaddingLabel.swift in Sources */,
 				21AED5392A949ED300697054 /* SecondViewController.swift in Sources */,
 				21AED5292A949EB600697054 /* FirstViewController.swift in Sources */,
+				21592AB62A9746CC00AD09A4 /* CircleButton.swift in Sources */,
+				21592ABA2A978CE100AD09A4 /* GrayTextField.swift in Sources */,
 				21AED53B2A949EDB00697054 /* ThirdViewController.swift in Sources */,
 				21AED5252A949EB600697054 /* AppDelegate.swift in Sources */,
+				21592AAE2A973C2500AD09A4 /* Enum.swift in Sources */,
+				21592AB32A973D9100AD09A4 /* WhiteLabel.swift in Sources */,
+				21592AAC2A973ADD00AD09A4 /* Generic.swift in Sources */,
 				21AED5272A949EB600697054 /* SceneDelegate.swift in Sources */,
+				21592AAA2A973AA400AD09A4 /* NetflixViewController.swift in Sources */,
+				21592AB82A9750C900AD09A4 /* LoginViewController.swift in Sources */,
+				21592AB02A973D7900AD09A4 /* WhiteImageButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
