@@ -31,6 +31,12 @@ class CastCell: UITableViewCell {
     
         configUI()
     }
+    
+    override func prepareForReuse() {
+        castImageView.image = nil
+        nameLabel.text = nil
+        roleLabel.text = nil
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
