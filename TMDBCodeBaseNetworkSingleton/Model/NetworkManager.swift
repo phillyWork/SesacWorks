@@ -15,6 +15,47 @@ class NetworkManager {
         "Authorization": "Bearer \(APIKey.tmdbAccessTokenAuth)"
     ]
     
+    
+    //MARK: - Generic
+    
+    func callRequest<T: Codable>(type: DataUrl, page: Int?, movieId: Int?, seriesId: Int?, seasonNumber: Int?, completionHandler: @escaping (Result<T, AFError>) -> ()) {
+        
+        var url: String = ""
+        
+        //url 설정
+//        switch type {
+//        case .trendMovie:
+//
+//        case .movieCasting:
+//
+//        case .trendTV:
+//
+//        case .seasonDetail:
+//
+//        case .episodeDetail:
+//
+//        case .similarMovie:
+//
+//        case .video:
+//
+//        }
+        
+        //실제 원하는 배열 데이터 보다 한단계 위의 데이터 전달하기
+        //DataManager에서 큰 데이터 받아서 필요한 배열 데이터 확보하고 활용하기
+        AF.request(url, method: .get, headers: headers).validate().responseDecodable(of: T.self) { response in
+            switch response.result {
+            case .success(let value):
+                print("Getting data succeed")
+                completionHandler(.success(value))
+            case .failure(let error):
+                print("Getting data failed")
+                completionHandler(.failure(error))
+            }
+        }
+        
+    }
+    
+    
     //MARK: - Trending Movie
 
     func callRequestTrendMovie(type: DataUrl, page: Int, completionHandler: @escaping (Result<[Movie], AFError>) -> ()) {
@@ -97,8 +138,8 @@ class NetworkManager {
     
     //MARK: - Similar Movie Lists
     
-    func callRequestSimilarMovieList(type: DataUrl, movieId: Int, pageNum: Int, completionHandler: @escaping (Result<[SimilarMovie], AFError>) -> ()) {
-        let url = URL.makeDataURLString("\(movieId)"+type.requestURL+"\(pageNum)")
+    func callRequestSimilarMovieList(type: DataUrl, movieId: Int, page: Int, completionHandler: @escaping (Result<[SimilarMovie], AFError>) -> ()) {
+        let url = URL.makeDataURLString("\(movieId)"+type.requestURL+"\(page)")
         AF.request(url, method: .get, headers: headers).validate().responseDecodable(of: SimilarMovieList.self) { response in
             switch response.result {
             case .success(let value):

@@ -137,7 +137,7 @@ class DataManager {
     }
     
     func setupSimilarMovieList(type: DataUrl, movieId: Int, pageNum: Int, completionHandler: @escaping () -> ()) {
-        networkManager.callRequestSimilarMovieList(type: type, movieId: movieId, pageNum: pageNum) { result in
+        networkManager.callRequestSimilarMovieList(type: type, movieId: movieId, page: pageNum) { result in
             switch result {
             case .success(let success):
                 self.similarMovieList.append(contentsOf: success)
