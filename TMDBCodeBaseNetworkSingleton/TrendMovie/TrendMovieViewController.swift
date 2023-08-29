@@ -24,6 +24,8 @@ class TrendMovieViewController: BaseViewController {
     override func configViews() {
         super.configViews()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person"), style: .plain, target: self, action: #selector(profileButtonTapped))
+        
         trendView.collectionView.delegate = self
         trendView.collectionView.dataSource = self
         trendView.collectionView.prefetchDataSource = self
@@ -38,6 +40,14 @@ class TrendMovieViewController: BaseViewController {
             print("Setup Data is done")
             self.trendView.collectionView.reloadData()
         }
+    }
+    
+    @objc func profileButtonTapped() {
+        let profileVC = ProfileViewController()
+        profileVC.profile = dataManager.getProfile()
+        let nav = UINavigationController(rootViewController: profileVC)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true)
     }
     
 }
@@ -68,7 +78,7 @@ extension TrendMovieViewController: UICollectionViewDelegate, UICollectionViewDa
         for indexPath in indexPaths {
             if dataManager.getMovieTrend().count - 1 == indexPath.row {
                 dataManager.addPageNum()
-                dataManager.setupMovieTrendList(type: .trendMovie, page: dataManager.getPageNum()) {
+                dataManager.setupMovieTrendList(type: .trendMovie, page: dataManager.getPageNumForTrend()) {
                     self.trendView.collectionView.reloadData()
                 }
             }

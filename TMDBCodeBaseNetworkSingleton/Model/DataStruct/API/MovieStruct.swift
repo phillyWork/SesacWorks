@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - MovieTrend
-struct MovieTrend: Codable {
+struct TrendMovie: Codable {
     let page: Int
     let movieList: [Movie]
     let totalPages, totalResults: Int

@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21A4BB682A9DCDFC00C45B3E /* ReusableViewProtocol+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4BB672A9DCDFC00C45B3E /* ReusableViewProtocol+Extension.swift */; };
+		21A4BB6C2A9DDC4000C45B3E /* CastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4BB6B2A9DDC3F00C45B3E /* CastTableViewCell.swift */; };
+		21A4BB6F2A9DDE8C00C45B3E /* SegmentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4BB6E2A9DDE8C00C45B3E /* SegmentCollectionViewCell.swift */; };
+		21A4BB722A9DE07300C45B3E /* OverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4BB712A9DE07300C45B3E /* OverviewTableViewCell.swift */; };
+		21A4BB742A9DE4CF00C45B3E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4BB732A9DE4CF00C45B3E /* ProfileViewController.swift */; };
+		21A4BB772A9DE4E100C45B3E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4BB762A9DE4E100C45B3E /* ProfileView.swift */; };
+		21A4BB792A9DE64500C45B3E /* ChevronButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4BB782A9DE64500C45B3E /* ChevronButton.swift */; };
+		21A4BB7B2A9DE78500C45B3E /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4BB7A2A9DE78500C45B3E /* NameViewController.swift */; };
+		21A4BB7D2A9DE78C00C45B3E /* AgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4BB7C2A9DE78C00C45B3E /* AgeViewController.swift */; };
+		21A4BB7F2A9DE79500C45B3E /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4BB7E2A9DE79500C45B3E /* EmailViewController.swift */; };
+		21A4BB822A9DE8AF00C45B3E /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4BB812A9DE8AF00C45B3E /* Profile.swift */; };
+		21A4BB852A9DF00200C45B3E /* NSNotification.Name+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4BB842A9DF00200C45B3E /* NSNotification.Name+Extension.swift */; };
+		21A4BB872A9E305600C45B3E /* NotUsingGenericEachNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4BB862A9E305600C45B3E /* NotUsingGenericEachNetworking.swift */; };
 		21F62DD32A9C980900DD2CC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F62DD22A9C980900DD2CC9 /* AppDelegate.swift */; };
 		21F62DD52A9C980900DD2CC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F62DD42A9C980900DD2CC9 /* SceneDelegate.swift */; };
 		21F62DD72A9C980900DD2CC9 /* TrendMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F62DD62A9C980900DD2CC9 /* TrendMovieViewController.swift */; };
@@ -20,7 +33,7 @@
 		21F62DF52A9C996500DD2CC9 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 21F62DF42A9C996500DD2CC9 /* .gitignore */; };
 		21F62DF72A9C997400DD2CC9 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F62DF62A9C997400DD2CC9 /* APIKey.swift */; };
 		21F62DF92A9CA89D00DD2CC9 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F62DF82A9CA89D00DD2CC9 /* Protocol.swift */; };
-		21F62DFB2A9CA8BE00DD2CC9 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F62DFA2A9CA8BE00DD2CC9 /* Extension.swift */; };
+		21F62DFB2A9CA8BE00DD2CC9 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F62DFA2A9CA8BE00DD2CC9 /* URL+Extension.swift */; };
 		21F62DFD2A9CA9EC00DD2CC9 /* CastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F62DFC2A9CA9EC00DD2CC9 /* CastViewController.swift */; };
 		21F62DFF2A9CAA0700DD2CC9 /* MovieStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F62DFE2A9CAA0700DD2CC9 /* MovieStruct.swift */; };
 		21F62E012A9CAA0F00DD2CC9 /* CastStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F62E002A9CAA0F00DD2CC9 /* CastStruct.swift */; };
@@ -48,6 +61,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		21A4BB672A9DCDFC00C45B3E /* ReusableViewProtocol+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableViewProtocol+Extension.swift"; sourceTree = "<group>"; };
+		21A4BB6B2A9DDC3F00C45B3E /* CastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastTableViewCell.swift; sourceTree = "<group>"; };
+		21A4BB6E2A9DDE8C00C45B3E /* SegmentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCollectionViewCell.swift; sourceTree = "<group>"; };
+		21A4BB712A9DE07300C45B3E /* OverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTableViewCell.swift; sourceTree = "<group>"; };
+		21A4BB732A9DE4CF00C45B3E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		21A4BB762A9DE4E100C45B3E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		21A4BB782A9DE64500C45B3E /* ChevronButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronButton.swift; sourceTree = "<group>"; };
+		21A4BB7A2A9DE78500C45B3E /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
+		21A4BB7C2A9DE78C00C45B3E /* AgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeViewController.swift; sourceTree = "<group>"; };
+		21A4BB7E2A9DE79500C45B3E /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
+		21A4BB812A9DE8AF00C45B3E /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		21A4BB842A9DF00200C45B3E /* NSNotification.Name+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification.Name+Extension.swift"; sourceTree = "<group>"; };
+		21A4BB862A9E305600C45B3E /* NotUsingGenericEachNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotUsingGenericEachNetworking.swift; sourceTree = "<group>"; };
 		21F62DCF2A9C980900DD2CC9 /* TMDBCodeBaseNetworkSingleton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDBCodeBaseNetworkSingleton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F62DD22A9C980900DD2CC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21F62DD42A9C980900DD2CC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,7 +86,7 @@
 		21F62DF42A9C996500DD2CC9 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		21F62DF62A9C997400DD2CC9 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		21F62DF82A9CA89D00DD2CC9 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
-		21F62DFA2A9CA8BE00DD2CC9 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		21F62DFA2A9CA8BE00DD2CC9 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		21F62DFC2A9CA9EC00DD2CC9 /* CastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastViewController.swift; sourceTree = "<group>"; };
 		21F62DFE2A9CAA0700DD2CC9 /* MovieStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieStruct.swift; sourceTree = "<group>"; };
 		21F62E002A9CAA0F00DD2CC9 /* CastStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastStruct.swift; sourceTree = "<group>"; };
@@ -101,6 +127,109 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21A4BB662A9DCDE600C45B3E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				21F62DFA2A9CA8BE00DD2CC9 /* URL+Extension.swift */,
+				21A4BB672A9DCDFC00C45B3E /* ReusableViewProtocol+Extension.swift */,
+				21A4BB842A9DF00200C45B3E /* NSNotification.Name+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		21A4BB692A9DCF8500C45B3E /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				21F62DF82A9CA89D00DD2CC9 /* Protocol.swift */,
+				21F62E022A9CAA3900DD2CC9 /* Enum.swift */,
+				21A4BB662A9DCDE600C45B3E /* Extension */,
+				21F62E062A9CAA8500DD2CC9 /* URL */,
+			);
+			path = Setup;
+			sourceTree = "<group>";
+		};
+		21A4BB6A2A9DDAD400C45B3E /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				21F62E272A9CE90200DD2CC9 /* TrendMovieCollectionViewCell.swift */,
+				21F62E1C2A9CC3E000DD2CC9 /* TrendMovieView.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		21A4BB6D2A9DDC5100C45B3E /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				21A4BB6B2A9DDC3F00C45B3E /* CastTableViewCell.swift */,
+				21A4BB712A9DE07300C45B3E /* OverviewTableViewCell.swift */,
+				21F62E1F2A9CC42000DD2CC9 /* CastView.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		21A4BB702A9DDECC00C45B3E /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				21A4BB6E2A9DDE8C00C45B3E /* SegmentCollectionViewCell.swift */,
+				21F62E302A9CEBCD00DD2CC9 /* SegmentView.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		21A4BB752A9DE4D300C45B3E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				21A4BB782A9DE64500C45B3E /* ChevronButton.swift */,
+				21A4BB762A9DE4E100C45B3E /* ProfileView.swift */,
+				21A4BB732A9DE4CF00C45B3E /* ProfileViewController.swift */,
+				21A4BB802A9DE79E00C45B3E /* ProfileMenu */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		21A4BB802A9DE79E00C45B3E /* ProfileMenu */ = {
+			isa = PBXGroup;
+			children = (
+				21A4BB7A2A9DE78500C45B3E /* NameViewController.swift */,
+				21A4BB7C2A9DE78C00C45B3E /* AgeViewController.swift */,
+				21A4BB7E2A9DE79500C45B3E /* EmailViewController.swift */,
+			);
+			path = ProfileMenu;
+			sourceTree = "<group>";
+		};
+		21A4BB832A9DEA0800C45B3E /* API */ = {
+			isa = PBXGroup;
+			children = (
+				21F62DFE2A9CAA0700DD2CC9 /* MovieStruct.swift */,
+				21F62E002A9CAA0F00DD2CC9 /* CastStruct.swift */,
+				21F62E092A9CB09F00DD2CC9 /* TVStruct.swift */,
+				21F62E0B2A9CB0C600DD2CC9 /* TVDetail.swift */,
+				21F62E0D2A9CB0FE00DD2CC9 /* SeasonDetail.swift */,
+				21F62E0F2A9CBA2100DD2CC9 /* SimilarMovieList.swift */,
+				21F62E112A9CBA4700DD2CC9 /* VideoList.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		21E1112C2A9D145600F347F9 /* DataStruct */ = {
+			isa = PBXGroup;
+			children = (
+				21A4BB832A9DEA0800C45B3E /* API */,
+				21A4BB812A9DE8AF00C45B3E /* Profile.swift */,
+			);
+			path = DataStruct;
+			sourceTree = "<group>";
+		};
+		21E1112D2A9D146800F347F9 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				21A4BB862A9E305600C45B3E /* NotUsingGenericEachNetworking.swift */,
+				21F62DF12A9C98DA00DD2CC9 /* NetworkManager.swift */,
+				21F62DEF2A9C98A700DD2CC9 /* DataManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		21F62DC62A9C980900DD2CC9 = {
 			isa = PBXGroup;
 			children = (
@@ -123,13 +252,11 @@
 				21F62DD22A9C980900DD2CC9 /* AppDelegate.swift */,
 				21F62DD42A9C980900DD2CC9 /* SceneDelegate.swift */,
 				21F62DF62A9C997400DD2CC9 /* APIKey.swift */,
-				21F62DF82A9CA89D00DD2CC9 /* Protocol.swift */,
-				21F62DFA2A9CA8BE00DD2CC9 /* Extension.swift */,
-				21F62E022A9CAA3900DD2CC9 /* Enum.swift */,
-				21F62E062A9CAA8500DD2CC9 /* URL */,
+				21A4BB692A9DCF8500C45B3E /* Setup */,
 				21F62DF32A9C98E000DD2CC9 /* Model */,
 				21F62E262A9CC4A800DD2CC9 /* Base */,
 				21F62E152A9CC36700DD2CC9 /* OnBoarding */,
+				21A4BB752A9DE4D300C45B3E /* Profile */,
 				21F62E1E2A9CC3EB00DD2CC9 /* TrendMovie */,
 				21F62E212A9CC42400DD2CC9 /* Cast */,
 				21F62E2F2A9CEBB200DD2CC9 /* SimilarAndVideo */,
@@ -144,15 +271,8 @@
 		21F62DF32A9C98E000DD2CC9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				21F62DFE2A9CAA0700DD2CC9 /* MovieStruct.swift */,
-				21F62E002A9CAA0F00DD2CC9 /* CastStruct.swift */,
-				21F62E092A9CB09F00DD2CC9 /* TVStruct.swift */,
-				21F62E0B2A9CB0C600DD2CC9 /* TVDetail.swift */,
-				21F62E0D2A9CB0FE00DD2CC9 /* SeasonDetail.swift */,
-				21F62E0F2A9CBA2100DD2CC9 /* SimilarMovieList.swift */,
-				21F62E112A9CBA4700DD2CC9 /* VideoList.swift */,
-				21F62DF12A9C98DA00DD2CC9 /* NetworkManager.swift */,
-				21F62DEF2A9C98A700DD2CC9 /* DataManager.swift */,
+				21E1112C2A9D145600F347F9 /* DataStruct */,
+				21E1112D2A9D146800F347F9 /* Manager */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -180,8 +300,7 @@
 		21F62E1E2A9CC3EB00DD2CC9 /* TrendMovie */ = {
 			isa = PBXGroup;
 			children = (
-				21F62E272A9CE90200DD2CC9 /* TrendMovieCollectionViewCell.swift */,
-				21F62E1C2A9CC3E000DD2CC9 /* TrendMovieView.swift */,
+				21A4BB6A2A9DDAD400C45B3E /* Scenes */,
 				21F62DD62A9C980900DD2CC9 /* TrendMovieViewController.swift */,
 			);
 			path = TrendMovie;
@@ -190,7 +309,7 @@
 		21F62E212A9CC42400DD2CC9 /* Cast */ = {
 			isa = PBXGroup;
 			children = (
-				21F62E1F2A9CC42000DD2CC9 /* CastView.swift */,
+				21A4BB6D2A9DDC5100C45B3E /* Scenes */,
 				21F62DFC2A9CA9EC00DD2CC9 /* CastViewController.swift */,
 			);
 			path = Cast;
@@ -210,7 +329,7 @@
 		21F62E2F2A9CEBB200DD2CC9 /* SimilarAndVideo */ = {
 			isa = PBXGroup;
 			children = (
-				21F62E302A9CEBCD00DD2CC9 /* SegmentView.swift */,
+				21A4BB702A9DDECC00C45B3E /* Scenes */,
 				21F62E2D2A9CEBAF00DD2CC9 /* SegmentControlViewController.swift */,
 			);
 			path = SimilarAndVideo;
@@ -298,25 +417,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				21F62E192A9CC38A00DD2CC9 /* SecondViewController.swift in Sources */,
+				21A4BB852A9DF00200C45B3E /* NSNotification.Name+Extension.swift in Sources */,
 				21F62E282A9CE90200DD2CC9 /* TrendMovieCollectionViewCell.swift in Sources */,
+				21A4BB792A9DE64500C45B3E /* ChevronButton.swift in Sources */,
 				21F62E2E2A9CEBAF00DD2CC9 /* SegmentControlViewController.swift in Sources */,
 				21F62E232A9CC49A00DD2CC9 /* BaseView.swift in Sources */,
 				21F62DD72A9C980900DD2CC9 /* TrendMovieViewController.swift in Sources */,
 				21F62DF02A9C98A700DD2CC9 /* DataManager.swift in Sources */,
 				21F62E032A9CAA3900DD2CC9 /* Enum.swift in Sources */,
 				21F62E252A9CC4A500DD2CC9 /* BaseViewController.swift in Sources */,
+				21A4BB822A9DE8AF00C45B3E /* Profile.swift in Sources */,
 				21F62DF22A9C98DA00DD2CC9 /* NetworkManager.swift in Sources */,
+				21A4BB872A9E305600C45B3E /* NotUsingGenericEachNetworking.swift in Sources */,
 				21F62DFF2A9CAA0700DD2CC9 /* MovieStruct.swift in Sources */,
+				21A4BB6F2A9DDE8C00C45B3E /* SegmentCollectionViewCell.swift in Sources */,
+				21A4BB7D2A9DE78C00C45B3E /* AgeViewController.swift in Sources */,
 				21F62E052A9CAA8100DD2CC9 /* ImageUrl.swift in Sources */,
 				21F62E172A9CC38400DD2CC9 /* FirstViewController.swift in Sources */,
 				21F62E0C2A9CB0C600DD2CC9 /* TVDetail.swift in Sources */,
 				21F62E012A9CAA0F00DD2CC9 /* CastStruct.swift in Sources */,
 				21F62E1D2A9CC3E000DD2CC9 /* TrendMovieView.swift in Sources */,
+				21A4BB772A9DE4E100C45B3E /* ProfileView.swift in Sources */,
+				21A4BB7F2A9DE79500C45B3E /* EmailViewController.swift in Sources */,
 				21F62E102A9CBA2100DD2CC9 /* SimilarMovieList.swift in Sources */,
+				21A4BB7B2A9DE78500C45B3E /* NameViewController.swift in Sources */,
 				21F62DF92A9CA89D00DD2CC9 /* Protocol.swift in Sources */,
 				21F62DD32A9C980900DD2CC9 /* AppDelegate.swift in Sources */,
 				21F62E122A9CBA4700DD2CC9 /* VideoList.swift in Sources */,
 				21F62E082A9CAAB700DD2CC9 /* DataUrl.swift in Sources */,
+				21A4BB722A9DE07300C45B3E /* OverviewTableViewCell.swift in Sources */,
+				21A4BB6C2A9DDC4000C45B3E /* CastTableViewCell.swift in Sources */,
 				21F62DFD2A9CA9EC00DD2CC9 /* CastViewController.swift in Sources */,
 				21F62DF72A9C997400DD2CC9 /* APIKey.swift in Sources */,
 				21F62E2A2A9CE91F00DD2CC9 /* BaseCollectionViewCell.swift in Sources */,
@@ -324,9 +454,11 @@
 				21F62DD52A9C980900DD2CC9 /* SceneDelegate.swift in Sources */,
 				21F62E0E2A9CB0FE00DD2CC9 /* SeasonDetail.swift in Sources */,
 				21F62E312A9CEBCD00DD2CC9 /* SegmentView.swift in Sources */,
-				21F62DFB2A9CA8BE00DD2CC9 /* Extension.swift in Sources */,
+				21F62DFB2A9CA8BE00DD2CC9 /* URL+Extension.swift in Sources */,
 				21F62E142A9CC36400DD2CC9 /* OnBoardingViewController.swift in Sources */,
+				21A4BB682A9DCDFC00C45B3E /* ReusableViewProtocol+Extension.swift in Sources */,
 				21F62E202A9CC42000DD2CC9 /* CastView.swift in Sources */,
+				21A4BB742A9DE4CF00C45B3E /* ProfileViewController.swift in Sources */,
 				21F62E2C2A9CE92700DD2CC9 /* BaseTableViewCell.swift in Sources */,
 				21F62E1B2A9CC38F00DD2CC9 /* ThirdViewController.swift in Sources */,
 			);

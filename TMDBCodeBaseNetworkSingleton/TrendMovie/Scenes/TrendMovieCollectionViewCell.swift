@@ -191,7 +191,7 @@ class TrendMovieCollectionViewCell: BaseCollectionViewCell {
         
     }
     
-    func updateWithData() {
+    private func updateWithData() {
         guard let movie = movie else {
             print("No data from datamanager")
             return
