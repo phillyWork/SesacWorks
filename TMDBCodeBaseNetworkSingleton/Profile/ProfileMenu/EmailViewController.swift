@@ -7,6 +7,7 @@
 
 import UIKit
 
+//Notification
 class EmailViewController: BaseViewController {
     
     var email: String?
@@ -18,15 +19,12 @@ class EmailViewController: BaseViewController {
         tf.font = .boldSystemFont(ofSize: 15)
         return tf
     }()
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
-        NotificationCenter.default.post(name: .userEmail , object: nil, userInfo: ["": ""])
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let email = email else { return }
+        textField.text = email
     }
     
     override func configViews() {
@@ -36,8 +34,7 @@ class EmailViewController: BaseViewController {
         
         view.addSubview(textField)
         
-        guard let email = email else { return }
-        textField.text = email
+        textField.delegate = self
     }
     
     override func setConstraints() {
@@ -50,8 +47,13 @@ class EmailViewController: BaseViewController {
     }
     
     @objc func saveDataButtonTapped() {
+        print(#function)
+        guard let text = textField.text else {
+            print("No Input!")
+            return
+        }
         
-        
+        NotificationCenter.default.post(name: .userEmail , object: nil, userInfo: ["newEmail": text])
         
         navigationController?.popViewController(animated: true)
     }
@@ -60,9 +62,11 @@ class EmailViewController: BaseViewController {
 //MARK: - Extension for TextField Delegate
 
 extension EmailViewController: UITextFieldDelegate {
-    
-    
-    
+        
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 

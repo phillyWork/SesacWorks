@@ -10,3 +10,9 @@ import Foundation
 protocol ReusableViewProtocol {
     static var identifier: String { get }
 }
+
+//MARK: - Delegate for Data Transfer
+
+protocol AgeSetupDelegate {
+    func receiveAge(ageText: String)
+}

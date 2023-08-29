@@ -20,6 +20,7 @@
 		21A4BB822A9DE8AF00C45B3E /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4BB812A9DE8AF00C45B3E /* Profile.swift */; };
 		21A4BB852A9DF00200C45B3E /* NSNotification.Name+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4BB842A9DF00200C45B3E /* NSNotification.Name+Extension.swift */; };
 		21A4BB872A9E305600C45B3E /* NotUsingGenericEachNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4BB862A9E305600C45B3E /* NotUsingGenericEachNetworking.swift */; };
+		21A4BB892A9E3B2D00C45B3E /* DarkTextLabelWhiteText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4BB882A9E3B2D00C45B3E /* DarkTextLabelWhiteText.swift */; };
 		21F62DD32A9C980900DD2CC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F62DD22A9C980900DD2CC9 /* AppDelegate.swift */; };
 		21F62DD52A9C980900DD2CC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F62DD42A9C980900DD2CC9 /* SceneDelegate.swift */; };
 		21F62DD72A9C980900DD2CC9 /* TrendMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F62DD62A9C980900DD2CC9 /* TrendMovieViewController.swift */; };
@@ -74,6 +75,7 @@
 		21A4BB812A9DE8AF00C45B3E /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		21A4BB842A9DF00200C45B3E /* NSNotification.Name+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification.Name+Extension.swift"; sourceTree = "<group>"; };
 		21A4BB862A9E305600C45B3E /* NotUsingGenericEachNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotUsingGenericEachNetworking.swift; sourceTree = "<group>"; };
+		21A4BB882A9E3B2D00C45B3E /* DarkTextLabelWhiteText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkTextLabelWhiteText.swift; sourceTree = "<group>"; };
 		21F62DCF2A9C980900DD2CC9 /* TMDBCodeBaseNetworkSingleton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDBCodeBaseNetworkSingleton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21F62DD22A9C980900DD2CC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21F62DD42A9C980900DD2CC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -179,8 +181,7 @@
 		21A4BB752A9DE4D300C45B3E /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				21A4BB782A9DE64500C45B3E /* ChevronButton.swift */,
-				21A4BB762A9DE4E100C45B3E /* ProfileView.swift */,
+				21A4BB8B2A9E3C1700C45B3E /* Scenes */,
 				21A4BB732A9DE4CF00C45B3E /* ProfileViewController.swift */,
 				21A4BB802A9DE79E00C45B3E /* ProfileMenu */,
 			);
@@ -209,6 +210,24 @@
 				21F62E112A9CBA4700DD2CC9 /* VideoList.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		21A4BB8A2A9E3C0E00C45B3E /* CustomViewClass */ = {
+			isa = PBXGroup;
+			children = (
+				21A4BB782A9DE64500C45B3E /* ChevronButton.swift */,
+				21A4BB882A9E3B2D00C45B3E /* DarkTextLabelWhiteText.swift */,
+			);
+			path = CustomViewClass;
+			sourceTree = "<group>";
+		};
+		21A4BB8B2A9E3C1700C45B3E /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				21A4BB8A2A9E3C0E00C45B3E /* CustomViewClass */,
+				21A4BB762A9DE4E100C45B3E /* ProfileView.swift */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		21E1112C2A9D145600F347F9 /* DataStruct */ = {
@@ -447,6 +466,7 @@
 				21F62E082A9CAAB700DD2CC9 /* DataUrl.swift in Sources */,
 				21A4BB722A9DE07300C45B3E /* OverviewTableViewCell.swift in Sources */,
 				21A4BB6C2A9DDC4000C45B3E /* CastTableViewCell.swift in Sources */,
+				21A4BB892A9E3B2D00C45B3E /* DarkTextLabelWhiteText.swift in Sources */,
 				21F62DFD2A9CA9EC00DD2CC9 /* CastViewController.swift in Sources */,
 				21F62DF72A9C997400DD2CC9 /* APIKey.swift in Sources */,
 				21F62E2A2A9CE91F00DD2CC9 /* BaseCollectionViewCell.swift in Sources */,

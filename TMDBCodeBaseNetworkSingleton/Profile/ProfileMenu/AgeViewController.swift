@@ -7,9 +7,12 @@
 
 import UIKit
 
+//delegate
 class AgeViewController: BaseViewController {
     
     var age: Int?
+    
+    var delegate: AgeSetupDelegate?
     
     let textField: UITextField = {
         let tf = UITextField()
@@ -29,6 +32,7 @@ class AgeViewController: BaseViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveDataButtonTapped))
         
         view.addSubview(textField)
+        textField.delegate = self
         
         guard let age = age else { return }
         textField.text = "\(age)"
@@ -45,8 +49,9 @@ class AgeViewController: BaseViewController {
     
     @objc func saveDataButtonTapped() {
         
-        
-        
+        if let text = textField.text {
+            delegate?.receiveAge(ageText: text)
+        }
         navigationController?.popViewController(animated: true)
     }
 }
@@ -55,7 +60,10 @@ class AgeViewController: BaseViewController {
 
 extension AgeViewController: UITextFieldDelegate {
     
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
 }
 

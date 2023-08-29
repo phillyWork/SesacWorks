@@ -7,9 +7,12 @@
 
 import UIKit
 
+//closure
 class NameViewController: BaseViewController {
     
     var name: String?
+    
+    var completionHandler: ((String) -> ())?
     
     let textField: UITextField = {
         let tf = UITextField()
@@ -29,6 +32,7 @@ class NameViewController: BaseViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveDataButtonTapped))
         
         view.addSubview(textField)
+        textField.delegate = self
         
         guard let name = name else { return }
         textField.text = name
@@ -45,8 +49,9 @@ class NameViewController: BaseViewController {
     
     @objc func saveDataButtonTapped() {
         
-        
-        
+        if let text = textField.text {
+            completionHandler?(text)
+        }
         navigationController?.popViewController(animated: true)
     }
     
@@ -56,7 +61,9 @@ class NameViewController: BaseViewController {
 
 extension NameViewController: UITextFieldDelegate {
     
-    
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 

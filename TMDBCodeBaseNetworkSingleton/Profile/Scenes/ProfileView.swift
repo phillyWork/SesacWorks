@@ -9,26 +9,9 @@ import UIKit
 
 class ProfileView: BaseView {
     
-    let nameLabel: UILabel = {
-        let label = UILabel()
-        label.backgroundColor = .darkGray
-        label.textColor = .white
-        return label
-    }()
-    
-    let ageLabel: UILabel = {
-        let label = UILabel()
-        label.backgroundColor = .darkGray
-        label.textColor = .white
-        return label
-    }()
-    
-    let emailLabel: UILabel = {
-        let label = UILabel()
-        label.backgroundColor = .darkGray
-        label.textColor = .white
-        return label
-    }()
+    let nameLabel = DarkTextLabelWhiteText()
+    let ageLabel = DarkTextLabelWhiteText()
+    let emailLabel = DarkTextLabelWhiteText()
     
     lazy var chevronNameButton = ChevronButton()
     lazy var chevronAgeButton = ChevronButton()
@@ -61,7 +44,29 @@ class ProfileView: BaseView {
             make.top.equalTo(nameLabel.snp.top)
         }
         
+        ageLabel.snp.makeConstraints { make in
+            make.top.equalTo(nameLabel.snp.bottom).offset(15)
+            make.horizontalEdges.equalTo(nameLabel.snp.horizontalEdges)
+            make.height.equalTo(30)
+        }
         
+        chevronAgeButton.snp.makeConstraints { make in
+            make.leading.equalTo(ageLabel.snp.trailing)
+            make.size.equalTo(30)
+            make.top.equalTo(ageLabel.snp.top)
+        }
+        
+        emailLabel.snp.makeConstraints { make in
+            make.top.equalTo(ageLabel.snp.bottom).offset(15)
+            make.horizontalEdges.equalTo(ageLabel.snp.horizontalEdges)
+            make.height.equalTo(30)
+        }
+        
+        chevronEmailButton.snp.makeConstraints { make in
+            make.leading.equalTo(emailLabel.snp.trailing)
+            make.size.equalTo(30)
+            make.top.equalTo(emailLabel.snp.top)
+        }
         
     }
     

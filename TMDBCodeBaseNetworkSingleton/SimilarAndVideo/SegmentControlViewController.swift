@@ -31,7 +31,7 @@ class SegmentControlViewController: BaseViewController {
         }
         
         dispatchGroup.notify(queue: .main) {
-            <#code#>
+            print("Done!")
         }
     }
     
