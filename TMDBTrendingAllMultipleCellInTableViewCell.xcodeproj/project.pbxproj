@@ -15,7 +15,6 @@
 		21E1C3392AA4BE01007102C3 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 21E1C3382AA4BE01007102C3 /* .gitignore */; };
 		21E1C33B2AA4BE10007102C3 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C33A2AA4BE10007102C3 /* APIKey.swift */; };
 		21E1C33D2AA4BE21007102C3 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C33C2AA4BE21007102C3 /* Protocol.swift */; };
-		21E1C33F2AA4BE46007102C3 /* Extension+ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C33E2AA4BE46007102C3 /* Extension+ReusableViewProtocol.swift */; };
 		21E1C3412AA4BE5D007102C3 /* TrendStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C3402AA4BE5D007102C3 /* TrendStruct.swift */; };
 		21E1C3432AA4BE72007102C3 /* SingletonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C3422AA4BE72007102C3 /* SingletonManager.swift */; };
 		21E1C3462AA4BE8F007102C3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 21E1C3452AA4BE8F007102C3 /* SnapKit */; };
@@ -24,6 +23,7 @@
 		21E1C34E2AA4BEC6007102C3 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C34D2AA4BEC6007102C3 /* MovieCell.swift */; };
 		21E1C3502AA4BECB007102C3 /* TVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C34F2AA4BECB007102C3 /* TVCell.swift */; };
 		21E1C3532AA4BEEB007102C3 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C3522AA4BEEB007102C3 /* TableView.swift */; };
+		21E1C3552AA4C17B007102C3 /* Extension+ReuseableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C3542AA4C17B007102C3 /* Extension+ReuseableViewProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +37,6 @@
 		21E1C3382AA4BE01007102C3 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		21E1C33A2AA4BE10007102C3 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		21E1C33C2AA4BE21007102C3 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
-		21E1C33E2AA4BE46007102C3 /* Extension+ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+ReusableViewProtocol.swift"; sourceTree = "<group>"; };
 		21E1C3402AA4BE5D007102C3 /* TrendStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendStruct.swift; sourceTree = "<group>"; };
 		21E1C3422AA4BE72007102C3 /* SingletonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingletonManager.swift; sourceTree = "<group>"; };
 		21E1C3482AA4BEAE007102C3 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -45,6 +44,7 @@
 		21E1C34D2AA4BEC6007102C3 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		21E1C34F2AA4BECB007102C3 /* TVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCell.swift; sourceTree = "<group>"; };
 		21E1C3522AA4BEEB007102C3 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		21E1C3542AA4C17B007102C3 /* Extension+ReuseableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+ReuseableViewProtocol.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +82,7 @@
 				21E1C3262AA4BD58007102C3 /* SceneDelegate.swift */,
 				21E1C33A2AA4BE10007102C3 /* APIKey.swift */,
 				21E1C33C2AA4BE21007102C3 /* Protocol.swift */,
-				21E1C33E2AA4BE46007102C3 /* Extension+ReusableViewProtocol.swift */,
+				21E1C3542AA4C17B007102C3 /* Extension+ReuseableViewProtocol.swift */,
 				21E1C3472AA4BE97007102C3 /* Model */,
 				21E1C34C2AA4BEB8007102C3 /* Base */,
 				21E1C3512AA4BED6007102C3 /* View */,
@@ -209,9 +209,9 @@
 				21E1C3272AA4BD58007102C3 /* SceneDelegate.swift in Sources */,
 				21E1C33D2AA4BE21007102C3 /* Protocol.swift in Sources */,
 				21E1C3532AA4BEEB007102C3 /* TableView.swift in Sources */,
+				21E1C3552AA4C17B007102C3 /* Extension+ReuseableViewProtocol.swift in Sources */,
 				21E1C34B2AA4BEB3007102C3 /* BaseView.swift in Sources */,
 				21E1C3502AA4BECB007102C3 /* TVCell.swift in Sources */,
-				21E1C33F2AA4BE46007102C3 /* Extension+ReusableViewProtocol.swift in Sources */,
 				21E1C3432AA4BE72007102C3 /* SingletonManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
