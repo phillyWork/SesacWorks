@@ -46,7 +46,6 @@ enum DataUrl {
             return "/videos?language=ko-KR"
         case .videoTV:
             return "/videos?language=ko-KR"
-            
         }
     }
     

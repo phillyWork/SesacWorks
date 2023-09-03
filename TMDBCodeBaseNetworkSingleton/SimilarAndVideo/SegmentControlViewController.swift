@@ -107,6 +107,16 @@ extension SegmentControlViewController: UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if segmentView.segmentControl.selectedSegmentIndex == 1 {
+            let webVC = WebViewController()
+            webVC.video = dataManager.getVideoList()[indexPath.item]
+            let nav = UINavigationController(rootViewController: webVC)
+            nav.modalPresentationStyle = .fullScreen
+            present(nav, animated: true)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         if segmentView.segmentControl.selectedSegmentIndex == 0 {
             for indexPath in indexPaths {

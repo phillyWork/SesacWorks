@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		214221292AA4E6C600774751 /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214221282AA4E6C600774751 /* VideoCollectionViewCell.swift */; };
+		2142212E2AA4EF2400774751 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2142212D2AA4EF2400774751 /* WebViewController.swift */; };
 		21A4BB682A9DCDFC00C45B3E /* ReusableViewProtocol+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4BB672A9DCDFC00C45B3E /* ReusableViewProtocol+Extension.swift */; };
 		21A4BB6C2A9DDC4000C45B3E /* CastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4BB6B2A9DDC3F00C45B3E /* CastTableViewCell.swift */; };
 		21A4BB6F2A9DDE8C00C45B3E /* SimilarMediaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A4BB6E2A9DDE8C00C45B3E /* SimilarMediaCollectionViewCell.swift */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		214221282AA4E6C600774751 /* VideoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewCell.swift; sourceTree = "<group>"; };
+		2142212D2AA4EF2400774751 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		21A4BB672A9DCDFC00C45B3E /* ReusableViewProtocol+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableViewProtocol+Extension.swift"; sourceTree = "<group>"; };
 		21A4BB6B2A9DDC3F00C45B3E /* CastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastTableViewCell.swift; sourceTree = "<group>"; };
 		21A4BB6E2A9DDE8C00C45B3E /* SimilarMediaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarMediaCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -127,6 +129,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		214221312AA4EF4100774751 /* WebForVideo */ = {
+			isa = PBXGroup;
+			children = (
+				2142212D2AA4EF2400774751 /* WebViewController.swift */,
+			);
+			path = WebForVideo;
+			sourceTree = "<group>";
+		};
 		21A4BB662A9DCDE600C45B3E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +287,7 @@
 				21F62E1E2A9CC3EB00DD2CC9 /* TrendMovie */,
 				21F62E212A9CC42400DD2CC9 /* Cast */,
 				21F62E2F2A9CEBB200DD2CC9 /* SimilarAndVideo */,
+				214221312AA4EF4100774751 /* WebForVideo */,
 				21F62DDB2A9C980A00DD2CC9 /* Assets.xcassets */,
 				21F62DDD2A9C980A00DD2CC9 /* LaunchScreen.storyboard */,
 				21F62DF42A9C996500DD2CC9 /* .gitignore */,
@@ -455,6 +466,7 @@
 				21F62E1D2A9CC3E000DD2CC9 /* TrendView.swift in Sources */,
 				21A4BB772A9DE4E100C45B3E /* ProfileView.swift in Sources */,
 				21A4BB7F2A9DE79500C45B3E /* EmailViewController.swift in Sources */,
+				2142212E2AA4EF2400774751 /* WebViewController.swift in Sources */,
 				21F62E102A9CBA2100DD2CC9 /* SimilarList.swift in Sources */,
 				21A4BB7B2A9DE78500C45B3E /* NameViewController.swift in Sources */,
 				21F62DF92A9CA89D00DD2CC9 /* Protocol.swift in Sources */,

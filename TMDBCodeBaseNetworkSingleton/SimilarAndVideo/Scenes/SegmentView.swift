@@ -24,4 +24,12 @@ class SegmentView: BaseView {
         return view
     }()
     
+    override func configViews() {
+        super.configViews()
+    }
+    
+    override func setConstraints() {
+        super.setConstraints()
+    }
+    
 }
