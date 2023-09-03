@@ -21,7 +21,6 @@ struct Cast: Codable {
     let name, originalName: String
     let popularity: Double
     let profilePath: String?
-    let castID: Int?
     let character: String?
     let creditID: String
     let order: Int?
@@ -35,7 +34,6 @@ struct Cast: Codable {
         case originalName = "original_name"
         case popularity
         case profilePath = "profile_path"
-        case castID = "cast_id"
         case character
         case creditID = "credit_id"
         case order, department, job

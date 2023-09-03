@@ -6,11 +6,16 @@
 //
 
 import UIKit
-import Kingfisher
 
-class TrendMovieCollectionViewCell: BaseCollectionViewCell {
+class TrendCollectionViewCell: BaseCollectionViewCell {
     
     //MARK: - Properties
+    
+    var trendMedia: Trend? {
+        didSet {
+            updateWithData()
+        }
+    }
     
     let dateLabel = {
         let label = UILabel()
@@ -95,13 +100,6 @@ class TrendMovieCollectionViewCell: BaseCollectionViewCell {
         iv.image = UIImage(systemName: "chevron.right")
         return iv
     }()
-    
-    var movie: Movie? {
-        didSet {
-            updateWithData()
-        }
-    }
-    
     
     //MARK: - Setup
     
@@ -192,30 +190,46 @@ class TrendMovieCollectionViewCell: BaseCollectionViewCell {
     }
     
     private func updateWithData() {
-        guard let movie = movie else {
+        guard let trendMedia = trendMedia else {
             print("No data from datamanager")
             return
         }
         
-        dateLabel.text = movie.releaseDate
+        if let releaseDate = trendMedia.releaseDate {
+            dateLabel.text = releaseDate
+        }
         
         var genreText = [String]()
-        for id in movie.genreIDS {
+        for id in trendMedia.genreIDS {
             if let genreName = GenreIds(rawValue: id)?.genreName {
                 genreText.append("#\(genreName) ")
             } else {
                 print("Can't find this \(id) from genre")
             }
         }
-        
         genreTagLabel.text = genreText.joined()
         
-        ratePointLabel.text = "\(round(movie.voteAverage*100)/100)"
+        ratePointLabel.text = "\(round(trendMedia.voteAverage*100)/100)"
         
-        titleLabel.text = movie.title
+        if let name = trendMedia.name {
+            titleLabel.text = name
+        } else {
+            titleLabel.text = trendMedia.title
+        }
         
-        let backUrl = URL(string: ImageUrl.backPath.requestURL + movie.backdropPath)
-        backPathImageView.kf.setImage(with: backUrl)
+        
+        if let backUrl = URL(string: ImageUrl.backPath.requestURL + trendMedia.backdropPath) {
+            DispatchQueue.global().async {
+                do {
+                    let imageData = try Data(contentsOf: backUrl)
+                    DispatchQueue.main.async {
+                        self.backPathImageView.image = UIImage(data: imageData)
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+        }
     }
     
     override func prepareForReuse() {

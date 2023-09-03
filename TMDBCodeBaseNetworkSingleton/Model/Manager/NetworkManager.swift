@@ -23,7 +23,7 @@ class NetworkManager {
         
         //url 설정
         switch type {
-        case .trendMovie:
+        case .trendAll, .trendMovie, .trendTV:
             if let page = page {
                 url = type.requestURL + "?page=\(page)"
             } else {
@@ -33,11 +33,9 @@ class NetworkManager {
             if let movieId = movieId {
                 url = type.requestURL + "\(movieId)/credits"
             }
-        case .trendTV:
-            if let page = page {
-                url = type.requestURL + "?page=\(page)"
-            } else {
-                url = type.requestURL
+        case .tvCasting:
+            if let seriesId = seriesId {
+                url = type.requestURL + "\(seriesId)/credits"
             }
         case .seasonDetail:
             if let seriesId = seriesId {
@@ -49,12 +47,21 @@ class NetworkManager {
             }
         case .similarMovie:
             if let movieId = movieId, let page = page {
-                url = URL.makeDataURLString("\(movieId)"+type.requestURL+"\(page)")
+                url = URL.makeDataURLString("movie/\(movieId)"+type.requestURL+"\(page)")
             }
-        case .video:
+        case .similarTV:
+            if let seriesId = seriesId, let page = page {
+                url = URL.makeDataURLString("tv/\(seriesId)"+type.requestURL+"\(page)")
+            }
+        case .videoMovie:
             if let movieId = movieId {
-                url = URL.makeDataURLString("\(movieId)"+type.requestURL)
+                url = URL.makeDataURLString("movie/\(movieId)"+type.requestURL)
             }
+        case .videoTV:
+            if let seriesId = seriesId {
+                url = URL.makeDataURLString("tv/\(seriesId)"+type.requestURL)
+            }
+            
         }
         
         //실제 원하는 배열 데이터 보다 한단계 위의 데이터 전달하기

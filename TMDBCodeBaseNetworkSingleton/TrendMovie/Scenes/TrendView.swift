@@ -7,11 +7,11 @@
 
 import UIKit
 
-class TrendMovieView: BaseView {
+class TrendView: BaseView {
     
     lazy var collectionView = {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout())
-        collection.register(TrendMovieCollectionViewCell.self, forCellWithReuseIdentifier: TrendMovieCollectionViewCell.identifier)
+        collection.register(TrendCollectionViewCell.self, forCellWithReuseIdentifier: TrendCollectionViewCell.identifier)
         return collection
     }()
  

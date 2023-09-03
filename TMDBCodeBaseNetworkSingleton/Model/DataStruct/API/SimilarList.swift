@@ -7,30 +7,34 @@
 
 import Foundation
 
-struct SimilarMovieList: Codable {
+struct SimilarList: Codable {
     let page: Int
-    let movieList: [SimilarMovie]
+    let list: [Similar]
     let totalPages, totalResults: Int
 
     enum CodingKeys: String, CodingKey {
         case page
-        case movieList = "results"
+        case list = "results"
         case totalPages = "total_pages"
         case totalResults = "total_results"
     }
 }
 
 // MARK: - Result
-struct SimilarMovie: Codable {
+struct Similar: Codable {
     let adult: Bool
     let backdropPath: String?
     let genreIDS: [Int]
     let id: Int
-    let originalLanguage, originalTitle, overview: String
+    let originalLanguage: String
+    let originalTitle: String?
+    let originalName: String?
+    let overview: String
     let popularity: Double
     let posterPath: String?
-    let releaseDate, title: String
-    let video: Bool
+    let releaseDate, title, name: String?
+    let firstAirDate: String?
+    let video: Bool?
     let voteAverage: Double
     let voteCount: Int
 
@@ -41,21 +45,33 @@ struct SimilarMovie: Codable {
         case id
         case originalLanguage = "original_language"
         case originalTitle = "original_title"
+        case originalName = "original_name"
         case overview, popularity
         case posterPath = "poster_path"
         case releaseDate = "release_date"
-        case title, video
+        case firstAirDate = "first_air_date"
+        case title, video, name
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }
     
     var cellTitle: String {
-        return title + "(\(originalTitle))"
+        if let name = name, let originalName = originalName {
+            return name + "(\(originalName)"
+        } else {
+            return title! + "(\(originalTitle))"
+        }
+        
     }
     
     var dateRate: String {
         let rate = round(voteAverage*100)/100
-        return releaseDate + " | \(rate)"
+        
+        if let firstAirDate = firstAirDate {
+            return firstAirDate + " | \(rate)"
+        } else {
+            return releaseDate! + " | \(rate)"
+        }
     }
     
 }

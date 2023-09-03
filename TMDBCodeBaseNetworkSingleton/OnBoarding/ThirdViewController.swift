@@ -57,7 +57,7 @@ class ThirdViewController: BaseViewController {
         //rootViewController 변경
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
-        let trendVC = TrendMovieViewController()
+        let trendVC = TrendViewController()
         let nav = UINavigationController(rootViewController: trendVC)
         //SceneDelegate의 window 설정 변경
         sceneDelegate?.window?.rootViewController = nav

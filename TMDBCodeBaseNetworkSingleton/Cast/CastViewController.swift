@@ -14,7 +14,7 @@ class CastViewController: BaseViewController {
     
     let castView = CastView()
     
-    var movie: Movie?
+    var trendMedia: Trend?
     
     var isOverviewExpanded = false
     
@@ -36,14 +36,32 @@ class CastViewController: BaseViewController {
         castView.tableView.delegate = self
         castView.tableView.dataSource = self
         
-        guard let movie = movie else { return }
-        let backUrl = URL(string: ImageUrl.backPath.requestURL + movie.backdropPath)
-        castView.backdropImageView.kf.setImage(with: backUrl)
+        guard let media = trendMedia else {
+            print("can't get media data from TrendVC")
+            return
+        }
         
-        let posterUrl = URL(string: ImageUrl.posterPath.requestURL + movie.posterPath)
-        castView.posterImageView.kf.setImage(with: posterUrl)
+        if let backUrl = URL(string: ImageUrl.backPath.requestURL + media.backdropPath), let posterUrl = URL(string: ImageUrl.posterPath.requestURL + media.posterPath) {
+            DispatchQueue.global().async {
+                do {
+                    let backImageData = try Data(contentsOf: backUrl)
+                    let posterImageData = try Data(contentsOf: posterUrl)
+                    DispatchQueue.main.async {
+                        self.castView.backdropImageView.image = UIImage(data: backImageData)
+                        self.castView.posterImageView.image = UIImage(data: posterImageData)
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+        }
         
-        castView.titleLabel.text = movie.title
+        if let name = media.name {
+            castView.titleLabel.text = name
+        } else {
+            castView.titleLabel.text = media.title
+        }
+        
     }
     
     override func setConstraints() {
@@ -51,16 +69,27 @@ class CastViewController: BaseViewController {
     }
     
     private func getCastingAPIWithData() {
-        guard let movie = movie else { return }
-        
-        dataManager.setupCastingList(type: .movieCasting, movieId: movie.id) {
-            self.castView.tableView.reloadData()
+        guard let media = trendMedia else { return }
+        switch media.mediaType {
+        case .movie:
+            dataManager.setupCastingList(type: .movieCasting, movieId: media.id, seriesId: nil) {
+                self.castView.tableView.reloadData()
+            }
+        case .tv:
+            dataManager.setupCastingList(type: .tvCasting, movieId: nil, seriesId: media.id) {
+                self.castView.tableView.reloadData()
+            }
         }
+        
+//        dataManager.setupMovieCastingList(type: , movieId: media.id) {
+//            self.castView.tableView.reloadData()
+//        }
     }
     
     @objc func moreBarButtonTapped() {
         let segmentVC = SegmentControlViewController()
-        dataManager.updateMovieID(newMovieId: movie!.id)
+        segmentVC.media = trendMedia
+        navigationController?.pushViewController(segmentVC, animated: true)
     }
     
 }
@@ -93,7 +122,7 @@ extension CastViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             guard let cell = castView.tableView.dequeueReusableCell(withIdentifier: OverviewTableViewCell.identifier) as? OverviewTableViewCell else { return UITableViewCell() }
-            cell.overviewLabel.text = movie?.overview
+            cell.overviewLabel.text = trendMedia?.overview
             cell.overviewLabel.numberOfLines = isOverviewExpanded ? 0 : 2
             return cell
         } else {

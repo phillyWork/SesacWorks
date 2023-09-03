@@ -7,50 +7,67 @@
 
 import Foundation
 
-// MARK: - MovieTrend
-struct TrendMovie: Codable {
+// MARK: - TrendingAllList
+struct TrendingAllList: Codable {
     let page: Int
-    let movieList: [Movie]
+    let trendingList: [Trend]
     let totalPages, totalResults: Int
 
     enum CodingKeys: String, CodingKey {
         case page
-        case movieList =  "results"
+        case trendingList = "results"
         case totalPages = "total_pages"
         case totalResults = "total_results"
     }
 }
 
 // MARK: - Result
-struct Movie: Codable {
+struct Trend: Codable {
     let adult: Bool
     let backdropPath: String
     let id: Int
-    let title: String
+    let name: String?
     let originalLanguage: String
-    let originalTitle, overview, posterPath: String
-    let mediaType: String
+    let originalName: String?
+    let overview, posterPath: String
+    let mediaType: MediaType
     let genreIDS: [Int]
     let popularity: Double
-    let releaseDate: String
-    let video: Bool
+    let firstAirDate: String?
     let voteAverage: Double
     let voteCount: Int
+    let originCountry: [String]?
+    let title, originalTitle, releaseDate: String?
+    let video: Bool?
 
     enum CodingKeys: String, CodingKey {
         case adult
         case backdropPath = "backdrop_path"
-        case id, title
+        case id, name
         case originalLanguage = "original_language"
-        case originalTitle = "original_title"
+        case originalName = "original_name"
         case overview
         case posterPath = "poster_path"
         case mediaType = "media_type"
         case genreIDS = "genre_ids"
         case popularity
-        case releaseDate = "release_date"
-        case video
+        case firstAirDate = "first_air_date"
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
+        case originCountry = "origin_country"
+        case title
+        case originalTitle = "original_title"
+        case releaseDate = "release_date"
+        case video
     }
+    
+    var rating: Double {
+        return round(self.voteAverage*100)/100
+    }
+}
+
+enum MediaType: String, Codable {
+    case movie = "movie"
+    case tv = "tv"
+//    case person = "person"
 }

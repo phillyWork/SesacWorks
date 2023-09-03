@@ -19,7 +19,8 @@ class SegmentView: BaseView {
 
     let collectionView: UICollectionView = {
         let view = UICollectionView()
-        view.register(SegmentCollectionViewCell.self, forCellWithReuseIdentifier: SegmentCollectionViewCell.identifier)
+        view.register(SimilarMediaCollectionViewCell.self, forCellWithReuseIdentifier: SimilarMediaCollectionViewCell.identifier)
+        view.register(VideoCollectionViewCell.self, forCellWithReuseIdentifier: VideoCollectionViewCell.identifier)
         return view
     }()
     

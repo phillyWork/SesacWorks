@@ -29,8 +29,43 @@ enum GenreIds: Int {
     case thriller = 53
     case war = 10752
     case western = 37
+    case actionAdventure = 10759
+    case kids = 10762
+    case news = 10763
+    case reality = 10764
+    case sfFantasy = 10765
+    case soap = 10766
+    case talk = 10767
+    case warPolitics = 10768
+    
     
     var genreName: String {
-        return String(describing: self)
+        switch self {
+        case .actionAdventure:
+            return "action&adventure"
+        case .sfFantasy:
+            return "sf&fantasy"
+        case .warPolitics:
+            return "war&politics"
+        case .tvMovie:
+            return "tv movie"
+        default:
+            return String(describing: self)
+        }
     }
+}
+
+
+
+
+
+
+
+
+//MARK: - TrendType
+
+enum TrendData: String {
+    case trendAll
+    case trendMovie
+    case trendTV
 }

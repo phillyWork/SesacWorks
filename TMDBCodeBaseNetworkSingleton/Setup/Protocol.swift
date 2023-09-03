@@ -7,6 +7,8 @@
 
 import Foundation
 
+//MARK: - Protocol for View Identifiers
+
 protocol ReusableViewProtocol {
     static var identifier: String { get }
 }

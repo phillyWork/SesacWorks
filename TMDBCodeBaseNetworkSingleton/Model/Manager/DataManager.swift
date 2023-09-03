@@ -17,17 +17,17 @@ class DataManager {
     
     private let networkManager = NetworkManager()
     
-    private var trendMovieList = [Movie]()
+//    private var trendMovieList = [Movie]()
+//    private var trendTVList = [TVSeries]()
+
+    private var trendList = [Trend]()
     private var castingList = [Cast]()
     
-    private var trendTVList = [TVSeries]()
     private var seasonList = [Season]()
     private var episodeDictionary: [Int: [Episode]] = [:]
     
-    private var similarMovieList = [SimilarMovie]()
+    private var similarList = [Similar]()
     private var videoList = [Video]()
-    
-    private var movieId: Int?
     
     private var pageNumForTrend = 1
     private var pageNumForSimilar = 1
@@ -36,16 +36,20 @@ class DataManager {
     
     //MARK: - GET
     
-    func getMovieTrend() -> [Movie] {
-        return trendMovieList
+    func getAllTrend() -> [Trend] {
+        return trendList
     }
     
+    func getMovieTrend() -> [Trend] {
+        return trendList.filter { $0.mediaType == .movie }
+    }
+    
+    func getTVTrend() -> [Trend] {
+        return trendList.filter { $0.mediaType == .tv }
+    }
+        
     func getCastingList() -> [Cast] {
         return castingList
-    }
-    
-    func getTvTrend() -> [TVSeries] {
-        return trendTVList
     }
     
     func getSeasonList() -> [Season] {
@@ -56,8 +60,8 @@ class DataManager {
         return episodeDictionary[seasonNumber]
     }
     
-    func getSimilarMovie() -> [SimilarMovie] {
-        return similarMovieList
+    func getSimilarList() -> [Similar] {
+        return similarList
     }
     
     func getVideoList() -> [Video] {
@@ -72,31 +76,27 @@ class DataManager {
         return pageNumForSimilar
     }
     
-    func getMovieID() -> Int {
-        return movieId ?? 671
-    }
-    
     func getProfile() -> Profile {
         return profile
     }
     
     //MARK: - UPDATE
-    
-    func setupMovieTrendList(type: DataUrl, page: Int, completionHandler: @escaping () -> ()) {
-        networkManager.callRequest(type: type, page: page, movieId: nil, seriesId: nil, seasonNumber: nil) { (result: Result<TrendMovie, AFError>) in
+    func setupAllTrendList(type: DataUrl, page: Int, completionHandler: @escaping () -> ()) {
+        networkManager.callRequest(type: type, page: page, movieId: nil, seriesId: nil, seasonNumber: nil) { (result: Result<TrendingAllList, AFError>) in
             switch result {
             case .success(let success):
-                self.trendMovieList.append(contentsOf: success.movieList)
+                self.trendList.append(contentsOf: success.trendingList)
                 completionHandler()
             case .failure(let failure):
-                print("Trend Movie Error: ", failure.localizedDescription)
+                print("Trend TV Error: ", failure.localizedDescription)
                 completionHandler()
             }
         }
+        
     }
     
-    func setupCastingList(type: DataUrl, movieId: Int, completionHandler: @escaping () -> ()) {
-        networkManager.callRequest(type: type, page: nil, movieId: movieId, seriesId: nil, seasonNumber: nil) { (result: Result<CastingList, AFError>) in
+    func setupCastingList(type: DataUrl, movieId: Int?, seriesId: Int?, completionHandler: @escaping () -> ()) {
+        networkManager.callRequest(type: type, page: nil, movieId: movieId, seriesId: seriesId, seasonNumber: nil) { (result: Result<CastingList, AFError>) in
             switch result {
             case .success(let success):
                 self.castingList = success.cast
@@ -107,20 +107,7 @@ class DataManager {
             }
         }
     }
-    
-    func setupTVTrendList(type: DataUrl, page: Int, completionHandler: @escaping () -> ()) {
-//        networkManager.callRequestTrendTV(type: type, page: page) { result in
-//            switch result {
-//            case .success(let success):
-//                self.trendTVList.append(contentsOf: success)
-//                completionHandler()
-//            case .failure(let failure):
-//                print("Trend TV Error: ", failure.localizedDescription)
-//                completionHandler()
-//            }
-//        }
-    }
-    
+        
     func setupSeasonList(type: DataUrl, seriesId: Int, completionHandler: @escaping () -> ()) {
 //        networkManager.callRequestSeasonList(type: type, seriesId: seriesId) { result in
 //            switch result {
@@ -148,44 +135,43 @@ class DataManager {
 //        }
     }
     
-    func setupSimilarMovieList(type: DataUrl, movieId: Int, pageNum: Int, completionHandler: @escaping () -> ()) {
-//        networkManager.callRequestSimilarMovieList(type: type, movieId: movieId, page: pageNum) { result in
-//            switch result {
-//            case .success(let success):
-//                self.similarMovieList.append(contentsOf: success)
-//                completionHandler()
-//            case .failure(let failure):
-//                print("Similar Movie List Failure: ", failure.localizedDescription)
-//                completionHandler()
-//            }
-//        }
+    func setupSimilarList(type: DataUrl, movieId: Int?, seriesId: Int?, pageNum: Int, completionHandler: @escaping () -> ()) {
+        networkManager.callRequest(type: type, page: pageNum, movieId: movieId, seriesId: seriesId, seasonNumber: nil) { (result: Result<SimilarList, AFError>) in
+            switch result {
+            case .success(let success):
+                self.similarList = success.list
+                completionHandler()
+            case .failure(let failure):
+                print("Similar List Failure: ", failure.localizedDescription)
+            }
+        }
     }
     
-    func setupVideoList(type: DataUrl, movieId: Int, completionHandler: @escaping () -> ()) {
-//        networkManager.callRequestVideoLlist(type: type, movieId: movieId) { result in
-//            switch result {
-//            case .success(let success):
-//                self.videoList.append(contentsOf: success)
-//                completionHandler()
-//            case .failure(let failure):
-//                print("Video List Error: ", failure.localizedDescription)
-//                completionHandler()
-//            }
-//        }
+    func setupVideoList(type: DataUrl, movieId: Int?, seriesId: Int?, completionHandler: @escaping () -> ()) {
+        networkManager.callRequest(type: type, page: nil, movieId: movieId, seriesId: seriesId, seasonNumber: nil) { (result: Result<VideoList, AFError>) in
+            switch result {
+            case .success(let success):
+                self.videoList = success.videoList
+                completionHandler()
+            case .failure(let failure):
+                print("Video List Failure: ", failure.localizedDescription)
+            }
+        }
     }
     
-    func addPageNum() {
+    func addTrendPageNum() {
         pageNumForTrend += 1
     }
     
-    func updateMovieID(newMovieId: Int) {
-        movieId = newMovieId
+    func addSimilarPageNum() {
+        pageNumForSimilar += 1
     }
     
     func resetData() {
-        similarMovieList.removeAll()
+        similarList.removeAll()
         videoList.removeAll()
-        pageNumForTrend = 1
+//        pageNumForTrend = 1
+        pageNumForSimilar = 1
     }
     
     func updateProfile(newProfile: Profile) {

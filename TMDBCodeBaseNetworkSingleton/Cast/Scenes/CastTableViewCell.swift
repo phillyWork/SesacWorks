@@ -6,9 +6,16 @@
 //
 
 import UIKit
-import Kingfisher
 
 class CastTableViewCell: BaseTableViewCell {
+    
+    //MARK: - Properties
+    
+    var cast: Cast? {
+        didSet {
+            updateWithData()
+        }
+    }
     
     let castImageView: UIImageView = {
         let iv = UIImageView()
@@ -28,11 +35,7 @@ class CastTableViewCell: BaseTableViewCell {
         return label
     }()
     
-    var cast: Cast? {
-        didSet {
-            updateWithData()
-        }
-    }
+   //MARK: - Setup
     
     override func configViews() {
         super.configViews()
@@ -69,11 +72,19 @@ class CastTableViewCell: BaseTableViewCell {
     private func updateWithData() {
         guard let cast = cast else { return }
         
-        if let profilePath = cast.profilePath {
-            let url = ImageUrl.profilePath.requestURL + profilePath
-            castImageView.kf.setImage(with: URL(string: url))
+        if let profilePath = cast.profilePath, let profileUrl = URL(string: ImageUrl.profilePath.requestURL + profilePath) {
+            DispatchQueue.global().async {
+                do {
+                    let profileData = try Data(contentsOf: profileUrl)
+                    DispatchQueue.main.async {
+                        self.castImageView.image = UIImage(data: profileData)
+                    }
+                } catch {
+                    print(error)
+                }
+            }
         }
-        
+         
         nameLabel.text = cast.name
         roleLabel.text = cast.character
     }
