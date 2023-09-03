@@ -10,9 +10,20 @@
 		21E1C3252AA4BD58007102C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C3242AA4BD58007102C3 /* AppDelegate.swift */; };
 		21E1C3272AA4BD58007102C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C3262AA4BD58007102C3 /* SceneDelegate.swift */; };
 		21E1C3292AA4BD58007102C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C3282AA4BD58007102C3 /* ViewController.swift */; };
-		21E1C32C2AA4BD58007102C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21E1C32A2AA4BD58007102C3 /* Main.storyboard */; };
 		21E1C32E2AA4BD5A007102C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21E1C32D2AA4BD5A007102C3 /* Assets.xcassets */; };
 		21E1C3312AA4BD5A007102C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21E1C32F2AA4BD5A007102C3 /* LaunchScreen.storyboard */; };
+		21E1C3392AA4BE01007102C3 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 21E1C3382AA4BE01007102C3 /* .gitignore */; };
+		21E1C33B2AA4BE10007102C3 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C33A2AA4BE10007102C3 /* APIKey.swift */; };
+		21E1C33D2AA4BE21007102C3 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C33C2AA4BE21007102C3 /* Protocol.swift */; };
+		21E1C33F2AA4BE46007102C3 /* Extension+ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C33E2AA4BE46007102C3 /* Extension+ReusableViewProtocol.swift */; };
+		21E1C3412AA4BE5D007102C3 /* TrendStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C3402AA4BE5D007102C3 /* TrendStruct.swift */; };
+		21E1C3432AA4BE72007102C3 /* SingletonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C3422AA4BE72007102C3 /* SingletonManager.swift */; };
+		21E1C3462AA4BE8F007102C3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 21E1C3452AA4BE8F007102C3 /* SnapKit */; };
+		21E1C3492AA4BEAE007102C3 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C3482AA4BEAE007102C3 /* BaseTableViewCell.swift */; };
+		21E1C34B2AA4BEB3007102C3 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C34A2AA4BEB3007102C3 /* BaseView.swift */; };
+		21E1C34E2AA4BEC6007102C3 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C34D2AA4BEC6007102C3 /* MovieCell.swift */; };
+		21E1C3502AA4BECB007102C3 /* TVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C34F2AA4BECB007102C3 /* TVCell.swift */; };
+		21E1C3532AA4BEEB007102C3 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E1C3522AA4BEEB007102C3 /* TableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +31,20 @@
 		21E1C3242AA4BD58007102C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21E1C3262AA4BD58007102C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		21E1C3282AA4BD58007102C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		21E1C32B2AA4BD58007102C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		21E1C32D2AA4BD5A007102C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21E1C3302AA4BD5A007102C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21E1C3322AA4BD5A007102C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21E1C3382AA4BE01007102C3 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		21E1C33A2AA4BE10007102C3 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		21E1C33C2AA4BE21007102C3 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		21E1C33E2AA4BE46007102C3 /* Extension+ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+ReusableViewProtocol.swift"; sourceTree = "<group>"; };
+		21E1C3402AA4BE5D007102C3 /* TrendStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendStruct.swift; sourceTree = "<group>"; };
+		21E1C3422AA4BE72007102C3 /* SingletonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingletonManager.swift; sourceTree = "<group>"; };
+		21E1C3482AA4BEAE007102C3 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		21E1C34A2AA4BEB3007102C3 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		21E1C34D2AA4BEC6007102C3 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		21E1C34F2AA4BECB007102C3 /* TVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCell.swift; sourceTree = "<group>"; };
+		21E1C3522AA4BEEB007102C3 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21E1C3462AA4BE8F007102C3 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,13 +80,47 @@
 			children = (
 				21E1C3242AA4BD58007102C3 /* AppDelegate.swift */,
 				21E1C3262AA4BD58007102C3 /* SceneDelegate.swift */,
+				21E1C33A2AA4BE10007102C3 /* APIKey.swift */,
+				21E1C33C2AA4BE21007102C3 /* Protocol.swift */,
+				21E1C33E2AA4BE46007102C3 /* Extension+ReusableViewProtocol.swift */,
+				21E1C3472AA4BE97007102C3 /* Model */,
+				21E1C34C2AA4BEB8007102C3 /* Base */,
+				21E1C3512AA4BED6007102C3 /* View */,
 				21E1C3282AA4BD58007102C3 /* ViewController.swift */,
-				21E1C32A2AA4BD58007102C3 /* Main.storyboard */,
 				21E1C32D2AA4BD5A007102C3 /* Assets.xcassets */,
 				21E1C32F2AA4BD5A007102C3 /* LaunchScreen.storyboard */,
 				21E1C3322AA4BD5A007102C3 /* Info.plist */,
+				21E1C3382AA4BE01007102C3 /* .gitignore */,
 			);
 			path = TMDBTrendingAllMultipleCellInTableViewCell;
+			sourceTree = "<group>";
+		};
+		21E1C3472AA4BE97007102C3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				21E1C3402AA4BE5D007102C3 /* TrendStruct.swift */,
+				21E1C3422AA4BE72007102C3 /* SingletonManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		21E1C34C2AA4BEB8007102C3 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				21E1C3482AA4BEAE007102C3 /* BaseTableViewCell.swift */,
+				21E1C34A2AA4BEB3007102C3 /* BaseView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		21E1C3512AA4BED6007102C3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				21E1C34D2AA4BEC6007102C3 /* MovieCell.swift */,
+				21E1C34F2AA4BECB007102C3 /* TVCell.swift */,
+				21E1C3522AA4BEEB007102C3 /* TableView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +139,9 @@
 			dependencies = (
 			);
 			name = TMDBTrendingAllMultipleCellInTableViewCell;
+			packageProductDependencies = (
+				21E1C3452AA4BE8F007102C3 /* SnapKit */,
+			);
 			productName = TMDBTrendingAllMultipleCellInTableViewCell;
 			productReference = 21E1C3212AA4BD58007102C3 /* TMDBTrendingAllMultipleCellInTableViewCell.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +170,9 @@
 				Base,
 			);
 			mainGroup = 21E1C3182AA4BD58007102C3;
+			packageReferences = (
+				21E1C3442AA4BE8F007102C3 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 21E1C3222AA4BD58007102C3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,8 +188,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				21E1C3312AA4BD5A007102C3 /* LaunchScreen.storyboard in Resources */,
+				21E1C3392AA4BE01007102C3 /* .gitignore in Resources */,
 				21E1C32E2AA4BD5A007102C3 /* Assets.xcassets in Resources */,
-				21E1C32C2AA4BD58007102C3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,22 +201,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				21E1C3292AA4BD58007102C3 /* ViewController.swift in Sources */,
+				21E1C3412AA4BE5D007102C3 /* TrendStruct.swift in Sources */,
 				21E1C3252AA4BD58007102C3 /* AppDelegate.swift in Sources */,
+				21E1C34E2AA4BEC6007102C3 /* MovieCell.swift in Sources */,
+				21E1C33B2AA4BE10007102C3 /* APIKey.swift in Sources */,
+				21E1C3492AA4BEAE007102C3 /* BaseTableViewCell.swift in Sources */,
 				21E1C3272AA4BD58007102C3 /* SceneDelegate.swift in Sources */,
+				21E1C33D2AA4BE21007102C3 /* Protocol.swift in Sources */,
+				21E1C3532AA4BEEB007102C3 /* TableView.swift in Sources */,
+				21E1C34B2AA4BEB3007102C3 /* BaseView.swift in Sources */,
+				21E1C3502AA4BECB007102C3 /* TVCell.swift in Sources */,
+				21E1C33F2AA4BE46007102C3 /* Extension+ReusableViewProtocol.swift in Sources */,
+				21E1C3432AA4BE72007102C3 /* SingletonManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		21E1C32A2AA4BD58007102C3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				21E1C32B2AA4BD58007102C3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		21E1C32F2AA4BD5A007102C3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -291,9 +355,8 @@
 				INFOPLIST_FILE = TMDBTrendingAllMultipleCellInTableViewCell/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,9 +364,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.phillyh.TMDBTrendingAllMultipleCellInTableViewCell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -318,9 +384,8 @@
 				INFOPLIST_FILE = TMDBTrendingAllMultipleCellInTableViewCell/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -328,9 +393,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.phillyh.TMDBTrendingAllMultipleCellInTableViewCell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -356,6 +424,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		21E1C3442AA4BE8F007102C3 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		21E1C3452AA4BE8F007102C3 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21E1C3442AA4BE8F007102C3 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 21E1C3192AA4BD58007102C3 /* Project object */;
 }
