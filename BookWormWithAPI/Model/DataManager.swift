@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 class DataManager {
     
@@ -16,12 +17,16 @@ class DataManager {
     private var likedBooks: [Book] = []
     private var searchBooks: [Book] = []
     
+    private var realmHistoryBooks: Results<BookTable>!
+
     //page: 1~50 사이의 값, 기본 값 1
     //size: 1~50 사이의 값, 기본 값 10
     //isEnd: 마지막 페이지인지 확인
     private var page = 1
     private let size = 15
     private var isEnd = false
+    
+    //MARK: - GET
     
     func getPageNum() -> Int {
         return page
@@ -47,12 +52,22 @@ class DataManager {
         return searchBooks
     }
     
+    func getRealmHistoryBooks() -> Results<BookTable> {
+        return realmHistoryBooks
+    }
+    
+    //MARK: - UPDATE
+    
     func addPageNumber() {
         page += 1
     }
     
     func addSearchBook(book: Book) {
         searchBooks.append(book)
+    }
+    
+    func addRealmHistoryBooks(tasks: Results<BookTable>) {
+        self.realmHistoryBooks = tasks
     }
     
     func addLikeFromSearch(book: Book, searchTag: Int) {
@@ -99,6 +114,10 @@ class DataManager {
     
     func removeSearchList() {
         searchBooks.removeAll()
+    }
+    
+    func resetPageNum() {
+        page = 1
     }
     
     

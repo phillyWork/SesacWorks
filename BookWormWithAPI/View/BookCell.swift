@@ -18,6 +18,12 @@ class BookCell: UICollectionViewCell {
         }
     }
     
+    var realmBook: BookTable? {
+        didSet {
+            configureRealmBook()
+        }
+    }
+    
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -60,6 +66,29 @@ class BookCell: UICollectionViewCell {
         
     }
     
+    func configureRealmBook() {
+        guard let realmBook = realmBook else {
+            print("No RealmBook")
+            return
+        }
+        
+        if let thumbnail = realmBook.thumbnailURL {
+            let url = URL(string: thumbnail)
+            coverImageView.kf.setImage(with: url)
+        }
+        
+        nameLabel.text = realmBook.title
+        priceLabel.text = "\(realmBook.price)"
+        
+        if realmBook.like {
+            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else {
+            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+        
+        self.backgroundColor = UIColor(red: Book.randomColor()[0], green: Book.randomColor()[1], blue: Book.randomColor()[2], alpha: 1)
+        
+    }
     
     
 }

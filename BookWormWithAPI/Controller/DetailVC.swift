@@ -22,6 +22,8 @@ class DetailVC: UIViewController {
     
     var book: Book?
     
+    var realmBook: BookTable?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,6 +43,16 @@ class DetailVC: UIViewController {
             titleLabel.text = book.title
             detailLabel.text = book.description
             descriptionLabel.text = book.contents
+        } else {
+            guard let realmBook = realmBook else { return }
+            if let thumbnail = realmBook.thumbnailURL {
+                let url = URL(string: thumbnail)
+                coverImageView.kf.setImage(with: url)
+            }
+            
+            titleLabel.text = realmBook.title
+            detailLabel.text = realmBook.description
+            descriptionLabel.text = realmBook.contents
         }
     }
     
