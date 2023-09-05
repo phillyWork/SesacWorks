@@ -12,6 +12,11 @@ class WebViewController: BaseViewController {
        
     var webView: WKWebView!
     
+    let toolbar = {
+        let bar = UIToolbar()
+        return bar
+    }()
+    
     var video: Video?
     
     override func loadView() {
@@ -38,11 +43,24 @@ class WebViewController: BaseViewController {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(closeButtonTapped))
         
+        view.addSubview(toolbar)
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "arrowshape.turn.up.backward"), style: .plain, target: self, action: #selector(backButtonTapped))
+        let forwardButton = UIBarButtonItem(image: UIImage(systemName: "arrowshape.turn.up.forward"), style: .plain, target: self, action: #selector(forwardButtonTapped))
+        let reloadButton = UIBarButtonItem(image: UIImage(systemName: "arrow.counterclockwise"), style: .plain, target: self, action: #selector(reloadButtonTapped))
+        let leftSpacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let rightSpacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.items = [backButton, leftSpacer, reloadButton, rightSpacer, forwardButton]
+        
         setupYoutubeView()
     }
     
     override func setConstraints() {
         super.setConstraints()
+        
+        toolbar.snp.makeConstraints { make in
+            make.bottom.directionalHorizontalEdges.equalTo(view.safeAreaLayoutGuide)
+        }
+        
     }
     
     private func setupYoutubeView() {
@@ -54,6 +72,22 @@ class WebViewController: BaseViewController {
     
     @objc func closeButtonTapped() {
         dismiss(animated: true)
+    }
+    
+    @objc func backButtonTapped() {
+        webView.reload()
+    }
+    
+    @objc func forwardButtonTapped() {
+        if webView.canGoForward {
+            webView.goForward()
+        }
+    }
+    
+    @objc func reloadButtonTapped() {
+        if webView.canGoBack {
+            webView.goBack()
+        }
     }
     
 }

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class CastViewController: BaseViewController {
 
@@ -24,8 +23,6 @@ class CastViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        getCastingAPIWithData()
     }
     
     override func configViews() {
@@ -62,6 +59,7 @@ class CastViewController: BaseViewController {
             castView.titleLabel.text = media.title
         }
         
+        getCastingAPIWithData()
     }
     
     override func setConstraints() {
@@ -80,15 +78,13 @@ class CastViewController: BaseViewController {
                 self.castView.tableView.reloadData()
             }
         }
-        
-//        dataManager.setupMovieCastingList(type: , movieId: media.id) {
-//            self.castView.tableView.reloadData()
-//        }
     }
     
     @objc func moreBarButtonTapped() {
-        let segmentVC = SegmentControlViewController()
-        segmentVC.media = trendMedia
+        print(#function)
+        guard let media = trendMedia else { return }
+        let segmentVC = SegmentViewController()
+        segmentVC.media = media
         navigationController?.pushViewController(segmentVC, animated: true)
     }
     

@@ -1,13 +1,13 @@
 //
-//  SegmentControlViewController.swift
+//  SegmentViewController.swift
 //  TMDBCodeBaseNetworkSingleton
 //
-//  Created by Heedon on 2023/08/28.
+//  Created by Heedon on 2023/09/05.
 //
 
 import UIKit
 
-class SegmentControlViewController: BaseViewController {
+class SegmentViewController: BaseViewController {
 
     let dataManager = DataManager.shared
 
@@ -21,12 +21,25 @@ class SegmentControlViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    }
+    
+    override func configViews() {
+        super.configViews()
+        
+        segmentView.collectionView.delegate = self
+        segmentView.collectionView.dataSource = self
+        segmentView.collectionView.prefetchDataSource = self
+        
+        segmentView.segmentControl.addTarget(self, action: #selector(segmentTapped), for: .valueChanged)
+        
         setupSimilarAndVideoLists()
     }
     
+    override func setConstraints() {
+        super.setConstraints()
+    }
+
     private func setupSimilarAndVideoLists() {
-        
         guard let media = media else { return }
         
         let dispatchGroup = DispatchGroup()
@@ -50,40 +63,23 @@ class SegmentControlViewController: BaseViewController {
             dataManager.setupVideoList(type: .videoTV, movieId: nil, seriesId: media.id) {
                 dispatchGroup.leave()
             }
-            
         }
-        
-//        dispatchGroup.enter()
-//        dataManager.setupSimilarMovieList(type: .similarMovie, movieId: dataManager.getMovieID(), pageNum: dataManager.getPageNumForSimilar()) {
-//            dispatchGroup.leave()
-//        }
-//        dispatchGroup.enter()
-//        dataManager.setupVideoList(type: .video, movieId: dataManager.getMovieID()) {
-//            dispatchGroup.leave()
-//        }
         
         dispatchGroup.notify(queue: .main) {
             print("Done!")
+            self.segmentView.collectionView.reloadData()
         }
     }
     
-    override func configViews() {
-        super.configViews()
-        
-        segmentView.collectionView.delegate = self
-        segmentView.collectionView.dataSource = self
-        segmentView.collectionView.prefetchDataSource = self
-    }
-    
-    override func setConstraints() {
-        super.setConstraints()
+    @objc func segmentTapped() {
+        segmentView.collectionView.reloadData()
     }
     
 }
 
 //MARK: - Extension for CollectionView Delegate, DataSource, PrefetchDataSource
 
-extension SegmentControlViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
+extension SegmentViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch segmentView.segmentControl.selectedSegmentIndex {
