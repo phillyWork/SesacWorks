@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import RealmSwift
 
 class SearchVC: UIViewController {
 
@@ -24,12 +25,29 @@ class SearchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "검색 결과"
+        title = "최근 검색 결과"
         
         configSearchBar()
         configCollectionView()
         
-        callRequest(query: "야구", page: 1)
+//        callRequest(query: "야구", page: dataManager.getPageNum())
+        
+        do {
+            let realm = try Realm()
+            let tasks = realm.objects(BookTable.self).sorted(byKeyPath: "isbn", ascending: true)
+            dataManager.addRealmHistoryBooks(tasks: tasks)
+            print(dataManager.getRealmHistoryBooks())
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //detail --> search: realm 보여주기
+        dataManager.removeSearchList()
+        self.mainCollectionView.reloadData()
     }
 
     func configSearchBar() {
@@ -103,18 +121,23 @@ class SearchVC: UIViewController {
                     for data in dataArray {
                         let title = data["title"].stringValue
                         let authors = data["authors"].arrayObject as! [String]
+                        let author = authors.isEmpty ? "" : authors[0]
+                        print("authors: \(authors) and author: \(author)")
                         let contents = data["contents"].stringValue
                         let isbn = data["isbn"].stringValue
                         let date = data["datetime"].stringValue
                         let thumbnail = data["thumbnail"].stringValue
                         let price = data["price"].intValue
+
+                        //realm struct와 기존 struct 합쳐서 활용?
+                        let bookForRealm = BookTable(title: title, author: author, contents: contents, date: date, isbn: isbn, thumbnailURL: thumbnail, price: price, like: false)
                         
-                        let book = Book(title: title, authors: authors, contents: contents, isbn: isbn, date: date, thumbnailURL: thumbnail, price: price, like: false, color: Book.randomColor())
                         
+                        let book = Book(title: title, author: author, contents: contents, isbn: isbn, date: date, thumbnailURL: thumbnail, price: price, like: false, color: Book.randomColor())
                         self.dataManager.addSearchBook(book: book)
                     }
                     
-                    print(self.dataManager.getBooks())
+//                    print(self.dataManager.getBooks())
                     self.mainCollectionView.reloadData()
                 } else {
                     print("문제 발생. 다시 시도해주세요.")
@@ -131,17 +154,36 @@ class SearchVC: UIViewController {
         
         print("SearchVC", #function)
         
-        let cellBook = dataManager.getSearchBooks()[sender.tag]
-        
-        if cellBook.like {
-            dataManager.removeLikeFromSearch(book: cellBook, searchTag: sender.tag)
+        if dataManager.getSearchBooks().isEmpty {
+            let realmCellBook = dataManager.getRealmHistoryBooks()[sender.tag]
+            realmCellBook.like.toggle()
+            //다시 update
+            do {
+                let realm = try Realm()
+                //transaction 단위 --> try 각자 따로
+                try realm.write {
+                    realm.delete(dataManager.getRealmHistoryBooks()[sender.tag])
+                    print("Deletion complete")
+                }
+//                try realm.write {
+//                    realm.add(realmCellBook)
+//                    print("Addition complete")
+//                }
+            } catch {
+                print(error)
+            }
         } else {
-            dataManager.addLikeFromSearch(book: cellBook, searchTag: sender.tag)
+            let cellBook = dataManager.getSearchBooks()[sender.tag]
+            if cellBook.like {
+                dataManager.removeLikeFromSearch(book: cellBook, searchTag: sender.tag)
+            } else {
+                dataManager.addLikeFromSearch(book: cellBook, searchTag: sender.tag)
+            }
         }
-        
+    
         mainCollectionView.reloadData()
     }
-
+    
 }
 
 //MARK: - Extension for CollectionView Delegate, DataSource, DataSourcePrefetching
@@ -149,7 +191,10 @@ class SearchVC: UIViewController {
 extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataManager.getSearchBooks().count
+        let searchBooks = dataManager.getSearchBooks()
+        return searchBooks.isEmpty ? dataManager.getRealmHistoryBooks().count : searchBooks.count
+//        let realmBooks = dataManager.getRealmHistoryBooks()
+//        return realmBooks.isEmpty ? dataManager.getSearchBooks().count : realmBooks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -159,7 +204,11 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         
         cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
         
-        cell.book = dataManager.getSearchBooks()[indexPath.row]
+        if dataManager.getSearchBooks().isEmpty {
+            cell.realmBook = dataManager.getRealmHistoryBooks()[indexPath.row]
+        } else {
+            cell.book = dataManager.getSearchBooks()[indexPath.row]
+        }
         
         return cell
     }
@@ -167,11 +216,14 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         
         for indexPath in indexPaths {
-            if dataManager.getSearchBooks().count - 1 == indexPath.row && dataManager.getPageNum() < 50 && !dataManager.getCurrentIsEnd() {
-                dataManager.addPageNumber()
-                callRequest(query: searchBar.text!, page: dataManager.getPageNum())
+            if !dataManager.getSearchBooks().isEmpty {
+                if dataManager.getSearchBooks().count - 1 == indexPath.row && dataManager.getPageNum() < 50 && !dataManager.getCurrentIsEnd() {
+                    dataManager.addPageNumber()
+                    callRequest(query: searchBar.text!, page: dataManager.getPageNum())
+                }
             }
         }
+        
     }
     
     
@@ -180,11 +232,26 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = sb.instantiateViewController(identifier: DetailVC.identifier) as! DetailVC
         
-        let book = dataManager.getSearchBooks()[indexPath.row]
-        
-        detailVC.book = book
-        
-        detailVC.view.backgroundColor = UIColor(red: book.color[0], green: book.color[1], blue: book.color[2], alpha: 1)
+        if dataManager.getSearchBooks().isEmpty {
+            let realmBook = dataManager.getRealmHistoryBooks()[indexPath.row]
+            detailVC.realmBook = realmBook
+            detailVC.view.backgroundColor = UIColor(red: Book.randomColor()[0], green: Book.randomColor()[1], blue: Book.randomColor()[2], alpha: 1)
+        } else {
+            let book = dataManager.getSearchBooks()[indexPath.row]
+            detailVC.book = book
+            detailVC.view.backgroundColor = UIColor(red: book.color[0], green: book.color[1], blue: book.color[2], alpha: 1)
+            do {
+                let realm = try Realm()
+                let task = BookTable(title: book.title, author: book.author, contents: book.contents, date: book.date, isbn: book.isbn, thumbnailURL: book.thumbnailURL, price: book.price, like: book.like)
+                
+                try realm.write {
+                    realm.add(task)
+                    print("addition to realm succeed")
+                }
+            } catch {
+                print(error)
+            }
+        }
         
         navigationController?.pushViewController(detailVC, animated: true)
     }
@@ -198,8 +265,8 @@ extension SearchVC: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         self.dataManager.removeSearchList()
-        
-        self.dataManager.addPageNumber()
+        self.dataManager.resetPageNum()
+//        self.dataManager.addPageNumber()
         
         view.endEditing(true)
         
@@ -207,8 +274,7 @@ extension SearchVC: UISearchBarDelegate {
         
         callRequest(query: query, page: dataManager.getPageNum())
         
-        
-        
+        searchBar.text = ""
     }
     
     
