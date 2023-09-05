@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		213CF07A2AA718E40056665C /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213CF0792AA718E40056665C /* FileManager+Extension.swift */; };
 		216BA0E42A822FF2008A54A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BA0E32A822FF2008A54A5 /* AppDelegate.swift */; };
 		216BA0E62A822FF2008A54A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BA0E52A822FF2008A54A5 /* SceneDelegate.swift */; };
 		216BA0E82A822FF2008A54A5 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BA0E72A822FF2008A54A5 /* SearchVC.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		213CF0792AA718E40056665C /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		216BA0E02A822FF2008A54A5 /* BookWormWithAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookWormWithAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		216BA0E32A822FF2008A54A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		216BA0E52A822FF2008A54A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				216BA0E32A822FF2008A54A5 /* AppDelegate.swift */,
 				216BA0E52A822FF2008A54A5 /* SceneDelegate.swift */,
 				216BA10F2A826F12008A54A5 /* APIKey.swift */,
+				213CF0792AA718E40056665C /* FileManager+Extension.swift */,
 				216BA1022A826D17008A54A5 /* Model */,
 				216BA1012A826D0F008A54A5 /* View */,
 				216BA1032A826D1C008A54A5 /* Controller */,
@@ -226,6 +229,7 @@
 				216BA1102A826F12008A54A5 /* APIKey.swift in Sources */,
 				21F7F76A2AA5C5E2003C749A /* RealmModel.swift in Sources */,
 				216BA0FE2A826C38008A54A5 /* Book.swift in Sources */,
+				213CF07A2AA718E40056665C /* FileManager+Extension.swift in Sources */,
 				216BA1002A826D08008A54A5 /* DataManager.swift in Sources */,
 				21E927D52A83924D0071C7ED /* LikeVC.swift in Sources */,
 				216BA0E82A822FF2008A54A5 /* SearchVC.swift in Sources */,

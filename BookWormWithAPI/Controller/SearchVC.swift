@@ -93,11 +93,9 @@ class SearchVC: UIViewController {
             return
         }
         
-                
 //        pageable_count    Integer    중복된 문서를 제외하고, 처음부터 요청 페이지까지의 노출 가능 문서 수
 //        is_end    Boolean    현재 페이지가 마지막 페이지인지 여부, 값이 false면 page를 증가시켜 다음 페이지를 요청할 수 있음
-        
-
+    
         let url = "https://dapi.kakao.com/v3/search/book?query=\(searchText)"
         
         //header에 authorization key를 넣는 경우
@@ -130,7 +128,7 @@ class SearchVC: UIViewController {
                         let price = data["price"].intValue
 
                         //realm struct와 기존 struct 합쳐서 활용?
-                        let bookForRealm = BookTable(title: title, author: author, contents: contents, date: date, isbn: isbn, thumbnailURL: thumbnail, price: price, like: false)
+                        let bookForRealm = BookTable(title: title, author: author, contents: contents, date: date, isbn: isbn, thumbnailURL: thumbnail, price: price, like: false, memo: nil)
                         
                         
                         let book = Book(title: title, author: author, contents: contents, isbn: isbn, date: date, thumbnailURL: thumbnail, price: price, like: false, color: Book.randomColor())
@@ -240,13 +238,23 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
             let book = dataManager.getSearchBooks()[indexPath.row]
             detailVC.book = book
             detailVC.view.backgroundColor = UIColor(red: book.color[0], green: book.color[1], blue: book.color[2], alpha: 1)
+            
+            let cell = collectionView.cellForItem(at: indexPath) as! BookCell
+            guard let image = cell.coverImageView.image else { return }
+            
             do {
                 let realm = try Realm()
-                let task = BookTable(title: book.title, author: book.author, contents: book.contents, date: book.date, isbn: book.isbn, thumbnailURL: book.thumbnailURL, price: book.price, like: book.like)
+                print("path: ", realm.configuration.fileURL)
                 
+//                let task = BookTable(title: book.title, author: book.author, contents: book.contents, date: book.date, isbn: book.isbn, thumbnailURL: book.thumbnailURL, price: book.price, like: book.like, memo: UserDefaults.standard.string(forKey: "memo"))
+                
+                let task = BookTable(title: book.title, author: book.author, contents: book.contents, date: book.date, isbn: book.isbn, thumbnailURL: book.thumbnailURL, price: book.price, like: book.like, memo: nil)
+
+                //realm에 저장, 해당 image 따로 Documents 폴더에 저장
                 try realm.write {
                     realm.add(task)
                     print("addition to realm succeed")
+                    saveToDocument(fileName: "philllyy_\(task._id).jpg", data: image)
                 }
             } catch {
                 print(error)

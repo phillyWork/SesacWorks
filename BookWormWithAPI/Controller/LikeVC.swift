@@ -83,7 +83,7 @@ extension LikeVC: UITableViewDelegate, UITableViewDataSource {
             
             do {
                 let realm = try Realm()
-                let task = BookTable(title: book.title, author: book.author, contents: book.contents, date: book.date, isbn: book.isbn, thumbnailURL: book.thumbnailURL, price: book.price, like: book.like)
+                let task = BookTable(title: book.title, author: book.author, contents: book.contents, date: book.date, isbn: book.isbn, thumbnailURL: book.thumbnailURL, price: book.price, like: book.like, memo: nil)
                 try realm.write {
                     realm.add(task)
                     print("Add new book to realm in like")
