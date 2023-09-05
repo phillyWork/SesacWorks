@@ -39,26 +39,10 @@ class TrendViewController: BaseViewController {
     }
     
     func setupInitialMovie() {
-        
         dataManager.setupAllTrendList(type: .trendAll, page: dataManager.getPageNumForTrend()) {
             print("Setup data done")
             self.trendView.collectionView.reloadData()
         }
-        
-//        switch trendType {
-//        case .trendAll:
-//            dataManager.setupAllTrendList(type: <#T##DataUrl#>, page: <#T##Int#>, completionHandler: <#T##() -> ()#>)
-//        case .trendMovie:
-//            dataManager.setupMovieTrendList(type: .trendMovie, page: 1) {
-//                print("Setup Trend Movie is done")
-//                self.trendView.collectionView.reloadData()
-//            }
-//        case .trendTV:
-//            dataManager.setupTVTrendList(type: .trendTV, page: 1) {
-//                print("Setup Trend TV is done")
-//                self.trendView.collectionView.reloadData()
-//            }
-//        }
     }
     
     //MARK: - Handlers
@@ -121,17 +105,24 @@ extension TrendViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let castVC = CastViewController()
+//        let segmentVC = SegmentControlViewController()
         
         switch trendType {
         case .trendAll:
             castVC.trendMedia = dataManager.getAllTrend()[indexPath.item]
+//            segmentVC.media = dataManager.getAllTrend()[indexPath.item]
         case .trendMovie:
             castVC.trendMedia = dataManager.getMovieTrend()[indexPath.item]
+//            segmentVC.media = dataManager.getMovieTrend()[indexPath.item]
+
         case .trendTV:
             castVC.trendMedia = dataManager.getTVTrend()[indexPath.item]
+//            segmentVC.media = dataManager.getTVTrend()[indexPath.item]
         }
         
         navigationController?.pushViewController(castVC, animated: true)
+//        navigationController?.pushViewController(segmentVC, animated: true)
+
     }
     
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
@@ -159,12 +150,6 @@ extension TrendViewController: UICollectionViewDelegate, UICollectionViewDataSou
                     }
                 }
             }
-//            if dataManager.getMovieTrend().count - 1 == indexPath.row {
-//                dataManager.addPageNum()
-//                dataManager.setupMovieTrendList(type: .trendMovie, page: dataManager.getPageNumForTrend()) {
-//                    self.trendView.collectionView.reloadData()
-//                }
-//            }
         }
     }
     
