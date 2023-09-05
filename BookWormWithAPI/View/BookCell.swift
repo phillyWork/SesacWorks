@@ -72,10 +72,10 @@ class BookCell: UICollectionViewCell {
             return
         }
         
-        if let thumbnail = realmBook.thumbnailURL {
-            let url = URL(string: thumbnail)
-            coverImageView.kf.setImage(with: url)
-        }
+//        if let thumbnail = realmBook.thumbnailURL {
+//            let url = URL(string: thumbnail)
+//            coverImageView.kf.setImage(with: url)
+//        }
         
         nameLabel.text = realmBook.title
         priceLabel.text = "\(realmBook.price)"

@@ -203,7 +203,14 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
         
         if dataManager.getSearchBooks().isEmpty {
-            cell.realmBook = dataManager.getRealmHistoryBooks()[indexPath.row]
+            let realmBook = dataManager.getRealmHistoryBooks()[indexPath.row]
+            cell.realmBook = realmBook
+            
+            //instead of doing another image networking, bring image file from Documents filepath
+            if let thumbnail = loadFromDocument(fileName: "philllyy_\(realmBook._id).jpg") {
+                print("getting image file success!")
+                cell.coverImageView.image = thumbnail
+            }
         } else {
             cell.book = dataManager.getSearchBooks()[indexPath.row]
         }
