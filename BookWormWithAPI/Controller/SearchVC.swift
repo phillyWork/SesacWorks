@@ -155,7 +155,7 @@ class SearchVC: UIViewController {
         if dataManager.getSearchBooks().isEmpty {
             let realmCellBook = dataManager.fetchRealmHistoryBooks()[sender.tag]
 //            let realmCellBook = dataManager.getRealmHistoryBooks()[sender.tag]
-            realmCellBook.like.toggle()
+            realmCellBook.heart.toggle()
 
             //upsert
 //            dataManager.updateRealmHistoryBooks(task: ["_id": realmCellBook._id,
@@ -171,7 +171,7 @@ class SearchVC: UIViewController {
 //                                                type: .upsert)
             
             //partial
-            dataManager.updateRealmHistoryBooks(attributes: ["_id": realmCellBook._id, "like": realmCellBook.like], type: .partial)
+            dataManager.updateRealmHistoryBooks(attributes: ["_id": realmCellBook._id, "heart": realmCellBook.heart], type: .partial)
         } else {
             let cellBook = dataManager.getSearchBooks()[sender.tag]
             if cellBook.like {

@@ -92,7 +92,7 @@ class LikeCell: UITableViewCell {
         dateLabel.text = realmBook.date
         priceLabel.text = "\(realmBook.price)"
         
-        if realmBook.like {
+        if realmBook.heart {
             likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
             likeButton.setImage(UIImage(systemName: "heart"), for: .normal)

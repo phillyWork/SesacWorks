@@ -15,10 +15,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         //schema version 확인
-        let config = Realm.Configuration(schemaVersion: 0) { migration, oldSchemaVersion in
+        let config = Realm.Configuration(schemaVersion: 3) { migration, oldSchemaVersion in
             
+            if oldSchemaVersion < 0 {   //author --> mainAuthor
+                migration.renameProperty(onType: BookTable.className(), from: "author", to: "mainAuthor")
+            }
             
+            if oldSchemaVersion < 1 {   //publishID ~ isbn + date
+                migration.enumerateObjects(ofType: BookTable.className()) { oldObject, newObject in
+                    guard let new = newObject, let old = oldObject else { return }
+                    new["publishID"] = "\(old["isbn"]): \(old["date"])"
+                }
+            }
             
+            if oldSchemaVersion < 2 {   //like --> heart
+                migration.renameProperty(onType: BookTable.className(), from: "like", to: "heart")
+            }
         }
         
         Realm.Configuration.defaultConfiguration = config

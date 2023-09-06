@@ -80,7 +80,7 @@ class BookCell: UICollectionViewCell {
         nameLabel.text = realmBook.title
         priceLabel.text = "\(realmBook.price)"
         
-        if realmBook.like {
+        if realmBook.heart {
             likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
             likeButton.setImage(UIImage(systemName: "heart"), for: .normal)

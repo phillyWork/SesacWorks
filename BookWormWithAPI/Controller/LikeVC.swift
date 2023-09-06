@@ -55,7 +55,7 @@ extension LikeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let realmBooks = dataManager.fetchRealmHistoryBooks()
 //        let realmBooks = dataManager.getRealmHistoryBooks()
-        return realmBooks.isEmpty ? dataManager.getLikedBooks().count : dataManager.fetchRealmHistoryBooks().filter { $0.like == true }.count
+        return realmBooks.isEmpty ? dataManager.getLikedBooks().count : dataManager.fetchRealmHistoryBooks().filter { $0.heart == true }.count
 //        return realmBooks.isEmpty ? dataManager.getLikedBooks().count : dataManager.getRealmHistoryBooks().filter { $0.like == true }.count
     }
     
@@ -68,7 +68,7 @@ extension LikeVC: UITableViewDelegate, UITableViewDataSource {
         
         if dataManager.fetchRealmHistoryBooks().isEmpty {
 //            if dataManager.getRealmHistoryBooks().isEmpty {
-            cell.realmBook = dataManager.fetchRealmHistoryBooks().filter { $0.like == true }[indexPath.row]
+            cell.realmBook = dataManager.fetchRealmHistoryBooks().filter { $0.heart == true }[indexPath.row]
 //            cell.realmBook = dataManager.getRealmHistoryBooks().filter { $0.like == true }[indexPath.row]
         } else {
             cell.book = dataManager.getLikedBooks()[indexPath.row]
@@ -98,7 +98,7 @@ extension LikeVC: UITableViewDelegate, UITableViewDataSource {
             }
             detailVC.view.backgroundColor = UIColor(red: book.color[0], green: book.color[1], blue: book.color[2], alpha: 1)
         } else {
-            let realmBook = dataManager.fetchRealmHistoryBooks().filter { $0.like == true }[indexPath.row]
+            let realmBook = dataManager.fetchRealmHistoryBooks().filter { $0.heart == true }[indexPath.row]
 //            let realmBook = dataManager.getRealmHistoryBooks().filter { $0.like == true }[indexPath.row]
             detailVC.realmBook = realmBook
             detailVC.view.backgroundColor = UIColor(red: Book.randomColor()[0], green: Book.randomColor()[1], blue: Book.randomColor()[2], alpha: 1)
