@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		213CF07A2AA718E40056665C /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213CF0792AA718E40056665C /* FileManager+Extension.swift */; };
+		2154D5932AA867B700252BCF /* BookRealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2154D5922AA867B700252BCF /* BookRealmRepository.swift */; };
+		2154D5952AA868B000252BCF /* Protocol+RealmRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2154D5942AA868B000252BCF /* Protocol+RealmRepositoryProtocol.swift */; };
+		2154D5972AA86E3200252BCF /* Enum+RealmUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2154D5962AA86E3200252BCF /* Enum+RealmUpdate.swift */; };
 		216BA0E42A822FF2008A54A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BA0E32A822FF2008A54A5 /* AppDelegate.swift */; };
 		216BA0E62A822FF2008A54A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BA0E52A822FF2008A54A5 /* SceneDelegate.swift */; };
 		216BA0E82A822FF2008A54A5 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BA0E72A822FF2008A54A5 /* SearchVC.swift */; };
@@ -34,6 +37,9 @@
 
 /* Begin PBXFileReference section */
 		213CF0792AA718E40056665C /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
+		2154D5922AA867B700252BCF /* BookRealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRealmRepository.swift; sourceTree = "<group>"; };
+		2154D5942AA868B000252BCF /* Protocol+RealmRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Protocol+RealmRepositoryProtocol.swift"; sourceTree = "<group>"; };
+		2154D5962AA86E3200252BCF /* Enum+RealmUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+RealmUpdate.swift"; sourceTree = "<group>"; };
 		216BA0E02A822FF2008A54A5 /* BookWormWithAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookWormWithAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		216BA0E32A822FF2008A54A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		216BA0E52A822FF2008A54A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +128,9 @@
 			children = (
 				216BA0FD2A826C38008A54A5 /* Book.swift */,
 				21F7F7692AA5C5E2003C749A /* RealmModel.swift */,
+				2154D5962AA86E3200252BCF /* Enum+RealmUpdate.swift */,
+				2154D5942AA868B000252BCF /* Protocol+RealmRepositoryProtocol.swift */,
+				2154D5922AA867B700252BCF /* BookRealmRepository.swift */,
 				216BA0FF2A826D08008A54A5 /* DataManager.swift */,
 			);
 			path = Model;
@@ -224,13 +233,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2154D5932AA867B700252BCF /* BookRealmRepository.swift in Sources */,
 				216BA0FC2A826A16008A54A5 /* DetailVC.swift in Sources */,
 				216BA0F92A8269B7008A54A5 /* BookCell.swift in Sources */,
 				216BA1102A826F12008A54A5 /* APIKey.swift in Sources */,
 				21F7F76A2AA5C5E2003C749A /* RealmModel.swift in Sources */,
 				216BA0FE2A826C38008A54A5 /* Book.swift in Sources */,
 				213CF07A2AA718E40056665C /* FileManager+Extension.swift in Sources */,
+				2154D5952AA868B000252BCF /* Protocol+RealmRepositoryProtocol.swift in Sources */,
 				216BA1002A826D08008A54A5 /* DataManager.swift in Sources */,
+				2154D5972AA86E3200252BCF /* Enum+RealmUpdate.swift in Sources */,
 				21E927D52A83924D0071C7ED /* LikeVC.swift in Sources */,
 				216BA0E82A822FF2008A54A5 /* SearchVC.swift in Sources */,
 				216BA0E42A822FF2008A54A5 /* AppDelegate.swift in Sources */,

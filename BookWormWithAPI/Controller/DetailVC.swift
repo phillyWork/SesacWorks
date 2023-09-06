@@ -7,11 +7,12 @@
 
 import UIKit
 import Kingfisher
-import RealmSwift
 
 class DetailVC: UIViewController {
 
     static let identifier = "DetailVC"
+    
+    let dataManager = DataManager.shared
     
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var coverImageView: UIImageView!
@@ -62,25 +63,20 @@ class DetailVC: UIViewController {
         guard let realmBook = realmBook else { return }
         
         if let memo = memoTextView.text, !memo.isEmpty {
-            let updatedData = BookTable(value: ["_id": realmBook._id,
-                                                "title": realmBook.title,
-                                                "author": realmBook.author,
-                                                "contents": realmBook.contents,
-                                                "date": realmBook.date,
-                                                "isbn": realmBook.isbn,
-                                                "thumbnailURL": realmBook.thumbnailURL,
-                                                "price": realmBook.price,
-                                                "like": realmBook.like,
-                                                "memo": memo])
+            //upsert
+//            dataManager.updateRealmHistoryBooks(task: ["_id": realmBook._id,
+//                                                       "title": realmBook.title,
+//                                                       "author": realmBook.author,
+//                                                       "contents": realmBook.contents,
+//                                                       "date": realmBook.date,
+//                                                       "isbn": realmBook.isbn,
+//                                                       "thumbnailURL": realmBook.thumbnailURL,
+//                                                       "price": realmBook.price,
+//                                                       "like": realmBook.like,
+//                                                       "memo": memo], type: .upsert)
             
-            do {
-                let realm = try Realm()
-                try realm.write {
-                    realm.add(updatedData, update: .modified)
-                }
-            } catch {
-                print(error)
-            }
+            //partial
+            dataManager.updateRealmHistoryBooks(attributes: ["_id": realmBook._id, "memo": memo], type: .partial)
         }
         
         navigationController?.popViewController(animated: true)
@@ -94,14 +90,7 @@ class DetailVC: UIViewController {
         removeFromDocument(fileName: "philllyy_\(task._id).jpg")
         
         //realm에서 삭제
-        do {
-            let realm = try Realm()
-            try realm.write {
-                realm.delete(task)
-            }
-        } catch {
-            print(error)
-        }
+        dataManager.deleteRealmHistoryBooks(book: task)
         
         navigationController?.popViewController(animated: true)
     }

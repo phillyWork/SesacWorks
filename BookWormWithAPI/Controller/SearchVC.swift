@@ -8,14 +8,13 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-import RealmSwift
 
 class SearchVC: UIViewController {
 
     //MARK: - Properties
     
     let dataManager = DataManager.shared
-    
+
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -31,15 +30,14 @@ class SearchVC: UIViewController {
         configCollectionView()
         
 //        callRequest(query: "야구", page: dataManager.getPageNum())
+//        do {
+//            dataManager.fetchRealmHistoryBooks()
+//            print(dataManager.getRealmHistoryBooks())
+//        } catch {
+//            print(error)
+//        }
         
-        do {
-            let realm = try Realm()
-            let tasks = realm.objects(BookTable.self).sorted(byKeyPath: "isbn", ascending: true)
-            dataManager.addRealmHistoryBooks(tasks: tasks)
-            print(dataManager.getRealmHistoryBooks())
-        } catch {
-            print(error)
-        }
+        dataManager.getSchemaVersion()
         
     }
     
@@ -128,7 +126,9 @@ class SearchVC: UIViewController {
                         let price = data["price"].intValue
 
                         //realm struct와 기존 struct 합쳐서 활용?
+                        //DTO 활용
                         let bookForRealm = BookTable(title: title, author: author, contents: contents, date: date, isbn: isbn, thumbnailURL: thumbnail, price: price, like: false, memo: nil)
+                        
                         
                         
                         let book = Book(title: title, author: author, contents: contents, isbn: isbn, date: date, thumbnailURL: thumbnail, price: price, like: false, color: Book.randomColor())
@@ -153,23 +153,25 @@ class SearchVC: UIViewController {
         print("SearchVC", #function)
         
         if dataManager.getSearchBooks().isEmpty {
-            let realmCellBook = dataManager.getRealmHistoryBooks()[sender.tag]
+            let realmCellBook = dataManager.fetchRealmHistoryBooks()[sender.tag]
+//            let realmCellBook = dataManager.getRealmHistoryBooks()[sender.tag]
             realmCellBook.like.toggle()
-            //다시 update
-            do {
-                let realm = try Realm()
-                //transaction 단위 --> try 각자 따로
-                try realm.write {
-                    realm.delete(dataManager.getRealmHistoryBooks()[sender.tag])
-                    print("Deletion complete")
-                }
-//                try realm.write {
-//                    realm.add(realmCellBook)
-//                    print("Addition complete")
-//                }
-            } catch {
-                print(error)
-            }
+
+            //upsert
+//            dataManager.updateRealmHistoryBooks(task: ["_id": realmCellBook._id,
+//                                                       "title": realmCellBook.title,
+//                                                       "author": realmCellBook.author,
+//                                                       "contents": realmCellBook.contents,
+//                                                       "date": realmCellBook.date,
+//                                                       "isbn": realmCellBook.isbn,
+//                                                       "thumbnailURL": realmCellBook.thumbnailURL,
+//                                                       "price": realmCellBook.price,
+//                                                       "like": realmCellBook.like,
+//                                                       "memo": realmCellBook.memo],
+//                                                type: .upsert)
+            
+            //partial
+            dataManager.updateRealmHistoryBooks(attributes: ["_id": realmCellBook._id, "like": realmCellBook.like], type: .partial)
         } else {
             let cellBook = dataManager.getSearchBooks()[sender.tag]
             if cellBook.like {
@@ -190,7 +192,8 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let searchBooks = dataManager.getSearchBooks()
-        return searchBooks.isEmpty ? dataManager.getRealmHistoryBooks().count : searchBooks.count
+        return searchBooks.isEmpty ? dataManager.fetchRealmHistoryBooks().count : searchBooks.count
+//        return searchBooks.isEmpty ? dataManager.getRealmHistoryBooks().count : searchBooks.count
 //        let realmBooks = dataManager.getRealmHistoryBooks()
 //        return realmBooks.isEmpty ? dataManager.getSearchBooks().count : realmBooks.count
     }
@@ -203,7 +206,8 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
         
         if dataManager.getSearchBooks().isEmpty {
-            let realmBook = dataManager.getRealmHistoryBooks()[indexPath.row]
+            let realmBook = dataManager.fetchRealmHistoryBooks()[indexPath.row]
+//            let realmBook = dataManager.getRealmHistoryBooks()[indexPath.row]
             cell.realmBook = realmBook
             
             //instead of doing another image networking, bring image file from Documents filepath
@@ -238,7 +242,8 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         let detailVC = sb.instantiateViewController(identifier: DetailVC.identifier) as! DetailVC
         
         if dataManager.getSearchBooks().isEmpty {
-            let realmBook = dataManager.getRealmHistoryBooks()[indexPath.row]
+            let realmBook = dataManager.fetchRealmHistoryBooks()[indexPath.row]
+//            let realmBook = dataManager.getRealmHistoryBooks()[indexPath.row]
             detailVC.realmBook = realmBook
             detailVC.view.backgroundColor = UIColor(red: Book.randomColor()[0], green: Book.randomColor()[1], blue: Book.randomColor()[2], alpha: 1)
         } else {
@@ -249,23 +254,11 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
             let cell = collectionView.cellForItem(at: indexPath) as! BookCell
             guard let image = cell.coverImageView.image else { return }
             
-            do {
-                let realm = try Realm()
-                print("path: ", realm.configuration.fileURL)
-                
-//                let task = BookTable(title: book.title, author: book.author, contents: book.contents, date: book.date, isbn: book.isbn, thumbnailURL: book.thumbnailURL, price: book.price, like: book.like, memo: UserDefaults.standard.string(forKey: "memo"))
-                
-                let task = BookTable(title: book.title, author: book.author, contents: book.contents, date: book.date, isbn: book.isbn, thumbnailURL: book.thumbnailURL, price: book.price, like: book.like, memo: nil)
-
-                //realm에 저장, 해당 image 따로 Documents 폴더에 저장
-                try realm.write {
-                    realm.add(task)
-                    print("addition to realm succeed")
-                    saveToDocument(fileName: "philllyy_\(task._id).jpg", data: image)
-                }
-            } catch {
-                print(error)
-            }
+            //realm에 저장, 해당 image 따로 Documents 폴더에 저장
+            let task = BookTable(title: book.title, author: book.author, contents: book.contents, date: book.date, isbn: book.isbn, thumbnailURL: book.thumbnailURL, price: book.price, like: book.like, memo: nil)
+            
+            dataManager.addNewBookToRealmHistoryBooks(book: task)
+            saveToDocument(fileName: "philllyy_\(task._id).jpg", data: image)
         }
         
         navigationController?.pushViewController(detailVC, animated: true)

@@ -6,14 +6,23 @@
 //
 
 import UIKit
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //schema version 확인
+        let config = Realm.Configuration(schemaVersion: 0) { migration, oldSchemaVersion in
+            
+            
+            
+        }
+        
+        Realm.Configuration.defaultConfiguration = config
+        
         return true
     }
 

@@ -17,7 +17,9 @@ class DataManager {
     private var likedBooks: [Book] = []
     private var searchBooks: [Book] = []
     
-    private var realmHistoryBooks: Results<BookTable>!
+//    private var realmHistoryBooks: Results<BookTable>!
+    
+    private let bookRepository = BookRealmRepository()
 
     //page: 1~50 사이의 값, 기본 값 1
     //size: 1~50 사이의 값, 기본 값 10
@@ -52,11 +54,33 @@ class DataManager {
         return searchBooks
     }
     
-    func getRealmHistoryBooks() -> Results<BookTable> {
-        return realmHistoryBooks
+//    func getRealmHistoryBooks() -> Results<BookTable> {
+//        return realmHistoryBooks
+//    }
+    
+    func getSchemaVersion() {
+        bookRepository.checkSchemaVersion()
     }
     
     //MARK: - UPDATE
+    
+    func addNewBookToRealmHistoryBooks(book: BookTable) {
+        bookRepository.createItem(task: book)
+    }
+    
+    func fetchRealmHistoryBooks() -> Results<BookTable> {
+        let tasks = bookRepository.fetchSortFilter(keyPath: "isbn", isAscending: true)
+//        self.realmHistoryBooks = tasks
+        return tasks
+    }
+    
+    func updateRealmHistoryBooks(attributes: [String: Any], type: RealmUpdate) {
+        bookRepository.updateItem(task: attributes, type: type)
+    }
+    
+    func deleteRealmHistoryBooks(book: BookTable) {
+        bookRepository.deleteItem(task: book)
+    }
     
     func addPageNumber() {
         page += 1
@@ -64,10 +88,6 @@ class DataManager {
     
     func addSearchBook(book: Book) {
         searchBooks.append(book)
-    }
-    
-    func addRealmHistoryBooks(tasks: Results<BookTable>) {
-        self.realmHistoryBooks = tasks
     }
     
     func addLikeFromSearch(book: Book, searchTag: Int) {
