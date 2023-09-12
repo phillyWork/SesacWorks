@@ -62,9 +62,7 @@ class NetflixViewController: UIViewController {
     
     lazy var playButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "play_normal"), for: .normal)
-        button.setImage(UIImage(named: "play_highlighted"), for: .highlighted)
-        
+        button.setImage(UIImage(named: PlayButton.normal.rawValue), for: .normal)
         button.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
         
         return button
@@ -100,19 +98,21 @@ class NetflixViewController: UIViewController {
         button.setImage(UIImage(named: "3"), for: .normal)
         return button
     }()
-        
+    
+    let viewModel = NetflixViewModel()
+    
+    //MARK: - Setup
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configViews()
+        
+        viewModel.isTapped.bind { bool in
+            let string = bool ? PlayButton.highlighted.rawValue : PlayButton.normal.rawValue
+            self.playButton.setImage(UIImage(named: string), for: .normal)
+        }
     }
-    
-    
-    @objc func playButtonTapped() {
-//        navigationController?.pushViewController(LoginViewController(), animated: true)
-        transition(transitionType: .push, viewController: LoginViewController.self)
-    }
-    
     
     func configViews() {
 
@@ -234,4 +234,16 @@ class NetflixViewController: UIViewController {
 //        circleThree.layer.cornerRadius = circleTwo.layer.cornerRadius
         
     }
+    
+    
+    //MARK: - Handlers
+    
+    @objc func playButtonTapped(sender: UIButton) {
+//        navigationController?.pushViewController(LoginViewController(), animated: true)
+//        transition(transitionType: .push, viewController: LoginViewController.self)
+        
+        viewModel.isTapped.value.toggle()
+        
+    }
+
 }
