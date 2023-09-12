@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  iPadMVVMUnsplashAPI
+
+  Created by Heedon on 2023/09/11.
+  
+*/
+
+"NSLocationWhenInUseUsageDescription" = "위치 정보가 필요합니다";
+
+"CFBundleDisplayName" = "새싹";

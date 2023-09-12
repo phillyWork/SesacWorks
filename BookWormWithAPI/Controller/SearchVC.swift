@@ -14,7 +14,7 @@ class SearchVC: UIViewController {
     //MARK: - Properties
     
     let dataManager = DataManager.shared
-    
+
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -24,12 +24,28 @@ class SearchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "검색 결과"
+        title = "최근 검색 결과"
         
         configSearchBar()
         configCollectionView()
         
-        callRequest(query: "야구", page: 1)
+//        callRequest(query: "야구", page: dataManager.getPageNum())
+//        do {
+//            dataManager.fetchRealmHistoryBooks()
+//            print(dataManager.getRealmHistoryBooks())
+//        } catch {
+//            print(error)
+//        }
+        
+        dataManager.getSchemaVersion()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //detail --> search: realm 보여주기
+        dataManager.removeSearchList()
+        self.mainCollectionView.reloadData()
     }
 
     func configSearchBar() {
@@ -75,11 +91,9 @@ class SearchVC: UIViewController {
             return
         }
         
-                
 //        pageable_count    Integer    중복된 문서를 제외하고, 처음부터 요청 페이지까지의 노출 가능 문서 수
 //        is_end    Boolean    현재 페이지가 마지막 페이지인지 여부, 값이 false면 page를 증가시켜 다음 페이지를 요청할 수 있음
-        
-
+    
         let url = "https://dapi.kakao.com/v3/search/book?query=\(searchText)"
         
         //header에 authorization key를 넣는 경우
@@ -103,18 +117,25 @@ class SearchVC: UIViewController {
                     for data in dataArray {
                         let title = data["title"].stringValue
                         let authors = data["authors"].arrayObject as! [String]
+                        let author = authors.isEmpty ? "" : authors[0]
+                        print("authors: \(authors) and author: \(author)")
                         let contents = data["contents"].stringValue
                         let isbn = data["isbn"].stringValue
                         let date = data["datetime"].stringValue
                         let thumbnail = data["thumbnail"].stringValue
                         let price = data["price"].intValue
+
+                        //realm struct와 기존 struct 합쳐서 활용?
+                        //DTO 활용
+                        let bookForRealm = BookTable(title: title, author: author, contents: contents, date: date, isbn: isbn, thumbnailURL: thumbnail, price: price, like: false, memo: nil)
                         
-                        let book = Book(title: title, authors: authors, contents: contents, isbn: isbn, date: date, thumbnailURL: thumbnail, price: price, like: false, color: Book.randomColor())
                         
+                        
+                        let book = Book(title: title, author: author, contents: contents, isbn: isbn, date: date, thumbnailURL: thumbnail, price: price, like: false, color: Book.randomColor())
                         self.dataManager.addSearchBook(book: book)
                     }
                     
-                    print(self.dataManager.getBooks())
+//                    print(self.dataManager.getBooks())
                     self.mainCollectionView.reloadData()
                 } else {
                     print("문제 발생. 다시 시도해주세요.")
@@ -131,17 +152,38 @@ class SearchVC: UIViewController {
         
         print("SearchVC", #function)
         
-        let cellBook = dataManager.getSearchBooks()[sender.tag]
-        
-        if cellBook.like {
-            dataManager.removeLikeFromSearch(book: cellBook, searchTag: sender.tag)
+        if dataManager.getSearchBooks().isEmpty {
+            let realmCellBook = dataManager.fetchRealmHistoryBooks()[sender.tag]
+//            let realmCellBook = dataManager.getRealmHistoryBooks()[sender.tag]
+            realmCellBook.heart.toggle()
+
+            //upsert
+//            dataManager.updateRealmHistoryBooks(task: ["_id": realmCellBook._id,
+//                                                       "title": realmCellBook.title,
+//                                                       "author": realmCellBook.author,
+//                                                       "contents": realmCellBook.contents,
+//                                                       "date": realmCellBook.date,
+//                                                       "isbn": realmCellBook.isbn,
+//                                                       "thumbnailURL": realmCellBook.thumbnailURL,
+//                                                       "price": realmCellBook.price,
+//                                                       "like": realmCellBook.like,
+//                                                       "memo": realmCellBook.memo],
+//                                                type: .upsert)
+            
+            //partial
+            dataManager.updateRealmHistoryBooks(attributes: ["_id": realmCellBook._id, "heart": realmCellBook.heart], type: .partial)
         } else {
-            dataManager.addLikeFromSearch(book: cellBook, searchTag: sender.tag)
+            let cellBook = dataManager.getSearchBooks()[sender.tag]
+            if cellBook.like {
+                dataManager.removeLikeFromSearch(book: cellBook, searchTag: sender.tag)
+            } else {
+                dataManager.addLikeFromSearch(book: cellBook, searchTag: sender.tag)
+            }
         }
-        
+    
         mainCollectionView.reloadData()
     }
-
+    
 }
 
 //MARK: - Extension for CollectionView Delegate, DataSource, DataSourcePrefetching
@@ -149,7 +191,11 @@ class SearchVC: UIViewController {
 extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataManager.getSearchBooks().count
+        let searchBooks = dataManager.getSearchBooks()
+        return searchBooks.isEmpty ? dataManager.fetchRealmHistoryBooks().count : searchBooks.count
+//        return searchBooks.isEmpty ? dataManager.getRealmHistoryBooks().count : searchBooks.count
+//        let realmBooks = dataManager.getRealmHistoryBooks()
+//        return realmBooks.isEmpty ? dataManager.getSearchBooks().count : realmBooks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -159,7 +205,19 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         
         cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
         
-        cell.book = dataManager.getSearchBooks()[indexPath.row]
+        if dataManager.getSearchBooks().isEmpty {
+            let realmBook = dataManager.fetchRealmHistoryBooks()[indexPath.row]
+//            let realmBook = dataManager.getRealmHistoryBooks()[indexPath.row]
+            cell.realmBook = realmBook
+            
+            //instead of doing another image networking, bring image file from Documents filepath
+            if let thumbnail = loadFromDocument(fileName: "philllyy_\(realmBook._id).jpg") {
+                print("getting image file success!")
+                cell.coverImageView.image = thumbnail
+            }
+        } else {
+            cell.book = dataManager.getSearchBooks()[indexPath.row]
+        }
         
         return cell
     }
@@ -167,11 +225,14 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         
         for indexPath in indexPaths {
-            if dataManager.getSearchBooks().count - 1 == indexPath.row && dataManager.getPageNum() < 50 && !dataManager.getCurrentIsEnd() {
-                dataManager.addPageNumber()
-                callRequest(query: searchBar.text!, page: dataManager.getPageNum())
+            if !dataManager.getSearchBooks().isEmpty {
+                if dataManager.getSearchBooks().count - 1 == indexPath.row && dataManager.getPageNum() < 50 && !dataManager.getCurrentIsEnd() {
+                    dataManager.addPageNumber()
+                    callRequest(query: searchBar.text!, page: dataManager.getPageNum())
+                }
             }
         }
+        
     }
     
     
@@ -180,11 +241,25 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = sb.instantiateViewController(identifier: DetailVC.identifier) as! DetailVC
         
-        let book = dataManager.getSearchBooks()[indexPath.row]
-        
-        detailVC.book = book
-        
-        detailVC.view.backgroundColor = UIColor(red: book.color[0], green: book.color[1], blue: book.color[2], alpha: 1)
+        if dataManager.getSearchBooks().isEmpty {
+            let realmBook = dataManager.fetchRealmHistoryBooks()[indexPath.row]
+//            let realmBook = dataManager.getRealmHistoryBooks()[indexPath.row]
+            detailVC.realmBook = realmBook
+            detailVC.view.backgroundColor = UIColor(red: Book.randomColor()[0], green: Book.randomColor()[1], blue: Book.randomColor()[2], alpha: 1)
+        } else {
+            let book = dataManager.getSearchBooks()[indexPath.row]
+            detailVC.book = book
+            detailVC.view.backgroundColor = UIColor(red: book.color[0], green: book.color[1], blue: book.color[2], alpha: 1)
+            
+            let cell = collectionView.cellForItem(at: indexPath) as! BookCell
+            guard let image = cell.coverImageView.image else { return }
+            
+            //realm에 저장, 해당 image 따로 Documents 폴더에 저장
+            let task = BookTable(title: book.title, author: book.author, contents: book.contents, date: book.date, isbn: book.isbn, thumbnailURL: book.thumbnailURL, price: book.price, like: book.like, memo: nil)
+            
+            dataManager.addNewBookToRealmHistoryBooks(book: task)
+            saveToDocument(fileName: "philllyy_\(task._id).jpg", data: image)
+        }
         
         navigationController?.pushViewController(detailVC, animated: true)
     }
@@ -198,8 +273,8 @@ extension SearchVC: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         self.dataManager.removeSearchList()
-        
-        self.dataManager.addPageNumber()
+        self.dataManager.resetPageNum()
+//        self.dataManager.addPageNumber()
         
         view.endEditing(true)
         
@@ -207,8 +282,7 @@ extension SearchVC: UISearchBarDelegate {
         
         callRequest(query: query, page: dataManager.getPageNum())
         
-        
-        
+        searchBar.text = ""
     }
     
     

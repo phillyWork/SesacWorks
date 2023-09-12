@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class LikeVC: UIViewController {
 
@@ -52,7 +53,10 @@ class LikeVC: UIViewController {
 extension LikeVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataManager.getLikedBooks().count
+        let realmBooks = dataManager.fetchRealmHistoryBooks()
+//        let realmBooks = dataManager.getRealmHistoryBooks()
+        return realmBooks.isEmpty ? dataManager.getLikedBooks().count : dataManager.fetchRealmHistoryBooks().filter { $0.heart == true }.count
+//        return realmBooks.isEmpty ? dataManager.getLikedBooks().count : dataManager.getRealmHistoryBooks().filter { $0.like == true }.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,7 +66,13 @@ extension LikeVC: UITableViewDelegate, UITableViewDataSource {
         
         cell.likeButton.tag = indexPath.row
         
-        cell.book = dataManager.getLikedBooks()[indexPath.row]
+        if dataManager.fetchRealmHistoryBooks().isEmpty {
+//            if dataManager.getRealmHistoryBooks().isEmpty {
+            cell.realmBook = dataManager.fetchRealmHistoryBooks().filter { $0.heart == true }[indexPath.row]
+//            cell.realmBook = dataManager.getRealmHistoryBooks().filter { $0.like == true }[indexPath.row]
+        } else {
+            cell.book = dataManager.getLikedBooks()[indexPath.row]
+        }
         
         return cell
     }
@@ -71,11 +81,28 @@ extension LikeVC: UITableViewDelegate, UITableViewDataSource {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let detailVC = sb.instantiateViewController(withIdentifier: DetailVC.identifier) as! DetailVC
         
-        let book = dataManager.getLikedBooks()[indexPath.row]
-        
-        detailVC.book = book
-        
-        detailVC.view.backgroundColor = UIColor(red: book.color[0], green: book.color[1], blue: book.color[2], alpha: 1)
+        if dataManager.fetchRealmHistoryBooks().isEmpty {
+//            if dataManager.getRealmHistoryBooks().isEmpty {
+            let book = dataManager.getLikedBooks()[indexPath.row]
+            detailVC.book = book
+            
+            do {
+                let realm = try Realm()
+                let task = BookTable(title: book.title, author: book.author, contents: book.contents, date: book.date, isbn: book.isbn, thumbnailURL: book.thumbnailURL, price: book.price, like: book.like, memo: nil)
+                try realm.write {
+                    realm.add(task)
+                    print("Add new book to realm in like")
+                }
+            } catch {
+                print(error)
+            }
+            detailVC.view.backgroundColor = UIColor(red: book.color[0], green: book.color[1], blue: book.color[2], alpha: 1)
+        } else {
+            let realmBook = dataManager.fetchRealmHistoryBooks().filter { $0.heart == true }[indexPath.row]
+//            let realmBook = dataManager.getRealmHistoryBooks().filter { $0.like == true }[indexPath.row]
+            detailVC.realmBook = realmBook
+            detailVC.view.backgroundColor = UIColor(red: Book.randomColor()[0], green: Book.randomColor()[1], blue: Book.randomColor()[2], alpha: 1)
+        }
         
         navigationController?.pushViewController(detailVC, animated: true)
     }

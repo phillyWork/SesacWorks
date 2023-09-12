@@ -44,6 +44,15 @@ class ContentCell: UICollectionViewCell {
         configImageView()
     }
     
+    override func prepareForReuse() {
+        dateLabel.text = nil
+        tagLabel.text = nil
+        backPathImageView.image = nil
+        ratePointLabel.text = nil
+        titleLabel.text = nil
+        originalTitleLabel.text = nil
+    }
+    
     func configLabel() {
         dateLabel.textColor = .darkGray
         dateLabel.font = .systemFont(ofSize: 12)

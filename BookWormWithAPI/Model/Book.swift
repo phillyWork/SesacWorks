@@ -23,7 +23,7 @@ import Foundation
 
 struct Book {
     let title: String
-    let authors: [String]
+    let author: String
     let contents: String
     let isbn: String
     let date: String
@@ -41,6 +41,6 @@ struct Book {
     }
     
     var description: String {
-        return "\(authors) | \(date)"
+        return "\(author) | \(date)"
     }
 }

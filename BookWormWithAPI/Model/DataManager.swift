@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 class DataManager {
     
@@ -16,12 +17,18 @@ class DataManager {
     private var likedBooks: [Book] = []
     private var searchBooks: [Book] = []
     
+//    private var realmHistoryBooks: Results<BookTable>!
+    
+    private let bookRepository = BookRealmRepository()
+
     //page: 1~50 사이의 값, 기본 값 1
     //size: 1~50 사이의 값, 기본 값 10
     //isEnd: 마지막 페이지인지 확인
     private var page = 1
     private let size = 15
     private var isEnd = false
+    
+    //MARK: - GET
     
     func getPageNum() -> Int {
         return page
@@ -45,6 +52,34 @@ class DataManager {
     
     func getSearchBooks() -> [Book] {
         return searchBooks
+    }
+    
+//    func getRealmHistoryBooks() -> Results<BookTable> {
+//        return realmHistoryBooks
+//    }
+    
+    func getSchemaVersion() {
+        bookRepository.checkSchemaVersion()
+    }
+    
+    //MARK: - UPDATE
+    
+    func addNewBookToRealmHistoryBooks(book: BookTable) {
+        bookRepository.createItem(task: book)
+    }
+    
+    func fetchRealmHistoryBooks() -> Results<BookTable> {
+        let tasks = bookRepository.fetchSortFilter(keyPath: "isbn", isAscending: true)
+//        self.realmHistoryBooks = tasks
+        return tasks
+    }
+    
+    func updateRealmHistoryBooks(attributes: [String: Any], type: RealmUpdate) {
+        bookRepository.updateItem(task: attributes, type: type)
+    }
+    
+    func deleteRealmHistoryBooks(book: BookTable) {
+        bookRepository.deleteItem(task: book)
     }
     
     func addPageNumber() {
@@ -99,6 +134,10 @@ class DataManager {
     
     func removeSearchList() {
         searchBooks.removeAll()
+    }
+    
+    func resetPageNum() {
+        page = 1
     }
     
     
