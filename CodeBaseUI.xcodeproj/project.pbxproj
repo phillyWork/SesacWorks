@@ -25,6 +25,9 @@
 		21AED53B2A949EDB00697054 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AED53A2A949EDB00697054 /* ThirdViewController.swift */; };
 		21AED53E2A949FD600697054 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 21AED53D2A949FD600697054 /* SnapKit */; };
 		21AED5402A94CEA100697054 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AED53F2A94CEA100697054 /* PaddingLabel.swift */; };
+		21B267A32AB05F0A001BCE94 /* NetflixViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B267A22AB05F0A001BCE94 /* NetflixViewModel.swift */; };
+		21B267A82AB0600B001BCE94 /* Enum+PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B267A72AB0600B001BCE94 /* Enum+PlayButton.swift */; };
+		21B267AA2AB06194001BCE94 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B267A92AB06194001BCE94 /* Observable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +50,9 @@
 		21AED5382A949ED300697054 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		21AED53A2A949EDB00697054 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		21AED53F2A94CEA100697054 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		21B267A22AB05F0A001BCE94 /* NetflixViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetflixViewModel.swift; sourceTree = "<group>"; };
+		21B267A72AB0600B001BCE94 /* Enum+PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+PlayButton.swift"; sourceTree = "<group>"; };
+		21B267A92AB06194001BCE94 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +73,7 @@
 				21AED5282A949EB600697054 /* FirstViewController.swift */,
 				21AED5382A949ED300697054 /* SecondViewController.swift */,
 				21AED53A2A949EDB00697054 /* ThirdViewController.swift */,
-				21592AA92A973AA400AD09A4 /* NetflixViewController.swift */,
+				21B267A42AB05F0F001BCE94 /* Netflix */,
 				21592AB72A9750C900AD09A4 /* LoginViewController.swift */,
 			);
 			path = Controller;
@@ -116,6 +122,17 @@
 				21AED5322A949EB900697054 /* Info.plist */,
 			);
 			path = CodeBaseUI;
+			sourceTree = "<group>";
+		};
+		21B267A42AB05F0F001BCE94 /* Netflix */ = {
+			isa = PBXGroup;
+			children = (
+				21B267A92AB06194001BCE94 /* Observable.swift */,
+				21B267A72AB0600B001BCE94 /* Enum+PlayButton.swift */,
+				21B267A22AB05F0A001BCE94 /* NetflixViewModel.swift */,
+				21592AA92A973AA400AD09A4 /* NetflixViewController.swift */,
+			);
+			path = Netflix;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,14 +214,17 @@
 			files = (
 				21AED5402A94CEA100697054 /* PaddingLabel.swift in Sources */,
 				21AED5392A949ED300697054 /* SecondViewController.swift in Sources */,
+				21B267A82AB0600B001BCE94 /* Enum+PlayButton.swift in Sources */,
 				21AED5292A949EB600697054 /* FirstViewController.swift in Sources */,
 				21592AB62A9746CC00AD09A4 /* CircleButton.swift in Sources */,
 				21592ABA2A978CE100AD09A4 /* GrayTextField.swift in Sources */,
 				21AED53B2A949EDB00697054 /* ThirdViewController.swift in Sources */,
 				21AED5252A949EB600697054 /* AppDelegate.swift in Sources */,
+				21B267A32AB05F0A001BCE94 /* NetflixViewModel.swift in Sources */,
 				21592AAE2A973C2500AD09A4 /* Enum.swift in Sources */,
 				21592AB32A973D9100AD09A4 /* WhiteLabel.swift in Sources */,
 				21592AAC2A973ADD00AD09A4 /* Generic.swift in Sources */,
+				21B267AA2AB06194001BCE94 /* Observable.swift in Sources */,
 				21AED5272A949EB600697054 /* SceneDelegate.swift in Sources */,
 				21592AAA2A973AA400AD09A4 /* NetflixViewController.swift in Sources */,
 				21592AB82A9750C900AD09A4 /* LoginViewController.swift in Sources */,
