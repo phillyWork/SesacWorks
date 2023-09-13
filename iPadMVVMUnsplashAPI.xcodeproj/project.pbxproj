@@ -16,6 +16,9 @@
 		217509272AAEAE2400736F30 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 217509292AAEAE2400736F30 /* Localizable.strings */; };
 		2175092D2AAEBAB500736F30 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2175092C2AAEBAB400736F30 /* Extension+String.swift */; };
 		217509302AAEBDDB00736F30 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 217509322AAEBDDB00736F30 /* InfoPlist.strings */; };
+		217C5AA32AB139C4001FA281 /* CalculateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C5AA22AB139C4001FA281 /* CalculateViewController.swift */; };
+		217C5AA52AB139CA001FA281 /* CalculateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C5AA42AB139CA001FA281 /* CalculateViewModel.swift */; };
+		217C5AA72AB13DA1001FA281 /* CalculateObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C5AA62AB13DA1001FA281 /* CalculateObservable.swift */; };
 		21B2676A2AAFED51001BCE94 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B267692AAFED51001BCE94 /* LoginViewController.swift */; };
 		21B2676D2AAFF2F8001BCE94 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B2676C2AAFF2F8001BCE94 /* Observable.swift */; };
 		21B2676F2AAFFDE8001BCE94 /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B2676E2AAFFDE8001BCE94 /* SampleViewController.swift */; };
@@ -50,6 +53,9 @@
 		217509312AAEBDDB00736F30 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		217509332AAEBDDE00736F30 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		217509342AAEBDDF00736F30 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		217C5AA22AB139C4001FA281 /* CalculateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateViewController.swift; sourceTree = "<group>"; };
+		217C5AA42AB139CA001FA281 /* CalculateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateViewModel.swift; sourceTree = "<group>"; };
+		217C5AA62AB13DA1001FA281 /* CalculateObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateObservable.swift; sourceTree = "<group>"; };
 		21B267692AAFED51001BCE94 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		21B2676C2AAFF2F8001BCE94 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		21B2676E2AAFFDE8001BCE94 /* SampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				21B2677C2AB02ABB001BCE94 /* APIKey.swift */,
+				217C5AA12AB139B4001FA281 /* Calculate */,
 				21B267752AB02A3E001BCE94 /* Photo */,
 				21B267682AAFED42001BCE94 /* Login */,
 				21B267722AB001CF001BCE94 /* Sample */,
@@ -110,6 +117,16 @@
 				217509322AAEBDDB00736F30 /* InfoPlist.strings */,
 			);
 			path = iPadMVVMUnsplashAPI;
+			sourceTree = "<group>";
+		};
+		217C5AA12AB139B4001FA281 /* Calculate */ = {
+			isa = PBXGroup;
+			children = (
+				217C5AA62AB13DA1001FA281 /* CalculateObservable.swift */,
+				217C5AA42AB139CA001FA281 /* CalculateViewModel.swift */,
+				217C5AA22AB139C4001FA281 /* CalculateViewController.swift */,
+			);
+			path = Calculate;
 			sourceTree = "<group>";
 		};
 		21B267682AAFED42001BCE94 /* Login */ = {
@@ -222,14 +239,17 @@
 				217509102AAE990400736F30 /* ViewController.swift in Sources */,
 				2175090C2AAE990400736F30 /* AppDelegate.swift in Sources */,
 				21B2676A2AAFED51001BCE94 /* LoginViewController.swift in Sources */,
+				217C5AA72AB13DA1001FA281 /* CalculateObservable.swift in Sources */,
 				21B2676D2AAFF2F8001BCE94 /* Observable.swift in Sources */,
 				2175090E2AAE990400736F30 /* SceneDelegate.swift in Sources */,
 				21B267772AB02A46001BCE94 /* APIService.swift in Sources */,
 				21B267792AB02A62001BCE94 /* Photo.swift in Sources */,
+				217C5AA32AB139C4001FA281 /* CalculateViewController.swift in Sources */,
 				21B267712AB0014F001BCE94 /* SampleViewModel.swift in Sources */,
 				21B267812AB02DA4001BCE94 /* PhotoViewModel.swift in Sources */,
 				21B2676F2AAFFDE8001BCE94 /* SampleViewController.swift in Sources */,
 				21B2677D2AB02ABB001BCE94 /* APIKey.swift in Sources */,
+				217C5AA52AB139CA001FA281 /* CalculateViewModel.swift in Sources */,
 				21B267742AB00E39001BCE94 /* LoginViewModel.swift in Sources */,
 				21B2677F2AB02B45001BCE94 /* PhotoViewController.swift in Sources */,
 			);
