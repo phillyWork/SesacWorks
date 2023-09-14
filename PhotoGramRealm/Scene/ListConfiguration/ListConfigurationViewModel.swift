@@ -16,6 +16,8 @@ class ListConfigurationViewModel {
     
     var searchQuery: ListConfigurationObservable<String> = ListConfigurationObservable("")
     
+    var imageLists = [UIImage]()
+    
     func callRequest(query: String) {
         networkManager.searchPhoto(query: query) { data in
             guard let data = data else { return }
@@ -26,7 +28,7 @@ class ListConfigurationViewModel {
     
     func getImageFromNetwork(url: String, completionHandler: @escaping (UIImage) -> ()) {
         networkManager.getImageFromNetwork(url: url) { image in
-            print("Getting image succeed")
+            print("Getting image succeed in \(Thread.current)")
             completionHandler(image)
         }
     }
@@ -36,7 +38,7 @@ class ListConfigurationViewModel {
             print("No data in photoResults")
             return 0
         }
-        print("count: \(results.count)")
+//        print("count: \(results.count)")
         return results.count
     }
     
@@ -45,7 +47,7 @@ class ListConfigurationViewModel {
             print("No data in photoResults for cell")
             return nil
         }
-        print("cell: \(photoResults[indexPath.item])")
+//        print("cell: \(photoResults[indexPath.item])")
         return photoResults[indexPath.item]
     }
     

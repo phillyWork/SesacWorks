@@ -32,6 +32,9 @@ class ListConfigurationHomeViewController: UIViewController {
     
     let viewModel = ListConfigurationViewModel()
     
+    let dispatchGroup = DispatchGroup()
+    var refCount = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,8 +58,8 @@ class ListConfigurationHomeViewController: UIViewController {
 //        }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(searchBar.snp.bottom)
 //            make.top.equalTo(imageView.snp.bottom)
+            make.top.equalTo(searchBar.snp.bottom)
             make.directionalHorizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     
@@ -71,20 +74,61 @@ class ListConfigurationHomeViewController: UIViewController {
             print("starts reload collectionView")
             //아직까지 DispatchQueue.global()
             //UI update는 main에서
-            DispatchQueue.main.async {
+           
+            //cell creation 완료 이후 각 cell의 image 가져옴 ~ 비동기처리
+            //임시 방안: 가져온 PhotoResult마다 imageUrl을 다시 network 통신 요청 (with dispatchgroup)
+            for photo in self.viewModel.photoResults.value! {
+                self.dispatchGroup.enter()
+                self.viewModel.getImageFromNetwork(url: photo.urls.thumb) { image in
+                    self.viewModel.imageLists.append(image)
+                    self.dispatchGroup.leave()
+                }
+            }
+            
+            //해당 이미지 다 가져오면 그 때 collectionView reloadData
+            //예상 문제: 네트워크 실패하는 경우: 이미지 개수만큼 다 못 가져옴 ~ 못 가져올 경우: default image 활용하기 (not_image_avaialble 같은...)
+            self.dispatchGroup.notify(queue: .main) {
                 self.collectionView.reloadData()
             }
+                       
+//            DispatchQueue.main.async {
+//                self.collectionView.reloadData()
+//            }
         }
         
         self.cellRegistration = UICollectionView.CellRegistration(handler: { cell, indexPath, itemIdentifier in
-            print("cellRegistration called!!!")
+            print("cellRegistration called in \(Thread.current)!!!")
+
             var content = UIListContentConfiguration.valueCell()
+//            var content = cell.defaultContentConfiguration()
         
-            self.viewModel.getImageFromNetwork(url: itemIdentifier.urls.thumb) { image in
-                content.image = image
-//                self.imageView.image = image
-            }
+           print("Before getting image from network")
+//            self.dispatchGroup.enter()
+//            self.refCount += 1
+//            print("after enter: \(self.refCount)")
+//                self.viewModel.getImageFromNetwork(url: itemIdentifier.urls.thumb) { image in
+//                    print("viewModel getImageFromNetwork succeed in \(Thread.current)")
+//                    //                self.imageView.image = image
+//
+//                    print("Updating Image in, \(Thread.current)")
+//                    content.image = UIImage(systemName: "star")
+//
+//                    //                content.image = image
+//                    content.imageProperties.cornerRadius = 20
+//                    content.imageProperties.maximumSize.height = 100
+//                    print("Setting Image is done")
+//                    self.refCount -= 1
+//                    self.dispatchGroup.leave()
+//                    print("after leave: \(self.refCount)")
+//                }
+//
+//            self.dispatchGroup.notify(queue: .main) {
+//                print("It's getting done?: \(self.refCount)")
+//            }
             
+            content.image = self.viewModel.imageLists[indexPath.item]
+            
+            print("Code after gettingImagefromNetwork")
             
             content.text = itemIdentifier.user.username
             content.secondaryText = itemIdentifier.description
@@ -93,7 +137,10 @@ class ListConfigurationHomeViewController: UIViewController {
             content.secondaryTextProperties.font = .systemFont(ofSize: 12, weight: .medium)
             
             cell.contentConfiguration = content
+            print("End of block")
         })
+        
+        
         
     }
     
@@ -128,6 +175,7 @@ extension ListConfigurationHomeViewController: UICollectionViewDelegate, UIColle
         }
         
         let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: data)
+        print("Cell creation is done!")
         return cell
     }
     
