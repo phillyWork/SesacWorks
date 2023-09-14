@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  iPadMVVMUnsplashAPI
+
+  Created by Heedon on 2023/09/11.
+  
+*/
+
+//의미단위로 이름 설정
+"nickname_placeholder" = "닉네임을 입력해주세요";
+
+//user data 활용
+//String 대응: %@
+"nickname_result" = "당신의 닉네임은 %@입니다";
+
+//Int 대응: %d
+"age_result" = "당신의 나이는 %d살 입니다";
+
+
