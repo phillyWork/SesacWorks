@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  iPadMVVMUnsplashAPI
+
+  Created by Heedon on 2023/09/11.
+  
+*/
+
+//의미단위로 이름 설정
+"nickname_placeholder" = "ニックネームを入力してください";
