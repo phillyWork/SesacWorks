@@ -10,6 +10,8 @@ import SnapKit
 
 class LoginViewController: UIViewController {
 
+    //MARK: - Properties
+    
     let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "AssignmentFlix"
@@ -57,9 +59,10 @@ class LoginViewController: UIViewController {
         attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.black, range: NSRange())
         attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 16), range: NSRange())
         button.setAttributedTitle(attributedString, for: .normal)
-        button.backgroundColor = .white
+        button.backgroundColor = .lightGray
         button.layer.cornerRadius = 5
         button.clipsToBounds = true
+        button.isEnabled = false
         return button
     }()
     
@@ -77,22 +80,44 @@ class LoginViewController: UIViewController {
         return mySwitch
     }()
     
+    let resultLabel: WhiteLabel = {
+        let label = WhiteLabel()
+        label.setText(text: "로그인 할 수 없습니다", font: .medium, size: 12)
+        return label
+    }()
+        
+    let viewModel = LoginViewModel()
+
+    //MARK: - Setup
     
     override func viewDidLoad() {
         super.viewDidLoad()
      
         configViews()
+        
+        bindData()
     }
+    
+    func bindData() {
+        viewModel.resultLabel.bind { result in
+            self.resultLabel.text = result
+        }
+    }
+    
     
     func configViews() {
         view.backgroundColor = .black
         
-        let stackView = UIStackView(arrangedSubviews: [emailPhoneTextField, passwordTextField, nicknameTextField, locationTextField, promotionCodeTextField])
+        let textfields = [emailPhoneTextField, passwordTextField, nicknameTextField, locationTextField, promotionCodeTextField]
+        for textfield in textfields {
+            textfield.delegate = self
+        }
+        let stackView = UIStackView(arrangedSubviews: textfields)
         stackView.axis = .vertical
         stackView.spacing = 10
         stackView.distribution = .fillEqually
         
-        let components = [nameLabel, stackView, signUpButton, extraInfoLabel, redSwitch]
+        let components = [nameLabel, stackView, signUpButton, extraInfoLabel, redSwitch, resultLabel]
         for component in components {
             view.addSubview(component)
         }
@@ -127,10 +152,39 @@ class LoginViewController: UIViewController {
             make.trailing.equalTo(signUpButton.snp.trailing)
             make.centerY.equalTo(extraInfoLabel.snp.centerY)
         }
+        
+        resultLabel.snp.makeConstraints { make in
+            make.top.equalTo(extraInfoLabel.snp.bottom).offset(15)
+            make.horizontalEdges.equalTo(stackView.snp.horizontalEdges)
+            make.height.equalTo(40)
+        }
     }
-
-
     
+}
+
+//MARK: - Extension for TextField Delegate
+
+extension LoginViewController: UITextFieldDelegate {
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        
+        //update data
+        viewModel.emailText = emailPhoneTextField.text
+        viewModel.pwText = passwordTextField.text
+        viewModel.nicknameText = nicknameTextField.text
+        viewModel.locationText = locationTextField.text
+        viewModel.promoNum = promotionCodeTextField.text
+        
+        if viewModel.checkValidation() {
+            signUpButton.backgroundColor = .cyan
+            signUpButton.isEnabled = true
+        } else {
+            signUpButton.backgroundColor = .lightGray
+            signUpButton.isEnabled = false
+        }
+        
+        return true
+    }
     
 }

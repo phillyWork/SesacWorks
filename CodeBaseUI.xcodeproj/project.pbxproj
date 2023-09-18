@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		211A91CD2AB832CB00F84EBA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211A91CC2AB832CB00F84EBA /* LoginViewModel.swift */; };
 		21592AAA2A973AA400AD09A4 /* NetflixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21592AA92A973AA400AD09A4 /* NetflixViewController.swift */; };
 		21592AAC2A973ADD00AD09A4 /* Generic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21592AAB2A973ADD00AD09A4 /* Generic.swift */; };
 		21592AAE2A973C2500AD09A4 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21592AAD2A973C2500AD09A4 /* Enum.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		211A91CC2AB832CB00F84EBA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		21592AA92A973AA400AD09A4 /* NetflixViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetflixViewController.swift; sourceTree = "<group>"; };
 		21592AAB2A973ADD00AD09A4 /* Generic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generic.swift; sourceTree = "<group>"; };
 		21592AAD2A973C2500AD09A4 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
@@ -67,6 +69,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		211A91CB2AB832BD00F84EBA /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				211A91CC2AB832CB00F84EBA /* LoginViewModel.swift */,
+				21592AB72A9750C900AD09A4 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		21592AB12A973D8300AD09A4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -74,7 +85,7 @@
 				21AED5382A949ED300697054 /* SecondViewController.swift */,
 				21AED53A2A949EDB00697054 /* ThirdViewController.swift */,
 				21B267A42AB05F0F001BCE94 /* Netflix */,
-				21592AB72A9750C900AD09A4 /* LoginViewController.swift */,
+				211A91CB2AB832BD00F84EBA /* Login */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -220,6 +231,7 @@
 				21592ABA2A978CE100AD09A4 /* GrayTextField.swift in Sources */,
 				21AED53B2A949EDB00697054 /* ThirdViewController.swift in Sources */,
 				21AED5252A949EB600697054 /* AppDelegate.swift in Sources */,
+				211A91CD2AB832CB00F84EBA /* LoginViewModel.swift in Sources */,
 				21B267A32AB05F0A001BCE94 /* NetflixViewModel.swift in Sources */,
 				21592AAE2A973C2500AD09A4 /* Enum.swift in Sources */,
 				21592AB32A973D9100AD09A4 /* WhiteLabel.swift in Sources */,
