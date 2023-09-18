@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  iPadMVVMUnsplashAPI
+//  PhotoGramRealm
 //
-//  Created by Heedon on 2023/09/11.
+//  Created by jack on 2023/09/03.
 //
 
 import UIKit
@@ -16,11 +16,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-//        let vc = SimpleTableViewController()
-        let vc = SimpleCollectionViewController()
+//        let vc = HomeViewController()
+//        let vc = TodoViewController()
+//        let vc = RealmCollectionViewController()
+        let vc = ListConfigurationHomeViewController()
         window?.rootViewController = UINavigationController(rootViewController: vc)
         window?.makeKeyAndVisible()
         

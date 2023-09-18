@@ -61,10 +61,6 @@ class SampleViewController: UIViewController {
         number3.value = 500
         number3.value = 50
         
-        
-        
-        
-        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -86,24 +82,42 @@ extension SampleViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "sampleCell")!
-        
-//        let data = list[indexPath.row]
-        
-        //viewModel function으로 대체
-        let data = viewModel.cellForRowAt(at: indexPath)
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "sampleCell")!
+//
+////        let data = list[indexPath.row]
+//        //viewModel function으로 대체
+//        let data = viewModel.cellForRowAt(at: indexPath)
+//
+//        //data 연산/가공으로 적용
+////        cell.textLabel?.text = "\(data.name), \(data.age)살"
+//
+//        //model의 연산 property로 적용
+//        //VC가 가공까지 하지 않기 (view에게 data 전달만 하기), 모델에서 처리하도록 하기
+//        cell.textLabel?.text = data.intorduce
+//
+//        return cell
+//    }
 
+    
+    //UIListContentConfiguration 활용
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
         
-        //data 연산/가공으로 적용
-//        cell.textLabel?.text = "\(data.name), \(data.age)살"
+        var content = cell.defaultContentConfiguration()
+        content.text = "테스트"                                    //textLabel
+        content.secondaryText = "안녕하세요 \(indexPath.row)"       //detailTextLabel
         
-        //model의 연산 property로 적용
-        //VC가 가공까지 하지 않기 (view에게 data 전달만 하기), 모델에서 처리하도록 하기
-        cell.textLabel?.text = data.intorduce
-        
+        cell.contentConfiguration = content                     //protocol as type
+                
+        //UIListContentConfiguration: UIContentConfiguration protocol 채택
         
         return cell
     }
     
+    
+    
+    
 }
+
+

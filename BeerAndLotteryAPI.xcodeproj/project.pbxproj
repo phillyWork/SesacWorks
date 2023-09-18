@@ -11,6 +11,10 @@
 		216BA0D22A8222BC008A54A5 /* BeerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BA0D02A8222BC008A54A5 /* BeerTableViewCell.swift */; };
 		216BA0D32A8222BC008A54A5 /* BeerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 216BA0D12A8222BC008A54A5 /* BeerTableViewCell.xib */; };
 		216BA0D52A8225D2008A54A5 /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216BA0D42A8225D2008A54A5 /* Beer.swift */; };
+		217C5AAA2AB1DAFD001FA281 /* LotteryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C5AA92AB1DAFD001FA281 /* LotteryViewModel.swift */; };
+		217C5AAC2AB1DB45001FA281 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C5AAB2AB1DB45001FA281 /* Observable.swift */; };
+		217C5AAE2AB1DF05001FA281 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C5AAD2AB1DF05001FA281 /* NetworkManager.swift */; };
+		217C5AB02AB1DF47001FA281 /* LottoStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217C5AAF2AB1DF47001FA281 /* LottoStruct.swift */; };
 		21BF250B2A80CCE900480396 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF250A2A80CCE900480396 /* AppDelegate.swift */; };
 		21BF250D2A80CCE900480396 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF250C2A80CCE900480396 /* SceneDelegate.swift */; };
 		21BF250F2A80CCE900480396 /* BeerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF250E2A80CCE900480396 /* BeerViewController.swift */; };
@@ -28,6 +32,10 @@
 		216BA0D02A8222BC008A54A5 /* BeerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewCell.swift; sourceTree = "<group>"; };
 		216BA0D12A8222BC008A54A5 /* BeerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeerTableViewCell.xib; sourceTree = "<group>"; };
 		216BA0D42A8225D2008A54A5 /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
+		217C5AA92AB1DAFD001FA281 /* LotteryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryViewModel.swift; sourceTree = "<group>"; };
+		217C5AAB2AB1DB45001FA281 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		217C5AAD2AB1DF05001FA281 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		217C5AAF2AB1DF47001FA281 /* LottoStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoStruct.swift; sourceTree = "<group>"; };
 		21BF25072A80CCE900480396 /* BeerAndLotteryAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerAndLotteryAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BF250A2A80CCE900480396 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21BF250C2A80CCE900480396 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +72,18 @@
 			path = BeerList;
 			sourceTree = "<group>";
 		};
+		217C5AA82AB1DADC001FA281 /* Lotto */ = {
+			isa = PBXGroup;
+			children = (
+				217C5AAF2AB1DF47001FA281 /* LottoStruct.swift */,
+				217C5AAB2AB1DB45001FA281 /* Observable.swift */,
+				217C5AAD2AB1DF05001FA281 /* NetworkManager.swift */,
+				217C5AA92AB1DAFD001FA281 /* LotteryViewModel.swift */,
+				21BF251E2A80CD3400480396 /* LotteryViewController.swift */,
+			);
+			path = Lotto;
+			sourceTree = "<group>";
+		};
 		21BF24FE2A80CCE900480396 = {
 			isa = PBXGroup;
 			children = (
@@ -87,7 +107,7 @@
 				21BF250C2A80CCE900480396 /* SceneDelegate.swift */,
 				216BA0D62A8225DC008A54A5 /* BeerList */,
 				21BF250E2A80CCE900480396 /* BeerViewController.swift */,
-				21BF251E2A80CD3400480396 /* LotteryViewController.swift */,
+				217C5AA82AB1DADC001FA281 /* Lotto */,
 				21BF25102A80CCE900480396 /* Main.storyboard */,
 				21BF25132A80CCEB00480396 /* Assets.xcassets */,
 				21BF25152A80CCEB00480396 /* LaunchScreen.storyboard */,
@@ -178,9 +198,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				217C5AB02AB1DF47001FA281 /* LottoStruct.swift in Sources */,
+				217C5AAA2AB1DAFD001FA281 /* LotteryViewModel.swift in Sources */,
 				21BF251F2A80CD3400480396 /* LotteryViewController.swift in Sources */,
+				217C5AAE2AB1DF05001FA281 /* NetworkManager.swift in Sources */,
 				216BA0D22A8222BC008A54A5 /* BeerTableViewCell.swift in Sources */,
 				21BF250F2A80CCE900480396 /* BeerViewController.swift in Sources */,
+				217C5AAC2AB1DB45001FA281 /* Observable.swift in Sources */,
 				216BA0CD2A822257008A54A5 /* BeerListViewController.swift in Sources */,
 				21BF250B2A80CCE900480396 /* AppDelegate.swift in Sources */,
 				216BA0D52A8225D2008A54A5 /* Beer.swift in Sources */,

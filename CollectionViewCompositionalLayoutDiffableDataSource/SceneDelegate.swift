@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  iPadMVVMUnsplashAPI
+//  CollectionViewCompositionalLayoutDiffableDataSource
 //
-//  Created by Heedon on 2023/09/11.
+//  Created by Heedon on 2023/09/15.
 //
 
 import UIKit
@@ -19,10 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-//        let vc = SimpleTableViewController()
-        let vc = SimpleCollectionViewController()
+//        let vc = SettingsViewController()
+        let vc = AppSettingsViewController()
         window?.rootViewController = UINavigationController(rootViewController: vc)
         window?.makeKeyAndVisible()
+        
         
     }
 
