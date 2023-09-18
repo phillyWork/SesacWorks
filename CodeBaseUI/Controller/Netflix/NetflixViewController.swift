@@ -240,7 +240,7 @@ class NetflixViewController: UIViewController {
     
     @objc func playButtonTapped(sender: UIButton) {
 //        navigationController?.pushViewController(LoginViewController(), animated: true)
-//        transition(transitionType: .push, viewController: LoginViewController.self)
+        transition(transitionType: .push, viewController: LoginViewController.self)
         
         viewModel.isTapped.value.toggle()
         
