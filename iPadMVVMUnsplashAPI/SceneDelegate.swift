@@ -20,7 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
 //        let vc = SimpleTableViewController()
-        let vc = SimpleCollectionViewController()
+//        let vc = SimpleCollectionViewController()
+        let vc = RandomPhotoViewController()
         window?.rootViewController = UINavigationController(rootViewController: vc)
         window?.makeKeyAndVisible()
         

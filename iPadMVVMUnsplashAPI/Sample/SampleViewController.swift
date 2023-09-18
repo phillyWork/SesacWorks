@@ -7,19 +7,6 @@
 
 import UIKit
 
-//유저 정보
-struct User {
-    let name: String
-    let age: Int
-    
-    //연산 프로퍼티로 data 가공 나타내기
-    //호출될 때 메모리 올라옴
-    var intorduce: String {
-        return "\(name), \(age)살"
-    }
-    
-}
-
 class SampleViewController: UIViewController {
     
     //view 역할

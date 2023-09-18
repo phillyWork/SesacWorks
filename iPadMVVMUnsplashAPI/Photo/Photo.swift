@@ -7,13 +7,14 @@
 
 import Foundation
 
-struct Photo: Codable {
+//DiffableDataSource: Hashable 특성 필요 --> 모든 구조체에 설정 필요
+struct Photo: Codable, Hashable {
     let total: Int
     let total_pages: Int
     let results: [PhotoResult]?
 }
 
-struct PhotoResult: Codable {
+struct PhotoResult: Codable, Hashable {
     let id: String
     let created_at: String
     let description: String?
@@ -23,16 +24,16 @@ struct PhotoResult: Codable {
     let user: PhotoUser
 }
 
-struct PhotoURL: Codable {
+struct PhotoURL: Codable, Hashable {
     let full: String
     let thumb: String
 }
 
-struct PhotoLink: Codable {
+struct PhotoLink: Codable, Hashable {
     let html: String
 }
 
-struct PhotoUser: Codable {
+struct PhotoUser: Codable, Hashable {
     let username: String
 }
 

@@ -32,16 +32,18 @@ class PhotoViewModel {
     //singleton 가져오기
     let apiService = APIService.shared
     
-    func fetchPhoto() {
-        apiService.searchPhoto(query: "ocean") { photo in
-            guard let photo = photo else { return }
-            
-            //Cannot assign value of type 'Photo' to type 'Observable<Photo>'
-//            self.list = photo
-            
-            //실제 타입 update: value 활용
-            self.list.value = photo
-            
+    func fetchPhoto(text: String) {
+        apiService.searchPhoto(query: text) { photo in
+            //응답은 main에서 처리하기
+            DispatchQueue.main.async {
+                guard let photo = photo else { return }
+                
+                //Cannot assign value of type 'Photo' to type 'Observable<Photo>'
+    //            self.list = photo
+                
+                //실제 타입 update: value 활용
+                self.list.value = photo
+            }
         }
     }
  
