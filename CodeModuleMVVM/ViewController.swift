@@ -22,14 +22,30 @@ class ViewController: UIViewController {
 //        callSingleRequest(id: "mfb_evGFm78")
         
         
-        //completionHandler 대응: 2가지 매개변수 활용
-        networkBasic.callRandomReqeust { photo, error in
-            
-            //optional binding으로 해제 필요: 둘 다 nil일 수 있음
-            guard let photo = photo else { return }
-            
+        networkBasic.callRequest(query: "sky") { response in
+            switch response {
+            case .success(let success):
+                print(success)
+            case .failure(let failure):
+                print(failure)
+
+                
+            }
         }
         
+        
+        
+        
+        
+//        //completionHandler 대응: 2가지 매개변수 활용
+//        networkBasic.callRandomReqeust { photo, error in
+//            //optional binding으로 해제 필요: 둘 다 nil일 수 있음
+//            //photo와 error 공존할 수 없음을 인지하고 작성해야 함
+//
+//            if let error {}             //error 존재 여부 확인
+//        }
+
+                
         //completionHandler 대응: Result type 활용
         networkBasic.callSingleRequest(id: "mfb_evGFm78") { response in
             //성공과 실패만 대응: switch (optional binding 처리 없음)

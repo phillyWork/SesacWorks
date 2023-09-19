@@ -46,13 +46,41 @@ final class NetworkBasic {
         AF.request(url, method: .get, parameters: query, encoding: URLEncoding(destination: .queryString), headers: headers).responseDecodable(of: Photo.self) { response in
             switch response.result {
             case .success(let data): completionHandler(.success(data))
-            case .failure(let error): completionHandler(.failure(error))
+                //상태코드 대응하기
+            case .failure( _):  //wildcard 식별자 활용, 사용하지 않으면 비워두기
+                
+                //nil이면 임의로 대처 (response가 존재하지 않으면 completionHandler 실행 전에 early exit)
+                let statusCode = response.response?.statusCode ?? 500
+                
+                guard let error = StatusCodeError(rawValue: statusCode) else { return }
+                
+                completionHandler(.failure(error))
             }
         }
 
     }
     
+    //using optional type
     func callRandomReqeust(completionHandler: @escaping (PhotoResult?, Error?) -> Void ) {
+        //get a random photo
+        let url = "https://api.unsplash.com/photos/random"
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Client-ID \(APIKey.accessKey)"
+        ]
+
+        //구조 동일: 동일한 struct 재활용하기
+        AF.request(url, method: .get, headers: headers).responseDecodable(of: PhotoResult.self) { response in
+            switch response.result {
+            case .success(let data): completionHandler(data, nil)
+            case .failure(let error): completionHandler(nil, error)
+            }
+        }
+        
+    }
+    
+    //using Result type
+    func callRandomReqeust(completionHandler: @escaping (Result<PhotoResult, Error>) -> Void ) {
         
         //get a random photo
         let url = "https://api.unsplash.com/photos/random"
@@ -68,8 +96,8 @@ final class NetworkBasic {
         //구조 동일: 동일한 struct 재활용하기
         AF.request(url, method: .get, headers: headers).responseDecodable(of: PhotoResult.self) { response in
             switch response.result {
-            case .success(let data): completionHandler(data, nil)
-            case .failure(let error): completionHandler(nil, error)
+            case .success(let data): completionHandler(.success(data))
+            case .failure(let error): completionHandler(.failure(error))
             }
         }
         
