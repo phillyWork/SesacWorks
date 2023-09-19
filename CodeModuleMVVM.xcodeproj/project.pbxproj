@@ -18,6 +18,7 @@
 		21628D412AB929E200F7BE34 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 21628D402AB929E200F7BE34 /* .gitignore */; };
 		21628D432AB929F800F7BE34 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21628D422AB929F800F7BE34 /* APIKey.swift */; };
 		21628D452AB92E2300F7BE34 /* PhotoStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21628D442AB92E2300F7BE34 /* PhotoStruct.swift */; };
+		21628D482AB93CC700F7BE34 /* NetworkBasic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21628D472AB93CC700F7BE34 /* NetworkBasic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		21628D402AB929E200F7BE34 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		21628D422AB929F800F7BE34 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		21628D442AB92E2300F7BE34 /* PhotoStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStruct.swift; sourceTree = "<group>"; };
+		21628D472AB93CC700F7BE34 /* NetworkBasic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkBasic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				21628D232AB9293F00F7BE34 /* AppDelegate.swift */,
 				21628D252AB9293F00F7BE34 /* SceneDelegate.swift */,
 				21628D422AB929F800F7BE34 /* APIKey.swift */,
+				21628D462AB93CB800F7BE34 /* Network */,
 				21628D442AB92E2300F7BE34 /* PhotoStruct.swift */,
 				21628D272AB9293F00F7BE34 /* ViewController.swift */,
 				21628D2C2AB9294000F7BE34 /* Assets.xcassets */,
@@ -77,6 +80,14 @@
 				21628D312AB9294000F7BE34 /* Info.plist */,
 			);
 			path = CodeModuleMVVM;
+			sourceTree = "<group>";
+		};
+		21628D462AB93CB800F7BE34 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				21628D472AB93CC700F7BE34 /* NetworkBasic.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21628D282AB9293F00F7BE34 /* ViewController.swift in Sources */,
+				21628D482AB93CC700F7BE34 /* NetworkBasic.swift in Sources */,
 				21628D242AB9293F00F7BE34 /* AppDelegate.swift in Sources */,
 				21628D452AB92E2300F7BE34 /* PhotoStruct.swift in Sources */,
 				21628D432AB929F800F7BE34 /* APIKey.swift in Sources */,
