@@ -22,6 +22,13 @@
 		21628D4A2AB9492100F7BE34 /* StatusCodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21628D492AB9492100F7BE34 /* StatusCodeError.swift */; };
 		21628D4C2AB9649600F7BE34 /* UnsplashAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21628D4B2AB9649600F7BE34 /* UnsplashAPI.swift */; };
 		21628D4E2AB9744000F7BE34 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21628D4D2AB9744000F7BE34 /* Network.swift */; };
+		21628D512AB9980500F7BE34 /* BeerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21628D502AB9980500F7BE34 /* BeerViewController.swift */; };
+		21628D542AB9983C00F7BE34 /* BeerNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21628D532AB9983C00F7BE34 /* BeerNetworkManager.swift */; };
+		21628D562AB998F000F7BE34 /* BeerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21628D552AB998F000F7BE34 /* BeerAPI.swift */; };
+		21628D582AB99ADB00F7BE34 /* BeerStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21628D572AB99ADB00F7BE34 /* BeerStruct.swift */; };
+		21628D5A2AB99DAD00F7BE34 /* BeerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21628D592AB99DAD00F7BE34 /* BeerError.swift */; };
+		21628D5C2AB99E7000F7BE34 /* BeerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21628D5B2AB99E7000F7BE34 /* BeerViewModel.swift */; };
+		21628D5E2AB99EC400F7BE34 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21628D5D2AB99EC400F7BE34 /* Observable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +46,13 @@
 		21628D492AB9492100F7BE34 /* StatusCodeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCodeError.swift; sourceTree = "<group>"; };
 		21628D4B2AB9649600F7BE34 /* UnsplashAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashAPI.swift; sourceTree = "<group>"; };
 		21628D4D2AB9744000F7BE34 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		21628D502AB9980500F7BE34 /* BeerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerViewController.swift; sourceTree = "<group>"; };
+		21628D532AB9983C00F7BE34 /* BeerNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerNetworkManager.swift; sourceTree = "<group>"; };
+		21628D552AB998F000F7BE34 /* BeerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerAPI.swift; sourceTree = "<group>"; };
+		21628D572AB99ADB00F7BE34 /* BeerStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerStruct.swift; sourceTree = "<group>"; };
+		21628D592AB99DAD00F7BE34 /* BeerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerError.swift; sourceTree = "<group>"; };
+		21628D5B2AB99E7000F7BE34 /* BeerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerViewModel.swift; sourceTree = "<group>"; };
+		21628D5D2AB99EC400F7BE34 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,9 +91,8 @@
 				21628D232AB9293F00F7BE34 /* AppDelegate.swift */,
 				21628D252AB9293F00F7BE34 /* SceneDelegate.swift */,
 				21628D422AB929F800F7BE34 /* APIKey.swift */,
-				21628D462AB93CB800F7BE34 /* Network */,
-				21628D442AB92E2300F7BE34 /* PhotoStruct.swift */,
-				21628D272AB9293F00F7BE34 /* ViewController.swift */,
+				21628D4F2AB997EC00F7BE34 /* UnsplashAPI */,
+				21628D522AB9981100F7BE34 /* PunkAPI */,
 				21628D2C2AB9294000F7BE34 /* Assets.xcassets */,
 				21628D2E2AB9294000F7BE34 /* LaunchScreen.storyboard */,
 				21628D402AB929E200F7BE34 /* .gitignore */,
@@ -97,6 +110,46 @@
 				21628D4D2AB9744000F7BE34 /* Network.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		21628D4F2AB997EC00F7BE34 /* UnsplashAPI */ = {
+			isa = PBXGroup;
+			children = (
+				21628D462AB93CB800F7BE34 /* Network */,
+				21628D442AB92E2300F7BE34 /* PhotoStruct.swift */,
+				21628D272AB9293F00F7BE34 /* ViewController.swift */,
+			);
+			path = UnsplashAPI;
+			sourceTree = "<group>";
+		};
+		21628D522AB9981100F7BE34 /* PunkAPI */ = {
+			isa = PBXGroup;
+			children = (
+				21628D5F2AB99ECD00F7BE34 /* BeerNetwork */,
+				21628D602AB99ED400F7BE34 /* ViewModel */,
+				21628D502AB9980500F7BE34 /* BeerViewController.swift */,
+			);
+			path = PunkAPI;
+			sourceTree = "<group>";
+		};
+		21628D5F2AB99ECD00F7BE34 /* BeerNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				21628D552AB998F000F7BE34 /* BeerAPI.swift */,
+				21628D592AB99DAD00F7BE34 /* BeerError.swift */,
+				21628D572AB99ADB00F7BE34 /* BeerStruct.swift */,
+				21628D532AB9983C00F7BE34 /* BeerNetworkManager.swift */,
+			);
+			path = BeerNetwork;
+			sourceTree = "<group>";
+		};
+		21628D602AB99ED400F7BE34 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				21628D5D2AB99EC400F7BE34 /* Observable.swift */,
+				21628D5B2AB99E7000F7BE34 /* BeerViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,14 +233,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21628D5E2AB99EC400F7BE34 /* Observable.swift in Sources */,
+				21628D542AB9983C00F7BE34 /* BeerNetworkManager.swift in Sources */,
+				21628D512AB9980500F7BE34 /* BeerViewController.swift in Sources */,
 				21628D4A2AB9492100F7BE34 /* StatusCodeError.swift in Sources */,
 				21628D282AB9293F00F7BE34 /* ViewController.swift in Sources */,
 				21628D482AB93CC700F7BE34 /* NetworkBasic.swift in Sources */,
 				21628D242AB9293F00F7BE34 /* AppDelegate.swift in Sources */,
+				21628D5C2AB99E7000F7BE34 /* BeerViewModel.swift in Sources */,
 				21628D4C2AB9649600F7BE34 /* UnsplashAPI.swift in Sources */,
 				21628D4E2AB9744000F7BE34 /* Network.swift in Sources */,
+				21628D562AB998F000F7BE34 /* BeerAPI.swift in Sources */,
 				21628D452AB92E2300F7BE34 /* PhotoStruct.swift in Sources */,
+				21628D5A2AB99DAD00F7BE34 /* BeerError.swift in Sources */,
 				21628D432AB929F800F7BE34 /* APIKey.swift in Sources */,
+				21628D582AB99ADB00F7BE34 /* BeerStruct.swift in Sources */,
 				21628D262AB9293F00F7BE34 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

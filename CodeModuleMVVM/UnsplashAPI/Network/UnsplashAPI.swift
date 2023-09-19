@@ -10,13 +10,13 @@ import Alamofire
 
 //더 강제화된 구조 설정 가능 (기준점 설정해줌)
 //private 설정, 외부에서 활용 가능
-enum Router: URLRequestConvertible {
-    
-    func asURLRequest() throws -> URLRequest {
-        <#code#>
-    }
-    
-}
+//enum Router: URLRequestConvertible {
+//
+//    func asURLRequest() throws -> URLRequest {
+//        
+//    }
+//    
+//}
 
 
 
