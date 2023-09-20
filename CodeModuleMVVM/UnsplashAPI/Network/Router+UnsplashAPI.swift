@@ -9,7 +9,8 @@ import Foundation
 import Alamofire
 
 //더 강제화된 구조 설정 가능 (기준점 설정해줌)
-//private 은닉화 설정, 외부에서 활용 가능하도록
+//property들은 private 은닉화 설정
+//외부에서 활용 가능하도록
 
 //Alamofire protocol
 enum Router: URLRequestConvertible {
@@ -49,6 +50,15 @@ enum Router: URLRequestConvertible {
         }
     }
     
+    //query 대응
+    private var query: [String: String] {
+        switch self {
+        case .search(let query):    //연관값 활용/받아온 data 활용
+            return ["query": query]
+        case .random, .single:      //연관값 사용 안하면 안써도 okay
+            return ["": ""]          //내용 없음 전달
+        }
+    }
     
     //URLRequestConvertible 필수 구현 함수
     func asURLRequest() throws -> URLRequest {
@@ -69,8 +79,10 @@ enum Router: URLRequestConvertible {
         //method 설정
         request.method = method
         
-        
-        
+        //JSONEncoder와 동일한 구조
+        //e.g.) Kakao CoGPT: json만 받음 (다른 방식 넣으면 에러 발생)
+        //parameter encodingType 설정 ~ post: httpBody / get: queryString
+        request = try URLEncodedFormParameterEncoder(destination: .methodDependent).encode(query, into: request)
         
         return request
     }

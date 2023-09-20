@@ -30,4 +30,22 @@ class Network {
         
     }
     
+    //URLRequestConvertible 활용
+    func requestConvertible<T: Decodable>(type: T.Type, api: Router, completionHandler: @escaping (Result<T, StatusCodeError>) -> Void ) {
+        
+        //proprety: private 설정 ~ 접근 불가 (컴파일 성능 고려, 추상화/모듈화)
+        //URLRequestConvertible 채택한 enum 넣기
+        //enum안에서 알아서 처리 --> 내부적으로 asURLRequest 메서드를 자동 호출
+        AF.request(api).responseDecodable(of: T.self) { response in
+            switch response.result {
+            case .success(let data): completionHandler(.success(data))
+            case .failure( _):
+                let statusCode = response.response?.statusCode ?? 500
+                guard let error = StatusCodeError(rawValue: statusCode) else { return }
+                completionHandler(.failure(error))
+            }
+        }
+    }
+
+    
 }

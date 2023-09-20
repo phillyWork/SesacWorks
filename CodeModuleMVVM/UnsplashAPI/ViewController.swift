@@ -8,6 +8,7 @@
 import UIKit
 //import Alamofire
 import SnapKit
+import Kingfisher
 
 class ViewController: UIViewController {
 
@@ -17,9 +18,49 @@ class ViewController: UIViewController {
     //generic 활용 메서드 호출하기
     let network = Network.shared
     
+    //imageView 확대, 축소: scrollView 내부 위치
+    private lazy var scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.backgroundColor = .systemGreen
+        
+        //최소 scale size: 1배수 == 더 축소해도 1배수로 돌아옴
+        view.minimumZoomScale = 1
+        
+        //더 이상 확대되지 않는 지점
+        view.maximumZoomScale = 4
+        
+        //indicator 숨기기
+        view.showsVerticalScrollIndicator = false
+        view.showsHorizontalScrollIndicator = false
+        
+        //delegate로 확대, 축소 기능 구현
+        view.delegate = self
+        
+        return view
+    }()
+    
+    private let imageView: UIImageView = {
+        let iv = UIImageView(frame: .zero)
+        iv.backgroundColor = .clear
+        iv.contentMode = .scaleAspectFit
+        
+        //double tap gesture 인식 위함
+        iv.isUserInteractionEnabled = true
+        
+        return iv
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //호출 순서: view에 등록 후 위치 선정
+        configureHierarchy()
+        configureLayout()
+        
+        //gesture 기반 action 설정
+        configureGesture()
+        
+        request()
         
 //        callRequest(query: "sky")
 //        callRandomReqeust()
@@ -60,43 +101,109 @@ class ViewController: UIViewController {
 //        }
         
         
-        
-        //T를 명시적으로 나타내기
-        network.callRequest(type: Photo.self, api: .search(query: "apple")) { response in
-            switch response {
-            case .success(let success):
-                dump(success)
-            case .failure(let failure):
-                print(failure.errorDescription)
-            }
-        }
-       
-        //api case에 따른 type 연결도 가능
-        network.callRequest(type: PhotoResult.self, api: .random) { response in
-            switch response {
-            case .success(let success):
-                dump(success)
-            case .failure(let failure):
-                print(failure.errorDescription)
-            }
-        }
-        
-        //random에서 얻은 id를 저장, 여기에 전달하기도 가능
-        network.callRequest(type: PhotoResult.self, api: .single(id: "mfb_evGFm78")) { response in
-            switch response {
-            case .success(let success):
-                dump(success)
-            case .failure(let failure):
-                print(failure.errorDescription)
-            }
-        }
-        
-        
+            //UnsplashAPI enum 활용
+//        //T를 명시적으로 나타내기
+//        network.callRequest(type: Photo.self, api: .search(query: "apple")) { response in
+//            switch response {
+//            case .success(let success):
+//                dump(success)
+//            case .failure(let failure):
+//                print(failure.errorDescription)
+//            }
+//        }
+//
+//        //api case에 따른 type 연결도 가능
+//        network.callRequest(type: PhotoResult.self, api: .random) { response in
+//            switch response {
+//            case .success(let success):
+//                dump(success)
+//            case .failure(let failure):
+//                print(failure.errorDescription)
+//            }
+//        }
+//
+//        //random에서 얻은 id를 저장, 여기에 전달하기도 가능
+//        network.callRequest(type: PhotoResult.self, api: .single(id: "mfb_evGFm78")) { response in
+//            switch response {
+//            case .success(let success):
+//                dump(success)
+//            case .failure(let failure):
+//                print(failure.errorDescription)
+//            }
+//        }
         
     }
 
+    func request() {
+        //Router 활용: 구현부 달라지는 것은 없음
+        network.requestConvertible(type: PhotoResult.self, api: .random) { response in
+            switch response {
+            case .success(let success):
+                dump(success)
+                
+                //link 활용해서 image 가져오기
+                self.imageView.kf.setImage(with: URL(string:success.urls.thumb)!)
+                
+            case .failure(let failure):
+                print(failure.errorDescription)
+            }
+        }
+    }
     
     
-
+    func configureHierarchy() {
+        view.addSubview(scrollView)
+        
+        //imageView 확대, 축소: scrollView 내부 존재
+        scrollView.addSubview(imageView)
+    }
+    
+    func configureLayout() {
+        scrollView.snp.makeConstraints { make in
+            make.center.equalTo(view.safeAreaLayoutGuide)
+            make.size.equalTo(200)
+        }
+        
+        imageView.snp.makeConstraints { make in
+            //scrollView size가 변경되고 처음에 딱 맞게 나타나도록
+            make.size.equalTo(scrollView)
+        }
+        
+    }
+    
+    func configureGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapGesture))
+        
+        //tap 횟수 요구
+        tap.numberOfTapsRequired = 2
+        
+        imageView.addGestureRecognizer(tap)
+    }
+    
+    @objc func doubleTapGesture() {
+        //zoomScale property 기반 처리
+        if scrollView.zoomScale == 1 {
+            //줌 인
+            scrollView.setZoomScale(2, animated: true)
+        } else {
+            //원래 size로 돌아오기
+            scrollView.setZoomScale(1, animated: true)
+        }
+    }
+    
+    
 }
 
+//MARK: - Extension for ScrollViewDelegate
+
+extension ViewController: UIScrollViewDelegate {
+    
+    //zoom할 경우, 어떤 view를 보여줄 지 (어떤 view로 scrollView를 채울 지)
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        //scrollView 크기에 맞게 보여주기
+        return imageView
+    }
+    
+    
+    
+}
