@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2123388A2ABA764300AF1B55 /* Router+UnsplashAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212338892ABA764300AF1B55 /* Router+UnsplashAPI.swift */; };
+		2123388C2ABA9A4100AF1B55 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2123388B2ABA9A4100AF1B55 /* ViewModel.swift */; };
 		21628D242AB9293F00F7BE34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21628D232AB9293F00F7BE34 /* AppDelegate.swift */; };
 		21628D262AB9293F00F7BE34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21628D252AB9293F00F7BE34 /* SceneDelegate.swift */; };
 		21628D282AB9293F00F7BE34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21628D272AB9293F00F7BE34 /* ViewController.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		212338892ABA764300AF1B55 /* Router+UnsplashAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Router+UnsplashAPI.swift"; sourceTree = "<group>"; };
+		2123388B2ABA9A4100AF1B55 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		21628D202AB9293F00F7BE34 /* CodeModuleMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeModuleMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21628D232AB9293F00F7BE34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21628D252AB9293F00F7BE34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			children = (
 				21628D462AB93CB800F7BE34 /* Network */,
 				21628D442AB92E2300F7BE34 /* PhotoStruct.swift */,
+				2123388B2ABA9A4100AF1B55 /* ViewModel.swift */,
 				21628D272AB9293F00F7BE34 /* ViewController.swift */,
 			);
 			path = UnsplashAPI;
@@ -246,6 +249,7 @@
 				21628D5C2AB99E7000F7BE34 /* BeerViewModel.swift in Sources */,
 				21628D4C2AB9649600F7BE34 /* UnsplashAPI.swift in Sources */,
 				21628D4E2AB9744000F7BE34 /* Network.swift in Sources */,
+				2123388C2ABA9A4100AF1B55 /* ViewModel.swift in Sources */,
 				21628D562AB998F000F7BE34 /* BeerAPI.swift in Sources */,
 				21628D452AB92E2300F7BE34 /* PhotoStruct.swift in Sources */,
 				21628D5A2AB99DAD00F7BE34 /* BeerError.swift in Sources */,
