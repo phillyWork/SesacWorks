@@ -8,20 +8,6 @@
 import Foundation
 import Alamofire
 
-//더 강제화된 구조 설정 가능 (기준점 설정해줌)
-//private 설정, 외부에서 활용 가능
-//enum Router: URLRequestConvertible {
-//
-//    func asURLRequest() throws -> URLRequest {
-//        
-//    }
-//    
-//}
-
-
-
-
-
 //아쉬운점: network에서 활용 --> 연산 property 호출: private 활용 제약
 enum UnsplashAPI {
     
