@@ -12,6 +12,8 @@ import Kingfisher
 
 class ViewController: UIViewController {
 
+    //MARK: - Properties
+    
     //network 통신 함수 모두 network 기능 singleton이 담당
     let networkBasic = NetworkBasic.shared
     
@@ -52,6 +54,9 @@ class ViewController: UIViewController {
         
         return iv
     }()
+    
+    
+    //MARK: - Setup
     
     override func viewDidLoad() {
         super.viewDidLoad()

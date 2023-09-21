@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2114F89C2ABBCB39006A8479 /* SearchVerticalScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2114F89B2ABBCB39006A8479 /* SearchVerticalScrollViewController.swift */; };
+		2114F89F2ABBD22F006A8479 /* SearchHorizontalScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2114F89E2ABBD22F006A8479 /* SearchHorizontalScrollViewController.swift */; };
 		2123388A2ABA764300AF1B55 /* Router+UnsplashAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212338892ABA764300AF1B55 /* Router+UnsplashAPI.swift */; };
 		2123388C2ABA9A4100AF1B55 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2123388B2ABA9A4100AF1B55 /* ViewModel.swift */; };
 		21628D242AB9293F00F7BE34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21628D232AB9293F00F7BE34 /* AppDelegate.swift */; };
@@ -34,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2114F89B2ABBCB39006A8479 /* SearchVerticalScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVerticalScrollViewController.swift; sourceTree = "<group>"; };
+		2114F89E2ABBD22F006A8479 /* SearchHorizontalScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHorizontalScrollViewController.swift; sourceTree = "<group>"; };
 		212338892ABA764300AF1B55 /* Router+UnsplashAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Router+UnsplashAPI.swift"; sourceTree = "<group>"; };
 		2123388B2ABA9A4100AF1B55 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		21628D202AB9293F00F7BE34 /* CodeModuleMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeModuleMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +77,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2114F89D2ABBCB5B006A8479 /* ScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				2114F89B2ABBCB39006A8479 /* SearchVerticalScrollViewController.swift */,
+				2114F89E2ABBD22F006A8479 /* SearchHorizontalScrollViewController.swift */,
+			);
+			path = ScrollView;
+			sourceTree = "<group>";
+		};
 		21628D172AB9293F00F7BE34 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +108,7 @@
 				21628D232AB9293F00F7BE34 /* AppDelegate.swift */,
 				21628D252AB9293F00F7BE34 /* SceneDelegate.swift */,
 				21628D422AB929F800F7BE34 /* APIKey.swift */,
+				2114F89D2ABBCB5B006A8479 /* ScrollView */,
 				21628D4F2AB997EC00F7BE34 /* UnsplashAPI */,
 				21628D522AB9981100F7BE34 /* PunkAPI */,
 				21628D2C2AB9294000F7BE34 /* Assets.xcassets */,
@@ -241,6 +255,7 @@
 			files = (
 				21628D5E2AB99EC400F7BE34 /* Observable.swift in Sources */,
 				21628D542AB9983C00F7BE34 /* BeerNetworkManager.swift in Sources */,
+				2114F89C2ABBCB39006A8479 /* SearchVerticalScrollViewController.swift in Sources */,
 				21628D512AB9980500F7BE34 /* BeerViewController.swift in Sources */,
 				21628D4A2AB9492100F7BE34 /* StatusCodeError.swift in Sources */,
 				21628D282AB9293F00F7BE34 /* ViewController.swift in Sources */,
@@ -251,6 +266,7 @@
 				21628D4E2AB9744000F7BE34 /* Network.swift in Sources */,
 				2123388C2ABA9A4100AF1B55 /* ViewModel.swift in Sources */,
 				21628D562AB998F000F7BE34 /* BeerAPI.swift in Sources */,
+				2114F89F2ABBD22F006A8479 /* SearchHorizontalScrollViewController.swift in Sources */,
 				21628D452AB92E2300F7BE34 /* PhotoStruct.swift in Sources */,
 				21628D5A2AB99DAD00F7BE34 /* BeerError.swift in Sources */,
 				2123388A2ABA764300AF1B55 /* Router+UnsplashAPI.swift in Sources */,
