@@ -39,6 +39,8 @@ class ViewController: UIViewController {
         view.showsHorizontalScrollIndicator = false
         
         //delegate로 확대, 축소 기능 구현
+        //instance 생성 이후 self 활용 가능
+        //생성 시점 늦추기 by lazy var
         view.delegate = self
         
         return view

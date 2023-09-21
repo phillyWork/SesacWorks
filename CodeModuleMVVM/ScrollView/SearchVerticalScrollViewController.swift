@@ -45,12 +45,16 @@ class SearchVerticalScrollViewController: UIViewController {
     func configureLayout() {
         
         scrollView.backgroundColor = .lightGray
+        scrollView.bounces = false                          //땡겨지는 animation 없애기
+        scrollView.showsVerticalScrollIndicator = false     //indicator 숨기기
         scrollView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
+        contentView.backgroundColor = .white
         contentView.snp.makeConstraints { make in
-            make.edges.equalTo(scrollView)
+            make.verticalEdges.equalTo(scrollView)      //scrollView의 frame 영역과 contents 영역 분리 --> device width 크기보다 작게 잡힘
+            make.width.equalTo(scrollView.snp.width)    //scrollView의 width와 contentView 동일하게 설정 (width 고정)
         }
         
     }
@@ -72,7 +76,8 @@ class SearchVerticalScrollViewController: UIViewController {
             make.height.equalTo(80)     //multiplier로 설정 okay
         }
 
-        label.text = "ssldksjdflsdfja;ldkfjadslkfja;lskdfjalsdkjfaslfkajafkl"
+        label.numberOfLines = 0
+        label.text = "ssldks\njdflsdfja\n\n;ldkfjadslkf\nja;lskdfjals\ndkjfas\nlfkajafklssldks\njdflsdfja\n\n;ldkfjadslkf\nja;lskdfjals\ndkjfas\nlfkajafklssldks\njdflsdfja\n\n;ldkfjadslkf\nja;lskdfjals\ndkjfas\nlfkajafklssldks\njdflsdfja\n\n;ldkfjadslkf\nja;lskdfjals\ndkjfas\nlfkajafkl"
         label.backgroundColor = .systemGreen
         label.snp.makeConstraints { make in
             make.directionalHorizontalEdges.equalTo(contentView)

@@ -60,6 +60,7 @@ class SearchHorizontalScrollViewController: UIViewController {
         for i in 1...5 {
             let label = UILabel()
             label.text = "안녕하세요 \(i)번째 label입니다."
+//            label.text = "\(i)"
             label.textColor = .white
             label.backgroundColor = .systemMint
             label.layer.cornerRadius = 10

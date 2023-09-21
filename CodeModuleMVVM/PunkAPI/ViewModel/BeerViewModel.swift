@@ -16,10 +16,13 @@ class BeerViewModel {
     private let networkManager = BeerNetworkManager.shared
     
     func networkCall(api: BeerAPI) {
-        networkManager.callRequest(type: [Beer].self, api: api) { response in
+        networkManager.callRequest(type: Beer.self, api: api) { response in
+//        networkManager.callRequest(type: [Beer].self, api: api) { response in
             switch response {
             case .success(let success):
-                self.beers.value?.append(contentsOf: success)
+                self.beers.value?.append(success)
+//                self.beers.value?.append(contentsOf: success)
+                print("result: ", self.beers.value)
                 self.id = self.beers.value?.first?.id
             case .failure(let failure):
                 print("Can't bring beer data from API:", failure.localizedDescription)

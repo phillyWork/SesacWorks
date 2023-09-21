@@ -62,25 +62,26 @@ final class BeerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         configViews()
-        
         bindData()
     }
     
     //MARK: - Handlers
     
     @objc func multipleButtonTapped() {
+        print(#function)
         viewModel.networkCall(api: .multiple(page: viewModel.page.value))
     }
     
     @objc func singleButtonTapped() {
+        print(#function)
         if let id = viewModel.id {
             viewModel.networkCall(api: .single(id: id))
         }
     }
     
     @objc func randomButtonTapped() {
+        print(#function)
         viewModel.networkCall(api: .random)
     }
     
@@ -113,6 +114,7 @@ final class BeerViewController: UIViewController {
             content.secondaryText = itemIdentifier.description
             
             self.viewModel.getImage(url: itemIdentifier.image_url) { image in
+                print("Update UI")
                 DispatchQueue.main.async {
                     content.image = image
                     cell.contentConfiguration = content
@@ -142,25 +144,25 @@ final class BeerViewController: UIViewController {
         view.addSubview(collectionView)
         
         multipleButton.snp.makeConstraints { make in
-            make.top.leading.equalTo(view.safeAreaLayoutGuide).offset(15)
-            make.width.equalTo(70)
+            make.top.directionalHorizontalEdges.equalTo(view.safeAreaLayoutGuide).offset(10)
             make.height.equalTo(50)
         }
         
         singleButton.snp.makeConstraints { make in
-            make.top.equalTo(multipleButton.snp.top)
-            make.centerY.equalTo(view.safeAreaLayoutGuide)
-            make.size.equalTo(multipleButton.snp.size)
+            make.top.equalTo(multipleButton.snp.bottom).offset(10)
+            make.directionalHorizontalEdges.equalTo(view.safeAreaLayoutGuide).offset(10)
+            make.height.equalTo(50)
         }
         
         randomButton.snp.makeConstraints { make in
-            make.top.trailing.equalTo(view.safeAreaLayoutGuide).inset(15)
-            make.size.equalTo(multipleButton.snp.size)
+            make.top.equalTo(singleButton.snp.bottom).offset(10)
+            make.directionalHorizontalEdges.equalTo(view.safeAreaLayoutGuide).offset(10)
+            make.height.equalTo(50)
         }
         
         collectionView.snp.makeConstraints { make in
             make.directionalHorizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
-            make.top.equalTo(multipleButton.snp.bottom).offset(15)
+            make.top.equalTo(randomButton.snp.bottom).offset(15)
         }
     }
 

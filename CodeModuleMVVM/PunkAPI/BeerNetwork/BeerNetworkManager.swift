@@ -19,10 +19,9 @@ final class BeerNetworkManager {
             switch response.result {
             case .success(let value):
                 completionHandler(.success(value))
-            case .failure(_):
-                let statusCode = response.response?.statusCode ?? 200
-                guard let error = BeerError(rawValue: statusCode) else {
-                    print("Unknown Error occurred!")
+            case .failure(let failure):
+                guard let statusCode = response.response?.statusCode, let error = BeerError(rawValue: statusCode) else {
+                    print("Unknown Error occurred: ", failure.localizedDescription)
                     return
                 }
                 completionHandler(.failure(error))
