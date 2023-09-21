@@ -22,6 +22,13 @@ class CollectionCompositionalViewController: UIViewController {
     //다른 해결: static method로 활용 (type method가 instance와 상관 없음, data 영역 위치 (VC deinit 되어도 앱이 꺼질 때까지 위치)
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionFlowLayout())
 
+    //Diffable DataSource 활용
+    //generic: section data type, cell data type
+    
+    //DiffableDataSource: class
+    //상속받는 class를 따로 만들어서 Diffable이 처리하는 것으로 분리 가능
+    var diffableDataSource: UICollectionViewDiffableDataSource<Int, Int>!
+    
     
     
     //MARK: - Setup
@@ -33,7 +40,11 @@ class CollectionCompositionalViewController: UIViewController {
         configureHierarchy()
         configureLayout()
         
-        collectionView.register(SearchCell.self, forCellWithReuseIdentifier: "cell")
+        //Diffable 활용: CellReigstration으로 처리
+//        collectionView.register(SearchCell.self, forCellWithReuseIdentifier: "cell")
+        
+        configureDataSource()
+        
     }
     
     func configureHierarchy() {
@@ -42,13 +53,15 @@ class CollectionCompositionalViewController: UIViewController {
     
     func configureLayout() {
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        //Diffable 활용: 필요없음
+//        collectionView.delegate = self
+//        collectionView.dataSource = self
         
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
+    
     
     func configureCollectionFlowLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
@@ -60,32 +73,74 @@ class CollectionCompositionalViewController: UIViewController {
     
     func configureDataSource() {
         
+        //cell 등록해서 SearchCell 활용할 것 설정
+        //generic: cell type, data type 정의
+        let cellRegistration = UICollectionView.CellRegistration<SearchCell, Int> { cell, indexPath, itemIdentifier in
+            //cell 내부의 component 설정
+            cell.imageView.backgroundColor = .orange
+            cell.imageView.image = UIImage(systemName: "star")
+            cell.label.text = "\(self.list[indexPath.item])번째"
+        }
+        
+        diffableDataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            //재사용: dataSource 기반 설정
+            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
+        })
+        
+        //snapshot 준비: dataSource와 동일 타입
+        var snapshot = NSDiffableDataSourceSnapshot<Int, Int>()
+        snapshot.appendSections([0])        //section을 indexPath로 관리하지 않음, 설정 type대로 관리
+        snapshot.appendItems(list)
+        
+        //snapshot 찍기
+        diffableDataSource.apply(snapshot)
+        
     }
     
-    
-    
 }
+
+
+//Diffable 활용: protocol 활용하지 않음
+//내부 함수: 직접 만든 함수처럼 활용
+
+//Diffable로 대체: 활용하지 않음
+
+//extension CollectionCompositionalViewController {
+//
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 1
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return list.count
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SearchCell
+//        cell.label.text = "\(list[indexPath.item])번째"
+//        return cell
+//    }
+//
+//}
+
+
 
 //MARK: - Extension for CollectionView Delegate, DataSource
 
-extension CollectionCompositionalViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return list.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SearchCell
-        cell.label.text = "\(list[indexPath.item])번째"
-        return cell
-    }
-    
-    
-    
-    
-    
-}
+//extension CollectionCompositionalViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+//
+//    func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 1
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return list.count
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SearchCell
+//        cell.label.text = "\(list[indexPath.item])번째"
+//        return cell
+//    }
+//
+//}

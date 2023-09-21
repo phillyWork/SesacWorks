@@ -44,6 +44,8 @@ class SearchVerticalScrollViewController: UIViewController {
     
     func configureLayout() {
         
+        scrollView.delegate = self
+        
         scrollView.backgroundColor = .lightGray
         scrollView.bounces = false                          //땡겨지는 animation 없애기
         scrollView.showsVerticalScrollIndicator = false     //indicator 숨기기
@@ -89,3 +91,18 @@ class SearchVerticalScrollViewController: UIViewController {
     
     
 }
+
+extension SearchVerticalScrollViewController: UIScrollViewDelegate {
+    
+    //scroll 따른 영역 확인 및 작업
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset)
+        print(scrollView.contentOffset.y)
+        
+        //특정 시점 벗어나면 UI 변경
+        if scrollView.contentOffset.y >= 50 {
+            label.alpha = 0
+        }
+    }
+}
+

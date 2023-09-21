@@ -9,20 +9,18 @@ import UIKit
 
 class BeerViewModel {
     
-    var beers: Observable<[Beer]?> = Observable(nil)
+    var beers: Observable<[Beer]?> = Observable([])
     var page = Observable(1)
     var id: Int?
     
     private let networkManager = BeerNetworkManager.shared
     
     func networkCall(api: BeerAPI) {
-        networkManager.callRequest(type: Beer.self, api: api) { response in
-//        networkManager.callRequest(type: [Beer].self, api: api) { response in
+        networkManager.callRequest(type: [Beer].self, api: api) { response in
             switch response {
             case .success(let success):
-                self.beers.value?.append(success)
-//                self.beers.value?.append(contentsOf: success)
-                print("result: ", self.beers.value)
+                self.beers.value?.removeAll()
+                self.beers.value?.append(contentsOf: success)
                 self.id = self.beers.value?.first?.id
             case .failure(let failure):
                 print("Can't bring beer data from API:", failure.localizedDescription)

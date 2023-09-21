@@ -63,6 +63,7 @@ final class BeerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configViews()
+        configDataSource()
         bindData()
     }
     
@@ -129,12 +130,6 @@ final class BeerViewController: UIViewController {
         
     }
     
-    private func createCompositionalLayout() -> UICollectionViewLayout {
-        var config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
-        let layout = UICollectionViewCompositionalLayout.list(using: config)
-        return layout
-    }
-    
     
     private func configViews() {
         
@@ -166,4 +161,10 @@ final class BeerViewController: UIViewController {
         }
     }
 
+    private func createCompositionalLayout() -> UICollectionViewLayout {
+        var config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        let layout = UICollectionViewCompositionalLayout.list(using: config)
+        return layout
+    }
+    
 }

@@ -18,6 +18,7 @@ final class BeerNetworkManager {
         AF.request(api.endPoint, method: api.method).responseDecodable(of: T.self) { response in
             switch response.result {
             case .success(let value):
+                print("value: ", value)
                 completionHandler(.success(value))
             case .failure(let failure):
                 guard let statusCode = response.response?.statusCode, let error = BeerError(rawValue: statusCode) else {

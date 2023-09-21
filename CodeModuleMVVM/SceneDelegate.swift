@@ -20,10 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
 //        let vc = ViewController()
-        let vc = BeerViewController()
+//        let vc = BeerViewController()
 //        let vc = SearchHorizontalScrollViewController()
 //        let vc = SearchVerticalScrollViewController()
-//        let vc = CollectionCompositionalViewController()
+        let vc = CollectionCompositionalViewController()
 
         window?.rootViewController = UINavigationController(rootViewController: vc)
         window?.makeKeyAndVisible()
