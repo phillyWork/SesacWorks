@@ -20,7 +20,7 @@ class CollectionCompositionalViewController: UIViewController {
     //instance property에 instance method 결과값 활용: instance 생성 이후 사용 가능
     //해결: lazy var instance로 구성 (collectionView가 method 이후 생성되도록)
     //다른 해결: static method로 활용 (type method가 instance와 상관 없음, data 영역 위치 (VC deinit 되어도 앱이 꺼질 때까지 위치)
-    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionFlowLayout())
+    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionCompositionalLayout())
 
     //Diffable DataSource 활용
     //generic: section data type, cell data type
@@ -63,14 +63,68 @@ class CollectionCompositionalViewController: UIViewController {
     }
     
     
+    //compositionalLayout으로 구성하기: cell size가 유동적 / 수평 scroll 다 다르게 & section 별 다른 구성
+    //layout에서 시작, 역으로 instance 하나씩 구성해나가는 과정
+    func configureCollectionCompositionalLayout() -> UICollectionViewLayout {
+       
+        //layoutSize
+        //item이 속한 container: group --> group width의 1/3을 차지 의미
+        //height: group과 동일한 height 가지기 --> 1.0 비율 적용
+//        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .fractionalHeight(1.0))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/4), heightDimension: .fractionalHeight(1.0))
+        
+        //layoutItem
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        //layoutSize
+        //absolute: 고정값 적용
+        //fractionalWidth, 비율 1.0 --> 속한 container와의 비율 적용
+        //group: section에 속하기에 1.0: 디바이스 너비와 동일해짐
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(80))
+ 
+        //layoutGroup
+        //repeatingSubitem: 반복할 item
+        //count: 반복 횟수
+        
+        //AppStore 구성: group in vertical
+
+//        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 3)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 4)
+        
+        //group count 맞게 item size 다시 계산 (WWDC2019) --> deprecated
+//        let group = NSCollectionLayoutGroup.horizontal(layoutSize: <#T##NSCollectionLayoutSize#>, subitem: <#T##NSCollectionLayoutItem#>, count: <#T##Int#>)
+        
+        //group 내 간격 생성
+        group.interItemSpacing = .fixed(10)
+        
+        
+        //Section을 instance로 보유
+        let section = NSCollectionLayoutSection(group: group)
+        
+        //group 간 간격 생성
+        section.interGroupSpacing = 40
+        
+        //item 어디서부터 둘 것인지 설정: inset 구성
+        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        
+        //CollectionViewLayout protocol 채택
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        
+        //여러 section 구성 가능
+        //코드 추가 필요
+        
+        return layout
+    }
+
+    //간단한 UI 구성 (단순 n * n 구성)
     func configureCollectionFlowLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 50, height: 50)
         layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         return layout
     }
-    
-    
+
     func configureDataSource() {
         
         //cell 등록해서 SearchCell 활용할 것 설정
