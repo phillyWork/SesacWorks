@@ -11,6 +11,7 @@
 		2114F89F2ABBD22F006A8479 /* SearchHorizontalScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2114F89E2ABBD22F006A8479 /* SearchHorizontalScrollViewController.swift */; };
 		2114F8A12ABBDFCD006A8479 /* CollectionCompositionalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2114F8A02ABBDFCD006A8479 /* CollectionCompositionalViewController.swift */; };
 		2114F8A42ABBE0F4006A8479 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2114F8A32ABBE0F4006A8479 /* SearchCell.swift */; };
+		2114F8BA2ABD1695006A8479 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2114F8B92ABD1695006A8479 /* CustomColor.swift */; };
 		2123388A2ABA764300AF1B55 /* Router+UnsplashAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212338892ABA764300AF1B55 /* Router+UnsplashAPI.swift */; };
 		2123388C2ABA9A4100AF1B55 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2123388B2ABA9A4100AF1B55 /* ViewModel.swift */; };
 		21628D242AB9293F00F7BE34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21628D232AB9293F00F7BE34 /* AppDelegate.swift */; };
@@ -42,6 +43,7 @@
 		2114F89E2ABBD22F006A8479 /* SearchHorizontalScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHorizontalScrollViewController.swift; sourceTree = "<group>"; };
 		2114F8A02ABBDFCD006A8479 /* CollectionCompositionalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCompositionalViewController.swift; sourceTree = "<group>"; };
 		2114F8A32ABBE0F4006A8479 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		2114F8B92ABD1695006A8479 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		212338892ABA764300AF1B55 /* Router+UnsplashAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Router+UnsplashAPI.swift"; sourceTree = "<group>"; };
 		2123388B2ABA9A4100AF1B55 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		21628D202AB9293F00F7BE34 /* CodeModuleMVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeModuleMVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +128,7 @@
 				21628D4F2AB997EC00F7BE34 /* UnsplashAPI */,
 				21628D522AB9981100F7BE34 /* PunkAPI */,
 				21628D2C2AB9294000F7BE34 /* Assets.xcassets */,
+				2114F8B92ABD1695006A8479 /* CustomColor.swift */,
 				21628D2E2AB9294000F7BE34 /* LaunchScreen.storyboard */,
 				21628D402AB929E200F7BE34 /* .gitignore */,
 				21628D312AB9294000F7BE34 /* Info.plist */,
@@ -287,6 +290,7 @@
 				21628D5A2AB99DAD00F7BE34 /* BeerError.swift in Sources */,
 				2123388A2ABA764300AF1B55 /* Router+UnsplashAPI.swift in Sources */,
 				21628D432AB929F800F7BE34 /* APIKey.swift in Sources */,
+				2114F8BA2ABD1695006A8479 /* CustomColor.swift in Sources */,
 				21628D582AB99ADB00F7BE34 /* BeerStruct.swift in Sources */,
 				21628D262AB9293F00F7BE34 /* SceneDelegate.swift in Sources */,
 			);
