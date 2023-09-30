@@ -36,6 +36,7 @@
 		21628D5A2AB99DAD00F7BE34 /* BeerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21628D592AB99DAD00F7BE34 /* BeerError.swift */; };
 		21628D5C2AB99E7000F7BE34 /* BeerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21628D5B2AB99E7000F7BE34 /* BeerViewModel.swift */; };
 		21628D5E2AB99EC400F7BE34 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21628D5D2AB99EC400F7BE34 /* Observable.swift */; };
+		2172DECA2AC27063003F5922 /* CompositionalEstimatedSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2172DEC92AC27063003F5922 /* CompositionalEstimatedSample.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		21628D592AB99DAD00F7BE34 /* BeerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerError.swift; sourceTree = "<group>"; };
 		21628D5B2AB99E7000F7BE34 /* BeerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerViewModel.swift; sourceTree = "<group>"; };
 		21628D5D2AB99EC400F7BE34 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		2172DEC92AC27063003F5922 /* CompositionalEstimatedSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalEstimatedSample.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				2114F8A32ABBE0F4006A8479 /* SearchCell.swift */,
+				2172DEC92AC27063003F5922 /* CompositionalEstimatedSample.swift */,
 				2114F8A02ABBDFCD006A8479 /* CollectionCompositionalViewController.swift */,
 			);
 			path = CompositionalCollection;
@@ -290,6 +293,7 @@
 				21628D5A2AB99DAD00F7BE34 /* BeerError.swift in Sources */,
 				2123388A2ABA764300AF1B55 /* Router+UnsplashAPI.swift in Sources */,
 				21628D432AB929F800F7BE34 /* APIKey.swift in Sources */,
+				2172DECA2AC27063003F5922 /* CompositionalEstimatedSample.swift in Sources */,
 				2114F8BA2ABD1695006A8479 /* CustomColor.swift in Sources */,
 				21628D582AB99ADB00F7BE34 /* BeerStruct.swift in Sources */,
 				21628D262AB9293F00F7BE34 /* SceneDelegate.swift in Sources */,
