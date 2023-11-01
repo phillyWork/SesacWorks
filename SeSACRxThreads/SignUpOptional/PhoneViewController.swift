@@ -40,6 +40,12 @@ class PhoneViewController: UIViewController {
     }
     
     func bind() {
+        
+        //phoneNumber로부터 처리된 Bool data 기반으로 button 활성화 결정
+        //먼저 연결해놓아야 data 변경 반영 가능
+        isButtonEnabled
+            .bind(to: nextButton.rx.isEnabled)
+            .disposed(by: disposeBag)
 
         //해당 값 textField에 나타내기
         phoneNumber
@@ -74,10 +80,7 @@ class PhoneViewController: UIViewController {
             .bind(to: phoneTextField.layer.rx.borderColor)
             .disposed(by: disposeBag)
         
-        //phoneNumber로부터 처리된 Bool data 기반으로 button 활성화 결정
-        isButtonEnabled
-            .bind(to: nextButton.rx.isEnabled)
-            .disposed(by: disposeBag)
+        
         
         //textField 내 입력값 변화하면 다시 phone에게 전달하기
         //orEmpty: nil값 처리 operator
