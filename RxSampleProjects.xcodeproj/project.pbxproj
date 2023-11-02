@@ -18,6 +18,10 @@
 		217ACB012AF0F26800BABEDC /* SimpleValidationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217ACB002AF0F26800BABEDC /* SimpleValidationViewController.swift */; };
 		217ACB042AF0F32100BABEDC /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 217ACB032AF0F32100BABEDC /* RxCocoa */; };
 		217ACB062AF0F32100BABEDC /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 217ACB052AF0F32100BABEDC /* RxSwift */; };
+		21DA60662AF39DEC007C0440 /* PickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DA60652AF39DEC007C0440 /* PickerViewModel.swift */; };
+		21DA60692AF39E07007C0440 /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DA60682AF39E07007C0440 /* TableViewModel.swift */; };
+		21DA606C2AF39E22007C0440 /* NumbersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DA606B2AF39E22007C0440 /* NumbersViewModel.swift */; };
+		21DA606F2AF39E34007C0440 /* ValidationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DA606E2AF39E34007C0440 /* ValidationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		217ACAFC2AF0F22900BABEDC /* SimpleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableViewController.swift; sourceTree = "<group>"; };
 		217ACAFE2AF0F24500BABEDC /* NumbersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersViewController.swift; sourceTree = "<group>"; };
 		217ACB002AF0F26800BABEDC /* SimpleValidationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleValidationViewController.swift; sourceTree = "<group>"; };
+		21DA60652AF39DEC007C0440 /* PickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewModel.swift; sourceTree = "<group>"; };
+		21DA60682AF39E07007C0440 /* TableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewModel.swift; sourceTree = "<group>"; };
+		21DA606B2AF39E22007C0440 /* NumbersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersViewModel.swift; sourceTree = "<group>"; };
+		21DA606E2AF39E34007C0440 /* ValidationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,12 +88,48 @@
 		217ACB072AF0F47500BABEDC /* RxSimpleExamples */ = {
 			isa = PBXGroup;
 			children = (
-				217ACAEC2AF0F1E300BABEDC /* SimplePickerViewController.swift */,
-				217ACAFC2AF0F22900BABEDC /* SimpleTableViewController.swift */,
-				217ACAFE2AF0F24500BABEDC /* NumbersViewController.swift */,
-				217ACB002AF0F26800BABEDC /* SimpleValidationViewController.swift */,
+				21DA60672AF39DEF007C0440 /* Picker */,
+				21DA606A2AF39E0A007C0440 /* Table */,
+				21DA606D2AF39E25007C0440 /* Numbers */,
+				21DA60702AF39E37007C0440 /* Validation */,
 			);
 			path = RxSimpleExamples;
+			sourceTree = "<group>";
+		};
+		21DA60672AF39DEF007C0440 /* Picker */ = {
+			isa = PBXGroup;
+			children = (
+				21DA60652AF39DEC007C0440 /* PickerViewModel.swift */,
+				217ACAEC2AF0F1E300BABEDC /* SimplePickerViewController.swift */,
+			);
+			path = Picker;
+			sourceTree = "<group>";
+		};
+		21DA606A2AF39E0A007C0440 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				21DA60682AF39E07007C0440 /* TableViewModel.swift */,
+				217ACAFC2AF0F22900BABEDC /* SimpleTableViewController.swift */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		21DA606D2AF39E25007C0440 /* Numbers */ = {
+			isa = PBXGroup;
+			children = (
+				21DA606B2AF39E22007C0440 /* NumbersViewModel.swift */,
+				217ACAFE2AF0F24500BABEDC /* NumbersViewController.swift */,
+			);
+			path = Numbers;
+			sourceTree = "<group>";
+		};
+		21DA60702AF39E37007C0440 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				21DA606E2AF39E34007C0440 /* ValidationViewModel.swift */,
+				217ACB002AF0F26800BABEDC /* SimpleValidationViewController.swift */,
+			);
+			path = Validation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,7 +164,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					217ACAE42AF0F1E300BABEDC = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -167,9 +211,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				217ACAED2AF0F1E300BABEDC /* SimplePickerViewController.swift in Sources */,
+				21DA60662AF39DEC007C0440 /* PickerViewModel.swift in Sources */,
 				217ACAFF2AF0F24500BABEDC /* NumbersViewController.swift in Sources */,
+				21DA606F2AF39E34007C0440 /* ValidationViewModel.swift in Sources */,
+				21DA60692AF39E07007C0440 /* TableViewModel.swift in Sources */,
 				217ACAE92AF0F1E300BABEDC /* AppDelegate.swift in Sources */,
 				217ACAEB2AF0F1E300BABEDC /* SceneDelegate.swift in Sources */,
+				21DA606C2AF39E22007C0440 /* NumbersViewModel.swift in Sources */,
 				217ACAFD2AF0F22900BABEDC /* SimpleTableViewController.swift in Sources */,
 				217ACB012AF0F26800BABEDC /* SimpleValidationViewController.swift in Sources */,
 			);
@@ -233,6 +281,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -293,6 +342,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

@@ -16,7 +16,9 @@ class SimplePickerViewController: UIViewController {
     @IBOutlet weak var pickerViewTwo: UIPickerView!
     @IBOutlet weak var pickerViewThree: UIPickerView!
     
-    var disposeBag = DisposeBag()
+    let pickerVM = PickerViewModel()
+    
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +29,7 @@ class SimplePickerViewController: UIViewController {
     }
 
     func operatorJustExample() {
-        Observable.just([1, 2, 3])
+        pickerVM.pickerViewJustSource
             .bind(to: pickerViewOne.rx.itemTitles) { _, item in
                 return "\(item)"
             }
@@ -39,7 +41,7 @@ class SimplePickerViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        Observable.just([1, 2, 3])
+        pickerVM.pickerViewJustSource
             .bind(to: pickerViewTwo.rx.itemAttributedTitles) { _, item in
                 return NSAttributedString(string: "\(item)",
                                           attributes: [
@@ -72,7 +74,7 @@ class SimplePickerViewController: UIViewController {
     
     
     func operatorOfExample() {
-        Observable.of([1, 2, 3], [4, 5, 6])
+        pickerVM.pickerViewOfSource
             .bind(to: pickerViewOne.rx.itemTitles) { _, item in
                 return "\(item)"
             }
@@ -84,7 +86,7 @@ class SimplePickerViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        Observable.of([1, 2, 3], [4, 5, 6])
+        pickerVM.pickerViewOfSource
             .bind(to: pickerViewTwo.rx.itemAttributedTitles) { _, item in
                 return NSAttributedString(string: "\(item)",
                                           attributes: [
@@ -118,7 +120,7 @@ class SimplePickerViewController: UIViewController {
     
     
     func operatorFromExample() {
-        Observable.from(optional: [1, 2, 3])
+        pickerVM.pickerViewFromSource
             .bind(to: pickerViewOne.rx.itemTitles) { _, item in
                 return "\(item)"
             }
@@ -130,7 +132,7 @@ class SimplePickerViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        Observable.from(optional: [1, 2, 3])
+        pickerVM.pickerViewFromSource
             .bind(to: pickerViewTwo.rx.itemAttributedTitles) { _, item in
                 return NSAttributedString(string: "\(item)",
                                           attributes: [

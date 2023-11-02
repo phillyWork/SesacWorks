@@ -23,7 +23,9 @@ class SimpleValidationViewController: UIViewController {
 
     @IBOutlet weak var button: UIButton!
         
-    var disposeBag = DisposeBag()
+    let validationVM = ValidationViewModel()
+    
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +45,10 @@ class SimpleValidationViewController: UIViewController {
             .map { $0.count >= minimalPasswordLength }
             .share(replay: 1)
 
+        //usernameValid와 passwordValid: RxCocoa에서 textField rx wrapping
+        //ControlProperty로 유저와의 interaction subscribe 없이도 자동 방출
+        //combineLatest에서 각 Observable 방출 필요하지만 UI 한정 빈값 방출
+        //유저 입력값 변화 인지, 바로 작업
         let everythingValid = Observable.combineLatest(usernameValid, passwordValid) { $0 && $1 }
             .share(replay: 1)
 

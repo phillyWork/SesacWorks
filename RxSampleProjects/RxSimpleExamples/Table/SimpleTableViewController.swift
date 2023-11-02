@@ -14,7 +14,9 @@ class SimpleTableViewController: UIViewController, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var disposeBag = DisposeBag()
+    let tableVM = TableViewModel()
+    
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +31,7 @@ class SimpleTableViewController: UIViewController, UITableViewDelegate {
         //cell register 필요
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
-        let items = Observable.just(
-            (0..<20).map { "\($0)" }
-        )
-
-        //
-        items
+        tableVM.tableItems
             .bind(to: tableView.rx.items(cellIdentifier: "Cell", cellType: UITableViewCell.self)) { (row, element, cell) in
                 cell.textLabel?.text = "\(element) @ row \(row)"
             }
