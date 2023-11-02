@@ -7,7 +7,11 @@
 
 import Foundation
 
-class SignInViewModel {
+import RxSwift
+
+final class SignInViewModel {
+    
+    let isSignInButtonEnabled = BehaviorSubject(value: false)
     
     
     

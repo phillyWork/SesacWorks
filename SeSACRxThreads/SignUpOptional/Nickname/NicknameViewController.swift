@@ -15,9 +15,8 @@ class NicknameViewController: UIViewController {
    
     let nicknameTextField = SignTextField(placeholderText: "닉네임을 입력해주세요")
     let nextButton = PointButton(title: "다음")
-    
-    let nickname = BehaviorSubject(value: "닉네임")
-    let isNickNameNotInRange = BehaviorSubject(value: true)
+        
+    let nicknameVM = NicknameViewModel()
     
     let disposeBag = DisposeBag()
     
@@ -37,25 +36,25 @@ class NicknameViewController: UIViewController {
     func bind() {
         
         //버튼 숨김 여부 먼저 bind로 전달해놓기
-        isNickNameNotInRange
+        nicknameVM.isNickNameNotInRange
             .bind(to: nextButton.rx.isHidden)
             .disposed(by: disposeBag)
         
         //textField에 전달해서 띄우기
-        nickname
+        nicknameVM.nickname
             .bind(to: nicknameTextField.rx.text)
             .disposed(by: disposeBag)
         
-        nickname
+        nicknameVM.nickname
             .map { $0.count < 2 || $0.count > 6 }
             .subscribe(with: self) { owner, value in
-                owner.isNickNameNotInRange.onNext(value)
+                owner.nicknameVM.isNickNameNotInRange.onNext(value)
             }
             .disposed(by: disposeBag)
         
         //textField 새로운 입력값 data에 전달
         nicknameTextField.rx.text.orEmpty
-            .bind(to: nickname)
+            .bind(to: nicknameVM.nickname)
             .disposed(by: disposeBag)
         
     }

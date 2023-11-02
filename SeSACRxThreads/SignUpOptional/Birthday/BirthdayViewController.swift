@@ -69,16 +69,9 @@ class BirthdayViewController: UIViewController {
   
     let nextButton = PointButton(title: "가입하기")
     
-    //pickerView에 설정한 값: label로 전달하기
-    let birthDay: BehaviorSubject<Date> = BehaviorSubject(value: .now)
-    
-    let year = BehaviorSubject(value: 0)
-    let month = BehaviorSubject(value: 0)
-    let day = BehaviorSubject(value: 0)
-    
-    let isOverSeventeen = BehaviorSubject(value: false)
-    
     let disposeBag = DisposeBag()
+    
+    let birthdayVM = BirthdayViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,40 +89,21 @@ class BirthdayViewController: UIViewController {
         
         //UI 결정값 --> data update하기
         birthDayPicker.rx.date
-            .bind(to: birthDay)
+            .bind(to: birthdayVM.birthDay)
             .disposed(by: disposeBag)
         
-        //해당 날짜 data에 나누어 전달하기
-        birthDay
-            .subscribe(with: self) { owner, date in
-                let component = Calendar.current.dateComponents([.year, .month, .day], from: date)
-                owner.year.onNext(component.year!)
-                owner.month.onNext(component.month!)
-                owner.day.onNext(component.day!)
-            }
-            .disposed(by: disposeBag)
-        
-        //17세 여부 판단
-        birthDay
-            .map { Calendar.current.dateComponents([.year], from: $0, to: .now) }
-            .map { $0.year! >= 17 }
-            .subscribe(with: self) { owner, value in
-                owner.isOverSeventeen.onNext(value)
-            }
-            .disposed(by: disposeBag)
-        
-        isOverSeventeen
+        birthdayVM.isOverSeventeen
             .bind(to: nextButton.rx.isEnabled)
             .disposed(by: disposeBag)
         
-        isOverSeventeen
+        birthdayVM.isOverSeventeen
             .map { $0 ? "가입 허가 대상입니다." : "만 17세 이상만 가입 가능합니다." }
             .bind(to: infoLabel.rx.text)
             .disposed(by: disposeBag)
         
         //각 날짜 data는 label에 전달 as String
         //UI update: main thread 보장 필요
-        year
+        birthdayVM.year
             .observe(on: MainScheduler.instance)
             .map { "\($0)년" }
             .subscribe(with: self) { owner, year in
@@ -137,7 +111,7 @@ class BirthdayViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        month
+        birthdayVM.month
             .observe(on: MainScheduler.instance)
             .map { "\($0)월" }
             .subscribe(with: self) { owner, month in
@@ -145,7 +119,7 @@ class BirthdayViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        day
+        birthdayVM.day
             .observe(on: MainScheduler.instance)
             .map { "\($0)일" }
             .bind(to: dayLabel.rx.text)
