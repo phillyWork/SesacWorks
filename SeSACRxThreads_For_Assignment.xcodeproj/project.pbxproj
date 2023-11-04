@@ -29,6 +29,8 @@
 		041280732AEFAD4B00972552 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041280722AEFAD4B00972552 /* NicknameViewController.swift */; };
 		041280782AF1D14000972552 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041280772AF1D14000972552 /* Resource.swift */; };
 		210D5B2B2AF24E4A002F1314 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210D5B2A2AF24E4A002F1314 /* Extension+String.swift */; };
+		216DC5712AF6AC4A00ACBB96 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DC56F2AF6AC4A00ACBB96 /* SearchTableViewCell.swift */; };
+		216DC5722AF6AC4A00ACBB96 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216DC5702AF6AC4A00ACBB96 /* SearchViewController.swift */; };
 		21DA605D2AF3923A007C0440 /* BirthdayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DA605C2AF3923A007C0440 /* BirthdayViewModel.swift */; };
 		21DA60602AF3924C007C0440 /* PhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DA605F2AF3924C007C0440 /* PhoneViewModel.swift */; };
 		21DA60632AF39266007C0440 /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DA60622AF39266007C0440 /* NicknameViewModel.swift */; };
@@ -75,6 +77,8 @@
 		041280722AEFAD4B00972552 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		041280772AF1D14000972552 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		210D5B2A2AF24E4A002F1314 /* Extension+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
+		216DC56F2AF6AC4A00ACBB96 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		216DC5702AF6AC4A00ACBB96 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		21DA605C2AF3923A007C0440 /* BirthdayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewModel.swift; sourceTree = "<group>"; };
 		21DA605F2AF3924C007C0440 /* PhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewModel.swift; sourceTree = "<group>"; };
 		21DA60622AF39266007C0440 /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 		041280222AEF9BAB00972552 /* SeSACRxThreads */ = {
 			isa = PBXGroup;
 			children = (
+				216DC56C2AF6AC0500ACBB96 /* Search */,
 				041280532AEF9C1F00972552 /* SignUp */,
 				041280542AEF9C2600972552 /* SignIn */,
 				0412806D2AEFAD0F00972552 /* SignUpOptional */,
@@ -198,6 +203,15 @@
 				21DA60642AF3926A007C0440 /* Nickname */,
 			);
 			path = SignUpOptional;
+			sourceTree = "<group>";
+		};
+		216DC56C2AF6AC0500ACBB96 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				216DC56F2AF6AC4A00ACBB96 /* SearchTableViewCell.swift */,
+				216DC5702AF6AC4A00ACBB96 /* SearchViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		21DA605E2AF3923F007C0440 /* Birthday */ = {
@@ -371,11 +385,13 @@
 				0412806F2AEFAD2D00972552 /* BirthdayViewController.swift in Sources */,
 				041280652AEFA2F000972552 /* SignTextField.swift in Sources */,
 				0412806C2AEFABFE00972552 /* PasswordViewController.swift in Sources */,
+				216DC5722AF6AC4A00ACBB96 /* SearchViewController.swift in Sources */,
 				041280562AEFA04800972552 /* SignInViewController.swift in Sources */,
 				21DA60602AF3924C007C0440 /* PhoneViewModel.swift in Sources */,
 				041280282AEF9BAB00972552 /* ViewController.swift in Sources */,
 				041280632AEFA0CE00972552 /* PointButton.swift in Sources */,
 				041280242AEF9BAB00972552 /* AppDelegate.swift in Sources */,
+				216DC5712AF6AC4A00ACBB96 /* SearchTableViewCell.swift in Sources */,
 				210D5B2B2AF24E4A002F1314 /* Extension+String.swift in Sources */,
 				21DA605D2AF3923A007C0440 /* BirthdayViewModel.swift in Sources */,
 				041280732AEFAD4B00972552 /* NicknameViewController.swift in Sources */,
