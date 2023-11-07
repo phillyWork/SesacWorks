@@ -19,14 +19,13 @@ enum NetworkError: Error {
     
 }
 
-class Network {
-    
+final class Network {
     
     static func fetchDataFromMovieAPI(date: String) -> Observable<MovieStruct> {
         
         return Observable.create { observer in
             
-            guard let url = URL(string: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=\(APIKey.boxOfficeKey)&targetDt=\(date)") else {
+            guard let url = URL(string: "https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=\(APIKey.boxOfficeKey)&targetDt=\(date)") else {
                 
                 //not available url
                 observer.onError(NetworkError.invalidURL)
