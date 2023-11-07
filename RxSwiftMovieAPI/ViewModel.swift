@@ -19,6 +19,38 @@ final class ViewModel {
     
     var dataForCollection = BehaviorRelay<[DailyBoxOfficeList]>(value: [])
     
+    //Input - Output Pattern
+    struct Input {
+        let clicked: ControlEvent<Void>
+        let text: ControlProperty<String?>
+        let selectCell: Observable<(ControlEvent<IndexPath>.Element, ControlEvent<DailyBoxOfficeList>.Element)>
+    }
     
+    struct Output {
+        let resultForTable: Observable<MovieStruct>
+        let resultForCollection: Observable<ControlEvent<DailyBoxOfficeList>.Element>
+    }
+    
+    func transform(input: Input) -> Output {
+        
+        let networkResultData = input.clicked
+            //UIControl action & String --> return String
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
+            .withLatestFrom(input.text.orEmpty) { _, query in
+                return query
+            }
+            .map { text -> String in
+                guard let intText = Int(text) else { return "20231106" }
+                return String(intText)
+            }
+            //일정 타이밍 지나서 수행
+            .flatMap { Network.fetchDataFromMovieAPI(date: $0) }
+        
+        let dailyMovieList = input.selectCell
+            .map { $0.1 }
+        
+        return Output(resultForTable: networkResultData, resultForCollection: dailyMovieList)
+        
+    }
     
 }

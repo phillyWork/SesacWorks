@@ -94,19 +94,10 @@ final class ViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        //searchBar의 text로 검색: network API call
-        searchBar.rx.searchButtonClicked
-            //UIControl action & String --> return String
-            .throttle(.seconds(1), scheduler: MainScheduler.instance)
-            .withLatestFrom(searchBar.rx.text.orEmpty) { _, query in
-                return query
-            }
-            .map { text -> String in
-                guard let intText = Int(text) else { return "20231106" }
-                return String(intText)
-            }
-            //일정 타이밍 지나서 수행
-            .flatMap({ Network.fetchDataFromMovieAPI(date: $0) })
+        let input = ViewModel.Input(clicked: searchBar.rx.searchButtonClicked, text: searchBar.rx.text, selectCell: Observable.zip(tableView.rx.itemSelected, tableView.rx.modelSelected(DailyBoxOfficeList.self)))
+        let output = vm.transform(input: input)
+        
+        output.resultForTable
             .subscribe(with: self) { owner, data in
                 let resultData = data.boxOfficeResult.dailyBoxOfficeList
                 //성공시, subject에 전달
@@ -127,10 +118,8 @@ final class ViewController: UIViewController {
             }
             .disposed(by: disposeBag)
     
-        
         //tableView cell tap --> 해당 cell의 data를 collectionView의 data에 추가
-        Observable.zip(tableView.rx.itemSelected, tableView.rx.modelSelected(DailyBoxOfficeList.self))
-            .map { $0.1 }
+        output.resultForCollection
             .subscribe(with: self) { owner, element in
                 //기존 데이터 접근
                 print("It's about to add")

@@ -28,6 +28,8 @@ final class MovieCollectionViewCell: UICollectionViewCell {
     }
     
     private func configCell() {
+        contentView.layer.cornerRadius = 8
+        contentView.backgroundColor = .orange
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.center.equalTo(contentView)
