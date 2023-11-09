@@ -4,4 +4,30 @@ Sesac code works and assignments
 
 |Project|Skills|
 |-------|------|
-|Beer|  |
+|BeerAndLotteryAPI|  |
+|BoardAndNewWord|  |
+|BookWorm|  |
+|BookWormWithAPI|  |
+|CodeBaseUI|  |
+|CodeModuleMVVM|  |
+|CollectionViewCompositionalLayoutDiffableDataSource|  |
+|CoreLocationMapKitTheater|  |
+|MovieCollectionViewAssignment|  |
+|MovieTableViewAssignment|  |
+|NetworkingProj|  |
+|PhotoGram|  |
+|PhotoGramRealm|  |
+|RxSampleProjects|  |
+|RxSwiftMovieAPI|  |
+|SeSAC3Week5|  |
+|SeSACRxThreads|  |
+|ShoppingListWithRX|  |
+|TMDBAPICallTwiceInARow|  |
+|TMDBCodeBaseNetworkSingleton|  |
+|TMDBNetworkSingleton|  |
+|TMDBSegmentControlDispatchGroup|  |
+|TMDBTrendingAllMultipleCellInTableViewCell|  |
+|TableViewControllerAssignments|  |
+|enumTagAssignment|  |
+|iPadMVVMUnsplashAPI|  |
+
