@@ -1,10 +1,12 @@
 # SesacWorks
+
 Sesac code works and assignments
+
 새싹에서 진행한 과제 및 코드 연습 작업입니다
 
 |Project|Skills|
-|-------|------|
-|BeerAndLotteryAPI|  |
+|:-------:|:------:|
+|BeerAndLotteryAPI| BeerAPI & 로또API, parse JSON by SwiftyJSON/Decodable, refactor into MVVM with custom Observables |
 |BoardAndNewWord|  |
 |BookWorm|  |
 |BookWormWithAPI|  |
@@ -28,6 +30,6 @@ Sesac code works and assignments
 |TMDBSegmentControlDispatchGroup|  |
 |TMDBTrendingAllMultipleCellInTableViewCell|  |
 |TableViewControllerAssignments|  |
-|enumTagAssignment|  |
+|enumTagAssignment| enum with UIButton tag & UIMenu, switch from array to dictionary to match tap data |
 |iPadMVVMUnsplashAPI|  |
 
