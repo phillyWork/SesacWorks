@@ -6,7 +6,7 @@ Sesac code works and assignments
 
 |Project|Skills & 고려점|
 |:-------:|:------:|
-|BeerAndLotteryAPI| - Beer API, 로또 API <br> - Parse JSON by SwiftyJSON/Decodable <br> - Refactor into MVVM with custom Observables |
+|BeerAndLotteryAPI| - Beer API, Lotto API <br> - Parse JSON by SwiftyJSON/Decodable <br> - Refactor into MVVM with custom Observables |
 |BoardAndNewWord| - Dictionary & Set instead of array for contain() method <br> - UIButton & UISearchBar |
 |BookWorm| - CollectionView section & item <br> - TextView placeholder <br> - CollectionView inside of tableView with delegate for passing data |
 |BookWormWithAPI| - Kakao Book API <br> - Realm DB table with CRUD <br> - Save & retrieve image by FileManager <br> - Check realm schema version - NetworkManager singleton pattern |
@@ -24,12 +24,12 @@ Sesac code works and assignments
 |SeSAC3Week5| -TMDB API, Weather API, Lotto API <br> - Basic GCD <br> - ReusableProtocol for view's identifier |
 |SeSACRxThreads| - Publish, Behavior, Replay, Async Subject <br> - zip operator to combine 2 Observables at the same time <br> - MVVM refactor <br> - replace disposeBag in prepareForReuse to call internally dispose() |
 |ShoppingListWithRX| - RxSwift real time search with debounce() and distinctUntilChanged() <br> - ItemSelected & modelSelected for table/collectionView |
-|TMDBAPICallTwiceInARow|  |
-|TMDBCodeBaseNetworkSingleton|  |
-|TMDBNetworkSingleton|  |
-|TMDBSegmentControlDispatchGroup|  |
-|TMDBTrendingAllMultipleCellInTableViewCell|  |
-|TableViewControllerAssignments|  |
+|TMDBAPICallTwiceInARow| -TMDB API <br> - DispatchGroup for calling network API in a row <br> CompletionHandler with Success & error case in tuple |
+|TMDBCodeBaseNetworkSingleton| -TMDB API <br> NetworkManager in singleton pattern <br> Data transfer by NotificationCenter, delegate, or closure |
+|TMDBNetworkSingleton| - TMDB API <br> - Result type for network call completionHandler <br> - Table/collectionview prefetching <br> - Expandable Cell <br> - PageViewController for OnboardingPage |
+|TMDBSegmentControlDispatchGroup| - TMDB API <br> - SegmentControl <br> - DispatchGroup with Result type completionHandler |
+|TMDBTrendingAllMultipleCellInTableViewCell| - TMDB API <br> - Multiple type cells in one tableView |
+|TableViewControllerAssignments| - TableViews with sections from enum, singleton, subview of ViewController <br>  |
 |enumTagAssignment| - Enum with UIButton tag & UIMenu <br> - Switch from array to dictionary to match tap data |
-|iPadMVVMUnsplashAPI|  |
+|iPadMVVMUnsplashAPI| - Unsplash API <br> - DiffableDatasource with MVVM <br> - Localization |
 
