@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseCore
+import FirebaseMessaging
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
+        
+        //원격 알림 권한 요청 (local, push든 허용해야 그 이후 가능)
+        UNUserNotificationCenter.current().delegate = self
+        
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+          options: authOptions,
+          completionHandler: { _, _ in }
+        )
+
+        //원격 알림 등록
+        application.registerForRemoteNotifications()
+
+        
+        //FirebaseMessaging: FirebaseCloudMessaging 프레임워크 추가
+        //Firebase에서 wrapping하겠다는 의미
+        Messaging.messaging().delegate = self
+
         
         return true
     }
@@ -36,5 +55,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+
+//MARK: - Extension for UserNotificationDelegate from Apple
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+ 
+    //deviceToken: APNS에서 제공하는 token
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
+        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        
+        print("APNS token: ", token)
+    }
+    
+}
+
+//MARK: - Extension for MessagingDelegate from Firebase
+
+extension AppDelegate: MessagingDelegate {
+    
+    //fcmToken: APNS token wrapping한 token
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        
+        print("Firebase registration token: \(String(describing: fcmToken))")
+        
+        let dataDict: [String: String] = ["token": fcmToken ?? ""]
+        NotificationCenter.default.post(
+            name: Notification.Name("FCMToken"),
+            object: nil,
+            userInfo: dataDict
+        )
+        // TODO: If necessary send token to application server.
+        // Note: This callback is fired at each app startup and whenever a new token is generated.
+    }
+    
 }
 
