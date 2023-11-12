@@ -30,6 +30,7 @@ Sesac code works and assignments
 |TMDBSegmentControlDispatchGroup| - TMDB API <br> - SegmentControl <br> - DispatchGroup with Result type completionHandler |
 |TMDBTrendingAllMultipleCellInTableViewCell| - TMDB API <br> - Multiple type cells in one tableView |
 |TableViewControllerAssignments| - TableViews with sections from enum, singleton, subview of ViewController <br>  |
+|firebaseAnalyticsCrashlytics| - FirebaseAnalyticsWithoutAdid - FirebaseCrashlytics - FCM & Push Notifications Console test |
 |enumTagAssignment| - Enum with UIButton tag & UIMenu <br> - Switch from array to dictionary to match tap data |
 |iPadMVVMUnsplashAPI| - Unsplash API <br> - DiffableDatasource with MVVM <br> - Localization |
 
