@@ -14,6 +14,8 @@
 		21E90B042B01A8C600FE53B0 /* SwiftUIProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E90B032B01A8C600FE53B0 /* SwiftUIProjectTests.swift */; };
 		21E90B0E2B01A8C600FE53B0 /* SwiftUIProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E90B0D2B01A8C600FE53B0 /* SwiftUIProjectUITests.swift */; };
 		21E90B102B01A8C600FE53B0 /* SwiftUIProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E90B0F2B01A8C600FE53B0 /* SwiftUIProjectUITestsLaunchTests.swift */; };
+		21E90B1D2B01B96200FE53B0 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E90B1C2B01B96200FE53B0 /* MenuView.swift */; };
+		21E90B1F2B01C89200FE53B0 /* RenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E90B1E2B01C89200FE53B0 /* RenderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		21E90B092B01A8C600FE53B0 /* SwiftUIProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21E90B0D2B01A8C600FE53B0 /* SwiftUIProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIProjectUITests.swift; sourceTree = "<group>"; };
 		21E90B0F2B01A8C600FE53B0 /* SwiftUIProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		21E90B1C2B01B96200FE53B0 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		21E90B1E2B01C89200FE53B0 /* RenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 			children = (
 				21E90AF22B01A8C500FE53B0 /* SwiftUIProjectApp.swift */,
 				21E90AF42B01A8C500FE53B0 /* ContentView.swift */,
+				21E90B1C2B01B96200FE53B0 /* MenuView.swift */,
+				21E90B1E2B01C89200FE53B0 /* RenderView.swift */,
 				21E90AF62B01A8C600FE53B0 /* Assets.xcassets */,
 				21E90AF82B01A8C600FE53B0 /* Preview Content */,
 			);
@@ -258,6 +264,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				21E90AF52B01A8C500FE53B0 /* ContentView.swift in Sources */,
+				21E90B1D2B01B96200FE53B0 /* MenuView.swift in Sources */,
+				21E90B1F2B01C89200FE53B0 /* RenderView.swift in Sources */,
 				21E90AF32B01A8C500FE53B0 /* SwiftUIProjectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
