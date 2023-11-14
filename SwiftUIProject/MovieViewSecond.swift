@@ -78,7 +78,6 @@ struct MovieViewSecond: View {
 //            TamagochiView()
 //        })
         
-        
     }
 }
 
