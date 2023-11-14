@@ -24,6 +24,7 @@ Sesac code works and assignments
 |SeSAC3Week5| -TMDB API, Weather API, Lotto API <br> - Basic GCD <br> - ReusableProtocol for view's identifier |
 |SeSACRxThreads| - Publish, Behavior, Replay, Async Subject <br> - zip operator to combine 2 Observables at the same time <br> - MVVM refactor <br> - replace disposeBag in prepareForReuse to call internally dispose() |
 |ShoppingListWithRX| - RxSwift real time search with debounce() and distinctUntilChanged() <br> - ItemSelected & modelSelected for table/collectionView |
+|SwiftUIProject| - View & ViewModifier protocol, some View <br> - data flow with @State: Source of Truth/to handle data and @Binding: retrieve data from @State to synchronize data  <br> - Zstack for SubViews, H and Vstacks to embed various views <br> - NavigationView, Stack and Link for NavigationBar |
 |TMDBAPICallTwiceInARow| -TMDB API <br> - DispatchGroup for calling network API in a row <br> CompletionHandler with Success & error case in tuple |
 |TMDBCodeBaseNetworkSingleton| -TMDB API <br> NetworkManager in singleton pattern <br> Data transfer by NotificationCenter, delegate, or closure |
 |TMDBNetworkSingleton| - TMDB API <br> - Result type for network call completionHandler <br> - Table/collectionview prefetching <br> - Expandable Cell <br> - PageViewController for OnboardingPage |
