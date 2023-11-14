@@ -40,6 +40,10 @@ struct TamagochiView: View {
     
     @State private var riceCount = 0
     
+    @State private var isOn = false
+    
+    @State private var textFieldInput = ""
+    
     //body: computed property
     //값 변화: get 내부에서 작동 --> 수정하려면 mutating get 필요
     
@@ -55,12 +59,25 @@ struct TamagochiView: View {
             
             VStack {
                 
+                //TextField 입력값 매번 변화, State로 보유해야 고유하게 구분 가능
+                //전달 받기: $로 Binding값 받기
+                TextField("물방울 갯수 입력하기", text: $textFieldInput)
+//                    .padding()
+                
+                //각 UI component: 결국 전체 view의 하위 view 역할
+                //관리하는 @state data 전달받아서 변화 시, 다시 원본에 전달하기
+                Toggle("스위치", isOn: $isOn)
+//                    .padding()
+                
                 ExtractedView(text: "물방울", count: $waterCount)
                 
                 Button("물방울 늘리기") {
                     
                     //Button tap: nickname 값 변경하기
                     waterCount += 1
+                    
+                    //버튼 탭마다 switch 왔다갔다하기
+                    isOn.toggle()
                     
                     //UIKit: data 변경 ~ view에 다시 반영해주는 코드 필요
                     //SwiftUI: data 변화 --> view update 신호 --> view render
@@ -81,6 +98,10 @@ struct TamagochiView: View {
                 //Button action lable 활용 (View 그 자체, 커스텀 활용 많이 가능)
                 Button(action: {
                     riceCount += 1
+                    
+                    //버튼 탭마다 switch 왔다갔다하기
+                    isOn.toggle()
+                    
                 }, label: {
                     Text("밥알 늘리기")
                         .padding(50)
@@ -90,6 +111,9 @@ struct TamagochiView: View {
                 //label에 padding 주고 활용: 버튼 전체 영역 tap 가능
                 
             }
+            .padding()  //속한 모든 view에 공통 적용: Stack에 modifier 적용하기
+        
+           
             
 //        }
         
@@ -108,16 +132,31 @@ struct ExtractedView: View {
     
     let text: String
 
-    //property로 초기화해서 활용
+    //property로 초기화해서 활용 (표현만 할 경우, read만 해올 경우)
+    
+    //값 변화: @State 달기 --> 상위 view의 data와 일치하지 않는 상황 발생 가능
+    //state 별도 처리 --> 같은 데이터로 보지 않으므로 상위 view의 버튼 동작하지 않음
+//    @State var count: Int
+
+    //@State: 오로지 속한 View의 고유 data 관리 목적
+    
+    //상위 view에서 전달하는 data 받아서 전달하기
     //State와 바인딩해서 활용: State에서 관리하는 데이터 고유하도록 함
     //Binding 활용: @State의 데이터 참조, 데이터 일치하도록 함
     //Derived data
     @Binding var count: Int
     
     var body: some View {
-        Text("누적 \(text): \(count)개")
-            .background(.black)
-            .foregroundStyle(Color.white)
-            .font(.title)
+        HStack {
+            Text("누적 \(text): \(count)개")
+                .background(.black)
+                .foregroundStyle(Color.white)
+                .font(.title)
+            
+            Button("subView 버튼") {
+                count += 1
+            }
+            
+        }
     }
 }
