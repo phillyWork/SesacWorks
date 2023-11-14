@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  iPadMVVMUnsplashAPI
+
+  Created by Heedon on 2023/09/11.
+  
+*/
+
+"NSLocationWhenInUseUsageDescription" = "Need Location Usage Acceptance";
+
+"CFBundleDisplayName" = "Sesac";
