@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2184304F2B030708001552E3 /* TamagochiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2184304E2B030708001552E3 /* TamagochiView.swift */; };
 		21E90AF32B01A8C500FE53B0 /* SwiftUIProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E90AF22B01A8C500FE53B0 /* SwiftUIProjectApp.swift */; };
 		21E90AF52B01A8C500FE53B0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E90AF42B01A8C500FE53B0 /* ContentView.swift */; };
 		21E90AF72B01A8C600FE53B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21E90AF62B01A8C600FE53B0 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2184304E2B030708001552E3 /* TamagochiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagochiView.swift; sourceTree = "<group>"; };
 		21E90AEF2B01A8C500FE53B0 /* SwiftUIProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21E90AF22B01A8C500FE53B0 /* SwiftUIProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIProjectApp.swift; sourceTree = "<group>"; };
 		21E90AF42B01A8C500FE53B0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,6 +77,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		218430502B03070E001552E3 /* BasicSwiftUIViews */ = {
+			isa = PBXGroup;
+			children = (
+				21E90AF42B01A8C500FE53B0 /* ContentView.swift */,
+				21E90B1C2B01B96200FE53B0 /* MenuView.swift */,
+				21E90B1E2B01C89200FE53B0 /* RenderView.swift */,
+			);
+			path = BasicSwiftUIViews;
+			sourceTree = "<group>";
+		};
 		21E90AE62B01A8C500FE53B0 = {
 			isa = PBXGroup;
 			children = (
@@ -99,9 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				21E90AF22B01A8C500FE53B0 /* SwiftUIProjectApp.swift */,
-				21E90AF42B01A8C500FE53B0 /* ContentView.swift */,
-				21E90B1C2B01B96200FE53B0 /* MenuView.swift */,
-				21E90B1E2B01C89200FE53B0 /* RenderView.swift */,
+				218430502B03070E001552E3 /* BasicSwiftUIViews */,
+				2184304E2B030708001552E3 /* TamagochiView.swift */,
 				21E90AF62B01A8C600FE53B0 /* Assets.xcassets */,
 				21E90AF82B01A8C600FE53B0 /* Preview Content */,
 			);
@@ -264,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21E90AF52B01A8C500FE53B0 /* ContentView.swift in Sources */,
+				2184304F2B030708001552E3 /* TamagochiView.swift in Sources */,
 				21E90B1D2B01B96200FE53B0 /* MenuView.swift in Sources */,
 				21E90B1F2B01C89200FE53B0 /* RenderView.swift in Sources */,
 				21E90AF32B01A8C500FE53B0 /* SwiftUIProjectApp.swift in Sources */,
