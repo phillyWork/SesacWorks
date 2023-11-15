@@ -10,6 +10,8 @@
 		2184304F2B030708001552E3 /* TamagochiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2184304E2B030708001552E3 /* TamagochiView.swift */; };
 		218430642B033792001552E3 /* MovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218430632B033792001552E3 /* MovieView.swift */; };
 		218430662B033D7A001552E3 /* MovieViewSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218430652B033D7A001552E3 /* MovieViewSecond.swift */; };
+		21B2BE2C2B045787003A9DDB /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B2BE2A2B045787003A9DDB /* CategoryView.swift */; };
+		21B2BE2D2B045787003A9DDB /* TransitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B2BE2B2B045787003A9DDB /* TransitionView.swift */; };
 		21E90AF32B01A8C500FE53B0 /* SwiftUIProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E90AF22B01A8C500FE53B0 /* SwiftUIProjectApp.swift */; };
 		21E90AF52B01A8C500FE53B0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E90AF42B01A8C500FE53B0 /* ContentView.swift */; };
 		21E90AF72B01A8C600FE53B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21E90AF62B01A8C600FE53B0 /* Assets.xcassets */; };
@@ -42,6 +44,8 @@
 		2184304E2B030708001552E3 /* TamagochiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagochiView.swift; sourceTree = "<group>"; };
 		218430632B033792001552E3 /* MovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieView.swift; sourceTree = "<group>"; };
 		218430652B033D7A001552E3 /* MovieViewSecond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewSecond.swift; sourceTree = "<group>"; };
+		21B2BE2A2B045787003A9DDB /* CategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		21B2BE2B2B045787003A9DDB /* TransitionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionView.swift; sourceTree = "<group>"; };
 		21E90AEF2B01A8C500FE53B0 /* SwiftUIProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21E90AF22B01A8C500FE53B0 /* SwiftUIProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIProjectApp.swift; sourceTree = "<group>"; };
 		21E90AF42B01A8C500FE53B0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -91,6 +95,25 @@
 			path = BasicSwiftUIViews;
 			sourceTree = "<group>";
 		};
+		21B2BE282B045763003A9DDB /* DataFlow */ = {
+			isa = PBXGroup;
+			children = (
+				2184304E2B030708001552E3 /* TamagochiView.swift */,
+				218430652B033D7A001552E3 /* MovieViewSecond.swift */,
+				218430632B033792001552E3 /* MovieView.swift */,
+			);
+			path = DataFlow;
+			sourceTree = "<group>";
+		};
+		21B2BE292B04576E003A9DDB /* ViewTransition */ = {
+			isa = PBXGroup;
+			children = (
+				21B2BE2B2B045787003A9DDB /* TransitionView.swift */,
+				21B2BE2A2B045787003A9DDB /* CategoryView.swift */,
+			);
+			path = ViewTransition;
+			sourceTree = "<group>";
+		};
 		21E90AE62B01A8C500FE53B0 = {
 			isa = PBXGroup;
 			children = (
@@ -116,9 +139,8 @@
 			children = (
 				21E90AF22B01A8C500FE53B0 /* SwiftUIProjectApp.swift */,
 				218430502B03070E001552E3 /* BasicSwiftUIViews */,
-				2184304E2B030708001552E3 /* TamagochiView.swift */,
-				218430652B033D7A001552E3 /* MovieViewSecond.swift */,
-				218430632B033792001552E3 /* MovieView.swift */,
+				21B2BE282B045763003A9DDB /* DataFlow */,
+				21B2BE292B04576E003A9DDB /* ViewTransition */,
 				21E90AF62B01A8C600FE53B0 /* Assets.xcassets */,
 				21E90AF82B01A8C600FE53B0 /* Preview Content */,
 			);
@@ -285,7 +307,9 @@
 				218430662B033D7A001552E3 /* MovieViewSecond.swift in Sources */,
 				2184304F2B030708001552E3 /* TamagochiView.swift in Sources */,
 				21E90B1D2B01B96200FE53B0 /* MenuView.swift in Sources */,
+				21B2BE2D2B045787003A9DDB /* TransitionView.swift in Sources */,
 				21E90B1F2B01C89200FE53B0 /* RenderView.swift in Sources */,
+				21B2BE2C2B045787003A9DDB /* CategoryView.swift in Sources */,
 				21E90AF32B01A8C500FE53B0 /* SwiftUIProjectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
