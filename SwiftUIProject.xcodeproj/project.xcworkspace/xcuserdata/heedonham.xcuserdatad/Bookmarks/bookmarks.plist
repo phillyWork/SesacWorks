@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>31</string>
+					<string>34</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>30</string>
+					<string>33</string>
 					<key>Timestamp</key>
-					<string>721707085.511783</string>
+					<string>721710785.847293</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -41,9 +41,9 @@
                 //결국 ForEach도 각 View 생성 반복하는 것
 </string>
 				<key>trailing</key>
-				<string>                    Text("안녕하세yo \(item)")
-                        .lineLimit(2)
-                }
+				<string>//                    Text("안녕하세yo \(item)")
+//                        .lineLimit(2)
+                    
 </string>
 			</dict>
 			<key>title</key>

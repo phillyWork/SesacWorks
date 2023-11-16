@@ -11,7 +11,9 @@ import SwiftUI
 struct SwiftUIProjectApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //시작 화면 설정
+//            ContentView()
+            PosterView()
         }
     }
 }

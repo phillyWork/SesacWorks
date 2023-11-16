@@ -9,6 +9,9 @@ import SwiftUI
 
 struct PosterView: View {
     
+    //화면 전환
+    @State private var isPresented = false
+    
     var body: some View {
         
         //default: vertical scroll
@@ -29,8 +32,18 @@ struct PosterView: View {
             LazyVStack {
                 //결국 ForEach도 각 View 생성 반복하는 것
                 ForEach(0..<50) { item in
-                    Text("안녕하세yo \(item)")
-                        .lineLimit(2)
+//                    Text("안녕하세yo \(item)")
+//                        .lineLimit(2)
+                    
+                    //ProgressView 사이즈 설정하지 않았으므로 보여져야 할 것보다 더 많이 보여줌: 더 많은 view 네트워크 통신
+                    //--> 해결: frame 설정하기
+                    //cell scroll하면서 추가적으로 image load
+                    AsyncImageViewSecond()
+                        .frame(width: 200, height: 200)
+//                        .onAppear() //viewWillAppear
+                        .onTapGesture {
+                            isPresented.toggle()
+                        }
                 }
             }
             //default: contentSize만큼만 scroll
@@ -40,6 +53,9 @@ struct PosterView: View {
         .background(Color.orange)
 //        .contentMargins(10, for: .scrollContent)       //content margin 영역 설정 (상하좌우)
 //        .contentMargins(50, for: .scrollIndicators)     //indicator margin 영역 설정
+        .sheet(isPresented: $isPresented, content: {
+            CategoryView()
+        })
     }
     
 }
@@ -80,8 +96,9 @@ struct AsyncImageView: View {
 
 struct AsyncImageViewSecond: View {
    
-    let url = URL(string: "https://picsum.photoㄴㄴs/400")
-    
+    let url = URL(string: "https://picsum.photos/400")
+//    let url = URL(string: "https://picsum.photssos/400")
+
     var body: some View {
         //해결: AsyncImagePage 활용
         //분기 처리 가능
@@ -108,7 +125,7 @@ struct AsyncImageViewSecond: View {
 
 
 #Preview {
-//    PosterView()
+    PosterView()
 //    AsyncImageView()
-    AsyncImageViewSecond()
+//    AsyncImageViewSecond()
 }
