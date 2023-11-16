@@ -10,9 +10,21 @@ import SwiftUI
 //View가 그려지는 과정 확인
 struct RenderView: View {
 
+    //fullScreenCover: dismiss 요소 필요
+    
+    //Environment:
+    @Environment(\.presentationMode) var presentationMode
+    
+    
     //struct 내부 prooperty 변화: @State 활용
     @State var age = 10
 
+    //init 확인
+    init(age: Int = 10) {
+        self.age = age
+        print("RenderView init")
+    }
+    
     //연산 프로퍼티처럼 따로 빼기
     var bran: some View {
         Text("Bran: \(Int.random(in: 1...100))")
@@ -73,10 +85,15 @@ struct RenderView: View {
                 Button("클릭") {
                     //data 변화 주기
                     //age가 변화: age만 그대로?
-                    age = Int.random(in: 1...100)
+//                    age = Int.random(in: 1...100)
                     
                     //실제 변화: subview로 분리한 koko 제외 버튼 눌릴때마다 다 변화함
                     //body가 새롭게 계속 그려짐
+                    
+                    
+                    //Environment 활용: dismiss 구현
+                    //
+                    presentationMode.wrappedValue.dismiss()
                     
                 }
                 

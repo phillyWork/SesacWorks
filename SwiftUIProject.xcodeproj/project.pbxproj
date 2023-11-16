@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		217671C12B05A82F00662FA8 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217671C02B05A82F00662FA8 /* SearchView.swift */; };
+		217671C42B05B44F00662FA8 /* NavigationLazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217671C32B05B44F00662FA8 /* NavigationLazyView.swift */; };
 		2184304F2B030708001552E3 /* TamagochiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2184304E2B030708001552E3 /* TamagochiView.swift */; };
 		218430642B033792001552E3 /* MovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218430632B033792001552E3 /* MovieView.swift */; };
 		218430662B033D7A001552E3 /* MovieViewSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218430652B033D7A001552E3 /* MovieViewSecond.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		217671C02B05A82F00662FA8 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		217671C32B05B44F00662FA8 /* NavigationLazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
 		2184304E2B030708001552E3 /* TamagochiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagochiView.swift; sourceTree = "<group>"; };
 		218430632B033792001552E3 /* MovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieView.swift; sourceTree = "<group>"; };
 		218430652B033D7A001552E3 /* MovieViewSecond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewSecond.swift; sourceTree = "<group>"; };
@@ -91,6 +95,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		217671C22B05AD7100662FA8 /* Render */ = {
+			isa = PBXGroup;
+			children = (
+				217671C02B05A82F00662FA8 /* SearchView.swift */,
+				217671C32B05B44F00662FA8 /* NavigationLazyView.swift */,
+			);
+			path = Render;
+			sourceTree = "<group>";
+		};
 		218430502B03070E001552E3 /* BasicSwiftUIViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +163,7 @@
 				218430502B03070E001552E3 /* BasicSwiftUIViews */,
 				21B2BE282B045763003A9DDB /* DataFlow */,
 				21B2BE292B04576E003A9DDB /* ViewTransition */,
+				217671C22B05AD7100662FA8 /* Render */,
 				21E90AF62B01A8C600FE53B0 /* Assets.xcassets */,
 				21E90AF82B01A8C600FE53B0 /* Preview Content */,
 			);
@@ -319,7 +333,9 @@
 				2184304F2B030708001552E3 /* TamagochiView.swift in Sources */,
 				21B2BE312B046F4C003A9DDB /* HomeView.swift in Sources */,
 				21E90B1D2B01B96200FE53B0 /* MenuView.swift in Sources */,
+				217671C12B05A82F00662FA8 /* SearchView.swift in Sources */,
 				21B2BE2D2B045787003A9DDB /* TransitionView.swift in Sources */,
+				217671C42B05B44F00662FA8 /* NavigationLazyView.swift in Sources */,
 				21E90B1F2B01C89200FE53B0 /* RenderView.swift in Sources */,
 				21B2BE2C2B045787003A9DDB /* CategoryView.swift in Sources */,
 				21E90AF32B01A8C500FE53B0 /* SwiftUIProjectApp.swift in Sources */,

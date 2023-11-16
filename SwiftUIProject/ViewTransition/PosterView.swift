@@ -42,6 +42,7 @@ struct PosterView: View {
                         .frame(width: 200, height: 200)
 //                        .onAppear() //viewWillAppear
                         .onTapGesture {
+                            print("디버깅용 프린트")
                             isPresented.toggle()
                         }
                 }
@@ -109,7 +110,8 @@ struct AsyncImageViewSecond: View {
             case .success(let image):
                 image
                     .scaledToFit()
-                    .frame(width: 250, height: 150)
+                    //frame 설정해놓아야 progressView loading 크기가 적게 걸리면서 과호출 나타나지 않도록 함
+                    .frame(width: 100, height: 100)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
             case .failure(_):
                 //error 활용하지 않으면 let까지 생략 --> wildcard로만 나타내기
