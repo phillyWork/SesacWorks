@@ -12,8 +12,22 @@ struct RenderView: View {
 
     //fullScreenCover: dismiss 요소 필요
     
-    //Environment:
-    @Environment(\.presentationMode) var presentationMode
+    //Environment property wrapper
+    
+    //모든 view에 공통적으로 가지는 특성
+    //system에서 정의된 값 감지 --> view update에 활용
+    
+    //keypath로 구성: \으로 구성
+    //괄호 안 요소: EnvironmentValue
+    
+    //deprecated 예정
+//    @Environment(\.presentationMode) var presentationMode
+    
+    //명시적으로 사라질 것 의미
+    @Environment(\.dismiss) var dismiss
+    
+    //light mode, dark mode 대응용 --> system 설정값 전달받아서 활용
+    @Environment(\.colorScheme) var colorScheme
     
     
     //struct 내부 prooperty 변화: @State 활용
@@ -82,7 +96,8 @@ struct RenderView: View {
                 Text("Jack: \(Int.random(in: 1...100))")
                 bran
                 kokoView()
-                Button("클릭") {
+                
+                Button(colorScheme == .dark ? "다크모드 클릭" : "라이트모드 클릭") {
                     //data 변화 주기
                     //age가 변화: age만 그대로?
 //                    age = Int.random(in: 1...100)
@@ -92,10 +107,17 @@ struct RenderView: View {
                     
                     
                     //Environment 활용: dismiss 구현
-                    //
-                    presentationMode.wrappedValue.dismiss()
+                    //(pop, dismiss 방식 구분하지 않음, 사라질 수 있다면 사라지기)
+
+                    //deprecated 예정
+//                    presentationMode.wrappedValue.dismiss()
                     
+                    //함수처럼 호출
+                    dismiss.callAsFunction()
                 }
+                //Envrionment 활용 ~ system 라이트/다크모드따라서 설정 가능
+                .background(colorScheme == .dark ? .black : .gray)
+                .foregroundStyle(colorScheme == .dark ? .white : .yellow)
                 
             }
             .navigationTitle("네이게이션 타이틀")   //NavBar의 Title 설정
