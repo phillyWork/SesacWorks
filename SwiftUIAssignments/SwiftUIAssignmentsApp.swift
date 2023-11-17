@@ -11,8 +11,8 @@ import SwiftUI
 struct SwiftUIAssignmentsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
-//            NavStackView()
+//            ContentView()
+            NavStackView()
         }
     }
 }

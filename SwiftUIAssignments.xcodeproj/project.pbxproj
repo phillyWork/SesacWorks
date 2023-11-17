@@ -13,6 +13,7 @@
 		218AE90F2B0798FE008249A7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 218AE90E2B0798FE008249A7 /* Preview Assets.xcassets */; };
 		218AE9182B079ABE008249A7 /* NavStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218AE9172B079ABE008249A7 /* NavStackView.swift */; };
 		218AE91A2B07A515008249A7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218AE9192B07A515008249A7 /* LoginView.swift */; };
+		218AE91C2B07C903008249A7 /* SampleMovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218AE91B2B07C903008249A7 /* SampleMovieView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		218AE90E2B0798FE008249A7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		218AE9172B079ABE008249A7 /* NavStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavStackView.swift; sourceTree = "<group>"; };
 		218AE9192B07A515008249A7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		218AE91B2B07C903008249A7 /* SampleMovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleMovieView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				218AE9172B079ABE008249A7 /* NavStackView.swift */,
+				218AE91B2B07C903008249A7 /* SampleMovieView.swift */,
 			);
 			path = NavLinkLazyStack;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				218AE9182B079ABE008249A7 /* NavStackView.swift in Sources */,
+				218AE91C2B07C903008249A7 /* SampleMovieView.swift in Sources */,
 				218AE90A2B0798FC008249A7 /* ContentView.swift in Sources */,
 				218AE91A2B07A515008249A7 /* LoginView.swift in Sources */,
 				218AE9082B0798FC008249A7 /* SwiftUIAssignmentsApp.swift in Sources */,
