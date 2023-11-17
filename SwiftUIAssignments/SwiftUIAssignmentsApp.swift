@@ -12,6 +12,7 @@ struct SwiftUIAssignmentsApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+//            NavStackView()
         }
     }
 }
