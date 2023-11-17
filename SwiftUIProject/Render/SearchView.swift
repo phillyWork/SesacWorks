@@ -73,7 +73,8 @@ struct Movie: Hashable, Identifiable {
     let id = UUID()
     let title: String
     let color = Color.random()
-    
+    //수치 표현 데이터
+    let count = Int.random(in: 1...100)
 }
 
 
@@ -83,10 +84,19 @@ struct SearchView: View {
     
     @State private var searchQuery = ""
     
+    @State private var showChart = false
+    
     //    let movieArray = ["ABC", "AB", "BCD", "BEF", "아이언맨", "엑스맨", "해리포터", "헬로우"]
     
     //구조체 모델로 확장
-    let movieStructArray = [Movie(title: "어벤져스"), Movie(title: "AB"), Movie(title: "BCD"), Movie(title: "BEF"), Movie(title: "아이언맨"), Movie(title: "엑스맨"), Movie(title: "해리포터"), Movie(title: "엔드게임")]
+    let movieStructArray = [Movie(title: "어벤져스"), 
+                            Movie(title: "AB"),
+                            Movie(title: "BCD"),
+                            Movie(title: "BEF"), 
+                            Movie(title: "아이언맨"),
+                            Movie(title: "엑스맨"),
+                            Movie(title: "해리포터"),
+                            Movie(title: "엔드게임")]
     
     //검색된 결과 보여줄 데이터 따로 구성 (원본: 전체 데이터 보여주기에 활용)
     var filterMovie: [Movie] {
@@ -106,6 +116,9 @@ struct SearchView: View {
         //NavigationLink: destination & label --> NavigationView
         NavigationStack {
 //        NavigationView {
+            
+            //textField 비밀번호 구성
+//            SecureField(<#T##titleKey: LocalizedStringKey##LocalizedStringKey#>, text: <#T##Binding<String>#>)
             
             //어떤 stack에 어떤 data 넣을지 결정
             
@@ -161,7 +174,43 @@ struct SearchView: View {
             }
 //            .frame(width: 200, height: 60)
             .navigationTitle("검색")
-
+            .navigationBarTitleDisplayMode(.inline)
+            
+//            //deprecated
+//            .navigationBarItems(leading: <#T##View#>, trailing: <#T##View#>)
+            
+            //toolbar 활용: nav bar 밑 tabbar, keyboard 등 활용 가능
+            .toolbar {
+                //위치 설정 필요
+                ToolbarItemGroup(placement: .keyboard) {
+                    //keyboard 위 button 구성
+                    Button {
+                        print("nav bar tapped")
+                    } label: {
+                        Image(systemName: "star.fill")
+                    }
+                }
+                
+                ToolbarItemGroup(placement: .topBarLeading) {
+                    //nav bar leading 영역 button 구성
+                    Button {
+                        showChart = true
+                    } label: {
+                        Image(systemName: "star.fill")
+                    }
+                }
+                
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    //nav bar trailing 영역 button 구성
+                    Button {
+                        print("nav bar tapped")
+                    } label: {
+                        Image(systemName: "person")
+                    }
+                }
+                
+            }
+            
             //NavStack 활용 시:
             //목적지 설정: item을 for의 Hashable로 받음 (item의 type 설정)
             //Hashable로 item 넘겨줘서 다음 화면의 property로 넘겨줌
@@ -170,6 +219,9 @@ struct SearchView: View {
             }
            
         }
+        //searchable이 navigationView에 붙어있다면 return view가 어디 위치인지 확인 필요
+        //List에 붙이기
+        
         //따로 searchBar가 존재하지 않음
         //Binding 필요 ~ State 매개변수 필요
         //placement: navigationView 바로 밑
@@ -179,6 +231,12 @@ struct SearchView: View {
         .onSubmit(of: .search) {
             print("fhfhfh")
         }
+        
+        //sheetPresentation으로 띄우기
+        .sheet(isPresented: $showChart, content: {
+            //화면전환하면서 값 같이 전달
+            ChartView(movieData: movieStructArray)
+        })
     }
     
 }
