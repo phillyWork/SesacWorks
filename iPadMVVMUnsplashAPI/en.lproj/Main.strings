@@ -1,0 +1,31 @@
+
+/* Class = "UINavigationItem"; title = "사진 검색"; ObjectID = "3hd-of-ntS"; */
+"3hd-of-ntS.title" = "Image Search";
+
+/* Class = "UINavigationItem"; title = "로그인"; ObjectID = "5hM-sl-Bns"; */
+"5hM-sl-Bns.title" = "Login";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "6eX-Bp-5A6"; */
+"6eX-Bp-5A6.title" = "Item";
+
+/* Class = "UILabel"; text = "로그인 여부 확인"; ObjectID = "8F4-PT-rQZ"; */
+"8F4-PT-rQZ.text" = "Check Login Validation";
+
+/* Class = "UITextField"; placeholder = "아이디를 입력해주세요"; ObjectID = "F4b-8R-8bk"; */
+"F4b-8R-8bk.placeholder" = "Enter ID";
+
+/* Class = "UITextField"; placeholder = "비밀번호를 입력해주세요"; ObjectID = "Xlh-hH-rx4"; */
+"Xlh-hH-rx4.placeholder" = "Enter Password";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "aaT-zg-Qkr"; */
+"aaT-zg-Qkr.title" = "Item";
+
+/* Class = "UIButton"; configuration.title = "로그인"; ObjectID = "h5g-VW-sgP"; */
+"h5g-VW-sgP.configuration.title" = "Login";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "h5g-VW-sgP"; */
+"h5g-VW-sgP.normalTitle" = "Login";
+
+
+//자동 생성 이후 추가한 UI component들: 직접 입력해줘야 함
+"mDT-sR-OIl.title" = "Example";
