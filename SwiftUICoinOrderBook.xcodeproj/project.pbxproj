@@ -13,6 +13,8 @@
 		21315CC02B0AFFDF00628A24 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21315CBF2B0AFFDF00628A24 /* Preview Assets.xcassets */; };
 		21315CC82B0B090B00628A24 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21315CC62B0B090B00628A24 /* Money.swift */; };
 		21315CC92B0B090B00628A24 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21315CC72B0B090B00628A24 /* Banner.swift */; };
+		21D19CDB2B0C4A1000B68A85 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D19CDA2B0C4A1000B68A85 /* OverlayView.swift */; };
+		21D19CDE2B0C4E6A00B68A85 /* UpbitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D19CDD2B0C4E6A00B68A85 /* UpbitAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		21315CBF2B0AFFDF00628A24 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		21315CC62B0B090B00628A24 /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		21315CC72B0B090B00628A24 /* Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
+		21D19CDA2B0C4A1000B68A85 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
+		21D19CDD2B0C4E6A00B68A85 /* UpbitAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpbitAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +60,10 @@
 			isa = PBXGroup;
 			children = (
 				21315CB82B0AFFDE00628A24 /* SwiftUICoinOrderBookApp.swift */,
+				21D19CDC2B0C4E5600B68A85 /* Network */,
 				21315CCA2B0B09A700628A24 /* Model */,
 				21315CBA2B0AFFDE00628A24 /* ContentView.swift */,
+				21D19CDA2B0C4A1000B68A85 /* OverlayView.swift */,
 				21315CBC2B0AFFDF00628A24 /* Assets.xcassets */,
 				21315CBE2B0AFFDF00628A24 /* Preview Content */,
 			);
@@ -79,6 +85,14 @@
 				21315CC62B0B090B00628A24 /* Money.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		21D19CDC2B0C4E5600B68A85 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				21D19CDD2B0C4E6A00B68A85 /* UpbitAPI.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,9 +166,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				21315CC82B0B090B00628A24 /* Money.swift in Sources */,
+				21D19CDE2B0C4E6A00B68A85 /* UpbitAPI.swift in Sources */,
 				21315CC92B0B090B00628A24 /* Banner.swift in Sources */,
 				21315CBB2B0AFFDE00628A24 /* ContentView.swift in Sources */,
 				21315CB92B0AFFDE00628A24 /* SwiftUICoinOrderBookApp.swift in Sources */,
+				21D19CDB2B0C4A1000B68A85 /* OverlayView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,8 @@ struct ContentView: View {
     @State private var banner = "23,456,789원"
     
     //trigger되면 Money 배열에 data 넣어서 body update
-    @State private var money: [Money] = []
+//    @State private var money: [Money] = []
+    @State private var money: [Market] = []
     
     //크게 시작, 틀이 잡히면 내부적 update하기
     var body: some View {
@@ -40,7 +41,7 @@ struct ContentView: View {
                     
                     .scrollIndicators(.visible)         //상위 view와 다른 값의 하위 view 동일 속성: 하위 view의 값을 우선 적용
                     LazyVStack {                    //필요한 시점에 load하기 (한번에 load하지 않기)
-                        ForEach(money, id: \.id) { data in    //Cell 반복: ForEach 구성
+                        ForEach(money, id: \.self) { data in    //Cell 반복: ForEach 구성 (struct Hashable protocol 채택)
                             listView(data: data)
                         }
                     }
@@ -51,27 +52,42 @@ struct ContentView: View {
             .refreshable {                      //pull to refresh 기능 구현 (iOS 15)
                                                 //13, 14: UIKit 코드 wrapping해서 활용
                 banner = "35,675,432,089,222원"
-                money = dummy.shuffled()        //shuffled: 매번 호출될 때마다 순서 섞임
+//                money = dummy.shuffled()        //shuffled: 매번 호출될 때마다 순서 섞임
+                
             }
-            .onAppear {                         //onAppear: viewWillAppear 유사 역할
-                money = dummy.shuffled()
+            .onAppear {                         //onAppear: viewWillAppear 유사 역할 (화면 이동간 계속 호출될 수 있음)
+                UpbitAPI.fetchAllMarket { market in         //네트워크 통신
+                    //통신 결과 Money에 넣기
+                    money = market
+                }
+//                money = dummy.shuffled()
+                
             }
         }
     }
     
     func bannerView() -> some View {
         ZStack {        //Rectangle 위에 Text 올리기
-            RoundedRectangle(cornerRadius: 25)
+//            RoundedRectangle(cornerRadius: 25)
+            Rectangle()                     //어차피 clipShape으로 roundedRectangle 설정할 거면 굳이 시작부터 갖고 있을 필요는 없음
                 .fill(Color.gray)
+                .overlay {                  //RoundedRectangle 영역 벗어나지 않도록 하기
+                    Circle()
+                        .fill(.white.opacity(0.3))
+                        .offset(x: -90, y: -20)                     //위치 조정
+                        .scaleEffect(1.3, anchor: .topLeading)      //사이즈 크기 조정, anchor: 시작 위치 조정
+                }
+                .clipShape(RoundedRectangle(cornerRadius: 25))      //원하는 형태로 잘라내기
                 .frame(maxWidth: .infinity) //padding된 길이 기준 infinity
                 .frame(height: 200)
-            
-            
-            
+                
             VStack(alignment: .leading) {   //contents 기준 stack 크기에서 왼쪽 정렬
                 Spacer()                //위쪽 영역 채워서 내리기
                 Text("나의 소비 내역")
+                    .font(.title3)
                 Text(banner)            //State 변수 활용 --> update되면 body가 다시 그려질 것
+                    .font(.title)
+                    .bold()
             }
             .visualEffect { content, geometryProxy in
                 content.offset(x: scrollOffset(geometryProxy))          //Text 담은 VStack에 추가 애니메이션 적용
@@ -94,14 +110,16 @@ struct ContentView: View {
     }
     
     //function으로 처리한 이유: 값 전달 처리 (property로는 처리 까다로운 경우 존재)
-    func listView(data: Money) -> some View {
+//    func listView(data: Money) -> some View {
+    func listView(data: Market) -> some View {
         HStack {
             VStack(alignment: .leading) {   //왼쪽 정렬
-                Text(data.product)
-                Text(data.category.rawValue)
+                //Money --> Market, property 교체
+                Text(data.korean)
+                Text(data.english)
             }
             Spacer()        //가운데 공간 띄우기
-            Text(data.amountFormat)
+            Text(data.market)
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 8)      //개별적인 padding값 적용 (default 값은 iOS 버전마다 달라짐)
