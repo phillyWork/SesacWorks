@@ -8,12 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
-    
-    @State private var banner = "23,456,789원"
+  
+//    @State private var banner = "23,456,789원"
     
     //trigger되면 Money 배열에 data 넣어서 body update
 //    @State private var money: [Money] = []
-    @State private var money: [Market] = []
+//    @State private var money: [Market] = []
+  
+    
+    //State: ViewModel로 이동, 관리
+    //ObservableObject protocol 채택
+    //Published 신호를 받는 역할 (property wrapper)
+    @ObservedObject var viewModel = ContentViewModel()      //iOS 13+
+    
+    //StateObject (iOS 14+)
+    
+    
     
     //크게 시작, 틀이 잡히면 내부적 update하기
     var body: some View {
@@ -27,6 +37,10 @@ struct ContentView: View {
                                 bannerView()
                                     .containerRelativeFrame(.horizontal)    //iOS 17+
                                                                             //상위 view의 frame에 맞게끔 사이즈 설정
+                                    .onTapGesture {
+                                        viewModel.fetchBanner()     //banner 탭할 때마다 refresh
+                                                                    //refresh: ListView의 data 초기화됨
+                                    }
                             }
                         }
                         .scrollTargetLayout()           //scroll 대상 layout 지정 (iOS 17+)
@@ -40,29 +54,44 @@ struct ContentView: View {
                     //현재로는 UIKit code를 활용
                     
                     .scrollIndicators(.visible)         //상위 view와 다른 값의 하위 view 동일 속성: 하위 view의 값을 우선 적용
-                    LazyVStack {                    //필요한 시점에 load하기 (한번에 load하지 않기)
-                        ForEach(money, id: \.self) { data in    //Cell 반복: ForEach 구성 (struct Hashable protocol 채택)
-                            listView(data: data)
-                        }
-                    }
+//                    LazyVStack {                    //필요한 시점에 load하기 (한번에 load하지 않기)
+//                        ForEach(viewModel.money, id: \.self) { data in    //Cell 반복: ForEach 구성 (struct
+////                        ForEach(money, id: \.self) { data in    //Cell 반복: ForEach 구성 (struct Hashable protocol 채택)
+//                            listView(data: data)
+//                        }
+//                    }
+                    
+                    // 별도 View로 분리
+                    ListView()
+                    
                 }
             }
             .navigationTitle("My Wallet")       //rootView: ScrollView
             .scrollIndicators(.hidden)          //scroll indicator 숨기기 (내부 scrollView도 적용)
-            .refreshable {                      //pull to refresh 기능 구현 (iOS 15)
+            .refreshable {                      //pull to refresh 기능 구현 (iOS 15+)
                                                 //13, 14: UIKit 코드 wrapping해서 활용
-                banner = "35,675,432,089,222원"
+                
+                viewModel.fetchBanner()         //View에서 직접적으로 값 할당 X, 메서드만 호출
+//                viewModel.banner = "35,675,432,089,222원"
 //                money = dummy.shuffled()        //shuffled: 매번 호출될 때마다 순서 섞임
                 
             }
-            .onAppear {                         //onAppear: viewWillAppear 유사 역할 (화면 이동간 계속 호출될 수 있음)
-                UpbitAPI.fetchAllMarket { market in         //네트워크 통신
-                    //통신 결과 Money에 넣기
-                    money = market
-                }
-//                money = dummy.shuffled()
-                
-            }
+//            .onAppear {                         //onAppear: viewWillAppear 유사 역할 (화면 이동간 계속 호출될 수 있음)
+//                
+//                //viewModel로 이동
+//                //data 변화는 내부에서 감지해서 변경하면 됨 --> completionHandler로 필요 없어짐
+//                viewModel.fetchAllMarket()
+//                
+////                UpbitAPI.fetchAllMarket { market in         //네트워크 통신
+////                    //통신 결과 Money에 넣기
+////                    viewModel.money = market
+////                }
+////                money = dummy.shuffled()
+//                
+//            }
+            
+            //List 별도 view --> 해당 view에서 통신 관련
+            
         }
     }
     
@@ -70,7 +99,7 @@ struct ContentView: View {
         ZStack {        //Rectangle 위에 Text 올리기
 //            RoundedRectangle(cornerRadius: 25)
             Rectangle()                     //어차피 clipShape으로 roundedRectangle 설정할 거면 굳이 시작부터 갖고 있을 필요는 없음
-                .fill(Color.gray)
+                .fill(viewModel.banner.color)
                 .overlay {                  //RoundedRectangle 영역 벗어나지 않도록 하기
                     Circle()
                         .fill(.white.opacity(0.3))
@@ -85,15 +114,15 @@ struct ContentView: View {
                 Spacer()                //위쪽 영역 채워서 내리기
                 Text("나의 소비 내역")
                     .font(.title3)
-                Text(banner)            //State 변수 활용 --> update되면 body가 다시 그려질 것
+                Text(viewModel.banner.totalFormat)   //State 변수 활용 --> update되면 body가 다시 그려질 것
                     .font(.title)
                     .bold()
             }
-            .visualEffect { content, geometryProxy in
-                content.offset(x: scrollOffset(geometryProxy))          //Text 담은 VStack에 추가 애니메이션 적용
-                                        //비율로 잡기: geomtryProxy 활용 ~ 상위 view의 size 얻어올 수 있음 (iOS 17+)
-                                        //어디서 시작해야 (이전 view가 멈출 위치)
-            }
+//            .visualEffect { content, geometryProxy in
+//                content.offset(x: scrollOffset(geometryProxy))          //Text 담은 VStack에 추가 애니메이션 적용
+//                                        //비율로 잡기: geomtryProxy 활용 ~ 상위 view의 size 얻어올 수 있음 (iOS 17+)
+//                                        //어디서 시작해야 (이전 view가 멈출 위치)
+//            }
             .padding(.vertical)  //영역 띄워서 너무 딱붙지 않게 만들기
             .frame(maxWidth: .infinity, alignment: .leading)     //padding된 길이만큼, 맨 왼쪽으로 구성
         }
@@ -111,19 +140,21 @@ struct ContentView: View {
     
     //function으로 처리한 이유: 값 전달 처리 (property로는 처리 까다로운 경우 존재)
 //    func listView(data: Money) -> some View {
-    func listView(data: Market) -> some View {
-        HStack {
-            VStack(alignment: .leading) {   //왼쪽 정렬
-                //Money --> Market, property 교체
-                Text(data.korean)
-                Text(data.english)
-            }
-            Spacer()        //가운데 공간 띄우기
-            Text(data.market)
-        }
-        .padding(.horizontal, 20)
-        .padding(.vertical, 8)      //개별적인 padding값 적용 (default 값은 iOS 버전마다 달라짐)
-    }
+//    func listView(data: Market) -> some View {
+//        HStack {
+//            VStack(alignment: .leading) {   //왼쪽 정렬
+//                //Money --> Market, property 교체
+//                Text(data.korean)
+//                Text(data.english)
+//            }
+//            Spacer()        //가운데 공간 띄우기
+//            Text(data.market)
+//        }
+//        .padding(.horizontal, 20)
+//        .padding(.vertical, 8)      //개별적인 padding값 적용 (default 값은 iOS 버전마다 달라짐)
+//    }
+    
+    //struct로 별도 분리한 View
 
 }
 
