@@ -18,6 +18,7 @@
 		21D19CE02B0C595700B68A85 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D19CDF2B0C595700B68A85 /* ContentViewModel.swift */; };
 		21D19CE22B0C733500B68A85 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D19CE12B0C733500B68A85 /* ListView.swift */; };
 		21D19CE42B0C736C00B68A85 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D19CE32B0C736C00B68A85 /* ListViewModel.swift */; };
+		21D19CE72B0C809E00B68A85 /* BannerTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D19CE62B0C809E00B68A85 /* BannerTestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		21D19CDF2B0C595700B68A85 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		21D19CE12B0C733500B68A85 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		21D19CE32B0C736C00B68A85 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		21D19CE62B0C809E00B68A85 /* BannerTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				21315CCA2B0B09A700628A24 /* Model */,
 				21D19CDF2B0C595700B68A85 /* ContentViewModel.swift */,
 				21315CBA2B0AFFDE00628A24 /* ContentView.swift */,
+				21D19CE62B0C809E00B68A85 /* BannerTestView.swift */,
 				21D19CE52B0C737200B68A85 /* List */,
 				21D19CDA2B0C4A1000B68A85 /* OverlayView.swift */,
 				21315CBC2B0AFFDF00628A24 /* Assets.xcassets */,
@@ -190,6 +193,7 @@
 				21D19CE42B0C736C00B68A85 /* ListViewModel.swift in Sources */,
 				21315CBB2B0AFFDE00628A24 /* ContentView.swift in Sources */,
 				21315CB92B0AFFDE00628A24 /* SwiftUICoinOrderBookApp.swift in Sources */,
+				21D19CE72B0C809E00B68A85 /* BannerTestView.swift in Sources */,
 				21D19CDB2B0C4A1000B68A85 /* OverlayView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

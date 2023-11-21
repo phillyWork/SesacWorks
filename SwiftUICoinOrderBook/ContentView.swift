@@ -24,11 +24,17 @@ struct ContentView: View {
     //StateObject (iOS 14+)
     
     
+    //render 시점 살펴보기 목적
+    //하위 view에서 해당 data update되면 동일하게 body 다시 그림?
+    @State var renderingTestNumber = 0
+    
     
     //크게 시작, 틀이 잡히면 내부적 update하기
     var body: some View {
         NavigationStack {       //구조 잡히고 나서 NavigationStack 설정
             ScrollView {        //Scroll 되도록
+                Text("테스트: \(renderingTestNumber)")
+                NavigationLink("배너 테스트", value: renderingTestNumber)    //renderingTestNumber 전달 버튼
                 VStack {
                     ScrollView(.horizontal) {            //가로 scroll
                         LazyHStack {        //banner 여럿 구성, 최적화 고려
@@ -63,15 +69,18 @@ struct ContentView: View {
                     
                     // 별도 View로 분리
                     ListView()
-                    
                 }
             }
             .navigationTitle("My Wallet")       //rootView: ScrollView
+            .navigationDestination(for: Int.self, destination: { _ in    //navigationLink로 전달할 data가 도착할 위치 선정
+                BannerTestView(testNumber: $renderingTestNumber)        //Binding에 전달
+            })
+
             .scrollIndicators(.hidden)          //scroll indicator 숨기기 (내부 scrollView도 적용)
             .refreshable {                      //pull to refresh 기능 구현 (iOS 15+)
                                                 //13, 14: UIKit 코드 wrapping해서 활용
-                
-                viewModel.fetchBanner()         //View에서 직접적으로 값 할당 X, 메서드만 호출
+                renderingTestNumber  = Int.random(in: 1...100)
+//                viewModel.fetchBanner()         //View에서 직접적으로 값 할당 X, 메서드만 호출
 //                viewModel.banner = "35,675,432,089,222원"
 //                money = dummy.shuffled()        //shuffled: 매번 호출될 때마다 순서 섞임
                 

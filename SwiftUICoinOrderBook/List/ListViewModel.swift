@@ -10,8 +10,14 @@ import Foundation
 //관찰할 수 있도록, 변화 시 View에 신호 전달
 class ListViewModel: ObservableObject {
     
-    //State 대용 (sample data)
-    @Published var market = [Market(market: "a", korean: "b", english: "c")]
+    //State 대용
+    @Published var market = [Market(market: "a", korean: "b", english: "c"),
+                             Market(market: "d", korean: "e", english: "f"),
+                             Market(market: "a", korean: "b", english: "c"),
+                             Market(market: "a", korean: "b", english: "c")
+                            ]
+    //sample data: Hashable하지 않으므로 동일한 것 하나만 나타남
+    
     
     //Network 함수 가져옴
     func fetchAllMarket() {

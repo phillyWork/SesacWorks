@@ -25,8 +25,6 @@ struct ListView: View {
     @StateObject var listVM = ListViewModel()
 
     
-
-    
     var body: some View {
         
         //onAppear 대신 여기서 서버 통신 시작
@@ -34,6 +32,12 @@ struct ListView: View {
         //scrollView는 ContentView에서 담김
         
         LazyVStack {
+            
+            //onAppear 대신 특수 버튼으로 API 호출하기
+            Button("서버 통신") {
+                listVM.fetchAllMarket()
+            }
+            
             ForEach(listVM.market, id: \.self) { item in
                 
                 HStack {
@@ -54,9 +58,10 @@ struct ListView: View {
                 .padding()
             }
         }
-        .onAppear {
-            listVM.fetchAllMarket()
-        }
+//        .onAppear {     //view가 보일때마다 서버 통신하기
+//            print("API CALL!!!")
+//            listVM.fetchAllMarket()
+//        }
         
     }
 }
