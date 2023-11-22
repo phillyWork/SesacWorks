@@ -13,8 +13,15 @@ struct WalletView: View {
     @State private var isExpandable = false     //animation 효과
     @State private var showDetail = false       //다음 화면 전환
         
+    let wallet = walletList      //dummy data 모음집: 전역변수와 겹칠 수 있음 (이름 설정 고려, 변경 없으므로 let만)
+
+    @State private var selectedWallet = WalletModel(name: "", index: 0)          //현재 탭한 카드 정보
+    
+    //group 정보 목적 설명용
+    //다른 data는 각자 인식될 수 있도록 해야 함: id 역할
+    @Namespace var animation
+    
     var body: some View {
-        
         VStack {
             topTitle()
 //            Spacer()
@@ -35,11 +42,14 @@ struct WalletView: View {
         .overlay {
             //if 조건 없이 overlay만 구성: 바로 instance 생성
             //overlay 여부 결정하는 State Binding에 전달하기
+            
+            //해당 카드의 정보 전달 필요
             if showDetail {
-                WalletDetailView(showDetail: $showDetail)
+                WalletDetailView(showDetail: $showDetail,
+                                 currentWallet: selectedWallet,
+                                animation: animation)
             }
         }
-        
     }
     
     func topTitle() -> some View {
@@ -77,9 +87,11 @@ struct WalletView: View {
     
     func cardSpace() -> some View {
         ScrollView {
-            ForEach(0..<5) { item in
+            //구조체 기반 dummy data 활용 (같은 카드 다루고 있음 알리기)
+            ForEach(wallet, id: \.self) { item in
                 //개별 cardView마다 offset 다르게 설정
-                cardView(index: item)
+//                cardView(index: item)
+                cardView(item)
             }
         }
         //카드 내용이 많아지면 scroll 필요 --> 다른 방식으로 구성해야할 필요 O
@@ -95,9 +107,11 @@ struct WalletView: View {
         }
     }
     
-    func cardView(index: Int) -> some View {
+    //index 대신 data 자체로 담기
+//    func cardView(index: Int) -> some View {
+    func cardView(_ data : WalletModel) -> some View {
         RoundedRectangle(cornerRadius: 25)
-            .fill(Color.random())
+            .fill(data.color)
             .frame(height: 150) //고정 크기 갖도록
             .padding(.horizontal, 10)
             .padding(.vertical, 5)
@@ -107,17 +121,26 @@ struct WalletView: View {
         
             //곱셈 값을 animation 여부 값에 따라 다르게 구성
             //default: 단순 ScrollView --> 접혀있는 식으로 보여주다 true가 되면 원래 default로 나타나도록 하기
-            .offset(y: CGFloat(index) * (isExpandable ? 0 : -130))
+            .offset(y: CGFloat(data.index) * (isExpandable ? 0 : -130))
             .onTapGesture {
                 //탭을 통해 모여있을 때 풀어지도록 하기
                 withAnimation(.spring) {
                     //isExpandable을 true를 주면 body 다시 그림 --> showDetail 바로 true로 바꿈 --> body 다시 그림 --> overlay 적용
                     //해결: 투명 view 하나 올려서 tapGesture 대응하기
                     
-                    //카드 영역 tap: 다음 화면으로 넘어가기
+                    //카드 영역 직접 tap: 다음 화면으로 넘어가기
                     showDetail = true
+                    
+                    //선택 카드 정보도 전달 필요함 (State var 활용)
+                    //data 변경 --> body 다시 그림
+                    selectedWallet = data
                 }
             }
+            //data 정보 값 일치하면 group화 (서로 다른 위치의 view 동일하도록 인식하게 함)
+            //Namespace: group화 용도
+            //id 말고 data 그 자체를 전달해도 okay
+            .matchedGeometryEffect(id: data.id, in: animation)
+//            .matchedGeometryEffect(id: data, in: animation)
     }
     
 }
