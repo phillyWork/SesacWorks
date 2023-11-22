@@ -13,6 +13,7 @@
 		21315CC02B0AFFDF00628A24 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21315CBF2B0AFFDF00628A24 /* Preview Assets.xcassets */; };
 		21315CC82B0B090B00628A24 /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21315CC62B0B090B00628A24 /* Money.swift */; };
 		21315CC92B0B090B00628A24 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21315CC72B0B090B00628A24 /* Banner.swift */; };
+		214C1CF02B0E2225001E5648 /* WalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214C1CEF2B0E2225001E5648 /* WalletView.swift */; };
 		21D19CDB2B0C4A1000B68A85 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D19CDA2B0C4A1000B68A85 /* OverlayView.swift */; };
 		21D19CDE2B0C4E6A00B68A85 /* UpbitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D19CDD2B0C4E6A00B68A85 /* UpbitAPI.swift */; };
 		21D19CE02B0C595700B68A85 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D19CDF2B0C595700B68A85 /* ContentViewModel.swift */; };
@@ -29,6 +30,7 @@
 		21315CBF2B0AFFDF00628A24 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		21315CC62B0B090B00628A24 /* Money.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		21315CC72B0B090B00628A24 /* Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
+		214C1CEF2B0E2225001E5648 /* WalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletView.swift; sourceTree = "<group>"; };
 		21D19CDA2B0C4A1000B68A85 /* OverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		21D19CDD2B0C4E6A00B68A85 /* UpbitAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpbitAPI.swift; sourceTree = "<group>"; };
 		21D19CDF2B0C595700B68A85 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				21315CB82B0AFFDE00628A24 /* SwiftUICoinOrderBookApp.swift */,
+				214C1CEE2B0E2203001E5648 /* Animation */,
 				21D19CDC2B0C4E5600B68A85 /* Network */,
 				21315CCA2B0B09A700628A24 /* Model */,
 				21D19CDF2B0C595700B68A85 /* ContentViewModel.swift */,
@@ -96,6 +99,14 @@
 				21315CC62B0B090B00628A24 /* Money.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		214C1CEE2B0E2203001E5648 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				214C1CEF2B0E2225001E5648 /* WalletView.swift */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		21D19CDC2B0C4E5600B68A85 /* Network */ = {
@@ -187,6 +198,7 @@
 			files = (
 				21D19CE22B0C733500B68A85 /* ListView.swift in Sources */,
 				21315CC82B0B090B00628A24 /* Money.swift in Sources */,
+				214C1CF02B0E2225001E5648 /* WalletView.swift in Sources */,
 				21D19CDE2B0C4E6A00B68A85 /* UpbitAPI.swift in Sources */,
 				21315CC92B0B090B00628A24 /* Banner.swift in Sources */,
 				21D19CE02B0C595700B68A85 /* ContentViewModel.swift in Sources */,
