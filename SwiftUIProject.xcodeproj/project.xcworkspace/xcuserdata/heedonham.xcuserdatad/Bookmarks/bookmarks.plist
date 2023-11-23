@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>top-level-items</key>
+	<array>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>34</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>33</string>
+					<key>Timestamp</key>
+					<string>721710785.847293</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>SwiftUIProject/ViewTransition/PosterView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>                ForEach(0..&lt;50) { item in
+</string>
+				<key>leading</key>
+				<string>            LazyVStack {
+                //결국 ForEach도 각 View 생성 반복하는 것
+</string>
+				<key>trailing</key>
+				<string>//                    Text("안녕하세yo \(item)")
+//                        .lineLimit(2)
+                    
+</string>
+			</dict>
+			<key>title</key>
+			<string>Hashable, Identifiable</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+	</array>
+</dict>
+</plist>
